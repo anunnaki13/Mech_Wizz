@@ -149,9 +149,9 @@ Each v1 requirement maps to exactly one roadmap phase.
 | DATA-02 | Phase 1 | Pending |
 | DATA-03 | Phase 1 | Pending |
 | DATA-04 | Phase 1 | Pending |
-| DATA-05 | Phase 1 | Pending |
-| DATA-06 | Phase 1 | Pending |
-| DATA-07 | Phase 1 | Pending |
+| DATA-05 | Phase 2 | Pending |
+| DATA-06 | Phase 2 | Pending |
+| DATA-07 | Phase 5 | Pending |
 | DATA-08 | Phase 1 | Pending |
 | UNIT-01 | Phase 1 | Pending |
 | UNIT-02 | Phase 1 | Pending |

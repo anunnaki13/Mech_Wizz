@@ -22,13 +22,13 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 **Goal:** Create a runnable full-stack app that stores Tenayan and lets users manage core unit input data.
 **Mode:** mvp
 **Depends on:** Nothing (first phase)
-**Requirements:** PLAT-01, PLAT-02, PLAT-03, PLAT-04, DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06, DATA-07, DATA-08, UNIT-01, UNIT-02, UNIT-03, UNIT-04
+**Requirements:** PLAT-01, PLAT-02, PLAT-03, PLAT-04, DATA-01, DATA-02, DATA-03, DATA-04, DATA-08, UNIT-01, UNIT-02, UNIT-03, UNIT-04
 **UI hint:** yes
 **Success Criteria** (what must be TRUE):
   1. Developer can start PostgreSQL, FastAPI, and Next.js locally from Docker Compose.
   2. User can open `/dashboard` and navigate to the core MVP routes.
   3. User can view seeded PLTU Tenayan data and manage plant, emission, site readiness, and hydrogen strategy records.
-  4. Backend persists all core MVP tables with `data_status` and `confidence_level` fields available.
+  4. Backend persists all Phase 1 input tables with `data_status` and `confidence_level` fields available.
 **Plans:** 3 plans
 
 Plans:
@@ -40,7 +40,7 @@ Plans:
 **Goal:** Make scenarios calculable and reproducible through deterministic backend services.
 **Mode:** mvp
 **Depends on:** Phase 1
-**Requirements:** UNIT-05, UNIT-06, CALC-01, CALC-02, CALC-03, CALC-04, CALC-05, CALC-06, CALC-07, CALC-08, CALC-09, CALC-10
+**Requirements:** DATA-05, DATA-06, UNIT-05, UNIT-06, CALC-01, CALC-02, CALC-03, CALC-04, CALC-05, CALC-06, CALC-07, CALC-08, CALC-09, CALC-10
 **UI hint:** yes
 **Success Criteria** (what must be TRUE):
   1. User can create WIZ Access, WIZ Align, and WIZ Augment scenarios with financial assumptions.
@@ -94,7 +94,7 @@ Plans:
 **Goal:** Add OpenRouter narrative insight and lightweight document intelligence while preserving deterministic numeric authority.
 **Mode:** mvp
 **Depends on:** Phase 4
-**Requirements:** LLM-01, LLM-02, LLM-03, LLM-04, LLM-05, LLM-06, LLM-07, DOC-01, DOC-02, DOC-03, DOC-04, SENS-04
+**Requirements:** DATA-07, LLM-01, LLM-02, LLM-03, LLM-04, LLM-05, LLM-06, LLM-07, DOC-01, DOC-02, DOC-03, DOC-04, SENS-04
 **UI hint:** yes
 **Success Criteria** (what must be TRUE):
   1. User can generate executive summary, data gap explanation, investor memo, and sensitivity explanation through OpenRouter.
