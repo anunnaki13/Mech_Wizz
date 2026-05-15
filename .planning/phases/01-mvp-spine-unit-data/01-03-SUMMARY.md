@@ -9,6 +9,7 @@ Complete.
 - Added `SiteReadiness` and `HydrogenStrategy` ORM models with UUID IDs, timestamps, `data_status`, and `confidence_level`.
 - Added REST endpoints for site readiness and hydrogen strategy create/get/update workflows.
 - Added backend tests for create/get/update behavior for both resources.
+- Added Alembic-style migration scaffold and initial Phase 1 schema migration.
 - Added `/units` list route and expanded `/units/[id]` with plant, emission, site readiness, and hydrogen strategy sections.
 - Added safe placeholder routes for `/scenarios`, `/investor`, `/sensitivity`, `/documents`, and `/settings`.
 - Updated README Phase 1 verification commands.
@@ -19,6 +20,7 @@ Complete.
 - `cd backend && .venv/bin/pytest -q` passed with 7 tests.
 - `cd frontend && npm run build` passed.
 - `docker compose config` passed.
+- `DATABASE_URL=sqlite:////tmp/mechwiz_alembic_test.db .venv/bin/alembic upgrade head` passed.
 - Acceptance markers for `SiteReadiness`, `HydrogenStrategy`, `Scenario Simulation Engine`, and `LLM & Document Intelligence` are present.
 
 ## Notes

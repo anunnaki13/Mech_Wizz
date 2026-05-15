@@ -10,7 +10,7 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: MVP Spine & Unit Data** - Runnable app, database schema, seed data, and unit input workflows.
+- [x] **Phase 1: MVP Spine & Unit Data** - Runnable app, database schema, seed data, and unit input workflows.
 - [ ] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
 - [ ] **Phase 3: Strategy Dashboard & Ranking** - Site ranking, opportunity heatmap data, KPI dashboard, and sensitivity visualization.
 - [ ] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
@@ -32,9 +32,9 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 **Plans:** 3 plans
 
 Plans:
-- [ ] 01-01: Full-stack project scaffold, Docker Compose, environment configuration, and API shell.
-- [ ] 01-02: PostgreSQL schema, models, migrations, and Tenayan seed data.
-- [ ] 01-03: Unit input APIs and first usable unit/profile frontend views.
+- [x] 01-01: Full-stack project scaffold, Docker Compose, environment configuration, and API shell.
+- [x] 01-02: PostgreSQL schema, models, migrations, and Tenayan seed data.
+- [x] 01-03: Unit input APIs and first usable unit/profile frontend views.
 
 ### Phase 2: Scenario Simulation Engine
 **Goal:** Make scenarios calculable and reproducible through deterministic backend services.
@@ -115,7 +115,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. MVP Spine & Unit Data | 0/3 | Not started | - |
+| 1. MVP Spine & Unit Data | 3/3 | Complete | 2026-05-16 |
 | 2. Scenario Simulation Engine | 0/3 | Not started | - |
 | 3. Strategy Dashboard & Ranking | 0/3 | Not started | - |
 | 4. Investor Case & Data Quality | 0/3 | Not started | - |

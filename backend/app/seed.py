@@ -2,7 +2,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app import models  # noqa: F401
-from app.database import Base, SessionLocal, engine
+from app.database import SessionLocal
 from app.models import EmissionTest, Plant
 
 
@@ -97,7 +97,6 @@ def seed_tenayan_emission_tests(db: Session, plant: Plant) -> list[EmissionTest]
 
 
 def main() -> None:
-    Base.metadata.create_all(bind=engine)
     with SessionLocal() as db:
         plant = seed_tenayan(db)
         print(f"Seeded {plant.plant_name} {plant.unit_name}")

@@ -16,6 +16,12 @@ Start the full stack:
 docker compose up --build
 ```
 
+In a second terminal, apply the versioned schema migration:
+
+```bash
+docker compose exec backend alembic upgrade head
+```
+
 Seed the initial Tenayan unit:
 
 ```bash
