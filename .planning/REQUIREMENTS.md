@@ -137,80 +137,80 @@ Explicitly excluded from the MVP to prevent scope creep.
 
 ## Traceability
 
-Roadmap mapping is filled during roadmap creation.
+Each v1 requirement maps to exactly one roadmap phase.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PLAT-01 | Pending | Pending |
-| PLAT-02 | Pending | Pending |
-| PLAT-03 | Pending | Pending |
-| PLAT-04 | Pending | Pending |
-| DATA-01 | Pending | Pending |
-| DATA-02 | Pending | Pending |
-| DATA-03 | Pending | Pending |
-| DATA-04 | Pending | Pending |
-| DATA-05 | Pending | Pending |
-| DATA-06 | Pending | Pending |
-| DATA-07 | Pending | Pending |
-| DATA-08 | Pending | Pending |
-| UNIT-01 | Pending | Pending |
-| UNIT-02 | Pending | Pending |
-| UNIT-03 | Pending | Pending |
-| UNIT-04 | Pending | Pending |
-| UNIT-05 | Pending | Pending |
-| UNIT-06 | Pending | Pending |
-| UNIT-07 | Pending | Pending |
-| CALC-01 | Pending | Pending |
-| CALC-02 | Pending | Pending |
-| CALC-03 | Pending | Pending |
-| CALC-04 | Pending | Pending |
-| CALC-05 | Pending | Pending |
-| CALC-06 | Pending | Pending |
-| CALC-07 | Pending | Pending |
-| CALC-08 | Pending | Pending |
-| CALC-09 | Pending | Pending |
-| CALC-10 | Pending | Pending |
-| SCORE-01 | Pending | Pending |
-| SCORE-02 | Pending | Pending |
-| SCORE-03 | Pending | Pending |
-| SCORE-04 | Pending | Pending |
-| SCORE-05 | Pending | Pending |
-| DASH-01 | Pending | Pending |
-| DASH-02 | Pending | Pending |
-| DASH-03 | Pending | Pending |
-| DASH-04 | Pending | Pending |
-| DASH-05 | Pending | Pending |
-| INV-01 | Pending | Pending |
-| INV-02 | Pending | Pending |
-| INV-03 | Pending | Pending |
-| INV-04 | Pending | Pending |
-| SENS-01 | Pending | Pending |
-| SENS-02 | Pending | Pending |
-| SENS-03 | Pending | Pending |
-| SENS-04 | Pending | Pending |
-| QUAL-01 | Pending | Pending |
-| QUAL-02 | Pending | Pending |
-| QUAL-03 | Pending | Pending |
-| QUAL-04 | Pending | Pending |
-| QUAL-05 | Pending | Pending |
-| QUAL-06 | Pending | Pending |
-| LLM-01 | Pending | Pending |
-| LLM-02 | Pending | Pending |
-| LLM-03 | Pending | Pending |
-| LLM-04 | Pending | Pending |
-| LLM-05 | Pending | Pending |
-| LLM-06 | Pending | Pending |
-| LLM-07 | Pending | Pending |
-| DOC-01 | Pending | Pending |
-| DOC-02 | Pending | Pending |
-| DOC-03 | Pending | Pending |
-| DOC-04 | Pending | Pending |
+| PLAT-01 | Phase 1 | Pending |
+| PLAT-02 | Phase 1 | Pending |
+| PLAT-03 | Phase 1 | Pending |
+| PLAT-04 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Pending |
+| DATA-02 | Phase 1 | Pending |
+| DATA-03 | Phase 1 | Pending |
+| DATA-04 | Phase 1 | Pending |
+| DATA-05 | Phase 1 | Pending |
+| DATA-06 | Phase 1 | Pending |
+| DATA-07 | Phase 1 | Pending |
+| DATA-08 | Phase 1 | Pending |
+| UNIT-01 | Phase 1 | Pending |
+| UNIT-02 | Phase 1 | Pending |
+| UNIT-03 | Phase 1 | Pending |
+| UNIT-04 | Phase 1 | Pending |
+| UNIT-05 | Phase 2 | Pending |
+| UNIT-06 | Phase 2 | Pending |
+| UNIT-07 | Phase 3 | Pending |
+| CALC-01 | Phase 2 | Pending |
+| CALC-02 | Phase 2 | Pending |
+| CALC-03 | Phase 2 | Pending |
+| CALC-04 | Phase 2 | Pending |
+| CALC-05 | Phase 2 | Pending |
+| CALC-06 | Phase 2 | Pending |
+| CALC-07 | Phase 2 | Pending |
+| CALC-08 | Phase 2 | Pending |
+| CALC-09 | Phase 2 | Pending |
+| CALC-10 | Phase 2 | Pending |
+| SCORE-01 | Phase 3 | Pending |
+| SCORE-02 | Phase 3 | Pending |
+| SCORE-03 | Phase 3 | Pending |
+| SCORE-04 | Phase 3 | Pending |
+| SCORE-05 | Phase 3 | Pending |
+| DASH-01 | Phase 3 | Pending |
+| DASH-02 | Phase 3 | Pending |
+| DASH-03 | Phase 3 | Pending |
+| DASH-04 | Phase 3 | Pending |
+| DASH-05 | Phase 3 | Pending |
+| INV-01 | Phase 4 | Pending |
+| INV-02 | Phase 4 | Pending |
+| INV-03 | Phase 4 | Pending |
+| INV-04 | Phase 4 | Pending |
+| SENS-01 | Phase 3 | Pending |
+| SENS-02 | Phase 3 | Pending |
+| SENS-03 | Phase 3 | Pending |
+| SENS-04 | Phase 5 | Pending |
+| QUAL-01 | Phase 4 | Pending |
+| QUAL-02 | Phase 4 | Pending |
+| QUAL-03 | Phase 4 | Pending |
+| QUAL-04 | Phase 4 | Pending |
+| QUAL-05 | Phase 4 | Pending |
+| QUAL-06 | Phase 4 | Pending |
+| LLM-01 | Phase 5 | Pending |
+| LLM-02 | Phase 5 | Pending |
+| LLM-03 | Phase 5 | Pending |
+| LLM-04 | Phase 5 | Pending |
+| LLM-05 | Phase 5 | Pending |
+| LLM-06 | Phase 5 | Pending |
+| LLM-07 | Phase 5 | Pending |
+| DOC-01 | Phase 5 | Pending |
+| DOC-02 | Phase 5 | Pending |
+| DOC-03 | Phase 5 | Pending |
+| DOC-04 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 64 total
-- Mapped to phases: 0
-- Unmapped: 64
+- Mapped to phases: 64
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after initialization*
+*Last updated: 2026-05-16 after roadmap creation*
