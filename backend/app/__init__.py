@@ -1,0 +1,1 @@
+"""MECH WIZ backend package."""

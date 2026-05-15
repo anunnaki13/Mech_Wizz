@@ -1,1 +1,9 @@
 .git-real/
+backend/.venv/
+backend/.pytest_cache/
+backend/mechwiz.db
+__pycache__/
+*.pyc
+frontend/.next/
+frontend/node_modules/
+frontend/out/
