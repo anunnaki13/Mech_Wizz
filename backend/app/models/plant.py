@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy import DateTime, Float, Integer, String, UniqueConstraint, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
@@ -31,4 +31,11 @@ class Plant(Base):
         server_default=func.now(),
         onupdate=func.now(),
         nullable=False,
+    )
+
+    emission_tests: Mapped[list["EmissionTest"]] = relationship(
+        "EmissionTest",
+        back_populates="plant",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
     )

@@ -229,6 +229,76 @@ select {
   border-radius: 8px;
 }
 
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.data-table th,
+.data-table td {
+  border-bottom: 1px solid rgba(147, 169, 187, 0.16);
+  padding: 10px 8px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.data-table th {
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.button {
+  border: 1px solid rgba(24, 199, 200, 0.55);
+  background: rgba(24, 199, 200, 0.14);
+  color: #d8fffb;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 9px 12px;
+}
+
+.button:hover {
+  background: rgba(24, 199, 200, 0.22);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #0a1726;
+  color: var(--text);
+  padding: 9px 10px;
+}
+
+.section-stack {
+  display: grid;
+  gap: 16px;
+}
+
 @media (max-width: 900px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -241,7 +311,8 @@ select {
   }
 
   .grid.kpis,
-  .grid.two {
+  .grid.two,
+  .form-grid {
     grid-template-columns: 1fr;
   }
 

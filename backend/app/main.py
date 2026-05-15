@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app import models  # noqa: F401
 from app.database import Base, engine
-from app.routers import health, plants
+from app.routers import emission_tests, health, plants
 
 
 @asynccontextmanager
@@ -28,5 +28,6 @@ app.add_middleware(
 api_router = APIRouter(prefix="/api")
 api_router.include_router(health.router)
 api_router.include_router(plants.router)
+api_router.include_router(emission_tests.router)
 
 app.include_router(api_router)
