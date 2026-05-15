@@ -2,9 +2,13 @@ import Link from "next/link";
 
 import { AppShell } from "@/components/layout/AppShell";
 import { EmissionTestsSection } from "@/components/units/EmissionTestsSection";
-import { getEmissionTests, getPlant } from "@/lib/api";
+import { HydrogenStrategySection } from "@/components/units/HydrogenStrategySection";
+import { SiteReadinessSection } from "@/components/units/SiteReadinessSection";
+import { getEmissionTests, getHydrogenStrategy, getPlant, getSiteReadiness } from "@/lib/api";
 import type { EmissionTest } from "@/types/emission-test";
+import type { HydrogenStrategy } from "@/types/hydrogen-strategy";
 import type { Plant } from "@/types/plant";
+import type { SiteReadiness } from "@/types/site-readiness";
 
 export const dynamic = "force-dynamic";
 
@@ -23,11 +27,17 @@ export default async function UnitDetailPage({ params }: PageProps) {
   const { id } = await params;
   let plant: Plant | null = null;
   let emissionTests: EmissionTest[] = [];
+  let siteReadiness: SiteReadiness | null = null;
+  let hydrogenStrategy: HydrogenStrategy | null = null;
   let loadError = false;
 
   try {
     plant = await getPlant(id);
-    emissionTests = await getEmissionTests(id);
+    [emissionTests, siteReadiness, hydrogenStrategy] = await Promise.all([
+      getEmissionTests(id),
+      getSiteReadiness(id),
+      getHydrogenStrategy(id),
+    ]);
   } catch {
     loadError = true;
   }
@@ -77,6 +87,8 @@ export default async function UnitDetailPage({ params }: PageProps) {
           </section>
 
           <EmissionTestsSection plantId={plant.id} initialEmissionTests={emissionTests} />
+          <SiteReadinessSection plantId={plant.id} initialSiteReadiness={siteReadiness} />
+          <HydrogenStrategySection plantId={plant.id} initialHydrogenStrategy={hydrogenStrategy} />
         </div>
       )}
     </AppShell>

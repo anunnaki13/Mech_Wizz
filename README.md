@@ -24,7 +24,7 @@ docker compose exec backend python -m app.seed
 
 Open the web app at http://localhost:3000/dashboard and the API health endpoint at http://localhost:8000/api/health.
 
-## Verification
+## Phase 1 Verification
 
 ```bash
 docker compose config

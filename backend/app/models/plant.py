@@ -39,3 +39,17 @@ class Plant(Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    site_readiness: Mapped["SiteReadiness | None"] = relationship(
+        "SiteReadiness",
+        back_populates="plant",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+        uselist=False,
+    )
+    hydrogen_strategy: Mapped["HydrogenStrategy | None"] = relationship(
+        "HydrogenStrategy",
+        back_populates="plant",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+        uselist=False,
+    )
