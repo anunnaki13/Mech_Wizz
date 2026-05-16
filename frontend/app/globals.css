@@ -289,6 +289,29 @@ textarea {
   opacity: 0.55;
 }
 
+.icon-button {
+  align-items: center;
+  background: rgba(147, 169, 187, 0.08);
+  border: 1px solid rgba(147, 169, 187, 0.28);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.icon-button:hover {
+  border-color: rgba(24, 199, 200, 0.62);
+  color: #d8fffb;
+}
+
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1024,6 +1047,109 @@ textarea {
   min-height: 110px;
 }
 
+.prefeed-workspace {
+  display: grid;
+  gap: 16px;
+}
+
+.prefeed-controls {
+  align-items: end;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(240px, 1fr) minmax(260px, 1.1fr) minmax(220px, 0.8fr);
+  gap: 12px;
+  padding: 14px;
+}
+
+.prefeed-selected {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  min-height: 66px;
+  padding: 12px;
+}
+
+.prefeed-selected span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.prefeed-selected strong {
+  font-size: 15px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.prefeed-layout {
+  align-items: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 16px;
+}
+
+.prefeed-main-stack,
+.prefeed-side-stack {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.prefeed-side-stack {
+  position: sticky;
+  top: 16px;
+}
+
+.prefeed-editor-panel,
+.prefeed-document-panel,
+.prefeed-warning-panel,
+.prefeed-detail-panel {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.prefeed-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.prefeed-notes {
+  grid-column: 1 / -1;
+}
+
+.prefeed-notes textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.prefeed-link-controls {
+  align-items: end;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(170px, 0.55fr) minmax(180px, 0.8fr) auto;
+  gap: 12px;
+}
+
+.prefeed-document-table {
+  min-width: 760px;
+}
+
+.prefeed-gap-list {
+  display: grid;
+  gap: 8px;
+}
+
+.prefeed-gap-list .data-gap-row p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .settings-workspace {
   display: grid;
   gap: 16px;
@@ -1132,15 +1258,19 @@ textarea {
   .investor-controls,
   .investor-grid,
   .settings-grid,
-  .settings-quality-grid,
-  .setting-controls,
-  .quality-controls,
-  .quality-matrix,
-  .insight-layout,
-  .document-layout,
-  .document-upload-grid,
-  .roadmap-list,
-  .thesis-flow,
+    .settings-quality-grid,
+    .setting-controls,
+    .quality-controls,
+    .quality-matrix,
+    .insight-layout,
+    .document-layout,
+    .document-upload-grid,
+    .prefeed-controls,
+    .prefeed-layout,
+    .prefeed-form,
+    .prefeed-link-controls,
+    .roadmap-list,
+    .thesis-flow,
   .result-grid,
   .scenario-row,
   .unit-row {

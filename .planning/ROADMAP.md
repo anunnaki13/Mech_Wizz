@@ -37,7 +37,7 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
 - Phase 6 is the first v2.0 phase.
 - Decimal phases may be inserted later for urgent fixes.
 
-- [ ] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps.
+- [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
 - [ ] **Phase 7: Cost & Vendor Proposal Engine** - Detailed CAPEX/OPEX line items, proposal comparison, selected active cost basis, and scenario-ready aggregates.
 - [ ] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness.
 - [ ] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation.
@@ -57,7 +57,7 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
   3. User can link existing uploaded documents to a package and classify document role.
   4. Package history remains auditable and does not overwrite prior scenario simulation results.
   5. Backend exposes package-level missing data and confidence warnings.
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 **Wave 1**
@@ -67,7 +67,7 @@ Plans:
 - [x] 06-02: Pre-FEED package REST APIs with package gap/confidence service and tests.
 
 **Wave 3** *(blocked on Wave 2 completion)*
-- [ ] 06-03: `/prefeed` package workspace shell with plant/scenario/package selection and linked document management.
+- [x] 06-03: `/prefeed` package workspace shell with plant/scenario/package selection and linked document management.
 
 **Cross-cutting constraints:**
 - D-04: Existing Document records are reused; Phase 6 adds an association table rather than a new upload system.
@@ -146,7 +146,7 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 3. Strategy Dashboard & Ranking | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 4. Investor Case & Data Quality | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 5. LLM & Document Intelligence | v1.0 | 3/3 | Complete | 2026-05-16 |
-| 6. Pre-FEED Package Foundation | v2.0 | 2/3 | In Progress|  |
+| 6. Pre-FEED Package Foundation | v2.0 | 3/3 | Complete | 2026-05-16 |
 | 7. Cost & Vendor Proposal Engine | v2.0 | 0/3 | Not started | - |
 | 8. Offtake & MRV Readiness | v2.0 | 0/3 | Not started | - |
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 0/3 | Not started | - |

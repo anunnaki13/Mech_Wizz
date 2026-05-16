@@ -5,6 +5,14 @@ import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen
 import type { InvestorCase } from "@/types/investor";
 import type { LlmGeneratePayload, LlmInsight } from "@/types/llm";
 import type { DocumentAskPayload, ProjectDocument } from "@/types/document";
+import type {
+  PreFeedPackage,
+  PreFeedPackageDocument,
+  PreFeedPackageDocumentPayload,
+  PreFeedPackageGap,
+  PreFeedPackagePayload,
+  PreFeedPackageUpdatePayload,
+} from "@/types/prefeed";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
@@ -407,4 +415,69 @@ export async function askDocument(documentId: string, payload: DocumentAskPayloa
     method: "POST",
     body: JSON.stringify(payload),
   });
+}
+
+export async function listPreFeedPackages(params: {
+  plantId?: string;
+  scenarioId?: string;
+  includeArchived?: boolean;
+} = {}): Promise<PreFeedPackage[]> {
+  return apiFetch<PreFeedPackage[]>(
+    `/prefeed/packages${buildQuery({
+      plant_id: params.plantId,
+      scenario_id: params.scenarioId,
+      include_archived: params.includeArchived ? "true" : undefined,
+    })}`,
+  );
+}
+
+export async function getPreFeedPackage(packageId: string): Promise<PreFeedPackage> {
+  return apiFetch<PreFeedPackage>(`/prefeed/packages/${packageId}`);
+}
+
+export async function createPreFeedPackage(payload: PreFeedPackagePayload): Promise<PreFeedPackage> {
+  return apiFetch<PreFeedPackage>("/prefeed/packages", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedPackage(
+  packageId: string,
+  payload: PreFeedPackageUpdatePayload,
+): Promise<PreFeedPackage> {
+  return apiFetch<PreFeedPackage>(`/prefeed/packages/${packageId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function archivePreFeedPackage(packageId: string): Promise<PreFeedPackage> {
+  return apiFetch<PreFeedPackage>(`/prefeed/packages/${packageId}/archive`, {
+    method: "POST",
+  });
+}
+
+export async function listPreFeedPackageDocuments(packageId: string): Promise<PreFeedPackageDocument[]> {
+  return apiFetch<PreFeedPackageDocument[]>(`/prefeed/packages/${packageId}/documents`);
+}
+
+export async function linkPreFeedPackageDocument(
+  packageId: string,
+  payload: PreFeedPackageDocumentPayload,
+): Promise<PreFeedPackageDocument> {
+  return apiFetch<PreFeedPackageDocument>(`/prefeed/packages/${packageId}/documents`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function unlinkPreFeedPackageDocument(packageId: string, linkId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/packages/${packageId}/documents/${linkId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedPackageGaps(packageId: string): Promise<PreFeedPackageGap[]> {
+  return apiFetch<PreFeedPackageGap[]>(`/prefeed/packages/${packageId}/gaps`);
 }

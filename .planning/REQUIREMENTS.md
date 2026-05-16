@@ -10,11 +10,11 @@ Requirements for the Pre-FEED milestone. Each requirement maps to exactly one ro
 
 ### Pre-FEED Package Data
 
-- [ ] **PFD-01**: User can create, view, update, and archive a Pre-FEED package linked to a plant and scenario.
-- [ ] **PFD-02**: User can assign package owner, package status, source organization, received date, version, `data_status`, and `confidence_level`.
-- [ ] **PFD-03**: User can link uploaded documents to a Pre-FEED package and classify them as vendor proposal, EPC estimate, offtake document, MRV document, permit document, or internal note.
-- [ ] **PFD-04**: System keeps package history auditable without overwriting prior simulation or scoring results.
-- [ ] **PFD-05**: System surfaces package-level missing data and confidence warnings for downstream dashboards and LLM prompts.
+- [x] **PFD-01**: User can create, view, update, and archive a Pre-FEED package linked to a plant and scenario.
+- [x] **PFD-02**: User can assign package owner, package status, source organization, received date, version, `data_status`, and `confidence_level`.
+- [x] **PFD-03**: User can link uploaded documents to a Pre-FEED package and classify them as vendor proposal, EPC estimate, offtake document, MRV document, permit document, or internal note.
+- [x] **PFD-04**: System keeps package history auditable without overwriting prior simulation or scoring results.
+- [x] **PFD-05**: System surfaces package-level missing data and confidence warnings for downstream dashboards and LLM prompts.
 
 ### CAPEX/OPEX And Vendor Proposals
 
@@ -96,11 +96,11 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PFD-01 | Phase 6 | Pending |
-| PFD-02 | Phase 6 | Pending |
-| PFD-03 | Phase 6 | Pending |
-| PFD-04 | Phase 6 | Pending |
-| PFD-05 | Phase 6 | Pending |
+| PFD-01 | Phase 6 | Complete |
+| PFD-02 | Phase 6 | Complete |
+| PFD-03 | Phase 6 | Complete |
+| PFD-04 | Phase 6 | Complete |
+| PFD-05 | Phase 6 | Complete |
 | COST-01 | Phase 7 | Pending |
 | COST-02 | Phase 7 | Pending |
 | COST-03 | Phase 7 | Pending |

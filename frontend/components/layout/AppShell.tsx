@@ -6,6 +6,7 @@ const navItems = [
   { label: "Units", href: "/units" },
   { label: "Scenarios", href: "/scenarios" },
   { label: "Investor", href: "/investor" },
+  { label: "Pre-FEED", href: "/prefeed" },
   { label: "Sensitivity", href: "/sensitivity" },
   { label: "Documents", href: "/documents" },
   { label: "Settings", href: "/settings" },

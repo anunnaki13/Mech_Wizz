@@ -28,7 +28,7 @@ Seed the initial Tenayan unit, WIZ Align base scenario, coordinates, and benchma
 docker compose exec backend python -m app.seed
 ```
 
-Open the web app at http://localhost:3000/dashboard, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, review the investor case at http://localhost:3000/investor, edit settings at http://localhost:3000/settings, and check the API health endpoint at http://localhost:8000/api/health.
+Open the web app at http://localhost:3000/dashboard, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, review the investor case at http://localhost:3000/investor, manage Pre-FEED packages at http://localhost:3000/prefeed, edit settings at http://localhost:3000/settings, and check the API health endpoint at http://localhost:8000/api/health.
 
 ## Phase 2 Scenario Simulation
 
@@ -114,6 +114,27 @@ POST /api/documents/{document_id}/extract
 POST /api/documents/{document_id}/ask
 ```
 
+## Phase 6 Pre-FEED Package Foundation
+
+The Pre-FEED package workflow is:
+
+1. Open `/prefeed`.
+2. Select a plant and optional scenario.
+3. Create or update a package with owner, status, source organization, received date, version, `data_status`, and `confidence_level`.
+4. Link existing uploaded documents to the package and classify each link as vendor proposal, EPC estimate, offtake document, MRV document, permit document, or internal note.
+5. Review backend-generated package warnings for missing metadata, missing core document roles, and low or unknown confidence.
+
+Core API endpoints:
+
+```text
+GET/POST /api/prefeed/packages
+GET/PUT /api/prefeed/packages/{package_id}
+POST /api/prefeed/packages/{package_id}/archive
+GET/POST /api/prefeed/packages/{package_id}/documents
+DELETE /api/prefeed/packages/{package_id}/documents/{link_id}
+GET /api/prefeed/packages/{package_id}/gaps
+```
+
 ## Verification
 
 ```bash
@@ -126,5 +147,5 @@ For a local migration smoke test outside Docker:
 
 ```bash
 cd backend
-DATABASE_URL=sqlite:////tmp/mechwiz_phase5_full.db .venv/bin/alembic upgrade head
+DATABASE_URL=sqlite:////tmp/mechwiz_phase6_full.db .venv/bin/alembic upgrade head
 ```
