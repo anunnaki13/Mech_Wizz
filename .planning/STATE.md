@@ -140,6 +140,7 @@ None yet.
 | Date | Task | Summary |
 |------|------|---------|
 | 2026-05-16 | Add Unit UI | Added `/units` New Unit form wired to `POST /api/plants/`; build and API create/delete verification passed. |
+| 2026-05-17 | PLN PLTU public screening import | Imported 96 PLN-related operating PLTU units from public GEM data, ran 96 simulations, created 97 scoring/map records, and defaulted map to all scenarios. |
 
 ## Session Continuity
 

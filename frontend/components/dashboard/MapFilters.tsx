@@ -39,6 +39,7 @@ export function MapFilters({
           value={filters.scenarioId}
           onChange={(event) => onChange(updateFilter(filters, { scenarioId: event.target.value }))}
         >
+          <option value="">All scenarios</option>
           {scenarioOptions.map((scenario) => (
             <option key={scenario.id} value={scenario.id}>
               {scenario.label}

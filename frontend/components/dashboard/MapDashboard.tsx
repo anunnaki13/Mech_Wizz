@@ -181,7 +181,9 @@ export function MapDashboard() {
       setScenarios(scenarioRecords);
       setFilters((current) => ({
         ...current,
-        scenarioId: current.scenarioId || scenarioRecords[0]?.id || "",
+        scenarioId: current.scenarioId && scenarioRecords.some((scenario) => scenario.id === current.scenarioId)
+          ? current.scenarioId
+          : "",
       }));
       if (scenarioRecords.length === 0) {
         setStatusMessage("No scenarios are available.");
