@@ -7,6 +7,7 @@ import { MapFilters } from "@/components/dashboard/MapFilters";
 import { OpportunityMap } from "@/components/dashboard/OpportunityMap";
 import { RankingTable } from "@/components/dashboard/RankingTable";
 import { ScoreBreakdownPanel } from "@/components/dashboard/ScoreBreakdownPanel";
+import { SensitivityPanel } from "@/components/dashboard/SensitivityPanel";
 import {
   getPlantScenarios,
   getPlants,
@@ -319,7 +320,10 @@ export function MapDashboard() {
             onSelectUnit={(plantId) => void handleSelectUnit(plantId)}
           />
         </div>
-        <ScoreBreakdownPanel loading={loadingDashboard} profile={selectedProfile} row={selectedRow} />
+        <div className="map-side-stack">
+          <ScoreBreakdownPanel loading={loadingDashboard} profile={selectedProfile} row={selectedRow} />
+          <SensitivityPanel row={selectedRow} scenarioId={filters.scenarioId} />
+        </div>
       </section>
     </div>
   );

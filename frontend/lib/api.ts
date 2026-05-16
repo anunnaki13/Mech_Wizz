@@ -4,6 +4,7 @@ import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/fi
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
+import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
 import type {
   ScoringRecalculateResponse,
   UnitOpportunityGeoJSON,
@@ -216,6 +217,32 @@ export async function getUnitProfile(plantId: string, scenarioId?: string): Prom
   return apiFetch<UnitProfile>(
     `/units/${plantId}/profile${buildQuery({
       scenario_id: scenarioId,
+    })}`,
+  );
+}
+
+export async function runSensitivity(params: {
+  scenarioId: string;
+  plantId?: string;
+  variables?: SensitivityVariable[];
+}): Promise<SensitivityRunResponse> {
+  return apiFetch<SensitivityRunResponse>("/sensitivity/run", {
+    method: "POST",
+    body: JSON.stringify({
+      scenario_id: params.scenarioId,
+      plant_id: params.plantId || null,
+      variables: params.variables || null,
+    }),
+  });
+}
+
+export async function getScenarioSensitivity(
+  scenarioId: string,
+  plantId?: string,
+): Promise<SensitivityResult[]> {
+  return apiFetch<SensitivityResult[]>(
+    `/scenarios/${scenarioId}/sensitivity${buildQuery({
+      plant_id: plantId,
     })}`,
   );
 }

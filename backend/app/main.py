@@ -15,6 +15,7 @@ from app.routers import (
     plants,
     scenarios,
     scoring,
+    sensitivity,
     site_readiness,
     unit_profiles,
 )
@@ -47,5 +48,6 @@ api_router.include_router(scenarios.router)
 api_router.include_router(scoring.router)
 api_router.include_router(map.router)
 api_router.include_router(unit_profiles.router)
+api_router.include_router(sensitivity.router)
 
 app.include_router(api_router)

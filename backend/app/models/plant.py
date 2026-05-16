@@ -65,3 +65,9 @@ class Plant(Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    sensitivity_results: Mapped[list["SensitivityResult"]] = relationship(
+        "SensitivityResult",
+        back_populates="plant",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )

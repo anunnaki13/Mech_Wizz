@@ -50,3 +50,9 @@ class BusinessScenario(Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    sensitivity_results: Mapped[list["SensitivityResult"]] = relationship(
+        "SensitivityResult",
+        back_populates="scenario",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )

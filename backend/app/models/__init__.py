@@ -6,6 +6,7 @@ from app.models.hydrogen_strategy import HydrogenStrategy
 from app.models.site_readiness import SiteReadiness
 from app.models.scenario_result import ScenarioResult
 from app.models.unit_scoring_result import UnitScoringResult
+from app.models.sensitivity_result import SensitivityResult
 
 __all__ = [
     "BusinessScenario",
@@ -14,6 +15,7 @@ __all__ = [
     "HydrogenStrategy",
     "Plant",
     "ScenarioResult",
+    "SensitivityResult",
     "SiteReadiness",
     "UnitScoringResult",
 ]
