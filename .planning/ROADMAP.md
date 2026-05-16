@@ -115,8 +115,13 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
+**Wave 1**
 - [ ] 08-01: Offtake and price deck models, APIs, deterministic revenue integration, and tests.
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 08-02: MRV assumptions, carbon intensity service, carbon credit eligibility tracking, and gap service.
+
+**Wave 3** *(blocked on Wave 2 completion)*
 - [ ] 08-03: Offtake and MRV readiness UI integrated into the Pre-FEED workspace.
 
 ### Phase 9: Risk & Pre-FEED Decision Dashboard
