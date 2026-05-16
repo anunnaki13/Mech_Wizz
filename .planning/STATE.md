@@ -1,11 +1,11 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: milestone
-status: milestone_completed
-stopped_at: Phase 5 execution complete
-last_updated: "2026-05-16T13:41:53+07:00"
-last_activity: 2026-05-16 -- Phase 05 plan 03 document intelligence complete
+milestone_name: MVP
+status: Awaiting next milestone
+stopped_at: Milestone v1.0 archived
+last_updated: "2026-05-16T14:24:00+07:00"
+last_activity: 2026-05-16 - Milestone v1.0 completed and archived
 progress:
   total_phases: 5
   completed_phases: 5
@@ -21,16 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v1.0 milestone verification complete
+**Current focus:** Planning the next milestone
 
 ## Current Position
 
-Phase: 5 of 5 (LLM & Document Intelligence)
-Plan: 3 of 3 in current phase
-Status: Phase 5 complete; v1.0 roadmap complete
-Last activity: 2026-05-16 -- /documents upload, extraction, repository, and document Q&A implemented
-
-Progress: [##########] 100%
+Phase: Milestone v1.0 complete
+Plan: —
+Status: Awaiting next milestone
+Last activity: 2026-05-16 - Milestone v1.0 completed and archived
 
 ## Performance Metrics
 
@@ -120,6 +118,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T13:41:53+07:00
-Stopped at: Phase 5 execution complete
-Resume file: .planning/phases/05-llm-document-intelligence/05-VERIFICATION.md
+Last session: 2026-05-16T14:24:00+07:00
+Stopped at: Milestone v1.0 archived
+Resume file: .planning/ROADMAP.md
+
+## Operator Next Steps
+
+- Start the next milestone with `$gsd-new-milestone`
