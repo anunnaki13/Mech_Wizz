@@ -8,6 +8,7 @@ from app.models.financial_assumption import FinancialAssumption
 from app.models.hydrogen_strategy import HydrogenStrategy
 from app.models.llm_insight import LlmInsight
 from app.models.pre_feed_cost import PreFeedCostBasisSelection, PreFeedCostItem, PreFeedVendorProposal
+from app.models.pre_feed_market import PreFeedMrvAssumption, PreFeedOfftakeProspect, PreFeedPriceDeck
 from app.models.pre_feed_package import PreFeedPackage, PreFeedPackageDocument
 from app.models.site_readiness import SiteReadiness
 from app.models.scenario_result import ScenarioResult
@@ -26,8 +27,11 @@ __all__ = [
     "Plant",
     "PreFeedCostBasisSelection",
     "PreFeedCostItem",
+    "PreFeedMrvAssumption",
+    "PreFeedOfftakeProspect",
     "PreFeedPackage",
     "PreFeedPackageDocument",
+    "PreFeedPriceDeck",
     "PreFeedVendorProposal",
     "ScenarioResult",
     "SensitivityResult",
