@@ -5,18 +5,22 @@ import { useEffect, useMemo, useState } from "react";
 
 import { FinancialAssumptionsForm } from "@/components/scenarios/FinancialAssumptionsForm";
 import { ScenarioForm } from "@/components/scenarios/ScenarioForm";
+import { SimulationResultPanel } from "@/components/scenarios/SimulationResultPanel";
 import {
   createScenario,
   deleteScenario,
   getFinancialAssumption,
   getPlantScenarios,
   getPlants,
+  getScenarioResults,
+  runScenarioSimulation,
   saveFinancialAssumption,
   updateScenario,
 } from "@/lib/api";
 import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/financial-assumption";
 import type { Plant } from "@/types/plant";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScheme } from "@/types/scenario";
+import type { ScenarioResult } from "@/types/scenario-result";
 
 const schemeLabels: Record<BusinessScheme, string> = {
   access: "WIZ Access",
@@ -44,7 +48,9 @@ export function ScenarioWorkspace() {
   const [scenarios, setScenarios] = useState<BusinessScenario[]>([]);
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>("");
   const [financialAssumption, setFinancialAssumption] = useState<FinancialAssumption | null>(null);
+  const [scenarioResults, setScenarioResults] = useState<ScenarioResult[]>([]);
   const [loading, setLoading] = useState(true);
+  const [runningSimulation, setRunningSimulation] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -56,6 +62,7 @@ export function ScenarioWorkspace() {
     () => scenarios.find((scenario) => scenario.id === selectedScenarioId) ?? null,
     [scenarios, selectedScenarioId],
   );
+  const latestResult = scenarioResults[0] ?? null;
 
   async function loadPlants() {
     setLoading(true);
@@ -106,6 +113,20 @@ export function ScenarioWorkspace() {
     }
   }
 
+  async function loadScenarioResults(scenarioId: string) {
+    if (!scenarioId) {
+      setScenarioResults([]);
+      return;
+    }
+    setErrorMessage(null);
+    try {
+      setScenarioResults(await getScenarioResults(scenarioId));
+    } catch {
+      setErrorMessage("Scenario results could not be loaded.");
+      setScenarioResults([]);
+    }
+  }
+
   useEffect(() => {
     void loadPlants();
   }, []);
@@ -116,6 +137,7 @@ export function ScenarioWorkspace() {
 
   useEffect(() => {
     void loadFinancialAssumption(selectedScenarioId);
+    void loadScenarioResults(selectedScenarioId);
   }, [selectedScenarioId]);
 
   async function handleCreateScenario(payload: BusinessScenarioPayload) {
@@ -143,6 +165,7 @@ export function ScenarioWorkspace() {
     }
     await deleteScenario(selectedScenario.id);
     setStatusMessage("Scenario deleted.");
+    setScenarioResults([]);
     await loadScenarios(selectedPlantId);
   }
 
@@ -153,6 +176,23 @@ export function ScenarioWorkspace() {
     const record = await saveFinancialAssumption(selectedScenario.id, payload);
     setFinancialAssumption(record);
     setStatusMessage("Financial assumptions saved.");
+  }
+
+  async function handleRunSimulation() {
+    if (!selectedScenario) {
+      return;
+    }
+    setRunningSimulation(true);
+    setErrorMessage(null);
+    try {
+      const result = await runScenarioSimulation(selectedScenario.id);
+      setScenarioResults((current) => [result, ...current]);
+      setStatusMessage("Simulation result saved.");
+    } catch {
+      setErrorMessage("Simulation failed. Check scenario inputs and financial assumptions.");
+    } finally {
+      setRunningSimulation(false);
+    }
   }
 
   return (
@@ -254,9 +294,14 @@ export function ScenarioWorkspace() {
               {selectedScenario ? schemeLabels[selectedScenario.scheme] : "Select a scenario to edit business terms."}
             </p>
           </div>
-          <button className="button secondary" disabled type="button" title="Simulation is wired in Phase 2 plan 03">
+          <button
+            className="button secondary"
+            disabled={!selectedScenario || runningSimulation}
+            type="button"
+            onClick={() => void handleRunSimulation()}
+          >
             <PlayCircle size={16} aria-hidden="true" />
-            Run Simulation
+            {runningSimulation ? "Running" : "Run Simulation"}
           </button>
         </div>
         <ScenarioForm
@@ -266,6 +311,19 @@ export function ScenarioWorkspace() {
           onDelete={handleDeleteScenario}
           onSubmit={handleUpdateScenario}
         />
+      </section>
+
+      <section className="card">
+        <div className="scenario-toolbar">
+          <div>
+            <h3>Latest Scenario Result</h3>
+            <p className="muted">
+              {latestResult ? "Stored backend calculation result" : "Run a simulation to persist scenario outputs."}
+            </p>
+          </div>
+          {latestResult ? <span className="chip">{latestResult.confidence_level}</span> : null}
+        </div>
+        <SimulationResultPanel result={latestResult} />
       </section>
 
       <section className="card">

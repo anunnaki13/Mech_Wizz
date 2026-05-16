@@ -3,6 +3,7 @@ import type { EmissionTest } from "@/types/emission-test";
 import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/financial-assumption";
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
+import type { ScenarioResult } from "@/types/scenario-result";
 import type { SiteReadiness, SiteReadinessPayload } from "@/types/site-readiness";
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
@@ -125,4 +126,18 @@ export async function saveFinancialAssumption(
     method: "PUT",
     body: JSON.stringify(payload),
   });
+}
+
+export async function runScenarioSimulation(scenarioId: string): Promise<ScenarioResult> {
+  return apiFetch<ScenarioResult>(`/scenarios/${scenarioId}/simulate`, {
+    method: "POST",
+  });
+}
+
+export async function getScenarioResults(scenarioId: string): Promise<ScenarioResult[]> {
+  return apiFetch<ScenarioResult[]>(`/scenarios/${scenarioId}/results`);
+}
+
+export async function getScenarioResult(resultId: string): Promise<ScenarioResult> {
+  return apiFetch<ScenarioResult>(`/scenario-results/${resultId}`);
 }
