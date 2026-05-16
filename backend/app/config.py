@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./mechwiz.db"
     jwt_secret: str = "change_this_secret"
     upload_dir: str = "./uploads"
+    cors_allowed_origins: str = "*"
+    cors_allow_credentials: bool = False
     openrouter_api_key: str | None = None
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
     openrouter_model: str = "openai/gpt-5.2"

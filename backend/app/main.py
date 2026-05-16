@@ -38,10 +38,18 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
 
 app = FastAPI(title="MECH WIZ AI Digital Twin API", version="0.1.0", lifespan=lifespan)
 
+app_settings = get_settings()
+cors_allowed_origins = [
+    origin.strip()
+    for origin in app_settings.cors_allowed_origins.split(",")
+    if origin.strip()
+]
+allow_all_origins = not cors_allowed_origins or "*" in cors_allowed_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
+    allow_origins=["*"] if allow_all_origins else cors_allowed_origins,
+    allow_credentials=False if allow_all_origins else app_settings.cors_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )

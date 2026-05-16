@@ -58,11 +58,39 @@ import type {
 } from "@/types/scoring";
 import type { SiteReadiness, SiteReadinessPayload } from "@/types/site-readiness";
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
+const DEFAULT_API_BASE_URL = "http://localhost:8000/api";
+const CONFIGURED_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL;
+const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "0.0.0.0", "::1"]);
+
+export const API_BASE_URL = CONFIGURED_API_BASE_URL;
+
+function isLocalHostname(hostname: string): boolean {
+  return LOCAL_HOSTNAMES.has(hostname.toLowerCase());
+}
+
+function isLocalApiBaseUrl(value: string): boolean {
+  try {
+    return isLocalHostname(new URL(value).hostname);
+  } catch {
+    return false;
+  }
+}
+
+function runtimeApiBaseUrl(): string {
+  if (typeof window === "undefined") {
+    return CONFIGURED_API_BASE_URL;
+  }
+
+  if (!isLocalHostname(window.location.hostname) && isLocalApiBaseUrl(CONFIGURED_API_BASE_URL)) {
+    return `${window.location.protocol}//${window.location.hostname}:8000/api`;
+  }
+
+  return CONFIGURED_API_BASE_URL;
+}
 
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const isFormData = typeof FormData !== "undefined" && init?.body instanceof FormData;
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+  const response = await fetch(`${runtimeApiBaseUrl()}${path}`, {
     ...init,
     headers: {
       Accept: "application/json",

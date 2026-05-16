@@ -32,6 +32,21 @@ docker compose exec backend python -m app.seed
 
 Open the web app at http://localhost:3000/dashboard, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, review the investor case at http://localhost:3000/investor, manage Pre-FEED packages at http://localhost:3000/prefeed, edit settings at http://localhost:3000/settings, and check the API health endpoint at http://localhost:8000/api/health.
 
+## Remote Preview / Production-Like Run
+
+For a server/IP preview, run the frontend with a production build instead of `next dev`. The dev server shows the Next.js `N` indicator and compiles modules on first open, which makes navigation feel heavier.
+
+```bash
+cd backend
+.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+cd ../frontend
+npm run build
+npm run start -- --hostname 0.0.0.0 --port 3000
+```
+
+When `NEXT_PUBLIC_API_BASE_URL` is left at the local default, the browser client automatically switches API calls from `localhost:8000` to the same host that served the frontend. Set `CORS_ALLOWED_ORIGINS` to a comma-separated origin list for locked-down deployments, or keep `*` for a no-cookie demo preview.
+
 ## Phase 2 Scenario Simulation
 
 The scenario workflow is:
