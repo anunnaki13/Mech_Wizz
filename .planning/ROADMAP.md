@@ -2,7 +2,7 @@
 
 ## Overview
 
-The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. It starts with a runnable app and Tenayan unit data, adds deterministic scenario calculations, turns those outputs into strategy dashboards and ranking, packages the investment case with confidence/data-gap controls, then finishes with OpenRouter insight and document intelligence.
+The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. It starts with a runnable app and Tenayan unit data, adds deterministic scenario calculations, turns those outputs into a Map & Heatmap Intelligence Layer with ranking and score breakdowns, packages the investment case with confidence/data-gap controls, then finishes with OpenRouter insight and document intelligence.
 
 ## Phases
 
@@ -12,7 +12,7 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 
 - [x] **Phase 1: MVP Spine & Unit Data** - Runnable app, database schema, seed data, and unit input workflows.
 - [ ] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
-- [ ] **Phase 3: Strategy Dashboard & Ranking** - Site ranking, opportunity heatmap data, KPI dashboard, and sensitivity visualization.
+- [ ] **Phase 3: Strategy Dashboard & Ranking** - MapLibre opportunity heatmap, ranking, score breakdowns, KPI dashboard, and sensitivity visualization.
 - [ ] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
 - [ ] **Phase 5: LLM & Document Intelligence** - OpenRouter insights, prompt persistence, document upload, extraction, and document Q&A.
 
@@ -55,22 +55,22 @@ Plans:
 - [ ] 02-03: Simulation endpoint, scenario result persistence, and frontend simulation result view.
 
 ### Phase 3: Strategy Dashboard & Ranking
-**Goal:** Turn calculation results into site selection signals through ranking, map-ready data, KPIs, and sensitivity outputs.
+**Goal:** Turn calculation results into a Map & Heatmap Intelligence Layer for site selection, ranking, score breakdowns, KPIs, and sensitivity outputs.
 **Mode:** mvp
 **Depends on:** Phase 2
-**Requirements:** UNIT-07, SCORE-01, SCORE-02, SCORE-03, SCORE-04, SCORE-05, DASH-01, DASH-02, DASH-03, DASH-04, DASH-05, SENS-01, SENS-02, SENS-03
+**Requirements:** UNIT-07, DATA-09, SCORE-01, SCORE-02, SCORE-03, SCORE-04, SCORE-05, SCORE-06, SCORE-07, DASH-01, DASH-02, DASH-03, DASH-04, DASH-05, DASH-06, DASH-07, SENS-01, SENS-02, SENS-03
 **UI hint:** yes
 **Success Criteria** (what must be TRUE):
   1. User can view a combined unit profile with inputs, simulation outputs, confidence, and data gaps placeholders.
-  2. Backend returns ranked units with opportunity, readiness, composite, CO2, H2, logistics, IRR, and development readiness fields.
-  3. `/dashboard` shows KPI cards, map/heatmap-ready plant markers, ranking table, score breakdown, and sensitivity panel from backend data.
-  4. User can run sensitivity analysis and view tornado chart data for the selected scenario.
+  2. Backend returns GeoJSON unit opportunity features and ranking rows with opportunity, readiness, confidence, composite, heatmap weight, CO2, H2, logistics, IRR, and development readiness fields.
+  3. `/dashboard/map` uses MapLibre GL JS to show an Indonesia map with heatmap, circle markers, popup/profile behavior, filters, ranking table, and score breakdowns from backend data.
+  4. User can run sensitivity analysis and view tornado chart data for the selected scenario and selected unit.
 **Plans:** 3 plans
 
 Plans:
-- [ ] 03-01: Opportunity, readiness, composite scoring, and ranking APIs.
-- [ ] 03-02: Strategy overview dashboard layout, KPI cards, ranking table, score breakdown, and map marker data.
-- [ ] 03-03: Sensitivity engine, sensitivity result persistence, and tornado chart visualization.
+- [ ] 03-01: Opportunity, readiness, confidence, composite, heatmap weight scoring, and ranking APIs.
+- [ ] 03-02: `/dashboard/map` MapLibre heatmap, unit markers, filters, ranking table, selected profile, and score breakdown UI.
+- [ ] 03-03: Sensitivity engine, sensitivity result persistence, tornado chart visualization, and map detail integration.
 
 ### Phase 4: Investor Case & Data Quality
 **Goal:** Package the simulation into an investor-ready case while making assumptions, confidence, and data gaps visible.

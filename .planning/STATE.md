@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 status: phase_completed
 stopped_at: Phase 1 execution complete
-last_updated: "2026-05-16T04:47:59+07:00"
-last_activity: 2026-05-16 -- Phase 01 execution, verification, and review complete
+last_updated: "2026-05-16T11:16:35+07:00"
+last_activity: 2026-05-16 -- Imported heatmap map addendum and updated Phase 3 planning
 progress:
   total_phases: 5
   completed_phases: 1
@@ -68,6 +68,10 @@ Recent decisions affecting current work:
 - Initialization: Skip project-level research and use the provided MECH WIZ blueprint as the source of truth.
 - Initialization: Use Vertical MVP roadmap structure.
 - Initialization: Preserve deterministic backend calculations as numeric source of truth; use LLM only for narratives and document support.
+- Addendum import: Treat `docs/MECH_WIZ_Heatmap_Map_Addendum.md` as the source for the Map & Heatmap Intelligence Layer.
+- Addendum import: Use MapLibre GL JS for Phase 3 map rendering unless technically blocked.
+- Addendum import: Use opportunity, readiness, and confidence scores as separate visible scores; composite score is 45/35/20 and heatmap weight includes economic return.
+- Addendum import: Keep Phase 1 `plants` table for v1 and adapt addendum `plant_sites` / `plant_units` concepts during Phase 3 planning rather than rewriting shipped Phase 1 schema.
 
 ### Pending Todos
 
@@ -87,5 +91,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-05-16T04:47:59+07:00
-Stopped at: Phase 1 execution complete
-Resume file: .planning/phases/01-mvp-spine-unit-data/01-VERIFICATION.md
+Stopped at: Heatmap map addendum imported
+Resume file: .planning/imports/2026-05-16-heatmap-map-addendum.md

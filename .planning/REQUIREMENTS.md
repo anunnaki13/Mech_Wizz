@@ -24,6 +24,7 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 - [ ] **DATA-06**: System stores business scenarios for WIZ Access, WIZ Align, and WIZ Augment with ownership, CAPEX responsibility, revenue model, `data_status`, and `confidence_level`.
 - [ ] **DATA-07**: System stores simulation results, sensitivity results, uploaded documents, and LLM insight records so outputs are reproducible and auditable.
 - [ ] **DATA-08**: System seeds PLTU Tenayan with the blueprint sample plant and chimney data.
+- [ ] **DATA-09**: System stores map/scoring output records with opportunity score, readiness score, confidence score, composite score, heatmap weight, rank position, data gap count, and scoring version.
 
 ### Unit Inputs
 
@@ -52,9 +53,11 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 
 - [ ] **SCORE-01**: Backend calculates opportunity score using weighted CO2 availability, methanol potential, market/logistics, land availability, utility advantage, carbon credit potential, and strategic value.
 - [ ] **SCORE-02**: Backend calculates readiness score using weighted data completeness, emission data quality, land readiness, utility readiness, H2 strategy clarity, and permit/logistics readiness.
-- [ ] **SCORE-03**: Backend calculates composite score as 60% opportunity score and 40% readiness score.
+- [ ] **SCORE-03**: Backend calculates composite score as 45% opportunity score, 35% readiness score, and 20% confidence score.
 - [ ] **SCORE-04**: User can request unit ranking with composite score, CO2 availability, H2 readiness, logistics, IRR potential, and development readiness.
 - [ ] **SCORE-05**: Dashboard can consume heatmap-ready ranking data for map markers and opportunity coloring.
+- [ ] **SCORE-06**: Backend calculates confidence score from required data field status using addendum weights for `actual`, `estimated`, `benchmark`, `user_assumption`, `partner_supplied`, and `unknown`.
+- [ ] **SCORE-07**: Backend calculates normalized heatmap weight from opportunity, readiness, economic return, and confidence scores for map rendering.
 
 ### Strategy Dashboard
 
@@ -63,6 +66,8 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 - [ ] **DASH-03**: Dashboard map shows plant markers and opportunity intensity, with the top-ranked unit visually highlighted.
 - [ ] **DASH-04**: Dashboard ranking table shows rank, unit/site, composite score, CO2 availability, H2 readiness, logistics, IRR potential, and development readiness.
 - [ ] **DASH-05**: Dashboard shows score breakdown across CO2 availability, H2 readiness, logistics, IRR potential, development readiness, and infrastructure readiness.
+- [ ] **DASH-06**: `/dashboard/map` renders a MapLibre GL JS Indonesia map from a GeoJSON unit opportunity endpoint with heatmap, circle marker, and popup/profile layers.
+- [ ] **DASH-07**: Map controls filter scenario, business scheme, region, fuel type, data confidence, opportunity level, and visible layers while keeping the map and ranking table synchronized.
 
 ### Investor Dashboard
 
@@ -153,6 +158,7 @@ Each v1 requirement maps to exactly one roadmap phase.
 | DATA-06 | Phase 2 | Pending |
 | DATA-07 | Phase 5 | Pending |
 | DATA-08 | Phase 1 | Pending |
+| DATA-09 | Phase 3 | Pending |
 | UNIT-01 | Phase 1 | Pending |
 | UNIT-02 | Phase 1 | Pending |
 | UNIT-03 | Phase 1 | Pending |
@@ -175,11 +181,15 @@ Each v1 requirement maps to exactly one roadmap phase.
 | SCORE-03 | Phase 3 | Pending |
 | SCORE-04 | Phase 3 | Pending |
 | SCORE-05 | Phase 3 | Pending |
+| SCORE-06 | Phase 3 | Pending |
+| SCORE-07 | Phase 3 | Pending |
 | DASH-01 | Phase 3 | Pending |
 | DASH-02 | Phase 3 | Pending |
 | DASH-03 | Phase 3 | Pending |
 | DASH-04 | Phase 3 | Pending |
 | DASH-05 | Phase 3 | Pending |
+| DASH-06 | Phase 3 | Pending |
+| DASH-07 | Phase 3 | Pending |
 | INV-01 | Phase 4 | Pending |
 | INV-02 | Phase 4 | Pending |
 | INV-03 | Phase 4 | Pending |
@@ -207,10 +217,10 @@ Each v1 requirement maps to exactly one roadmap phase.
 | DOC-04 | Phase 5 | Pending |
 
 **Coverage:**
-- v1 requirements: 64 total
-- Mapped to phases: 64
+- v1 requirements: 69 total
+- Mapped to phases: 69
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after roadmap creation*
+*Last updated: 2026-05-16 after heatmap map addendum import*

@@ -40,7 +40,7 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 ## Context
 
-The source blueprint is `MECH_WIZ_AI_Digital_Twin_Blueprint.md` from `https://github.com/anunnaki13/Mech_Wizz`, version v1.0 MVP / Pre-Feasibility Mode. The target users are Business Development, MMRK, Engineering, PLN NP management, potential partners, and investors.
+The source blueprint is `MECH_WIZ_AI_Digital_Twin_Blueprint.md` from `https://github.com/anunnaki13/Mech_Wizz`, version v1.0 MVP / Pre-Feasibility Mode. The map/scoring source addendum is `MECH_WIZ_Heatmap_Map_Addendum.md`, imported locally at `docs/MECH_WIZ_Heatmap_Map_Addendum.md`. The target users are Business Development, MMRK, Engineering, PLN NP management, potential partners, and investors.
 
 The two main outputs are:
 
@@ -55,9 +55,10 @@ The product is positioned as a combination of:
 - LLM insight layer for explanation and narrative output.
 - Document intelligence layer for PDF, Excel, proposal, market report, emission report, and internal document handling.
 
-Recommended architecture from the blueprint:
+Recommended architecture from the blueprint and map addendum:
 
 - Frontend: Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, Recharts, Mapbox GL JS or Leaflet, Framer Motion, Lucide Icons.
+- Map layer: MapLibre GL JS preferred for the Map & Heatmap Intelligence Layer; Leaflet is fallback only if MapLibre is blocked.
 - Backend: FastAPI and Python for calculation-heavy services.
 - Database: PostgreSQL for MVP, with optional TimescaleDB later.
 - Document/vector layer: pgvector in PostgreSQL or Qdrant later if a separate vector database is needed.
@@ -103,6 +104,7 @@ The UI direction from the blueprint is a premium enterprise dashboard: dark navy
 - **Deployment**: The target runtime is VPS with Docker Compose and Nginx.
 - **LLM Provider**: LLM integration should use OpenRouter.
 - **Seed Data**: The initial MVP should include PLTU Tenayan sample data from the blueprint.
+- **Map Scoring**: Phase 3 must expose opportunity score, readiness score, confidence score, composite score, and heatmap weight separately.
 - **Language**: Investor and management narratives should support concise professional Indonesian.
 
 ## Key Decisions
@@ -115,6 +117,9 @@ The UI direction from the blueprint is a premium enterprise dashboard: dark navy
 | Use FastAPI backend for calculation services | Blueprint recommends Python for scientific, financial, and deterministic calculation logic | - Pending |
 | Use Next.js frontend for dashboards | Blueprint recommends Next.js/React/TypeScript for rich dashboard UI and VPS deployment | - Pending |
 | Keep LLM out of numeric authority | The blueprint explicitly requires deterministic calculations and restricts LLM to explanation, summaries, document support, and narrative insight | - Pending |
+| Adopt MapLibre for map heatmap implementation | Heatmap addendum explicitly recommends MapLibre GL JS for WebGL, GeoJSON, heatmap layers, and premium dashboard visuals | - Pending |
+| Use three-part scoring for map ranking | Heatmap addendum requires opportunity, readiness, and confidence scores to remain visible and uses composite score = 45% opportunity + 35% readiness + 20% confidence | - Pending |
+| Adapt addendum schema to Phase 1 `plants` table for v1 | Phase 1 already shipped a compact `plants` model; splitting into `plant_sites` and `plant_units` is not required unless Phase 3 planning proves it necessary | - Pending |
 
 ## Evolution
 
