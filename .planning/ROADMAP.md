@@ -140,9 +140,18 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
+**Wave 1**
 - [ ] 09-01: Risk register, decision gate models/APIs, blocker summary service, and tests.
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 09-02: Pre-FEED decision dashboard panels and integrated package/cost/vendor/offtake/MRV/risk view.
+
+**Wave 3** *(blocked on Wave 2 completion)*
 - [ ] 09-03: Pre-FEED committee brief LLM workflow, final v2.0 verification, and review artifacts.
+
+**Cross-cutting constraints:**
+- D-11: Blockers are generated deterministically from risks, gates, gaps, and missing active package assumptions.
+- D-12: Next actions are rule-based and ordered by urgency.
 
 ## Progress
 
