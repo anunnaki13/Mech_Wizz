@@ -372,6 +372,17 @@ textarea {
   margin-bottom: 4px;
 }
 
+.unit-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.unit-form-actions {
+  align-self: end;
+}
+
 .inline-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1606,6 +1617,7 @@ textarea {
   .grid.kpis,
   .grid.two,
   .form-grid,
+  .unit-form,
   .map-filterbar,
   .map-kpi-grid,
   .map-workspace,

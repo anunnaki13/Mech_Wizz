@@ -11,7 +11,7 @@ function formatNumber(value: number | null, suffix = "") {
 
 export function UnitList({ plants }: { plants: Plant[] }) {
   if (plants.length === 0) {
-    return <div className="notice">No units are available. Run the Tenayan seed command.</div>;
+    return <div className="notice">No units are available. Create a unit or run the Tenayan seed command.</div>;
   }
 
   return (

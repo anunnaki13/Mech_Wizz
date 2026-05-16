@@ -30,7 +30,7 @@ Seed the initial Tenayan unit, WIZ Align base scenario, coordinates, and benchma
 docker compose exec backend python -m app.seed
 ```
 
-Open the web app at http://localhost:3000/dashboard, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, review the investor case at http://localhost:3000/investor, manage Pre-FEED packages at http://localhost:3000/prefeed, edit settings at http://localhost:3000/settings, and check the API health endpoint at http://localhost:8000/api/health.
+Open the web app at http://localhost:3000/dashboard, add or review units at http://localhost:3000/units, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, review the investor case at http://localhost:3000/investor, manage Pre-FEED packages at http://localhost:3000/prefeed, edit settings at http://localhost:3000/settings, and check the API health endpoint at http://localhost:8000/api/health.
 
 ## Remote Preview / Production-Like Run
 

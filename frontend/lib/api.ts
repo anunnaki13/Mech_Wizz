@@ -1,4 +1,4 @@
-import type { Plant } from "@/types/plant";
+import type { Plant, PlantPayload } from "@/types/plant";
 import type { EmissionTest } from "@/types/emission-test";
 import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/financial-assumption";
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
@@ -126,6 +126,13 @@ export async function getPlants(): Promise<Plant[]> {
 
 export async function getPlant(id: string): Promise<Plant> {
   return apiFetch<Plant>(`/plants/${id}`);
+}
+
+export async function createPlant(payload: PlantPayload): Promise<Plant> {
+  return apiFetch<Plant>("/plants/", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 }
 
 export async function getEmissionTests(plantId: string): Promise<EmissionTest[]> {

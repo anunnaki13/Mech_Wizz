@@ -135,6 +135,12 @@ None yet.
 | Pre-FEED | Detailed CAPEX/OPEX, vendor proposal comparison, offtake readiness, MRV, detailed risk register | Promoted to active v2.0 scope | 2026-05-16 |
 | Operational Digital Twin | DCS/SCADA, real-time optimization, predictive maintenance, live MRV, production optimization | Deferred to v3 | Initialization |
 
+## Quick Tasks Completed
+
+| Date | Task | Summary |
+|------|------|---------|
+| 2026-05-16 | Add Unit UI | Added `/units` New Unit form wired to `POST /api/plants/`; build and API create/delete verification passed. |
+
 ## Session Continuity
 
 Last session: 2026-05-16T12:55:35.880Z
