@@ -14,7 +14,7 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 **Shipped version:** v1.0 MVP on 2026-05-16
 **Audit:** PASS, 69/69 v1 requirements satisfied
-**Current focus:** Planning the next milestone
+**Current focus:** v2.0 Pre-FEED milestone planning
 
 The current app includes:
 
@@ -34,6 +34,20 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
+## Current Milestone: v2.0 Pre-FEED
+
+**Goal:** Extend the v1.0 pre-feasibility simulator into a Pre-FEED decision workspace for cost package validation, vendor comparison, offtake readiness, MRV assumptions, and investment risk governance.
+
+**Target features:**
+
+- Pre-FEED package records linked to plants, scenarios, documents, cost line items, owners, source status, and confidence.
+- Detailed CAPEX/OPEX line item management with source, version, currency, escalation, contingency, and data gap visibility.
+- EPC/vendor proposal comparison and conversion of selected proposal values into scenario assumptions without overwriting historical runs.
+- Offtake and market readiness tracking with price decks, offtake prospects/contracts, commercial terms, and revenue model impact.
+- MRV and carbon intensity assumption tracking for carbon market readiness.
+- Detailed risk register, mitigation ownership, decision gates, and investment committee blockers.
+- Pre-FEED dashboard and committee brief that reuse deterministic calculations and LLM narrative guardrails.
+
 ## Requirements
 
 ### Validated
@@ -51,13 +65,14 @@ Known runtime caveats:
 
 ### Active
 
-No active post-v1 requirements are defined yet. Start the next scoped set with `$gsd-new-milestone`.
-
-### Candidate Next Requirements
-
 - [ ] Add Pre-FEED-grade CAPEX/OPEX workflows from partner proposals and pre-FEED studies.
 - [ ] Compare EPC/vendor proposals and offtake readiness.
 - [ ] Add MRV and carbon intensity inputs for carbon market readiness.
+- [ ] Track detailed risks, mitigation owners, and decision gate readiness.
+- [ ] Present a Pre-FEED decision dashboard for PLN NP management, partners, and investment committee review.
+
+### Candidate Next Requirements
+
 - [ ] Add OCR and retrieval for scanned or long documents.
 - [ ] Harden deployment for VPS/Nginx/HTTPS, backup, observability, and controlled map tiles.
 - [ ] Validate live OpenRouter generation with production credentials and usage limits.
@@ -127,6 +142,7 @@ Current architecture:
 ## Milestone History
 
 - **v1.0 MVP** - Shipped 2026-05-16. Archive: `.planning/milestones/v1.0-ROADMAP.md`, `.planning/milestones/v1.0-REQUIREMENTS.md`, `.planning/milestones/v1.0-MILESTONE-AUDIT.md`.
+- **v2.0 Pre-FEED** - Started 2026-05-16. Scope: cost packages, vendor comparison, offtake readiness, MRV assumptions, risk register, and Pre-FEED decision dashboard.
 
 ## Evolution
 
@@ -146,4 +162,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-16 after v1.0 milestone completion*
+*Last updated: 2026-05-16 after v2.0 milestone start*

@@ -1,17 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: MVP
-status: Awaiting next milestone
-stopped_at: Milestone v1.0 archived
-last_updated: "2026-05-16T14:24:00+07:00"
-last_activity: 2026-05-16 - Milestone v1.0 completed and archived
+milestone: v2.0
+milestone_name: Pre-FEED
+status: planning
+last_updated: "2026-05-16T14:35:30+07:00"
+last_activity: 2026-05-16 - Milestone v2.0 Pre-FEED requirements and roadmap created
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 15
-  completed_plans: 15
-  percent: 100
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 12
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -21,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** Planning the next milestone
+**Current focus:** v2.0 Pre-FEED milestone - Phase 6 package foundation
 
 ## Current Position
 
-Phase: Milestone v1.0 complete
-Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-05-16 - Milestone v1.0 completed and archived
+Phase: 6 of 9 (Pre-FEED Package Foundation)
+Plan: 0 of 3 in current phase
+Status: Roadmap ready; phase discussion/planning next
+Last activity: 2026-05-16 - Milestone v2.0 Pre-FEED requirements and roadmap created
 
 ## Performance Metrics
 
@@ -47,11 +46,15 @@ Last activity: 2026-05-16 - Milestone v1.0 completed and archived
 | 3. Strategy Dashboard & Ranking | 3/3 | n/a | n/a |
 | 4. Investor Case & Data Quality | 3/3 | n/a | n/a |
 | 5. LLM & Document Intelligence | 3/3 | n/a | n/a |
+| 6. Pre-FEED Package Foundation | 0/3 | n/a | n/a |
+| 7. Cost & Vendor Proposal Engine | 0/3 | n/a | n/a |
+| 8. Offtake & MRV Readiness | 0/3 | n/a | n/a |
+| 9. Risk & Pre-FEED Decision Dashboard | 0/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 04-02, 04-03, 05-01, 05-02, 05-03
-- Trend: v1.0 completed with OpenRouter insight workflows and document intelligence
+- Last 5 completed plans: 04-02, 04-03, 05-01, 05-02, 05-03
+- Trend: v1.0 completed; v2.0 Pre-FEED planning started with 4 phases and 29 requirements
 
 *Updated after each plan completion*
 
@@ -100,6 +103,9 @@ Recent decisions affecting current work:
 - Phase 05-03: `/documents` supports upload, repository browsing, text extraction, extracted text preview, and document Q&A.
 - Phase 05-03: Document upload paths are sanitized and stored under `UPLOAD_DIR`.
 - Phase 05-03: Document Q&A uses extracted text as bounded context and persists `document_qa` insight attempts.
+- Milestone v2.0: Scope is Pre-FEED Digital Twin rather than operational DCS/SCADA integration.
+- Milestone v2.0: Phase numbering continues from v1.0, so the first new phase is Phase 6.
+- Milestone v2.0: Requirements focus on Pre-FEED packages, detailed CAPEX/OPEX, vendor proposals, offtake readiness, MRV assumptions, risk register, decision gates, and a Pre-FEED dashboard.
 
 ### Pending Todos
 
@@ -113,15 +119,15 @@ None yet.
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| Pre-FEED | Detailed CAPEX/OPEX, vendor proposal comparison, offtake readiness, MRV, detailed risk register | Deferred to v2 | Initialization |
+| Pre-FEED | Detailed CAPEX/OPEX, vendor proposal comparison, offtake readiness, MRV, detailed risk register | Promoted to active v2.0 scope | 2026-05-16 |
 | Operational Digital Twin | DCS/SCADA, real-time optimization, predictive maintenance, live MRV, production optimization | Deferred to v3 | Initialization |
 
 ## Session Continuity
 
-Last session: 2026-05-16T14:24:00+07:00
-Stopped at: Milestone v1.0 archived
+Last session: 2026-05-16T14:35:30+07:00
+Stopped at: v2.0 roadmap ready
 Resume file: .planning/ROADMAP.md
 
 ## Operator Next Steps
 
-- Start the next milestone with `$gsd-new-milestone`
+- Start Phase 6 with `$gsd-discuss-phase 6`
