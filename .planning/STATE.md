@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_planned
-stopped_at: Phase 4 planning complete
-last_updated: "2026-05-16T12:50:43+07:00"
-last_activity: 2026-05-16 -- Phase 04 planning artifacts created and ready for execution
+status: phase_in_progress
+stopped_at: Phase 4 plan 04-01 complete
+last_updated: "2026-05-16T12:56:53+07:00"
+last_activity: 2026-05-16 -- Phase 04 plan 01 investor API aggregation complete
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 15
-  completed_plans: 9
-  percent: 60
+  completed_plans: 10
+  percent: 67
 ---
 
 # Project State
@@ -26,17 +26,17 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 4 of 5 (Investor Case & Data Quality)
-Plan: 0 of 3 in current phase
-Status: Planning complete; ready to execute Phase 4 plan 01
-Last activity: 2026-05-16 -- Phase 04 context, research, UI spec, and executable plans created
+Plan: 1 of 3 in current phase
+Status: Phase 4 investor API complete; ready to execute Phase 4 plan 02
+Last activity: 2026-05-16 -- Backend investor case aggregate API implemented and verified
 
-Progress: [######----] 60%
+Progress: [#######---] 67%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: n/a
 - Total execution time: n/a
 
@@ -47,13 +47,13 @@ Progress: [######----] 60%
 | 1. MVP Spine & Unit Data | 3/3 | n/a | n/a |
 | 2. Scenario Simulation Engine | 3/3 | n/a | n/a |
 | 3. Strategy Dashboard & Ranking | 3/3 | n/a | n/a |
-| 4. Investor Case & Data Quality | 0/3 | n/a | n/a |
+| 4. Investor Case & Data Quality | 1/3 | n/a | n/a |
 | 5. LLM & Document Intelligence | 0/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 02-02, 02-03, 03-01, 03-02, 03-03
-- Trend: Phase 3 completed in one execution session after planning
+- Last 5 plans: 02-03, 03-01, 03-02, 03-03, 04-01
+- Trend: Phase 4 investor API started after Phase 4 planning
 
 *Updated after each plan completion*
 
@@ -84,6 +84,7 @@ Recent decisions affecting current work:
 - Phase 03-03: Sensitivity analysis persists one row per variable and exposes null-safe warning metadata when financial assumptions are incomplete.
 - Phase 04 planning: Investor dashboard must consume backend aggregates only; OpenRouter/LLM investor memos remain Phase 5.
 - Phase 04 planning: Data gaps and editable defaults/settings are persisted backend data in Phase 4, not frontend-only state.
+- Phase 04-01: `GET /api/investor-case` aggregates plant, scenario, latest result/scoring/sensitivity, KPIs, CAPEX structure, revenue mix, scenario comparison, deterministic thesis/risk/roadmap, data gaps, and warnings.
 
 ### Pending Todos
 
@@ -102,6 +103,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T12:50:43+07:00
-Stopped at: Phase 4 planning complete
-Resume file: .planning/phases/04-investor-case-data-quality/04-CONTEXT.md
+Last session: 2026-05-16T12:56:53+07:00
+Stopped at: Phase 4 plan 04-01 complete
+Resume file: .planning/phases/04-investor-case-data-quality/04-01-SUMMARY.md
