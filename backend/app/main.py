@@ -8,6 +8,7 @@ from app import models  # noqa: F401
 from app.config import get_settings
 from app.database import Base, engine
 from app.routers import (
+    documents,
     emission_tests,
     health,
     hydrogen_strategy,
@@ -55,5 +56,6 @@ api_router.include_router(sensitivity.router)
 api_router.include_router(investor.router)
 api_router.include_router(settings.router)
 api_router.include_router(llm.router)
+api_router.include_router(documents.router)
 
 app.include_router(api_router)

@@ -4,6 +4,7 @@ import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/fi
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
 import type { InvestorCase } from "@/types/investor";
 import type { LlmGeneratePayload, LlmInsight } from "@/types/llm";
+import type { DocumentAskPayload, ProjectDocument } from "@/types/document";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
@@ -19,11 +20,12 @@ import type { SiteReadiness, SiteReadinessPayload } from "@/types/site-readiness
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
 
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
+  const isFormData = typeof FormData !== "undefined" && init?.body instanceof FormData;
   const response = await fetch(`${API_BASE_URL}${path}`, {
     ...init,
     headers: {
       Accept: "application/json",
-      ...(init?.body ? { "Content-Type": "application/json" } : {}),
+      ...(init?.body && !isFormData ? { "Content-Type": "application/json" } : {}),
       ...init?.headers,
     },
     cache: "no-store",
@@ -353,4 +355,56 @@ export async function generateSensitivityExplanation(
   payload: LlmGeneratePayload = {},
 ): Promise<LlmInsight> {
   return generateLlmInsight(`/llm/explain-sensitivity/${scenarioId}`, payload);
+}
+
+export async function getDocuments(params: {
+  plantId?: string;
+  scenarioId?: string;
+} = {}): Promise<ProjectDocument[]> {
+  return apiFetch<ProjectDocument[]>(
+    `/documents${buildQuery({
+      plant_id: params.plantId,
+      scenario_id: params.scenarioId,
+    })}`,
+  );
+}
+
+export async function getDocument(documentId: string): Promise<ProjectDocument> {
+  return apiFetch<ProjectDocument>(`/documents/${documentId}`);
+}
+
+export async function uploadDocument(payload: {
+  file: File;
+  plantId?: string;
+  scenarioId?: string;
+  documentCategory?: string;
+}): Promise<ProjectDocument> {
+  const formData = new FormData();
+  formData.set("file", payload.file);
+  if (payload.plantId) {
+    formData.set("plant_id", payload.plantId);
+  }
+  if (payload.scenarioId) {
+    formData.set("scenario_id", payload.scenarioId);
+  }
+  if (payload.documentCategory) {
+    formData.set("document_category", payload.documentCategory);
+  }
+  return apiFetch<ProjectDocument>("/documents/upload", {
+    method: "POST",
+    body: formData,
+  });
+}
+
+export async function extractDocument(documentId: string): Promise<ProjectDocument> {
+  return apiFetch<ProjectDocument>(`/documents/${documentId}/extract`, {
+    method: "POST",
+  });
+}
+
+export async function askDocument(documentId: string, payload: DocumentAskPayload): Promise<LlmInsight> {
+  return apiFetch<LlmInsight>(`/documents/${documentId}/ask`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 }

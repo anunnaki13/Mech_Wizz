@@ -14,7 +14,7 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 - [x] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
 - [x] **Phase 3: Strategy Dashboard & Ranking** - MapLibre opportunity heatmap, ranking, score breakdowns, KPI dashboard, and sensitivity visualization.
 - [x] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
-- [ ] **Phase 5: LLM & Document Intelligence** - OpenRouter insights, prompt persistence, document upload, extraction, and document Q&A.
+- [x] **Phase 5: LLM & Document Intelligence** - OpenRouter insights, prompt persistence, document upload, extraction, and document Q&A.
 
 ## Phase Details
 
@@ -106,7 +106,7 @@ Plans:
 Plans:
 - [x] 05-01: OpenRouter service, prompt templates, response persistence, and LLM guardrails.
 - [x] 05-02: Executive summary, data gap explanation, investor memo, and sensitivity explanation workflows in the UI.
-- [ ] 05-03: Document upload, extraction, repository view, and basic document Q&A.
+- [x] 05-03: Document upload, extraction, repository view, and basic document Q&A.
 
 ## Progress
 
@@ -119,4 +119,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Scenario Simulation Engine | 3/3 | Complete | 2026-05-16 |
 | 3. Strategy Dashboard & Ranking | 3/3 | Complete | 2026-05-16 |
 | 4. Investor Case & Data Quality | 3/3 | Complete | 2026-05-16 |
-| 5. LLM & Document Intelligence | 2/3 | In progress | - |
+| 5. LLM & Document Intelligence | 3/3 | Complete | 2026-05-16 |

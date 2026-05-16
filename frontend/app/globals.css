@@ -957,6 +957,73 @@ textarea {
   word-break: break-word;
 }
 
+.document-workspace {
+  display: grid;
+  gap: 16px;
+}
+
+.document-layout {
+  align-items: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 16px;
+}
+
+.document-main-stack,
+.document-detail-stack {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.document-detail-stack {
+  position: sticky;
+  top: 16px;
+}
+
+.document-upload-panel,
+.document-repository-panel,
+.document-detail-panel,
+.document-preview-panel,
+.document-qa-panel {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.document-upload-grid {
+  align-items: end;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(140px, 0.7fr) minmax(180px, 0.8fr) minmax(180px, 0.8fr) auto;
+  gap: 12px;
+}
+
+.document-table tr {
+  cursor: pointer;
+}
+
+.document-table tr.active td {
+  background: rgba(24, 199, 200, 0.08);
+}
+
+.document-preview-panel pre {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+  max-height: 320px;
+  overflow: auto;
+  padding: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.qa-input {
+  min-height: 110px;
+}
+
 .settings-workspace {
   display: grid;
   gap: 16px;
@@ -1070,6 +1137,8 @@ textarea {
   .quality-controls,
   .quality-matrix,
   .insight-layout,
+  .document-layout,
+  .document-upload-grid,
   .roadmap-list,
   .thesis-flow,
   .result-grid,

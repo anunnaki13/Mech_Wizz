@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     database_url: str = "sqlite:///./mechwiz.db"
     jwt_secret: str = "change_this_secret"
-    upload_dir: str = "/app/uploads"
+    upload_dir: str = "./uploads"
     openrouter_api_key: str | None = None
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
     openrouter_model: str = "openai/gpt-5.2"

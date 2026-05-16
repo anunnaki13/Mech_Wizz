@@ -6,3 +6,6 @@ psycopg[binary]
 pydantic-settings
 pytest
 httpx
+python-multipart
+pypdf
+openpyxl

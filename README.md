@@ -1,6 +1,6 @@
 # MECH WIZ AI Digital Twin
 
-MECH WIZ AI Digital Twin is a PLN NP pre-feasibility screening cockpit for carbon-to-fuel pilot selection. It includes a FastAPI backend, PostgreSQL-ready persistence, deterministic scenario calculations, persisted scoring/sensitivity/data-quality outputs, and a Next.js dashboard.
+MECH WIZ AI Digital Twin is a PLN NP pre-feasibility screening cockpit for carbon-to-fuel pilot selection. It includes a FastAPI backend, PostgreSQL-ready persistence, deterministic scenario calculations, persisted scoring/sensitivity/data-quality outputs, OpenRouter-backed narrative insights, document upload/extraction/Q&A, and a Next.js dashboard.
 
 ## Local Development
 
@@ -90,6 +90,30 @@ PUT /api/settings/{key}
 GET /api/data-quality/summary
 ```
 
+## Phase 5 LLM & Document Intelligence
+
+The insight and document workflow is:
+
+1. Configure `OPENROUTER_API_KEY` in the backend environment when live generation is needed.
+2. Open `/investor` and generate narrative outputs from stored backend facts: executive summary, investor memo, data gap explanation, or sensitivity explanation.
+3. Open `/documents`, upload a PDF/XLSX/CSV/text-like file, extract text, and ask a document-grounded question.
+4. Review stored insight records; every attempted generation stores prompt, response or error, model, status, and context references.
+
+Core API endpoints:
+
+```text
+GET /api/llm/insights
+POST /api/llm/summary/{scenario_id}
+POST /api/llm/data-gap/{plant_id}
+POST /api/llm/investor-memo/{scenario_id}
+POST /api/llm/explain-sensitivity/{scenario_id}
+POST /api/documents/upload
+GET /api/documents
+GET /api/documents/{document_id}
+POST /api/documents/{document_id}/extract
+POST /api/documents/{document_id}/ask
+```
+
 ## Verification
 
 ```bash
@@ -102,5 +126,5 @@ For a local migration smoke test outside Docker:
 
 ```bash
 cd backend
-DATABASE_URL=sqlite:////tmp/mechwiz_phase4_full.db .venv/bin/alembic upgrade head
+DATABASE_URL=sqlite:////tmp/mechwiz_phase5_full.db .venv/bin/alembic upgrade head
 ```

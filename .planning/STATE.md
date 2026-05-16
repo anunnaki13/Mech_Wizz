@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_in_progress
-stopped_at: Phase 5 plan 05-02 complete
-last_updated: "2026-05-16T13:35:06+07:00"
-last_activity: 2026-05-16 -- Phase 05 plan 02 investor insight UI complete
+status: milestone_completed
+stopped_at: Phase 5 execution complete
+last_updated: "2026-05-16T13:41:53+07:00"
+last_activity: 2026-05-16 -- Phase 05 plan 03 document intelligence complete
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 15
-  completed_plans: 14
-  percent: 93
+  completed_plans: 15
+  percent: 100
 ---
 
 # Project State
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** Phase 05 — LLM & Document Intelligence
+**Current focus:** v1.0 milestone verification complete
 
 ## Current Position
 
 Phase: 5 of 5 (LLM & Document Intelligence)
-Plan: 2 of 3 in current phase
-Status: Phase 5 investor insight UI complete; ready to execute Phase 5 plan 03
-Last activity: 2026-05-16 -- /investor can generate and review stored LLM narrative insights
+Plan: 3 of 3 in current phase
+Status: Phase 5 complete; v1.0 roadmap complete
+Last activity: 2026-05-16 -- /documents upload, extraction, repository, and document Q&A implemented
 
-Progress: [#########-] 93%
+Progress: [##########] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: n/a
 - Total execution time: n/a
 
@@ -48,12 +48,12 @@ Progress: [#########-] 93%
 | 2. Scenario Simulation Engine | 3/3 | n/a | n/a |
 | 3. Strategy Dashboard & Ranking | 3/3 | n/a | n/a |
 | 4. Investor Case & Data Quality | 3/3 | n/a | n/a |
-| 5. LLM & Document Intelligence | 2/3 | n/a | n/a |
+| 5. LLM & Document Intelligence | 3/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 04-01, 04-02, 04-03, 05-01, 05-02
-- Trend: Phase 5 OpenRouter backend and investor insight UI completed
+- Last 5 plans: 04-02, 04-03, 05-01, 05-02, 05-03
+- Trend: v1.0 completed with OpenRouter insight workflows and document intelligence
 
 *Updated after each plan completion*
 
@@ -99,6 +99,9 @@ Recent decisions affecting current work:
 - Phase 05-01: Missing OpenRouter key creates a failed insight record and returns an explicit unavailable error.
 - Phase 05-02: `/investor` includes a stored insight panel for executive summary, investor memo, data gap explanation, and sensitivity explanation.
 - Phase 05-02: Frontend API helpers surface backend error details so OpenRouter configuration failures are visible.
+- Phase 05-03: `/documents` supports upload, repository browsing, text extraction, extracted text preview, and document Q&A.
+- Phase 05-03: Document upload paths are sanitized and stored under `UPLOAD_DIR`.
+- Phase 05-03: Document Q&A uses extracted text as bounded context and persists `document_qa` insight attempts.
 
 ### Pending Todos
 
@@ -117,6 +120,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T13:35:06+07:00
-Stopped at: Phase 5 plan 05-02 complete
-Resume file: .planning/phases/05-llm-document-intelligence/05-02-SUMMARY.md
+Last session: 2026-05-16T13:41:53+07:00
+Stopped at: Phase 5 execution complete
+Resume file: .planning/phases/05-llm-document-intelligence/05-VERIFICATION.md
