@@ -2,6 +2,7 @@ import type { Plant } from "@/types/plant";
 import type { EmissionTest } from "@/types/emission-test";
 import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/financial-assumption";
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
+import type { InvestorCase } from "@/types/investor";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
@@ -243,6 +244,18 @@ export async function getScenarioSensitivity(
   return apiFetch<SensitivityResult[]>(
     `/scenarios/${scenarioId}/sensitivity${buildQuery({
       plant_id: plantId,
+    })}`,
+  );
+}
+
+export async function getInvestorCase(params: {
+  plantId?: string;
+  scenarioId?: string;
+} = {}): Promise<InvestorCase> {
+  return apiFetch<InvestorCase>(
+    `/investor-case${buildQuery({
+      plant_id: params.plantId,
+      scenario_id: params.scenarioId,
     })}`,
   );
 }

@@ -781,6 +781,116 @@ select {
   font-size: 15px;
 }
 
+.investor-dashboard {
+  display: grid;
+  gap: 16px;
+}
+
+.investor-controls {
+  align-items: end;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(260px, 1fr) minmax(260px, 1fr);
+  gap: 12px;
+  padding: 14px;
+}
+
+.investor-selected {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  min-height: 66px;
+  padding: 12px;
+}
+
+.investor-selected span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.investor-selected strong {
+  font-size: 16px;
+}
+
+.investor-kpis .metric-value {
+  font-size: 18px;
+}
+
+.investor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.investor-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.investor-panel.wide {
+  grid-column: 1 / -1;
+}
+
+.thesis-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.thesis-flow div,
+.risk-row,
+.roadmap-list div {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+}
+
+.thesis-flow span,
+.risk-row span,
+.roadmap-list span {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.thesis-flow p,
+.risk-row p,
+.roadmap-list p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.risk-list,
+.roadmap-list {
+  display: grid;
+  gap: 10px;
+}
+
+.roadmap-list {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.win-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.win-list li {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 @media (max-width: 900px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -798,6 +908,10 @@ select {
   .map-filterbar,
   .map-kpi-grid,
   .map-workspace,
+  .investor-controls,
+  .investor-grid,
+  .roadmap-list,
+  .thesis-flow,
   .result-grid,
   .scenario-row,
   .unit-row {
