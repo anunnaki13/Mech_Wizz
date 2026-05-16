@@ -1,6 +1,8 @@
 import type { Plant } from "@/types/plant";
 import type { EmissionTest } from "@/types/emission-test";
+import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/financial-assumption";
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
+import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { SiteReadiness, SiteReadinessPayload } from "@/types/site-readiness";
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
@@ -77,6 +79,50 @@ export async function saveHydrogenStrategy(
   const path = recordId ? `/hydrogen-strategy/${recordId}` : `/plants/${plantId}/hydrogen-strategy`;
   return apiFetch<HydrogenStrategy>(path, {
     method: recordId ? "PUT" : "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getPlantScenarios(plantId: string): Promise<BusinessScenario[]> {
+  return apiFetch<BusinessScenario[]>(`/plants/${plantId}/scenarios`);
+}
+
+export async function createScenario(
+  plantId: string,
+  payload: BusinessScenarioPayload,
+): Promise<BusinessScenario> {
+  return apiFetch<BusinessScenario>(`/plants/${plantId}/scenarios`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updateScenario(
+  scenarioId: string,
+  payload: BusinessScenarioUpdatePayload,
+): Promise<BusinessScenario> {
+  return apiFetch<BusinessScenario>(`/scenarios/${scenarioId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deleteScenario(scenarioId: string): Promise<void> {
+  return apiFetch<void>(`/scenarios/${scenarioId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getFinancialAssumption(scenarioId: string): Promise<FinancialAssumption | null> {
+  return apiFetch<FinancialAssumption | null>(`/scenarios/${scenarioId}/financial-assumptions`);
+}
+
+export async function saveFinancialAssumption(
+  scenarioId: string,
+  payload: FinancialAssumptionPayload,
+): Promise<FinancialAssumption> {
+  return apiFetch<FinancialAssumption>(`/scenarios/${scenarioId}/financial-assumptions`, {
+    method: "PUT",
     body: JSON.stringify(payload),
   });
 }
