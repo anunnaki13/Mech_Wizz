@@ -7,6 +7,7 @@ from app.models.document import Document
 from app.models.financial_assumption import FinancialAssumption
 from app.models.hydrogen_strategy import HydrogenStrategy
 from app.models.llm_insight import LlmInsight
+from app.models.pre_feed_package import PreFeedPackage, PreFeedPackageDocument
 from app.models.site_readiness import SiteReadiness
 from app.models.scenario_result import ScenarioResult
 from app.models.unit_scoring_result import UnitScoringResult
@@ -22,6 +23,8 @@ __all__ = [
     "HydrogenStrategy",
     "LlmInsight",
     "Plant",
+    "PreFeedPackage",
+    "PreFeedPackageDocument",
     "ScenarioResult",
     "SensitivityResult",
     "SiteReadiness",

@@ -57,14 +57,14 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
   3. User can link existing uploaded documents to a package and classify document role.
   4. Package history remains auditable and does not overwrite prior scenario simulation results.
   5. Backend exposes package-level missing data and confidence warnings.
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 
 Plans:
 **Wave 1**
-- [ ] 06-01: Pre-FEED package models, migration, schemas, seed/update safety, and document link schema.
+- [x] 06-01: Pre-FEED package models, migration, schemas, seed/update safety, and document link schema.
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 06-02: Pre-FEED package REST APIs with package gap/confidence service and tests.
+- [x] 06-02: Pre-FEED package REST APIs with package gap/confidence service and tests.
 
 **Wave 3** *(blocked on Wave 2 completion)*
 - [ ] 06-03: `/prefeed` package workspace shell with plant/scenario/package selection and linked document management.
@@ -146,7 +146,7 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 3. Strategy Dashboard & Ranking | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 4. Investor Case & Data Quality | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 5. LLM & Document Intelligence | v1.0 | 3/3 | Complete | 2026-05-16 |
-| 6. Pre-FEED Package Foundation | v2.0 | 0/3 | Not started | - |
+| 6. Pre-FEED Package Foundation | v2.0 | 2/3 | In Progress|  |
 | 7. Cost & Vendor Proposal Engine | v2.0 | 0/3 | Not started | - |
 | 8. Offtake & MRV Readiness | v2.0 | 0/3 | Not started | - |
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 0/3 | Not started | - |
