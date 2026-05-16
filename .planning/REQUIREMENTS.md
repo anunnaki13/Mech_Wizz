@@ -18,13 +18,13 @@ Requirements for the Pre-FEED milestone. Each requirement maps to exactly one ro
 
 ### CAPEX/OPEX And Vendor Proposals
 
-- [ ] **COST-01**: User can store detailed CAPEX line items by package component, amount, currency, source, contingency, escalation, and confidence.
-- [ ] **COST-02**: User can store detailed OPEX line items by cost category, amount, unit basis, recurrence, source, and confidence.
-- [ ] **COST-03**: Backend can aggregate detailed CAPEX/OPEX into scenario-ready assumptions while preserving the source package and version.
-- [ ] **VEND-01**: User can store EPC/vendor proposals with vendor name, scope coverage, commercial basis, delivery assumptions, exclusions, validity date, and supporting documents.
-- [ ] **VEND-02**: User can compare vendor proposals by CAPEX, OPEX, scope completeness, missing sections, assumptions, and confidence.
-- [ ] **VEND-03**: User can select a vendor proposal or blended package as the active Pre-FEED cost basis for a scenario.
-- [ ] **VEND-04**: System flags proposal gaps such as missing electrolyzer scope, capture package, methanol plant, storage/port, grid power, land, or MRV scope.
+- [x] **COST-01**: User can store detailed CAPEX line items by package component, amount, currency, source, contingency, escalation, and confidence.
+- [x] **COST-02**: User can store detailed OPEX line items by cost category, amount, unit basis, recurrence, source, and confidence.
+- [x] **COST-03**: Backend can aggregate detailed CAPEX/OPEX into scenario-ready assumptions while preserving the source package and version.
+- [x] **VEND-01**: User can store EPC/vendor proposals with vendor name, scope coverage, commercial basis, delivery assumptions, exclusions, validity date, and supporting documents.
+- [x] **VEND-02**: User can compare vendor proposals by CAPEX, OPEX, scope completeness, missing sections, assumptions, and confidence.
+- [x] **VEND-03**: User can select a vendor proposal or blended package as the active Pre-FEED cost basis for a scenario.
+- [x] **VEND-04**: System flags proposal gaps such as missing electrolyzer scope, capture package, methanol plant, storage/port, grid power, land, or MRV scope.
 
 ### Offtake And Market Readiness
 
@@ -101,13 +101,13 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | PFD-03 | Phase 6 | Complete |
 | PFD-04 | Phase 6 | Complete |
 | PFD-05 | Phase 6 | Complete |
-| COST-01 | Phase 7 | Pending |
-| COST-02 | Phase 7 | Pending |
-| COST-03 | Phase 7 | Pending |
-| VEND-01 | Phase 7 | Pending |
-| VEND-02 | Phase 7 | Pending |
-| VEND-03 | Phase 7 | Pending |
-| VEND-04 | Phase 7 | Pending |
+| COST-01 | Phase 7 | Complete |
+| COST-02 | Phase 7 | Complete |
+| COST-03 | Phase 7 | Complete |
+| VEND-01 | Phase 7 | Complete |
+| VEND-02 | Phase 7 | Complete |
+| VEND-03 | Phase 7 | Complete |
+| VEND-04 | Phase 7 | Complete |
 | OFFT-01 | Phase 8 | Pending |
 | OFFT-02 | Phase 8 | Pending |
 | OFFT-03 | Phase 8 | Pending |

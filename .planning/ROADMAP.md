@@ -38,7 +38,7 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
-- [ ] **Phase 7: Cost & Vendor Proposal Engine** - Detailed CAPEX/OPEX line items, proposal comparison, selected active cost basis, and scenario-ready aggregates.
+- [x] **Phase 7: Cost & Vendor Proposal Engine** - Detailed CAPEX/OPEX line items, proposal comparison, selected active cost basis, and scenario-ready aggregates. (completed 2026-05-16)
 - [ ] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness.
 - [ ] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation.
 
@@ -87,7 +87,7 @@ Plans:
   3. Backend aggregates detailed cost lines into scenario-ready assumptions without losing source package/version.
   4. User can compare vendor proposals by cost, scope completeness, missing sections, and confidence.
   5. User can select an active cost basis for a scenario while preserving previous simulation history.
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 **Wave 1**
@@ -97,7 +97,7 @@ Plans:
 - [x] 07-02: Vendor proposal model, gap detection, comparison service, and active package selection API.
 
 **Wave 3** *(blocked on Wave 2 completion)*
-- [ ] 07-03: Cost and vendor proposal UI with breakdown, comparison table, and active cost-basis workflow.
+- [x] 07-03: Cost and vendor proposal UI with breakdown, comparison table, and active cost-basis workflow.
 
 ### Phase 8: Offtake & MRV Readiness
 
@@ -152,6 +152,6 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 4. Investor Case & Data Quality | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 5. LLM & Document Intelligence | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 6. Pre-FEED Package Foundation | v2.0 | 3/3 | Complete | 2026-05-16 |
-| 7. Cost & Vendor Proposal Engine | v2.0 | 2/3 | In Progress|  |
+| 7. Cost & Vendor Proposal Engine | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 8. Offtake & MRV Readiness | v2.0 | 0/3 | Not started | - |
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 0/3 | Not started | - |

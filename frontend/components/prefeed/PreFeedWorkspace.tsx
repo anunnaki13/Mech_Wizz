@@ -3,6 +3,7 @@
 import { AlertTriangle, Archive, FileText, Link2, Plus, RefreshCw, Save, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
+import { CostVendorWorkspace } from "@/components/prefeed/CostVendorWorkspace";
 import {
   archivePreFeedPackage,
   createPreFeedPackage,
@@ -622,6 +623,12 @@ export function PreFeedWorkspace() {
               <div className="muted">No documents linked to this package.</div>
             ) : null}
           </article>
+
+          <CostVendorWorkspace
+            packageId={selectedPackage?.id ?? null}
+            scenarioId={selectedScenarioId || null}
+            documents={availableDocuments}
+          />
         </div>
 
         <aside className="prefeed-side-stack">

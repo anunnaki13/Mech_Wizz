@@ -13,6 +13,17 @@ import type {
   PreFeedPackagePayload,
   PreFeedPackageUpdatePayload,
 } from "@/types/prefeed";
+import type {
+  PreFeedActiveCostBasis,
+  PreFeedActiveCostBasisPayload,
+  PreFeedCostItem,
+  PreFeedCostItemPayload,
+  PreFeedCostSummary,
+  PreFeedVendorComparison,
+  PreFeedVendorGap,
+  PreFeedVendorProposal,
+  PreFeedVendorProposalPayload,
+} from "@/types/prefeed-cost";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
@@ -480,4 +491,104 @@ export async function unlinkPreFeedPackageDocument(packageId: string, linkId: st
 
 export async function getPreFeedPackageGaps(packageId: string): Promise<PreFeedPackageGap[]> {
   return apiFetch<PreFeedPackageGap[]>(`/prefeed/packages/${packageId}/gaps`);
+}
+
+export async function listPreFeedCostItems(params: {
+  packageId: string;
+  vendorProposalId?: string;
+}): Promise<PreFeedCostItem[]> {
+  return apiFetch<PreFeedCostItem[]>(
+    `/prefeed/packages/${params.packageId}/cost-items${buildQuery({
+      vendor_proposal_id: params.vendorProposalId,
+    })}`,
+  );
+}
+
+export async function createPreFeedCostItem(
+  packageId: string,
+  payload: PreFeedCostItemPayload,
+): Promise<PreFeedCostItem> {
+  return apiFetch<PreFeedCostItem>(`/prefeed/packages/${packageId}/cost-items`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedCostItem(
+  costItemId: string,
+  payload: Partial<PreFeedCostItemPayload>,
+): Promise<PreFeedCostItem> {
+  return apiFetch<PreFeedCostItem>(`/prefeed/cost-items/${costItemId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deletePreFeedCostItem(costItemId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/cost-items/${costItemId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedCostSummary(params: {
+  packageId: string;
+  vendorProposalId?: string;
+}): Promise<PreFeedCostSummary> {
+  return apiFetch<PreFeedCostSummary>(
+    `/prefeed/packages/${params.packageId}/cost-summary${buildQuery({
+      vendor_proposal_id: params.vendorProposalId,
+    })}`,
+  );
+}
+
+export async function listPreFeedVendorProposals(packageId: string): Promise<PreFeedVendorProposal[]> {
+  return apiFetch<PreFeedVendorProposal[]>(`/prefeed/packages/${packageId}/vendor-proposals`);
+}
+
+export async function createPreFeedVendorProposal(
+  packageId: string,
+  payload: PreFeedVendorProposalPayload,
+): Promise<PreFeedVendorProposal> {
+  return apiFetch<PreFeedVendorProposal>(`/prefeed/packages/${packageId}/vendor-proposals`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedVendorProposal(
+  proposalId: string,
+  payload: Partial<PreFeedVendorProposalPayload>,
+): Promise<PreFeedVendorProposal> {
+  return apiFetch<PreFeedVendorProposal>(`/prefeed/vendor-proposals/${proposalId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deletePreFeedVendorProposal(proposalId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/vendor-proposals/${proposalId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedVendorComparison(packageId: string): Promise<PreFeedVendorComparison[]> {
+  return apiFetch<PreFeedVendorComparison[]>(`/prefeed/packages/${packageId}/vendor-comparison`);
+}
+
+export async function getPreFeedVendorGaps(proposalId: string): Promise<PreFeedVendorGap[]> {
+  return apiFetch<PreFeedVendorGap[]>(`/prefeed/vendor-proposals/${proposalId}/gaps`);
+}
+
+export async function getPreFeedActiveCostBasis(scenarioId: string): Promise<PreFeedActiveCostBasis | null> {
+  return apiFetch<PreFeedActiveCostBasis | null>(`/prefeed/scenarios/${scenarioId}/active-cost-basis`);
+}
+
+export async function selectPreFeedActiveCostBasis(
+  scenarioId: string,
+  payload: PreFeedActiveCostBasisPayload,
+): Promise<PreFeedActiveCostBasis> {
+  return apiFetch<PreFeedActiveCostBasis>(`/prefeed/scenarios/${scenarioId}/active-cost-basis`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 }

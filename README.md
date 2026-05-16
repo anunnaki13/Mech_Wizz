@@ -135,6 +135,29 @@ DELETE /api/prefeed/packages/{package_id}/documents/{link_id}
 GET /api/prefeed/packages/{package_id}/gaps
 ```
 
+## Phase 7 Cost & Vendor Proposal Engine
+
+The cost and vendor workflow is:
+
+1. Open `/prefeed` and select a plant, scenario, and Pre-FEED package.
+2. Add detailed CAPEX and OPEX line items with source, currency, contingency/escalation, recurrence, `data_status`, and `confidence_level`.
+3. Add vendor/EPC proposals with supporting document, scope coverage, commercial basis, delivery assumptions, exclusions, validity date, and confidence.
+4. Review backend-generated cost totals, scenario-ready USD CAPEX patch fields, vendor comparison, and proposal gaps.
+5. Select the active cost basis for the current scenario as either a blended package or a vendor proposal. The selection is stored separately and does not overwrite scenario simulation history.
+
+Core API endpoints:
+
+```text
+GET/POST /api/prefeed/packages/{package_id}/cost-items
+PUT/DELETE /api/prefeed/cost-items/{cost_item_id}
+GET /api/prefeed/packages/{package_id}/cost-summary
+GET/POST /api/prefeed/packages/{package_id}/vendor-proposals
+PUT/DELETE /api/prefeed/vendor-proposals/{proposal_id}
+GET /api/prefeed/packages/{package_id}/vendor-comparison
+GET /api/prefeed/vendor-proposals/{proposal_id}/gaps
+GET/POST /api/prefeed/scenarios/{scenario_id}/active-cost-basis
+```
+
 ## Verification
 
 ```bash
@@ -147,5 +170,5 @@ For a local migration smoke test outside Docker:
 
 ```bash
 cd backend
-DATABASE_URL=sqlite:////tmp/mechwiz_phase6_full.db .venv/bin/alembic upgrade head
+DATABASE_URL=sqlite:////tmp/mechwiz_phase7_full.db .venv/bin/alembic upgrade head
 ```

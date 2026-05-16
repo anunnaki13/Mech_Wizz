@@ -1150,6 +1150,109 @@ textarea {
   margin: 0;
 }
 
+.cost-vendor-workspace {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.cost-vendor-empty {
+  display: grid;
+  gap: 8px;
+}
+
+.cost-vendor-grid {
+  align-items: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  gap: 16px;
+}
+
+.cost-item-panel,
+.vendor-panel,
+.comparison-panel,
+.active-basis-panel,
+.vendor-gap-panel {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.cost-item-form,
+.vendor-form,
+.active-basis-form {
+  align-items: end;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cost-form-wide {
+  grid-column: span 2;
+}
+
+.scope-grid {
+  align-items: center;
+  background: #0a1726;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-height: 42px;
+  padding: 10px;
+}
+
+.scope-grid label {
+  align-items: center;
+  color: var(--text);
+  display: inline-flex;
+  font-size: 12px;
+  gap: 7px;
+}
+
+.cost-summary-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cost-summary-grid div {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  min-height: 72px;
+  padding: 12px;
+}
+
+.cost-summary-grid span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.cost-summary-grid strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.cost-item-table,
+.vendor-table,
+.comparison-table {
+  min-width: 760px;
+}
+
+.vendor-table tr.active td {
+  background: rgba(24, 199, 200, 0.08);
+}
+
+.cost-vendor-side {
+  display: grid;
+  gap: 16px;
+}
+
 .settings-workspace {
   display: grid;
   gap: 16px;
@@ -1269,6 +1372,12 @@ textarea {
     .prefeed-layout,
     .prefeed-form,
     .prefeed-link-controls,
+    .cost-vendor-grid,
+    .cost-item-form,
+    .vendor-form,
+    .active-basis-form,
+    .scope-grid,
+    .cost-summary-grid,
     .roadmap-list,
     .thesis-flow,
   .result-grid,
