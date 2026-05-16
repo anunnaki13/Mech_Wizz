@@ -215,7 +215,9 @@ def calculate_project_irr(
 ) -> float | None:
     if _missing(initial_investment_usd, annual_cashflow_usd, project_life_years):
         return None
-    initial = _positive("initial_investment_usd", initial_investment_usd)
+    initial = float(initial_investment_usd)
+    if initial <= 0:
+        return None
     years = int(_positive("project_life_years", project_life_years))
     annual_cashflow = float(annual_cashflow_usd)
     return calculate_irr([-initial, *([annual_cashflow] * years)])
@@ -224,6 +226,8 @@ def calculate_project_irr(
 def calculate_payback_years(initial_investment_usd: float | None, annual_cashflow_usd: float | None) -> float | None:
     if _missing(initial_investment_usd, annual_cashflow_usd):
         return None
-    initial = _positive("initial_investment_usd", initial_investment_usd)
-    annual_cashflow = _positive("annual_cashflow_usd", annual_cashflow_usd)
+    initial = float(initial_investment_usd)
+    annual_cashflow = float(annual_cashflow_usd)
+    if initial <= 0 or annual_cashflow <= 0:
+        return None
     return initial / annual_cashflow

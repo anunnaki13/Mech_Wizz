@@ -134,6 +134,4 @@ def test_invalid_or_incomplete_financial_outputs_return_none() -> None:
     assert calculate_lcom_usd_per_ton(1000, None, 100, 100, 100) is None
     assert calculate_irr([100, 200, 300]) is None
     assert calculate_project_irr(1000, -10, 5) is None
-
-    with pytest.raises(ValueError):
-        calculate_payback_years(1000, 0)
+    assert calculate_payback_years(1000, 0) is None
