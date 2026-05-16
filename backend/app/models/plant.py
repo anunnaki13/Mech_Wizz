@@ -53,3 +53,9 @@ class Plant(Base):
         passive_deletes=True,
         uselist=False,
     )
+    business_scenarios: Mapped[list["BusinessScenario"]] = relationship(
+        "BusinessScenario",
+        back_populates="plant",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
