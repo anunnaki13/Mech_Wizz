@@ -3,7 +3,8 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Pre-FEED
 status: planning
-last_updated: "2026-05-16T14:35:30+07:00"
+stopped_at: Phase 6 context gathered
+last_updated: "2026-05-16T07:39:55.303Z"
 last_activity: 2026-05-16 - Milestone v2.0 Pre-FEED requirements and roadmap created
 progress:
   total_phases: 4
@@ -124,9 +125,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T14:35:30+07:00
-Stopped at: v2.0 roadmap ready
-Resume file: .planning/ROADMAP.md
+Last session: 2026-05-16T07:39:55.260Z
+Stopped at: Phase 6 context gathered
+Resume file: .planning/phases/06-pre-feed-package-foundation/06-CONTEXT.md
 
 ## Operator Next Steps
 
