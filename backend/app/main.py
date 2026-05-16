@@ -17,6 +17,7 @@ from app.routers import (
     map,
     plants,
     prefeed,
+    prefeed_costs,
     scenarios,
     scoring,
     sensitivity,
@@ -59,5 +60,6 @@ api_router.include_router(settings.router)
 api_router.include_router(llm.router)
 api_router.include_router(documents.router)
 api_router.include_router(prefeed.router)
+api_router.include_router(prefeed_costs.router)
 
 app.include_router(api_router)

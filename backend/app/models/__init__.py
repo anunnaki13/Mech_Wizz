@@ -7,6 +7,7 @@ from app.models.document import Document
 from app.models.financial_assumption import FinancialAssumption
 from app.models.hydrogen_strategy import HydrogenStrategy
 from app.models.llm_insight import LlmInsight
+from app.models.pre_feed_cost import PreFeedCostBasisSelection, PreFeedCostItem, PreFeedVendorProposal
 from app.models.pre_feed_package import PreFeedPackage, PreFeedPackageDocument
 from app.models.site_readiness import SiteReadiness
 from app.models.scenario_result import ScenarioResult
@@ -23,8 +24,11 @@ __all__ = [
     "HydrogenStrategy",
     "LlmInsight",
     "Plant",
+    "PreFeedCostBasisSelection",
+    "PreFeedCostItem",
     "PreFeedPackage",
     "PreFeedPackageDocument",
+    "PreFeedVendorProposal",
     "ScenarioResult",
     "SensitivityResult",
     "SiteReadiness",
