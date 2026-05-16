@@ -12,6 +12,7 @@ from app.routers import (
     health,
     hydrogen_strategy,
     investor,
+    llm,
     map,
     plants,
     scenarios,
@@ -53,5 +54,6 @@ api_router.include_router(unit_profiles.router)
 api_router.include_router(sensitivity.router)
 api_router.include_router(investor.router)
 api_router.include_router(settings.router)
+api_router.include_router(llm.router)
 
 app.include_router(api_router)

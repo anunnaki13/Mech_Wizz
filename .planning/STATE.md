@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: phase_in_progress
-stopped_at: Phase 5 planning complete
-last_updated: "2026-05-16T13:26:28+07:00"
-last_activity: 2026-05-16 -- Phase 05 LLM and document intelligence planned
+stopped_at: Phase 5 plan 05-01 complete
+last_updated: "2026-05-16T13:31:34+07:00"
+last_activity: 2026-05-16 -- Phase 05 plan 01 OpenRouter backend complete
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 15
-  completed_plans: 12
-  percent: 80
+  completed_plans: 13
+  percent: 87
 ---
 
 # Project State
@@ -26,17 +26,17 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 5 of 5 (LLM & Document Intelligence)
-Plan: 0 of 3 in current phase
-Status: Phase 5 planning complete; ready to execute Phase 5 plan 01
-Last activity: 2026-05-16 -- AI-SPEC, UI-SPEC, research, context, and plans created for Phase 5
+Plan: 1 of 3 in current phase
+Status: Phase 5 OpenRouter backend complete; ready to execute Phase 5 plan 02
+Last activity: 2026-05-16 -- LLM insight persistence, prompt guardrails, and generation endpoints implemented
 
-Progress: [########--] 80%
+Progress: [#########-] 87%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: n/a
 - Total execution time: n/a
 
@@ -48,12 +48,12 @@ Progress: [########--] 80%
 | 2. Scenario Simulation Engine | 3/3 | n/a | n/a |
 | 3. Strategy Dashboard & Ranking | 3/3 | n/a | n/a |
 | 4. Investor Case & Data Quality | 3/3 | n/a | n/a |
-| 5. LLM & Document Intelligence | 0/3 | n/a | n/a |
+| 5. LLM & Document Intelligence | 1/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 03-02, 03-03, 04-01, 04-02, 04-03
-- Trend: Phase 4 completed and Phase 5 planned for OpenRouter insights plus document intelligence
+- Last 5 plans: 03-03, 04-01, 04-02, 04-03, 05-01
+- Trend: Phase 5 OpenRouter backend foundation added after Phase 4 completion
 
 *Updated after each plan completion*
 
@@ -94,6 +94,9 @@ Recent decisions affecting current work:
 - Phase 05 planning: Keep OpenRouter API keys backend-only and return clear unavailable errors when not configured.
 - Phase 05 planning: Prompts must separate actual data, assumptions, confidence, and gaps and must forbid invented numbers or LLM recalculation.
 - Phase 05 planning: Document Q&A uses extracted text as bounded context for MVP; vector retrieval is deferred.
+- Phase 05-01: `LlmInsight` persists prompt, response, model, status, error, usage, and plant/scenario/document references.
+- Phase 05-01: OpenRouter calls are direct HTTP Chat Completions calls with mockable transport and backend-only API key configuration.
+- Phase 05-01: Missing OpenRouter key creates a failed insight record and returns an explicit unavailable error.
 
 ### Pending Todos
 
@@ -112,6 +115,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T13:26:28+07:00
-Stopped at: Phase 5 planning complete
-Resume file: .planning/phases/05-llm-document-intelligence/05-01-PLAN.md
+Last session: 2026-05-16T13:31:34+07:00
+Stopped at: Phase 5 plan 05-01 complete
+Resume file: .planning/phases/05-llm-document-intelligence/05-01-SUMMARY.md
