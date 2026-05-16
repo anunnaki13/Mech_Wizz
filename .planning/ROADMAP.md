@@ -13,7 +13,7 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 - [x] **Phase 1: MVP Spine & Unit Data** - Runnable app, database schema, seed data, and unit input workflows.
 - [x] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
 - [x] **Phase 3: Strategy Dashboard & Ranking** - MapLibre opportunity heatmap, ranking, score breakdowns, KPI dashboard, and sensitivity visualization.
-- [ ] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
+- [x] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
 - [ ] **Phase 5: LLM & Document Intelligence** - OpenRouter insights, prompt persistence, document upload, extraction, and document Q&A.
 
 ## Phase Details
@@ -86,9 +86,9 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 04-01: Investor dashboard API and investor-facing data aggregation.
-- [ ] 04-02: Investor dashboard UI with KPIs, thesis flow, revenue mix, scenario comparison, risks, roadmap, and win narrative.
-- [ ] 04-03: Data status validation, confidence engine, data gap engine, and editable assumptions/settings.
+- [x] 04-01: Investor dashboard API and investor-facing data aggregation.
+- [x] 04-02: Investor dashboard UI with KPIs, thesis flow, revenue mix, scenario comparison, risks, roadmap, and win narrative.
+- [x] 04-03: Data status validation, confidence engine, data gap engine, and editable assumptions/settings.
 
 ### Phase 5: LLM & Document Intelligence
 **Goal:** Add OpenRouter narrative insight and lightweight document intelligence while preserving deterministic numeric authority.
@@ -118,5 +118,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. MVP Spine & Unit Data | 3/3 | Complete | 2026-05-16 |
 | 2. Scenario Simulation Engine | 3/3 | Complete | 2026-05-16 |
 | 3. Strategy Dashboard & Ranking | 3/3 | Complete | 2026-05-16 |
-| 4. Investor Case & Data Quality | 0/3 | Not started | - |
+| 4. Investor Case & Data Quality | 3/3 | Complete | 2026-05-16 |
 | 5. LLM & Document Intelligence | 0/3 | Not started | - |

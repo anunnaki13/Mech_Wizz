@@ -6,6 +6,7 @@ import type { InvestorCase } from "@/types/investor";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
+import type { ApplicationSetting, ApplicationSettingPayload, DataQualitySummary } from "@/types/settings";
 import type {
   ScoringRecalculateResponse,
   UnitOpportunityGeoJSON,
@@ -254,6 +255,33 @@ export async function getInvestorCase(params: {
 } = {}): Promise<InvestorCase> {
   return apiFetch<InvestorCase>(
     `/investor-case${buildQuery({
+      plant_id: params.plantId,
+      scenario_id: params.scenarioId,
+    })}`,
+  );
+}
+
+export async function getSettings(category?: string): Promise<ApplicationSetting[]> {
+  return apiFetch<ApplicationSetting[]>(
+    `/settings${buildQuery({
+      category,
+    })}`,
+  );
+}
+
+export async function updateSetting(key: string, payload: ApplicationSettingPayload): Promise<ApplicationSetting> {
+  return apiFetch<ApplicationSetting>(`/settings/${key}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getDataQualitySummary(params: {
+  plantId: string;
+  scenarioId?: string;
+}): Promise<DataQualitySummary> {
+  return apiFetch<DataQualitySummary>(
+    `/data-quality/summary${buildQuery({
       plant_id: params.plantId,
       scenario_id: params.scenarioId,
     })}`,

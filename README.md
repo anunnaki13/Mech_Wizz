@@ -1,6 +1,6 @@
 # MECH WIZ AI Digital Twin
 
-MECH WIZ AI Digital Twin is a PLN NP pre-feasibility screening cockpit for carbon-to-fuel pilot selection. It includes a FastAPI backend, PostgreSQL-ready persistence, deterministic scenario calculations, persisted scoring/sensitivity outputs, and a Next.js dashboard.
+MECH WIZ AI Digital Twin is a PLN NP pre-feasibility screening cockpit for carbon-to-fuel pilot selection. It includes a FastAPI backend, PostgreSQL-ready persistence, deterministic scenario calculations, persisted scoring/sensitivity/data-quality outputs, and a Next.js dashboard.
 
 ## Local Development
 
@@ -28,7 +28,7 @@ Seed the initial Tenayan unit, WIZ Align base scenario, coordinates, and benchma
 docker compose exec backend python -m app.seed
 ```
 
-Open the web app at http://localhost:3000/dashboard, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, and check the API health endpoint at http://localhost:8000/api/health.
+Open the web app at http://localhost:3000/dashboard, manage scenarios at http://localhost:3000/scenarios, use the map intelligence layer at http://localhost:3000/dashboard/map, review the investor case at http://localhost:3000/investor, edit settings at http://localhost:3000/settings, and check the API health endpoint at http://localhost:8000/api/health.
 
 ## Phase 2 Scenario Simulation
 
@@ -71,6 +71,25 @@ POST /api/sensitivity/run
 GET /api/scenarios/{scenario_id}/sensitivity
 ```
 
+## Phase 4 Investor Case & Data Quality
+
+The investor and quality workflow is:
+
+1. Run scenario simulation, scoring, and sensitivity from `/scenarios` and `/dashboard/map`.
+2. Open `/investor` to review KPIs, thesis flow, revenue mix, scenario comparison, risk mitigation, roadmap, why-this-wins content, CAPEX structure, and current data gaps.
+3. Open `/settings` to edit default financial assumptions and scoring weights.
+4. Review input `data_status`, output `confidence_level`, and persisted data gap recommendations.
+
+Core API endpoints:
+
+```text
+GET /api/investor-case
+GET /api/settings
+GET /api/settings/{key}
+PUT /api/settings/{key}
+GET /api/data-quality/summary
+```
+
 ## Verification
 
 ```bash
@@ -83,5 +102,5 @@ For a local migration smoke test outside Docker:
 
 ```bash
 cd backend
-DATABASE_URL=sqlite:////tmp/mechwiz_phase3_full.db .venv/bin/alembic upgrade head
+DATABASE_URL=sqlite:////tmp/mechwiz_phase4_full.db .venv/bin/alembic upgrade head
 ```

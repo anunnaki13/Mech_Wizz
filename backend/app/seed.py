@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from app import models  # noqa: F401
 from app.database import SessionLocal
 from app.models import BusinessScenario, EmissionTest, FinancialAssumption, Plant
+from app.services.settings import seed_default_settings
 
 
 TENAYAN_PLANT = {
@@ -169,6 +170,7 @@ def seed_tenayan_financial_assumptions(db: Session, scenario: BusinessScenario) 
 def main() -> None:
     with SessionLocal() as db:
         plant = seed_tenayan(db)
+        seed_default_settings(db)
         print(f"Seeded {plant.plant_name} {plant.unit_name}")
 
 

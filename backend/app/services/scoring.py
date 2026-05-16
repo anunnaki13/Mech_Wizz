@@ -6,6 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models import (
+    ApplicationSetting,
     BusinessScenario,
     EmissionTest,
     FinancialAssumption,
@@ -18,6 +19,43 @@ from app.models import (
 
 
 SCORING_VERSION = "phase3-scoring-v1"
+DEFAULT_COMPOSITE_WEIGHTS = {"opportunity": 0.45, "readiness": 0.35, "confidence": 0.20}
+DEFAULT_HEATMAP_WEIGHTS = {
+    "opportunity": 0.45,
+    "readiness": 0.25,
+    "economic_return": 0.20,
+    "confidence": 0.10,
+}
+
+
+def _coerce_weight_group(value: object, group_key: str, fallback: dict[str, float]) -> dict[str, float]:
+    if not isinstance(value, dict):
+        return fallback
+    group = value.get(group_key)
+    if not isinstance(group, dict):
+        return fallback
+
+    weights: dict[str, float] = {}
+    for key, fallback_value in fallback.items():
+        item = group.get(key, fallback_value)
+        if not isinstance(item, (int, float)) or isinstance(item, bool):
+            return fallback
+        weights[key] = float(item)
+
+    if abs(sum(weights.values()) - 1.0) > 0.001:
+        return fallback
+    return weights
+
+
+def load_scoring_weights(db: Session) -> dict[str, dict[str, float]]:
+    setting = db.scalar(select(ApplicationSetting).where(ApplicationSetting.key == "scoring_weights"))
+    value = setting.value if setting else {}
+    return {
+        "composite": _coerce_weight_group(value, "composite", DEFAULT_COMPOSITE_WEIGHTS),
+        "heatmap": _coerce_weight_group(value, "heatmap", DEFAULT_HEATMAP_WEIGHTS),
+    }
+
+
 CONFIDENCE_BY_DATA_STATUS = {
     "actual": 1.0,
     "estimated": 0.70,
@@ -336,7 +374,14 @@ def calculate_unit_scores(
     site_readiness: SiteReadiness | None,
     hydrogen_strategy: HydrogenStrategy | None,
     financial_assumption: FinancialAssumption | None,
+    scoring_weights: dict[str, dict[str, float]] | None = None,
 ) -> dict[str, Any]:
+    weights = scoring_weights or {
+        "composite": DEFAULT_COMPOSITE_WEIGHTS,
+        "heatmap": DEFAULT_HEATMAP_WEIGHTS,
+    }
+    composite_weights = weights["composite"]
+    heatmap_weights = weights["heatmap"]
     co2_score = normalize_score(result.total_co2_ton_per_year, 0, 1_000_000)
     methanol_score = normalize_score(result.methanol_ton_per_year, 0, 300_000)
     market_score = _market_access_score(site_readiness)
@@ -387,7 +432,9 @@ def calculate_unit_scores(
     confidence_score_value = _safe_average(confidence_inputs)
 
     composite_score_value = round(
-        (0.45 * opportunity_score_value) + (0.35 * readiness_score_value) + (0.20 * confidence_score_value),
+        (composite_weights["opportunity"] * opportunity_score_value)
+        + (composite_weights["readiness"] * readiness_score_value)
+        + (composite_weights["confidence"] * confidence_score_value),
         4,
     )
     heatmap_weight = round(
@@ -395,10 +442,10 @@ def calculate_unit_scores(
             0.0,
             min(
                 1.0,
-                (0.45 * opportunity_score_value)
-                + (0.25 * readiness_score_value)
-                + (0.20 * economic_return_score)
-                + (0.10 * confidence_score_value),
+                (heatmap_weights["opportunity"] * opportunity_score_value)
+                + (heatmap_weights["readiness"] * readiness_score_value)
+                + (heatmap_weights["economic_return"] * economic_return_score)
+                + (heatmap_weights["confidence"] * confidence_score_value),
             ),
         ),
         4,
@@ -451,6 +498,8 @@ def calculate_unit_scores(
             "data_gaps": data_gaps,
             "confidence_label": confidence_label(confidence_score_value),
             "opportunity_level": opportunity_level(opportunity_score_value),
+            "composite_weights": composite_weights,
+            "heatmap_weights": heatmap_weights,
         },
         "data_gap_count": len(data_gaps),
         "recommended_scheme": format_recommended_scheme(scenario.scheme),
@@ -500,6 +549,7 @@ def recalculate_unit_scoring(
         raise ScoringInputError("Scenario not found")
 
     scoring_run_id = str(uuid.uuid4())
+    scoring_weights = load_scoring_weights(db)
     records: list[UnitScoringResult] = []
     for scenario in scenarios:
         result = latest_scenario_result(db, scenario.id)
@@ -518,6 +568,7 @@ def recalculate_unit_scoring(
             site_readiness,
             hydrogen_strategy,
             financial_assumption,
+            scoring_weights,
         )
         record = UnitScoringResult(
             plant_id=plant.id,

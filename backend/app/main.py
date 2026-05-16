@@ -17,6 +17,7 @@ from app.routers import (
     scenarios,
     scoring,
     sensitivity,
+    settings,
     site_readiness,
     unit_profiles,
 )
@@ -51,5 +52,6 @@ api_router.include_router(map.router)
 api_router.include_router(unit_profiles.router)
 api_router.include_router(sensitivity.router)
 api_router.include_router(investor.router)
+api_router.include_router(settings.router)
 
 app.include_router(api_router)

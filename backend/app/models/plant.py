@@ -71,3 +71,9 @@ class Plant(Base):
         cascade="all, delete-orphan",
         passive_deletes=True,
     )
+    data_gaps: Mapped[list["DataGap"]] = relationship(
+        "DataGap",
+        back_populates="plant",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )
