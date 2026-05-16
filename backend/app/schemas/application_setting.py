@@ -23,3 +23,22 @@ class ApplicationSettingUpdate(BaseModel):
     value: dict[str, Any] = Field(default_factory=dict)
     data_status: DataStatus = "user_assumption"
     confidence_level: ConfidenceLevel = "medium"
+
+
+class OpenRouterSettingsRead(BaseModel):
+    has_api_key: bool
+    api_key_masked: str | None = None
+    api_key_source: str
+    base_url: str
+    model: str
+    site_url: str
+    app_name: str
+
+
+class OpenRouterSettingsUpdate(BaseModel):
+    api_key: str | None = None
+    clear_api_key: bool = False
+    base_url: str | None = None
+    model: str | None = None
+    site_url: str | None = None
+    app_name: str | None = None

@@ -49,7 +49,13 @@ import type {
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
-import type { ApplicationSetting, ApplicationSettingPayload, DataQualitySummary } from "@/types/settings";
+import type {
+  ApplicationSetting,
+  ApplicationSettingPayload,
+  DataQualitySummary,
+  OpenRouterSettings,
+  OpenRouterSettingsPayload,
+} from "@/types/settings";
 import type {
   EconomicZoneGeoJSON,
   ExportCorridorGeoJSON,
@@ -406,6 +412,17 @@ export async function getSettings(category?: string): Promise<ApplicationSetting
 
 export async function updateSetting(key: string, payload: ApplicationSettingPayload): Promise<ApplicationSetting> {
   return apiFetch<ApplicationSetting>(`/settings/${key}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getOpenRouterSettings(): Promise<OpenRouterSettings> {
+  return apiFetch<OpenRouterSettings>("/settings/openrouter/provider");
+}
+
+export async function updateOpenRouterSettings(payload: OpenRouterSettingsPayload): Promise<OpenRouterSettings> {
+  return apiFetch<OpenRouterSettings>("/settings/openrouter/provider", {
     method: "PUT",
     body: JSON.stringify(payload),
   });

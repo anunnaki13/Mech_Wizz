@@ -1,18 +1,20 @@
 "use client";
 
-import { AlertTriangle, RefreshCw, Save } from "lucide-react";
+import { AlertTriangle, KeyRound, RefreshCw, Save, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import {
   getDataQualitySummary,
+  getOpenRouterSettings,
   getPlantScenarios,
   getPlants,
   getSettings,
+  updateOpenRouterSettings,
   updateSetting,
 } from "@/lib/api";
 import type { ConfidenceLevel, DataStatus, Plant } from "@/types/plant";
 import type { BusinessScenario } from "@/types/scenario";
-import type { ApplicationSetting, DataQualitySummary } from "@/types/settings";
+import type { ApplicationSetting, DataQualitySummary, OpenRouterSettings } from "@/types/settings";
 
 const DATA_STATUS_OPTIONS: DataStatus[] = [
   "actual",
@@ -28,6 +30,14 @@ const CONFIDENCE_OPTIONS: ConfidenceLevel[] = ["high", "medium", "low", "unknown
 type ScenarioOption = BusinessScenario & {
   plant_name: string;
   unit_name: string;
+};
+
+type OpenRouterDraft = {
+  apiKey: string;
+  baseUrl: string;
+  model: string;
+  siteUrl: string;
+  appName: string;
 };
 
 function titleForSetting(key: string) {
@@ -53,6 +63,14 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 export function SettingsWorkspace() {
   const [settings, setSettings] = useState<ApplicationSetting[]>([]);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
+  const [openRouter, setOpenRouter] = useState<OpenRouterSettings | null>(null);
+  const [openRouterDraft, setOpenRouterDraft] = useState<OpenRouterDraft>({
+    apiKey: "",
+    baseUrl: "https://openrouter.ai/api/v1",
+    model: "openai/gpt-5.2",
+    siteUrl: "http://localhost:3000",
+    appName: "MECH WIZ AI Digital Twin",
+  });
   const [plants, setPlants] = useState<Plant[]>([]);
   const [scenarios, setScenarios] = useState<ScenarioOption[]>([]);
   const [selectedPlantId, setSelectedPlantId] = useState("");
@@ -61,6 +79,7 @@ export function SettingsWorkspace() {
   const [loading, setLoading] = useState(true);
   const [loadingQuality, setLoadingQuality] = useState(false);
   const [savingKey, setSavingKey] = useState<string | null>(null);
+  const [savingOpenRouter, setSavingOpenRouter] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -80,6 +99,19 @@ export function SettingsWorkspace() {
     setDrafts(
       Object.fromEntries(records.map((record) => [record.key, JSON.stringify(record.value, null, 2)])),
     );
+  }
+
+  async function loadOpenRouterData() {
+    const record = await getOpenRouterSettings();
+    setOpenRouter(record);
+    setOpenRouterDraft((current) => ({
+      ...current,
+      apiKey: "",
+      baseUrl: record.base_url,
+      model: record.model,
+      siteUrl: record.site_url,
+      appName: record.app_name,
+    }));
   }
 
   async function loadReferenceData() {
@@ -107,7 +139,7 @@ export function SettingsWorkspace() {
     setStatusMessage(null);
     setErrorMessage(null);
     try {
-      await Promise.all([loadSettingsData(), loadReferenceData()]);
+      await Promise.all([loadSettingsData(), loadOpenRouterData(), loadReferenceData()]);
       setStatusMessage("Settings loaded.");
     } catch {
       setErrorMessage("Settings data is not reachable.");
@@ -164,6 +196,44 @@ export function SettingsWorkspace() {
     }
   }
 
+  async function saveOpenRouterSettings() {
+    setSavingOpenRouter(true);
+    setStatusMessage(null);
+    setErrorMessage(null);
+    try {
+      const saved = await updateOpenRouterSettings({
+        api_key: openRouterDraft.apiKey || null,
+        base_url: openRouterDraft.baseUrl,
+        model: openRouterDraft.model,
+        site_url: openRouterDraft.siteUrl,
+        app_name: openRouterDraft.appName,
+      });
+      setOpenRouter(saved);
+      setOpenRouterDraft((current) => ({ ...current, apiKey: "" }));
+      setStatusMessage("OpenRouter settings saved.");
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "OpenRouter settings could not be saved.");
+    } finally {
+      setSavingOpenRouter(false);
+    }
+  }
+
+  async function clearOpenRouterKey() {
+    setSavingOpenRouter(true);
+    setStatusMessage(null);
+    setErrorMessage(null);
+    try {
+      const saved = await updateOpenRouterSettings({ clear_api_key: true });
+      setOpenRouter(saved);
+      setOpenRouterDraft((current) => ({ ...current, apiKey: "" }));
+      setStatusMessage("OpenRouter API key cleared.");
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "OpenRouter API key could not be cleared.");
+    } finally {
+      setSavingOpenRouter(false);
+    }
+  }
+
   useEffect(() => {
     void loadAll();
   }, []);
@@ -191,6 +261,90 @@ export function SettingsWorkspace() {
 
       {errorMessage ? <div className="notice">{errorMessage}</div> : null}
       {statusMessage ? <div className="status-line">{statusMessage}</div> : null}
+
+      <section className="card openrouter-card" aria-label="OpenRouter provider settings">
+        <div className="setting-card-header">
+          <div>
+            <h3>OpenRouter Provider</h3>
+            <span>
+              {openRouter?.has_api_key
+                ? `API key active (${openRouter.api_key_source}: ${openRouter.api_key_masked})`
+                : "API key not configured"}
+            </span>
+          </div>
+          <KeyRound size={18} aria-hidden="true" />
+        </div>
+        <div className="openrouter-grid">
+          <label className="field">
+            <span>API Key</span>
+            <input
+              autoComplete="off"
+              placeholder={openRouter?.has_api_key ? "Leave blank to keep current key" : "Paste OpenRouter API key"}
+              type="password"
+              value={openRouterDraft.apiKey}
+              onChange={(event) =>
+                setOpenRouterDraft((current) => ({ ...current, apiKey: event.target.value }))
+              }
+            />
+          </label>
+          <label className="field">
+            <span>Model</span>
+            <input
+              value={openRouterDraft.model}
+              onChange={(event) =>
+                setOpenRouterDraft((current) => ({ ...current, model: event.target.value }))
+              }
+            />
+          </label>
+          <label className="field">
+            <span>Base URL</span>
+            <input
+              value={openRouterDraft.baseUrl}
+              onChange={(event) =>
+                setOpenRouterDraft((current) => ({ ...current, baseUrl: event.target.value }))
+              }
+            />
+          </label>
+          <label className="field">
+            <span>Site URL</span>
+            <input
+              value={openRouterDraft.siteUrl}
+              onChange={(event) =>
+                setOpenRouterDraft((current) => ({ ...current, siteUrl: event.target.value }))
+              }
+            />
+          </label>
+          <label className="field">
+            <span>App Name</span>
+            <input
+              value={openRouterDraft.appName}
+              onChange={(event) =>
+                setOpenRouterDraft((current) => ({ ...current, appName: event.target.value }))
+              }
+            />
+          </label>
+          <div className="openrouter-actions">
+            <button
+              className="button"
+              disabled={savingOpenRouter}
+              type="button"
+              onClick={() => void saveOpenRouterSettings()}
+            >
+              <Save size={16} aria-hidden="true" />
+              {savingOpenRouter ? "Saving" : "Save OpenRouter"}
+            </button>
+            <button
+              className="button secondary"
+              disabled={savingOpenRouter || openRouter?.api_key_source !== "stored"}
+              type="button"
+              onClick={() => void clearOpenRouterKey()}
+            >
+              <Trash2 size={16} aria-hidden="true" />
+              Clear Key
+            </button>
+          </div>
+        </div>
+      </section>
 
       <section className="settings-grid">
         {settings.map((setting) => (

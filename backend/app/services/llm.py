@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.config import get_settings
 from app.models import BusinessScenario, Document, LlmInsight, Plant, ScenarioResult, SensitivityResult
+from app.services.settings import openrouter_runtime_settings
 from app.services.data_quality import build_data_quality_summary
 from app.services.investor_case import build_investor_case
 from app.services.prefeed import get_package_or_raise
@@ -386,7 +387,8 @@ def generate_insight(
     transport: OpenRouterTransport | None = None,
 ) -> LlmInsight:
     settings = get_settings()
-    resolved_model = model_name or settings.openrouter_model
+    openrouter_settings = openrouter_runtime_settings(db)
+    resolved_model = model_name or str(openrouter_settings["model"] or settings.openrouter_model)
     prompt, resolved_plant_id, resolved_scenario_id, resolved_document_id = build_prompt(
         db,
         insight_type,
@@ -406,7 +408,7 @@ def generate_insight(
         model_name=resolved_model,
         prompt=prompt,
     )
-    resolved_api_key = (api_key if api_key is not None else settings.openrouter_api_key) or ""
+    resolved_api_key = (api_key if api_key is not None else openrouter_settings["api_key"]) or ""
     if not resolved_api_key.strip():
         failed = _mark_failed(db, record, "OpenRouter API key is not configured")
         raise LlmProviderError("OpenRouter API key is not configured", failed, status_code=503)
@@ -427,10 +429,11 @@ def generate_insight(
     headers = {
         "Authorization": f"Bearer {resolved_api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": settings.openrouter_site_url,
-        "X-OpenRouter-Title": settings.openrouter_app_name,
+        "HTTP-Referer": str(openrouter_settings["site_url"] or settings.openrouter_site_url),
+        "X-OpenRouter-Title": str(openrouter_settings["app_name"] or settings.openrouter_app_name),
     }
-    url = f"{settings.openrouter_base_url.rstrip('/')}/chat/completions"
+    base_url = str(openrouter_settings["base_url"] or settings.openrouter_base_url)
+    url = f"{base_url.rstrip('/')}/chat/completions"
 
     try:
         if transport is None:

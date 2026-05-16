@@ -3,8 +3,11 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.config import get_settings
 from app.models import ApplicationSetting
 
+
+OPENROUTER_SETTING_KEY = "openrouter_provider"
 
 DEFAULT_SETTINGS: list[dict[str, Any]] = [
     {
@@ -40,6 +43,31 @@ class SettingInputError(ValueError):
     pass
 
 
+def _masked_secret(value: str | None) -> str | None:
+    if not value:
+        return None
+    if len(value) <= 8:
+        return f"{value[:2]}***"
+    return f"{value[:4]}...{value[-4:]}"
+
+
+def _openrouter_defaults() -> dict[str, str | None]:
+    settings = get_settings()
+    return {
+        "api_key": settings.openrouter_api_key,
+        "base_url": settings.openrouter_base_url,
+        "model": settings.openrouter_model,
+        "site_url": settings.openrouter_site_url,
+        "app_name": settings.openrouter_app_name,
+    }
+
+
+def _string_or_default(value: Any, default: str) -> str:
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    return default
+
+
 def seed_default_settings(db: Session) -> list[ApplicationSetting]:
     records: list[ApplicationSetting] = []
     for row in DEFAULT_SETTINGS:
@@ -61,6 +89,7 @@ def list_settings(db: Session, category: str | None = None) -> list[ApplicationS
     query = select(ApplicationSetting)
     if category:
         query = query.where(ApplicationSetting.category == category)
+    query = query.where(ApplicationSetting.key != OPENROUTER_SETTING_KEY)
     return list(db.scalars(query.order_by(ApplicationSetting.category, ApplicationSetting.key)))
 
 
@@ -86,6 +115,10 @@ def validate_setting_value(key: str, value: dict[str, Any]) -> None:
         for item in value.values():
             if not isinstance(item, (int, float)) or isinstance(item, bool) or item < 0:
                 raise SettingInputError("default financial assumptions must be non-negative numbers")
+    if key == OPENROUTER_SETTING_KEY:
+        for field in ("api_key", "base_url", "model", "site_url", "app_name"):
+            if field in value and value[field] is not None and not isinstance(value[field], str):
+                raise SettingInputError(f"{field} must be a string")
 
 
 def update_setting(
@@ -106,3 +139,86 @@ def update_setting(
     db.commit()
     db.refresh(setting)
     return setting
+
+
+def openrouter_settings_read(db: Session) -> dict[str, str | bool | None]:
+    defaults = _openrouter_defaults()
+    record = get_setting(db, OPENROUTER_SETTING_KEY)
+    stored_value = record.value if record is not None else {}
+    stored_key = stored_value.get("api_key") if isinstance(stored_value.get("api_key"), str) else None
+    env_key = defaults["api_key"]
+    resolved_key = stored_key or env_key
+    api_key_source = "stored" if stored_key else "environment" if env_key else "missing"
+    return {
+        "has_api_key": bool(resolved_key),
+        "api_key_masked": _masked_secret(resolved_key),
+        "api_key_source": api_key_source,
+        "base_url": _string_or_default(stored_value.get("base_url"), str(defaults["base_url"])),
+        "model": _string_or_default(stored_value.get("model"), str(defaults["model"])),
+        "site_url": _string_or_default(stored_value.get("site_url"), str(defaults["site_url"])),
+        "app_name": _string_or_default(stored_value.get("app_name"), str(defaults["app_name"])),
+    }
+
+
+def openrouter_runtime_settings(db: Session) -> dict[str, str | None]:
+    defaults = _openrouter_defaults()
+    record = get_setting(db, OPENROUTER_SETTING_KEY)
+    stored_value = record.value if record is not None else {}
+    stored_key = stored_value.get("api_key") if isinstance(stored_value.get("api_key"), str) else None
+    return {
+        "api_key": stored_key or defaults["api_key"],
+        "base_url": _string_or_default(stored_value.get("base_url"), str(defaults["base_url"])),
+        "model": _string_or_default(stored_value.get("model"), str(defaults["model"])),
+        "site_url": _string_or_default(stored_value.get("site_url"), str(defaults["site_url"])),
+        "app_name": _string_or_default(stored_value.get("app_name"), str(defaults["app_name"])),
+    }
+
+
+def update_openrouter_settings(
+    db: Session,
+    *,
+    api_key: str | None = None,
+    clear_api_key: bool = False,
+    base_url: str | None = None,
+    model: str | None = None,
+    site_url: str | None = None,
+    app_name: str | None = None,
+) -> dict[str, str | bool | None]:
+    defaults = _openrouter_defaults()
+    record = get_setting(db, OPENROUTER_SETTING_KEY)
+    current_value = dict(record.value) if record is not None else {}
+
+    if clear_api_key:
+        current_value.pop("api_key", None)
+    elif api_key is not None and api_key.strip():
+        current_value["api_key"] = api_key.strip()
+
+    for field, value, default in (
+        ("base_url", base_url, defaults["base_url"]),
+        ("model", model, defaults["model"]),
+        ("site_url", site_url, defaults["site_url"]),
+        ("app_name", app_name, defaults["app_name"]),
+    ):
+        if value is not None:
+            stripped = value.strip()
+            current_value[field] = stripped or default
+
+    validate_setting_value(OPENROUTER_SETTING_KEY, current_value)
+
+    if record is None:
+        record = ApplicationSetting(
+            key=OPENROUTER_SETTING_KEY,
+            category="llm_provider",
+            value=current_value,
+            data_status="user_assumption",
+            confidence_level="medium",
+        )
+        db.add(record)
+    else:
+        record.value = current_value
+        record.data_status = "user_assumption"
+        record.confidence_level = "medium"
+
+    db.commit()
+    db.refresh(record)
+    return openrouter_settings_read(db)

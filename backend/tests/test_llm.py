@@ -142,6 +142,28 @@ def test_generate_insight_persists_prompt_response_and_usage(
     assert len(persisted) == 1
 
 
+def test_generate_insight_uses_stored_openrouter_key(
+    client: TestClient,
+    db_session: Session,
+) -> None:
+    _, scenario = _seed_phase3_outputs(client, db_session)
+    settings_response = client.put(
+        "/api/settings/openrouter/provider",
+        json={"api_key": "test-key", "model": "openai/gpt-5.2"},
+    )
+    assert settings_response.status_code == 200
+
+    insight = generate_insight(
+        db_session,
+        "investor_memo",
+        scenario_id=scenario.id,
+        transport=FakeOpenRouterTransport(),
+    )
+
+    assert insight.status == "completed"
+    assert insight.response_text == "Ringkasan eksekutif berbasis data tersimpan."
+
+
 def test_generation_endpoint_fails_cleanly_without_openrouter_key(
     client: TestClient,
     db_session: Session,

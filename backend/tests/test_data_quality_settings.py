@@ -96,6 +96,42 @@ def test_settings_api_seeds_defaults_and_updates_weights(client: TestClient) -> 
     assert "sum to 1.0" in invalid_response.json()["detail"]
 
 
+def test_openrouter_settings_mask_api_key_and_exclude_secret_from_generic_settings(client: TestClient) -> None:
+    initial_response = client.get("/api/settings/openrouter/provider")
+    assert initial_response.status_code == 200
+    assert initial_response.json()["api_key_source"] in {"missing", "environment"}
+
+    update_response = client.put(
+        "/api/settings/openrouter/provider",
+        json={
+            "api_key": "dummy-openrouter-key",
+            "model": "openai/gpt-5.2",
+            "base_url": "https://openrouter.ai/api/v1",
+            "site_url": "http://localhost:3000",
+            "app_name": "MECH WIZ AI Digital Twin",
+        },
+    )
+    assert update_response.status_code == 200
+    payload = update_response.json()
+    assert payload["has_api_key"] is True
+    assert payload["api_key_source"] == "stored"
+    assert payload["api_key_masked"] != "dummy-openrouter-key"
+    assert payload["model"] == "openai/gpt-5.2"
+
+    generic_response = client.get("/api/settings")
+    assert generic_response.status_code == 200
+    serialized = str(generic_response.json())
+    assert "openrouter_provider" not in serialized
+    assert "dummy-openrouter-key" not in serialized
+
+    hidden_response = client.get("/api/settings/openrouter_provider")
+    assert hidden_response.status_code == 404
+
+    clear_response = client.put("/api/settings/openrouter/provider", json={"clear_api_key": True})
+    assert clear_response.status_code == 200
+    assert clear_response.json()["api_key_source"] in {"missing", "environment"}
+
+
 def test_updated_scoring_weights_affect_scoring_recalculation(
     client: TestClient,
     db_session: Session,
