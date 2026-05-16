@@ -60,9 +60,19 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
 **Plans:** 3 plans
 
 Plans:
+**Wave 1**
 - [ ] 06-01: Pre-FEED package models, migration, schemas, seed/update safety, and document link schema.
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 06-02: Pre-FEED package REST APIs with package gap/confidence service and tests.
+
+**Wave 3** *(blocked on Wave 2 completion)*
 - [ ] 06-03: `/prefeed` package workspace shell with plant/scenario/package selection and linked document management.
+
+**Cross-cutting constraints:**
+- D-04: Existing Document records are reused; Phase 6 adds an association table rather than a new upload system.
+- D-05: Package document links include relationship-level document roles.
+- D-06: Document metadata and extracted text remain owned by the document layer.
 
 ### Phase 7: Cost & Vendor Proposal Engine
 
