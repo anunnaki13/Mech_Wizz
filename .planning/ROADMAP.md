@@ -12,7 +12,7 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 
 - [x] **Phase 1: MVP Spine & Unit Data** - Runnable app, database schema, seed data, and unit input workflows.
 - [x] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
-- [ ] **Phase 3: Strategy Dashboard & Ranking** - MapLibre opportunity heatmap, ranking, score breakdowns, KPI dashboard, and sensitivity visualization.
+- [x] **Phase 3: Strategy Dashboard & Ranking** - MapLibre opportunity heatmap, ranking, score breakdowns, KPI dashboard, and sensitivity visualization.
 - [ ] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
 - [ ] **Phase 5: LLM & Document Intelligence** - OpenRouter insights, prompt persistence, document upload, extraction, and document Q&A.
 
@@ -68,9 +68,9 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 03-01: Opportunity, readiness, confidence, composite, heatmap weight scoring, and ranking APIs.
-- [ ] 03-02: `/dashboard/map` MapLibre heatmap, unit markers, filters, ranking table, selected profile, and score breakdown UI.
-- [ ] 03-03: Sensitivity engine, sensitivity result persistence, tornado chart visualization, and map detail integration.
+- [x] 03-01: Opportunity, readiness, confidence, composite, heatmap weight scoring, and ranking APIs.
+- [x] 03-02: `/dashboard/map` MapLibre heatmap, unit markers, filters, ranking table, selected profile, and score breakdown UI.
+- [x] 03-03: Sensitivity engine, sensitivity result persistence, tornado chart visualization, and map detail integration.
 
 ### Phase 4: Investor Case & Data Quality
 **Goal:** Package the simulation into an investor-ready case while making assumptions, confidence, and data gaps visible.
@@ -117,6 +117,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. MVP Spine & Unit Data | 3/3 | Complete | 2026-05-16 |
 | 2. Scenario Simulation Engine | 3/3 | Complete | 2026-05-16 |
-| 3. Strategy Dashboard & Ranking | 0/3 | Not started | - |
+| 3. Strategy Dashboard & Ranking | 3/3 | Complete | 2026-05-16 |
 | 4. Investor Case & Data Quality | 0/3 | Not started | - |
 | 5. LLM & Document Intelligence | 0/3 | Not started | - |
