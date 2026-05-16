@@ -105,7 +105,7 @@ Plans:
 
 Plans:
 - [x] 05-01: OpenRouter service, prompt templates, response persistence, and LLM guardrails.
-- [ ] 05-02: Executive summary, data gap explanation, investor memo, and sensitivity explanation workflows in the UI.
+- [x] 05-02: Executive summary, data gap explanation, investor memo, and sensitivity explanation workflows in the UI.
 - [ ] 05-03: Document upload, extraction, repository view, and basic document Q&A.
 
 ## Progress
@@ -119,4 +119,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Scenario Simulation Engine | 3/3 | Complete | 2026-05-16 |
 | 3. Strategy Dashboard & Ranking | 3/3 | Complete | 2026-05-16 |
 | 4. Investor Case & Data Quality | 3/3 | Complete | 2026-05-16 |
-| 5. LLM & Document Intelligence | 1/3 | In progress | - |
+| 5. LLM & Document Intelligence | 2/3 | In progress | - |

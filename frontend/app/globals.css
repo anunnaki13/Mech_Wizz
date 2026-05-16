@@ -894,6 +894,69 @@ textarea {
   line-height: 1.4;
 }
 
+.insight-panel {
+  align-items: stretch;
+}
+
+.insight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.insight-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: 14px;
+  min-width: 0;
+}
+
+.insight-list {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.insight-list button {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+  text-align: left;
+}
+
+.insight-list button.active,
+.insight-list button:hover {
+  border-color: rgba(24, 199, 200, 0.72);
+  background: rgba(24, 199, 200, 0.08);
+}
+
+.insight-list span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.insight-output {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  min-height: 220px;
+  min-width: 0;
+  padding: 14px;
+}
+
+.insight-output p {
+  color: var(--text);
+  line-height: 1.55;
+  margin: 12px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .settings-workspace {
   display: grid;
   gap: 16px;
@@ -1006,6 +1069,7 @@ textarea {
   .setting-controls,
   .quality-controls,
   .quality-matrix,
+  .insight-layout,
   .roadmap-list,
   .thesis-flow,
   .result-grid,

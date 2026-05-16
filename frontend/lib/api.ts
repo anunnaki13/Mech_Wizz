@@ -3,6 +3,7 @@ import type { EmissionTest } from "@/types/emission-test";
 import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/financial-assumption";
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
 import type { InvestorCase } from "@/types/investor";
+import type { LlmGeneratePayload, LlmInsight } from "@/types/llm";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
@@ -29,7 +30,16 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> 
   });
 
   if (!response.ok) {
-    throw new Error("API request failed");
+    let message = "API request failed";
+    try {
+      const errorPayload = (await response.json()) as { detail?: unknown };
+      if (typeof errorPayload.detail === "string") {
+        message = errorPayload.detail;
+      }
+    } catch {
+      // Keep the generic message when the backend did not return JSON.
+    }
+    throw new Error(message);
   }
 
   if (response.status === 204) {
@@ -286,4 +296,61 @@ export async function getDataQualitySummary(params: {
       scenario_id: params.scenarioId,
     })}`,
   );
+}
+
+export async function getLlmInsights(params: {
+  scenarioId?: string;
+  plantId?: string;
+  documentId?: string;
+  insightType?: string;
+} = {}): Promise<LlmInsight[]> {
+  return apiFetch<LlmInsight[]>(
+    `/llm/insights${buildQuery({
+      scenario_id: params.scenarioId,
+      plant_id: params.plantId,
+      document_id: params.documentId,
+      insight_type: params.insightType,
+    })}`,
+  );
+}
+
+async function generateLlmInsight(path: string, payload: LlmGeneratePayload = {}): Promise<LlmInsight> {
+  return apiFetch<LlmInsight>(path, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function generateExecutiveSummary(
+  scenarioId: string,
+  payload: LlmGeneratePayload = {},
+): Promise<LlmInsight> {
+  return generateLlmInsight(`/llm/summary/${scenarioId}`, payload);
+}
+
+export async function generateInvestorMemo(
+  scenarioId: string,
+  payload: LlmGeneratePayload = {},
+): Promise<LlmInsight> {
+  return generateLlmInsight(`/llm/investor-memo/${scenarioId}`, payload);
+}
+
+export async function generateDataGapExplanation(params: {
+  plantId: string;
+  scenarioId?: string;
+  payload?: LlmGeneratePayload;
+}): Promise<LlmInsight> {
+  return generateLlmInsight(
+    `/llm/data-gap/${params.plantId}${buildQuery({
+      scenario_id: params.scenarioId,
+    })}`,
+    params.payload,
+  );
+}
+
+export async function generateSensitivityExplanation(
+  scenarioId: string,
+  payload: LlmGeneratePayload = {},
+): Promise<LlmInsight> {
+  return generateLlmInsight(`/llm/explain-sensitivity/${scenarioId}`, payload);
 }

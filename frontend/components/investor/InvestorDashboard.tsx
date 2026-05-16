@@ -3,6 +3,7 @@
 import { RefreshCw } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
+import { InvestorInsightsPanel } from "@/components/investor/InvestorInsightsPanel";
 import { getInvestorCase, getPlantScenarios, getPlants } from "@/lib/api";
 import type { InvestorCase } from "@/types/investor";
 import type { Plant } from "@/types/plant";
@@ -324,6 +325,8 @@ export function InvestorDashboard() {
             ))}
           </div>
         </div>
+
+        <InvestorInsightsPanel plantId={selectedPlantId} scenarioId={selectedScenarioId} />
       </section>
     </div>
   );
