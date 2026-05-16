@@ -51,6 +51,9 @@ import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
 import type { ApplicationSetting, ApplicationSettingPayload, DataQualitySummary } from "@/types/settings";
 import type {
+  EconomicZoneGeoJSON,
+  ExportCorridorGeoJSON,
+  PortGeoJSON,
   ScoringRecalculateResponse,
   UnitOpportunityGeoJSON,
   UnitProfile,
@@ -293,6 +296,50 @@ export async function getUnitOpportunityGeoJSON(params: {
 } = {}): Promise<UnitOpportunityGeoJSON> {
   return apiFetch<UnitOpportunityGeoJSON>(
     `/map/unit-opportunity${buildQuery({
+      scenario_id: params.scenarioId,
+      scheme: params.scheme,
+      region: params.region,
+      fuel_type: params.fuelType,
+      confidence: params.confidence,
+      opportunity_level: params.opportunityLevel,
+    })}`,
+  );
+}
+
+export async function getPortsGeoJSON(): Promise<PortGeoJSON> {
+  return apiFetch<PortGeoJSON>("/map/ports");
+}
+
+export async function getEconomicZonesGeoJSON(params: {
+  scenarioId?: string;
+  scheme?: string;
+  region?: string;
+  fuelType?: string;
+  confidence?: string;
+  opportunityLevel?: string;
+} = {}): Promise<EconomicZoneGeoJSON> {
+  return apiFetch<EconomicZoneGeoJSON>(
+    `/map/economic-zones${buildQuery({
+      scenario_id: params.scenarioId,
+      scheme: params.scheme,
+      region: params.region,
+      fuel_type: params.fuelType,
+      confidence: params.confidence,
+      opportunity_level: params.opportunityLevel,
+    })}`,
+  );
+}
+
+export async function getExportCorridorsGeoJSON(params: {
+  scenarioId?: string;
+  scheme?: string;
+  region?: string;
+  fuelType?: string;
+  confidence?: string;
+  opportunityLevel?: string;
+} = {}): Promise<ExportCorridorGeoJSON> {
+  return apiFetch<ExportCorridorGeoJSON>(
+    `/map/export-corridors${buildQuery({
       scenario_id: params.scenarioId,
       scheme: params.scheme,
       region: params.region,

@@ -4,8 +4,8 @@ milestone: v2.0
 milestone_name: Pre-FEED
 status: completed
 stopped_at: Completed Phase 9 Risk & Pre-FEED Decision Dashboard
-last_updated: "2026-05-16T12:55:35.949Z"
-last_activity: 2026-05-16
+last_updated: "2026-05-17T00:00:00.000+07:00"
+last_activity: 2026-05-17
 progress:
   total_phases: 4
   completed_phases: 4
@@ -141,6 +141,7 @@ None yet.
 |------|------|---------|
 | 2026-05-16 | Add Unit UI | Added `/units` New Unit form wired to `POST /api/plants/`; build and API create/delete verification passed. |
 | 2026-05-17 | PLN PLTU public screening import | Imported 96 PLN-related operating PLTU units from public GEM data, ran 96 simulations, created 97 scoring/map records, and defaulted map to all scenarios. |
+| 2026-05-17 | Port-aware map intelligence | Added NGA World Port Index ports, nearest-port scoring, economic zones, and Singapore export proxy corridors to the map; backend tests, frontend build, API checks, and state validation passed. |
 
 ## Session Continuity
 

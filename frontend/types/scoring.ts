@@ -116,12 +116,114 @@ export type UnitOpportunityFeature = {
     data_gap_count: number;
     opportunity_level: OpportunityLevel;
     status: string;
+    nearest_port_name: string | null;
+    nearest_port_country: string | null;
+    nearest_port_distance_km: number | null;
+    nearest_port_readiness_score: number;
+    nearest_port_readiness_label: string;
+    port_proximity_score: number;
+    economic_value_score: number;
+    economic_value_label: string;
+    port_data_source: string;
   };
 };
 
 export type UnitOpportunityGeoJSON = {
   type: "FeatureCollection";
   features: UnitOpportunityFeature[];
+};
+
+export type PortFeature = {
+  type: "Feature";
+  id: string;
+  geometry: {
+    type: "Point";
+    coordinates: [number, number];
+  };
+  properties: {
+    port_name: string;
+    country_name: string;
+    latitude: number;
+    longitude: number;
+    harbor_size: string | null;
+    harbor_type: string | null;
+    max_depth_m: number | null;
+    readiness_score: number;
+    readiness_label: string;
+    is_export_target: boolean;
+    source: string;
+    source_url: string;
+  } & Record<string, unknown>;
+};
+
+export type PortGeoJSON = {
+  type: "FeatureCollection";
+  features: PortFeature[];
+};
+
+export type EconomicZoneFeature = {
+  type: "Feature";
+  id: string;
+  geometry: {
+    type: "Point";
+    coordinates: [number, number];
+  };
+  properties: {
+    zone_name: string;
+    nearest_port_name: string;
+    nearest_port_country: string;
+    nearest_port_longitude: number;
+    nearest_port_latitude: number;
+    nearest_port_readiness_score: number;
+    nearest_port_readiness_label: string;
+    average_port_distance_km: number;
+    unit_count: number;
+    capacity_mw: number;
+    co2_tpy: number;
+    methanol_tpy: number;
+    average_composite_score: number;
+    economic_score: number;
+    economic_label: string;
+    zone_radius: number;
+    top_unit: string | null;
+    source: string;
+    source_url: string;
+  } & Record<string, unknown>;
+};
+
+export type EconomicZoneGeoJSON = {
+  type: "FeatureCollection";
+  features: EconomicZoneFeature[];
+};
+
+export type ExportCorridorFeature = {
+  type: "Feature";
+  id: string;
+  geometry: {
+    type: "LineString";
+    coordinates: [[number, number], [number, number]];
+  };
+  properties: {
+    source_port_name: string;
+    target_port_name: string;
+    target_country: string;
+    zone_name: string;
+    economic_score: number;
+    economic_label: string;
+    methanol_tpy: number;
+    unit_count: number;
+    straight_line_distance_km: number;
+    indicative_sea_distance_km: number;
+    route_type: string;
+    demand_reference: string;
+    demand_reference_url: string;
+    source: string;
+  } & Record<string, unknown>;
+};
+
+export type ExportCorridorGeoJSON = {
+  type: "FeatureCollection";
+  features: ExportCorridorFeature[];
 };
 
 export type UnitProfile = {
@@ -149,4 +251,7 @@ export type DashboardFilters = {
   showHeatmap: boolean;
   showMarkers: boolean;
   showLabels: boolean;
+  showEconomicZones: boolean;
+  showPorts: boolean;
+  showExportCorridors: boolean;
 };

@@ -93,8 +93,8 @@ class UnitRankingRow(BaseModel):
 
 
 class GeoJSONGeometry(BaseModel):
-    type: Literal["Point"]
-    coordinates: tuple[float, float]
+    type: Literal["Point", "LineString", "Polygon", "MultiPoint", "MultiLineString", "MultiPolygon"]
+    coordinates: Any
 
 
 class GeoJSONFeature(BaseModel):

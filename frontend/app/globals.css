@@ -488,7 +488,7 @@ textarea {
 
 .map-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 12px;
 }
 
@@ -502,7 +502,7 @@ textarea {
   border-radius: 8px;
   background: var(--panel);
   display: grid;
-  grid-template-columns: minmax(240px, 1.5fr) repeat(5, minmax(130px, 0.8fr)) minmax(260px, 1fr);
+  grid-template-columns: minmax(240px, 1.5fr) repeat(5, minmax(130px, 0.8fr)) minmax(340px, 1.2fr);
   gap: 12px;
   align-items: end;
   padding: 14px;
@@ -557,7 +557,7 @@ textarea {
 }
 
 .map-panel {
-  min-height: 520px;
+  min-height: 624px;
   position: relative;
 }
 
@@ -582,9 +582,111 @@ textarea {
 .map-canvas {
   border: 1px solid rgba(147, 169, 187, 0.22);
   border-radius: 8px;
-  height: 456px;
+  height: 560px;
   overflow: hidden;
   width: 100%;
+}
+
+.map-legend {
+  align-items: center;
+  background: rgba(7, 17, 31, 0.82);
+  border: 1px solid rgba(147, 169, 187, 0.24);
+  border-radius: 8px;
+  bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  left: 28px;
+  max-width: calc(100% - 56px);
+  padding: 8px 10px;
+  pointer-events: none;
+  position: absolute;
+}
+
+.map-legend span {
+  align-items: center;
+  color: #dbeafe;
+  display: inline-flex;
+  font-size: 12px;
+  gap: 6px;
+}
+
+.map-legend i {
+  border-radius: 999px;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+}
+
+.legend-zone {
+  background: #ff9f1c;
+  box-shadow: 0 0 0 5px rgba(255, 159, 28, 0.2);
+}
+
+.legend-port {
+  background: #38bdf8;
+  border: 1px solid #e8f2fb;
+}
+
+.legend-route {
+  background: #f6c85f;
+  height: 3px !important;
+  width: 18px !important;
+}
+
+.legend-unit {
+  background: #f43f5e;
+  border: 1px solid #fff7ed;
+}
+
+.maplibregl-popup-content {
+  background: #091524;
+  border: 1px solid rgba(147, 169, 187, 0.26);
+  border-radius: 8px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  color: var(--text);
+  padding: 0;
+}
+
+.maplibregl-popup-tip {
+  border-top-color: #091524 !important;
+}
+
+.map-popup {
+  display: grid;
+  gap: 8px;
+  min-width: 240px;
+  padding: 12px;
+}
+
+.map-popup h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.map-popup div {
+  align-items: baseline;
+  border-top: 1px solid rgba(147, 169, 187, 0.14);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding-top: 7px;
+}
+
+.map-popup span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.map-popup strong {
+  font-size: 12px;
+  text-align: right;
+}
+
+.map-popup p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
 }
 
 .map-empty-state {

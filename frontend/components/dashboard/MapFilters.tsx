@@ -153,6 +153,30 @@ export function MapFilters({
           />
           Label
         </label>
+        <label>
+          <input
+            checked={filters.showEconomicZones}
+            type="checkbox"
+            onChange={(event) => onChange(updateFilter(filters, { showEconomicZones: event.target.checked }))}
+          />
+          Economic Area
+        </label>
+        <label>
+          <input
+            checked={filters.showPorts}
+            type="checkbox"
+            onChange={(event) => onChange(updateFilter(filters, { showPorts: event.target.checked }))}
+          />
+          Ports
+        </label>
+        <label>
+          <input
+            checked={filters.showExportCorridors}
+            type="checkbox"
+            onChange={(event) => onChange(updateFilter(filters, { showExportCorridors: event.target.checked }))}
+          />
+          SG Route
+        </label>
       </div>
     </section>
   );

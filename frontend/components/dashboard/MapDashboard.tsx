@@ -11,6 +11,9 @@ import { SensitivityPanel } from "@/components/dashboard/SensitivityPanel";
 import {
   getPlantScenarios,
   getPlants,
+  getEconomicZonesGeoJSON,
+  getExportCorridorsGeoJSON,
+  getPortsGeoJSON,
   getUnitOpportunityGeoJSON,
   getUnitProfile,
   getUnitRanking,
@@ -18,7 +21,15 @@ import {
 } from "@/lib/api";
 import type { Plant } from "@/types/plant";
 import type { BusinessScenario } from "@/types/scenario";
-import type { DashboardFilters, UnitOpportunityGeoJSON, UnitProfile, UnitRankingRow } from "@/types/scoring";
+import type {
+  DashboardFilters,
+  EconomicZoneGeoJSON,
+  ExportCorridorGeoJSON,
+  PortGeoJSON,
+  UnitOpportunityGeoJSON,
+  UnitProfile,
+  UnitRankingRow,
+} from "@/types/scoring";
 
 type ScenarioOption = BusinessScenario & {
   plant_name: string;
@@ -26,6 +37,21 @@ type ScenarioOption = BusinessScenario & {
 };
 
 const emptyGeoJSON: UnitOpportunityGeoJSON = {
+  type: "FeatureCollection",
+  features: [],
+};
+
+const emptyPortGeoJSON: PortGeoJSON = {
+  type: "FeatureCollection",
+  features: [],
+};
+
+const emptyEconomicZoneGeoJSON: EconomicZoneGeoJSON = {
+  type: "FeatureCollection",
+  features: [],
+};
+
+const emptyExportCorridorGeoJSON: ExportCorridorGeoJSON = {
   type: "FeatureCollection",
   features: [],
 };
@@ -40,6 +66,9 @@ const initialFilters: DashboardFilters = {
   showHeatmap: true,
   showMarkers: true,
   showLabels: true,
+  showEconomicZones: true,
+  showPorts: true,
+  showExportCorridors: true,
 };
 
 function formatCompact(value: number | null | undefined, suffix = "") {
@@ -66,6 +95,10 @@ export function MapDashboard() {
   const [filters, setFilters] = useState<DashboardFilters>(initialFilters);
   const [ranking, setRanking] = useState<UnitRankingRow[]>([]);
   const [geojson, setGeojson] = useState<UnitOpportunityGeoJSON>(emptyGeoJSON);
+  const [portsGeoJSON, setPortsGeoJSON] = useState<PortGeoJSON>(emptyPortGeoJSON);
+  const [economicZonesGeoJSON, setEconomicZonesGeoJSON] = useState<EconomicZoneGeoJSON>(emptyEconomicZoneGeoJSON);
+  const [exportCorridorsGeoJSON, setExportCorridorsGeoJSON] =
+    useState<ExportCorridorGeoJSON>(emptyExportCorridorGeoJSON);
   const [selectedPlantId, setSelectedPlantId] = useState("");
   const [selectedProfile, setSelectedProfile] = useState<UnitProfile | null>(null);
   const [loadingReference, setLoadingReference] = useState(true);
@@ -82,19 +115,26 @@ export function MapDashboard() {
   const kpis = useMemo(() => {
     const totalCo2 = ranking.reduce((sum, row) => sum + (row.co2_tpy ?? 0), 0);
     const totalMethanol = ranking.reduce((sum, row) => sum + (row.methanol_tpy ?? 0), 0);
-    const highestOpportunity = ranking.reduce((max, row) => Math.max(max, row.opportunity_score), 0);
     const averageConfidence = ranking.length
       ? ranking.reduce((sum, row) => sum + row.confidence_score, 0) / ranking.length
       : 0;
+    const peakZone = economicZonesGeoJSON.features[0]?.properties;
+    const topCorridor = exportCorridorsGeoJSON.features[0]?.properties;
     return {
       bestCandidate: ranking[0] ? `${ranking[0].site_name} ${ranking[0].unit_name}` : "No ranked unit",
+      peakEconomicArea: peakZone ? `${peakZone.nearest_port_name} - ${peakZone.economic_label}` : "No zone",
+      mappedPorts: portsGeoJSON.features.length,
       totalCo2,
       totalMethanol,
-      highestOpportunity,
       averageConfidence,
-      recommendedScheme: ranking[0]?.recommended_scheme ?? "Not calculated",
+      singaporeCorridor: topCorridor
+        ? `${topCorridor.source_port_name} to ${topCorridor.target_port_name}, ${formatCompact(
+            topCorridor.indicative_sea_distance_km,
+            " km",
+          )}`
+        : "No route",
     };
-  }, [ranking]);
+  }, [economicZonesGeoJSON, exportCorridorsGeoJSON, portsGeoJSON, ranking]);
 
   const scenarioOptions = useMemo(
     () =>
@@ -132,12 +172,18 @@ export function MapDashboard() {
         confidence: nextFilters.confidence,
         opportunityLevel: nextFilters.opportunityLevel,
       };
-      const [rankingData, geojsonData] = await Promise.all([
+      const [rankingData, geojsonData, portsData, economicZonesData, exportCorridorsData] = await Promise.all([
         getUnitRanking(params),
         getUnitOpportunityGeoJSON(params),
+        getPortsGeoJSON(),
+        getEconomicZonesGeoJSON(params),
+        getExportCorridorsGeoJSON(params),
       ]);
       setRanking(rankingData);
       setGeojson(geojsonData);
+      setPortsGeoJSON(portsData);
+      setEconomicZonesGeoJSON(economicZonesData);
+      setExportCorridorsGeoJSON(exportCorridorsData);
 
       const targetPlantId =
         preferredPlantId && rankingData.some((row) => row.plant_id === preferredPlantId)
@@ -154,6 +200,9 @@ export function MapDashboard() {
       setErrorMessage("Map ranking data is not reachable.");
       setRanking([]);
       setGeojson(emptyGeoJSON);
+      setPortsGeoJSON(emptyPortGeoJSON);
+      setEconomicZonesGeoJSON(emptyEconomicZoneGeoJSON);
+      setExportCorridorsGeoJSON(emptyExportCorridorGeoJSON);
       setSelectedProfile(null);
     } finally {
       setLoadingDashboard(false);
@@ -274,6 +323,14 @@ export function MapDashboard() {
           <div className="metric-value">{kpis.bestCandidate}</div>
         </div>
         <div className="card">
+          <div className="metric-label">Peak Economic Area</div>
+          <div className="metric-value">{kpis.peakEconomicArea}</div>
+        </div>
+        <div className="card">
+          <div className="metric-label">WPI Ports Loaded</div>
+          <div className="metric-value">{kpis.mappedPorts.toLocaleString("en-US")}</div>
+        </div>
+        <div className="card">
           <div className="metric-label">Total CO2 Available</div>
           <div className="metric-value">{formatCompact(kpis.totalCo2, " t/y")}</div>
         </div>
@@ -282,16 +339,12 @@ export function MapDashboard() {
           <div className="metric-value">{formatCompact(kpis.totalMethanol, " t/y")}</div>
         </div>
         <div className="card">
-          <div className="metric-label">Highest Opportunity Score</div>
-          <div className="metric-value">{formatScore(kpis.highestOpportunity)}</div>
-        </div>
-        <div className="card">
           <div className="metric-label">Average Confidence Score</div>
           <div className="metric-value">{formatScore(kpis.averageConfidence)}</div>
         </div>
         <div className="card">
-          <div className="metric-label">Recommended Business Scheme</div>
-          <div className="metric-value">{kpis.recommendedScheme}</div>
+          <div className="metric-label">Singapore Export Proxy</div>
+          <div className="metric-value">{kpis.singaporeCorridor}</div>
         </div>
       </section>
 
@@ -307,12 +360,18 @@ export function MapDashboard() {
       <section className="map-workspace">
         <div className="map-main-stack">
           <OpportunityMap
+            economicZonesGeoJSON={economicZonesGeoJSON}
+            exportCorridorsGeoJSON={exportCorridorsGeoJSON}
             geojson={geojson}
             loading={loadingDashboard}
+            portsGeoJSON={portsGeoJSON}
             selectedPlantId={selectedRow?.plant_id ?? ""}
+            showEconomicZones={filters.showEconomicZones}
+            showExportCorridors={filters.showExportCorridors}
             showHeatmap={filters.showHeatmap}
             showLabels={filters.showLabels}
             showMarkers={filters.showMarkers}
+            showPorts={filters.showPorts}
             onSelectUnit={(plantId) => void handleSelectUnit(plantId)}
           />
           <RankingTable
