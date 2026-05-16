@@ -90,8 +90,13 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
+**Wave 1**
 - [ ] 07-01: CAPEX/OPEX line-item data model, aggregation service, and tests.
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 07-02: Vendor proposal model, gap detection, comparison service, and active package selection API.
+
+**Wave 3** *(blocked on Wave 2 completion)*
 - [ ] 07-03: Cost and vendor proposal UI with breakdown, comparison table, and active cost-basis workflow.
 
 ### Phase 8: Offtake & MRV Readiness
