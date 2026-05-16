@@ -25,6 +25,17 @@ import type {
   PreFeedVendorProposalPayload,
 } from "@/types/prefeed-cost";
 import type {
+  PreFeedDecisionDashboard,
+  PreFeedDecisionGate,
+  PreFeedDecisionGatePayload,
+  PreFeedDecisionGateSummary,
+  PreFeedDecisionNextAction,
+  PreFeedDecisionBlocker,
+  PreFeedRisk,
+  PreFeedRiskPayload,
+  PreFeedRiskSummary,
+} from "@/types/prefeed-decision";
+import type {
   PreFeedGap,
   PreFeedMrvAssumption,
   PreFeedMrvAssumptionPayload,
@@ -714,4 +725,84 @@ export async function getPreFeedMrvSummary(packageId: string): Promise<PreFeedMr
 
 export async function getPreFeedMrvGaps(packageId: string): Promise<PreFeedGap[]> {
   return apiFetch<PreFeedGap[]>(`/prefeed/packages/${packageId}/mrv-gaps`);
+}
+
+export async function listPreFeedRisks(packageId: string): Promise<PreFeedRisk[]> {
+  return apiFetch<PreFeedRisk[]>(`/prefeed/packages/${packageId}/risks`);
+}
+
+export async function createPreFeedRisk(
+  packageId: string,
+  payload: PreFeedRiskPayload,
+): Promise<PreFeedRisk> {
+  return apiFetch<PreFeedRisk>(`/prefeed/packages/${packageId}/risks`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedRisk(
+  riskId: string,
+  payload: Partial<PreFeedRiskPayload>,
+): Promise<PreFeedRisk> {
+  return apiFetch<PreFeedRisk>(`/prefeed/risks/${riskId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deletePreFeedRisk(riskId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/risks/${riskId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedRiskSummary(packageId: string): Promise<PreFeedRiskSummary> {
+  return apiFetch<PreFeedRiskSummary>(`/prefeed/packages/${packageId}/risk-summary`);
+}
+
+export async function listPreFeedDecisionGates(packageId: string): Promise<PreFeedDecisionGate[]> {
+  return apiFetch<PreFeedDecisionGate[]>(`/prefeed/packages/${packageId}/decision-gates`);
+}
+
+export async function createPreFeedDecisionGate(
+  packageId: string,
+  payload: PreFeedDecisionGatePayload,
+): Promise<PreFeedDecisionGate> {
+  return apiFetch<PreFeedDecisionGate>(`/prefeed/packages/${packageId}/decision-gates`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedDecisionGate(
+  gateId: string,
+  payload: Partial<PreFeedDecisionGatePayload>,
+): Promise<PreFeedDecisionGate> {
+  return apiFetch<PreFeedDecisionGate>(`/prefeed/decision-gates/${gateId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deletePreFeedDecisionGate(gateId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/decision-gates/${gateId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedDecisionGateSummary(packageId: string): Promise<PreFeedDecisionGateSummary> {
+  return apiFetch<PreFeedDecisionGateSummary>(`/prefeed/packages/${packageId}/decision-gate-summary`);
+}
+
+export async function getPreFeedDecisionBlockers(packageId: string): Promise<PreFeedDecisionBlocker[]> {
+  return apiFetch<PreFeedDecisionBlocker[]>(`/prefeed/packages/${packageId}/decision-blockers`);
+}
+
+export async function getPreFeedDecisionNextActions(packageId: string): Promise<PreFeedDecisionNextAction[]> {
+  return apiFetch<PreFeedDecisionNextAction[]>(`/prefeed/packages/${packageId}/decision-next-actions`);
+}
+
+export async function getPreFeedDecisionDashboard(packageId: string): Promise<PreFeedDecisionDashboard> {
+  return apiFetch<PreFeedDecisionDashboard>(`/prefeed/packages/${packageId}/decision-dashboard`);
 }

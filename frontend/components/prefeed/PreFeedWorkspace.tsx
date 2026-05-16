@@ -4,6 +4,7 @@ import { AlertTriangle, Archive, FileText, Link2, Plus, RefreshCw, Save, Trash2 
 import { useEffect, useMemo, useState } from "react";
 
 import { CostVendorWorkspace } from "@/components/prefeed/CostVendorWorkspace";
+import { DecisionDashboardWorkspace } from "@/components/prefeed/DecisionDashboardWorkspace";
 import { OfftakeMrvWorkspace } from "@/components/prefeed/OfftakeMrvWorkspace";
 import {
   archivePreFeedPackage,
@@ -624,6 +625,8 @@ export function PreFeedWorkspace() {
               <div className="muted">No documents linked to this package.</div>
             ) : null}
           </article>
+
+          <DecisionDashboardWorkspace packageId={selectedPackage?.id ?? null} />
 
           <CostVendorWorkspace
             packageId={selectedPackage?.id ?? null}

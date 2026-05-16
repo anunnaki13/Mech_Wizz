@@ -1333,6 +1333,146 @@ textarea {
   gap: 16px;
 }
 
+.decision-workspace {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.decision-empty {
+  padding: 4px 0;
+}
+
+.decision-panel {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.decision-overview-grid,
+.decision-snapshot-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.decision-overview-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.decision-snapshot-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.decision-overview-grid div,
+.decision-snapshot-grid div {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  min-height: 72px;
+  padding: 12px;
+}
+
+.decision-overview-grid span,
+.decision-snapshot-grid span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.decision-overview-grid strong,
+.decision-snapshot-grid strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.decision-two-column,
+.decision-grid {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.decision-list {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.decision-list h4 {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.decision-list-row {
+  background: #07111f;
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+}
+
+.decision-list-row strong,
+.decision-list-row p {
+  overflow-wrap: anywhere;
+}
+
+.decision-list-row span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.decision-list-row p {
+  color: #d6e4ee;
+  font-size: 13px;
+  margin: 0;
+}
+
+.decision-form {
+  align-items: end;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.decision-form-wide {
+  grid-column: span 2;
+}
+
+.decision-table {
+  min-width: 820px;
+}
+
+.severity-chip {
+  border: 1px solid rgba(147, 169, 187, 0.24);
+  border-radius: 999px;
+  color: #d6e4ee;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+}
+
+.severity-chip.low {
+  background: rgba(101, 214, 151, 0.12);
+  color: #9cf2bf;
+}
+
+.severity-chip.medium {
+  background: rgba(243, 191, 94, 0.12);
+  color: #f2cc7c;
+}
+
+.severity-chip.high,
+.severity-chip.critical {
+  background: rgba(244, 94, 94, 0.13);
+  color: #ff9a9a;
+}
+
 .settings-workspace {
   display: grid;
   gap: 16px;
@@ -1461,6 +1601,11 @@ textarea {
     .offtake-mrv-grid,
     .offtake-mrv-summary-grid,
     .market-form,
+    .decision-overview-grid,
+    .decision-snapshot-grid,
+    .decision-two-column,
+    .decision-grid,
+    .decision-form,
     .roadmap-list,
     .thesis-flow,
   .result-grid,
