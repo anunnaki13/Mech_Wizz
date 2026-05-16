@@ -5,6 +5,7 @@ from app.models.financial_assumption import FinancialAssumption
 from app.models.hydrogen_strategy import HydrogenStrategy
 from app.models.site_readiness import SiteReadiness
 from app.models.scenario_result import ScenarioResult
+from app.models.unit_scoring_result import UnitScoringResult
 
 __all__ = [
     "BusinessScenario",
@@ -14,4 +15,5 @@ __all__ = [
     "Plant",
     "ScenarioResult",
     "SiteReadiness",
+    "UnitScoringResult",
 ]

@@ -11,6 +11,8 @@ TENAYAN_PLANT = {
     "unit_name": "Unit 1-2",
     "province": "Riau",
     "city": "Pekanbaru",
+    "latitude": 0.5123,
+    "longitude": 101.5567,
     "capacity_mw": 220,
     "fuel_type": "coal",
     "status": "active",

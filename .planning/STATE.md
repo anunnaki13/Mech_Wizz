@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_planned
-stopped_at: Phase 3 planning complete
-last_updated: "2026-05-16T12:05:00+07:00"
-last_activity: 2026-05-16 -- Phase 03 planning artifacts created and ready for execution
+status: phase_in_progress
+stopped_at: Phase 3 plan 03-01 complete
+last_updated: "2026-05-16T12:21:04+07:00"
+last_activity: 2026-05-16 -- Phase 03 plan 01 backend scoring, ranking, GeoJSON, and profile APIs complete
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 15
-  completed_plans: 6
-  percent: 40
+  completed_plans: 7
+  percent: 47
 ---
 
 # Project State
@@ -26,17 +26,17 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 3 of 5 (Strategy Dashboard & Ranking)
-Plan: 0 of 3 in current phase
-Status: Planning complete; ready to execute Phase 3 plan 01
-Last activity: 2026-05-16 -- Phase 03 context, research, UI spec, and executable plans created
+Plan: 1 of 3 in current phase
+Status: Phase 3 backend scoring slice complete; ready to execute Phase 3 plan 02
+Last activity: 2026-05-16 -- Backend scoring, ranking, GeoJSON, and selected unit profile APIs implemented and verified
 
-Progress: [####------] 40%
+Progress: [#####-----] 47%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: n/a
 - Total execution time: n/a
 
@@ -46,14 +46,14 @@ Progress: [####------] 40%
 |-------|-------|-------|----------|
 | 1. MVP Spine & Unit Data | 3/3 | n/a | n/a |
 | 2. Scenario Simulation Engine | 3/3 | n/a | n/a |
-| 3. Strategy Dashboard & Ranking | 0/3 | n/a | n/a |
+| 3. Strategy Dashboard & Ranking | 1/3 | n/a | n/a |
 | 4. Investor Case & Data Quality | 0/3 | n/a | n/a |
 | 5. LLM & Document Intelligence | 0/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-02, 01-03, 02-01, 02-02, 02-03
-- Trend: Phase 2 completed in one execution session after planning
+- Last 5 plans: 01-03, 02-01, 02-02, 02-03, 03-01
+- Trend: Phase 3 backend map/scoring foundation completed after planning
 
 *Updated after each plan completion*
 
@@ -78,6 +78,8 @@ Recent decisions affecting current work:
 - Phase 02-02: IRR uses a local deterministic bisection implementation rather than adding `numpy_financial`.
 - Phase 02-03: Scenario simulation results persist backend-authored outputs with missing input metadata, assumption snapshot, calculation version, and confidence level.
 - Phase 02-03: Frontend displays stored result values and does not recalculate simulation outputs.
+- Phase 03-01: `UnitScoringResult` persists opportunity, readiness, confidence, composite, heatmap weight, rank, scoring version, data gap count, recommended scheme, and key bottleneck.
+- Phase 03-01: Ranking, GeoJSON, and selected unit profile APIs consume persisted backend results and expose `plant_id` as the v1 site/unit identifier.
 
 ### Pending Todos
 
@@ -96,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T12:05:00+07:00
-Stopped at: Phase 3 planning complete
-Resume file: .planning/phases/03-strategy-dashboard-ranking/03-CONTEXT.md
+Last session: 2026-05-16T12:21:04+07:00
+Stopped at: Phase 3 plan 03-01 complete
+Resume file: .planning/phases/03-strategy-dashboard-ranking/03-01-SUMMARY.md

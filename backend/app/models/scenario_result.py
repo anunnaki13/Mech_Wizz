@@ -30,3 +30,9 @@ class ScenarioResult(Base):
     created_at: Mapped[object] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     scenario: Mapped["BusinessScenario"] = relationship("BusinessScenario", back_populates="results")
+    unit_scoring_results: Mapped[list["UnitScoringResult"]] = relationship(
+        "UnitScoringResult",
+        back_populates="scenario_result",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )

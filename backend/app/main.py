@@ -7,7 +7,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import models  # noqa: F401
 from app.config import get_settings
 from app.database import Base, engine
-from app.routers import emission_tests, health, hydrogen_strategy, plants, scenarios, site_readiness
+from app.routers import (
+    emission_tests,
+    health,
+    hydrogen_strategy,
+    map,
+    plants,
+    scenarios,
+    scoring,
+    site_readiness,
+    unit_profiles,
+)
 
 
 @asynccontextmanager
@@ -34,5 +44,8 @@ api_router.include_router(emission_tests.router)
 api_router.include_router(site_readiness.router)
 api_router.include_router(hydrogen_strategy.router)
 api_router.include_router(scenarios.router)
+api_router.include_router(scoring.router)
+api_router.include_router(map.router)
+api_router.include_router(unit_profiles.router)
 
 app.include_router(api_router)
