@@ -2,6 +2,8 @@
 
 MECH WIZ AI Digital Twin is a PLN NP pre-feasibility screening cockpit for carbon-to-fuel pilot selection. It includes a FastAPI backend, PostgreSQL-ready persistence, deterministic scenario calculations, persisted scoring/sensitivity/data-quality outputs, OpenRouter-backed narrative insights, document upload/extraction/Q&A, and a Next.js dashboard.
 
+Detailed Indonesian implementation notes are available in [`docs/GSD_v2_PREFEED_DETAILED_EXPLANATION.md`](docs/GSD_v2_PREFEED_DETAILED_EXPLANATION.md).
+
 ## Local Development
 
 Copy the environment sample if you want local overrides:
