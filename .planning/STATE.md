@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_planned
-stopped_at: Phase 2 planning complete
-last_updated: "2026-05-16T11:31:21+07:00"
-last_activity: 2026-05-16 -- Phase 2 planning artifacts created and ready for execution
+status: executing
+stopped_at: Phase 2 plan 02-01 complete
+last_updated: "2026-05-16T11:43:21+07:00"
+last_activity: 2026-05-16 -- Phase 02 plan 01 complete; ready for calculation services
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 15
-  completed_plans: 3
-  percent: 20
+  completed_plans: 4
+  percent: 27
 ---
 
 # Project State
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** Phase 2 - Scenario Simulation Engine
+**Current focus:** Phase 02 — Scenario Simulation Engine
 
 ## Current Position
 
-Phase: 2 of 5 (Scenario Simulation Engine)
-Plan: 0 of 3 in current phase
-Status: Planning complete; ready to execute Phase 2 plan 01
-Last activity: 2026-05-16 -- Phase 02 context, research, UI spec, and executable plans created
+Phase: 02 (Scenario Simulation Engine) — EXECUTING
+Plan: 1 of 3 complete
+Status: Executing Phase 02; ready for plan 02-02
+Last activity: 2026-05-16 -- Scenario and financial assumption management implemented
 
-Progress: [##--------] 20%
+Progress: [###-------] 27%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: n/a
 - Total execution time: n/a
 
@@ -45,15 +45,15 @@ Progress: [##--------] 20%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. MVP Spine & Unit Data | 3/3 | n/a | n/a |
-| 2. Scenario Simulation Engine | 0/3 | n/a | n/a |
+| 2. Scenario Simulation Engine | 1/3 | n/a | n/a |
 | 3. Strategy Dashboard & Ranking | 0/3 | n/a | n/a |
 | 4. Investor Case & Data Quality | 0/3 | n/a | n/a |
 | 5. LLM & Document Intelligence | 0/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01, 01-02, 01-03
-- Trend: Phase 1 completed in one execution session
+- Last 5 plans: 01-01, 01-02, 01-03, 02-01
+- Trend: Phase 2 execution started with scenario management slice complete
 
 *Updated after each plan completion*
 
@@ -72,6 +72,8 @@ Recent decisions affecting current work:
 - Addendum import: Use MapLibre GL JS for Phase 3 map rendering unless technically blocked.
 - Addendum import: Use opportunity, readiness, and confidence scores as separate visible scores; composite score is 45/35/20 and heatmap weight includes economic return.
 - Addendum import: Keep Phase 1 `plants` table for v1 and adapt addendum `plant_sites` / `plant_units` concepts during Phase 3 planning rather than rewriting shipped Phase 1 schema.
+- Phase 02-01: Business scenarios remain tied directly to Phase 1 `plants`; one financial assumption record is upserted per scenario.
+- Phase 02-01: CAPEX fields remain nullable and assumption records carry `data_status` plus `confidence_level`.
 
 ### Pending Todos
 
@@ -90,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T04:47:59+07:00
-Stopped at: Heatmap map addendum imported
-Resume file: .planning/imports/2026-05-16-heatmap-map-addendum.md
+Last session: 2026-05-16T11:43:21+07:00
+Stopped at: Phase 2 plan 02-01 complete
+Resume file: .planning/phases/02-scenario-simulation-engine/02-01-SUMMARY.md

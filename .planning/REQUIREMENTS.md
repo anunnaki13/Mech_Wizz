@@ -20,8 +20,8 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 - [ ] **DATA-02**: System stores emission test records with stack dimensions, gas velocity, temperature, CO2, O2, moisture, SO2, NOx, particulate, Hg, compliance status, `data_status`, and `confidence_level`.
 - [ ] **DATA-03**: System stores site readiness records with land, port/logistics, road, water, power, utility, permit, social risk, `data_status`, and `confidence_level`.
 - [ ] **DATA-04**: System stores hydrogen strategy records with existing H2 availability, strategy, cost case, H2 cost, readiness score, `data_status`, and `confidence_level`.
-- [ ] **DATA-05**: System stores financial assumption records for methanol price, grey methanol price, hydrogen price, electricity price, carbon credit price, exchange rate, discount rate, tax rate, CAPEX fields, OPEX percentage, `data_status`, and `confidence_level`.
-- [ ] **DATA-06**: System stores business scenarios for WIZ Access, WIZ Align, and WIZ Augment with ownership, CAPEX responsibility, revenue model, `data_status`, and `confidence_level`.
+- [x] **DATA-05**: System stores financial assumption records for methanol price, grey methanol price, hydrogen price, electricity price, carbon credit price, exchange rate, discount rate, tax rate, CAPEX fields, OPEX percentage, `data_status`, and `confidence_level`.
+- [x] **DATA-06**: System stores business scenarios for WIZ Access, WIZ Align, and WIZ Augment with ownership, CAPEX responsibility, revenue model, `data_status`, and `confidence_level`.
 - [ ] **DATA-07**: System stores simulation results, sensitivity results, uploaded documents, and LLM insight records so outputs are reproducible and auditable.
 - [ ] **DATA-08**: System seeds PLTU Tenayan with the blueprint sample plant and chimney data.
 - [ ] **DATA-09**: System stores map/scoring output records with opportunity score, readiness score, confidence score, composite score, heatmap weight, rank position, data gap count, and scoring version.
@@ -32,8 +32,8 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 - [ ] **UNIT-02**: User can create, view, update, and delete emission test records for a plant.
 - [ ] **UNIT-03**: User can create, view, and update site readiness records for a plant.
 - [ ] **UNIT-04**: User can create, view, and update hydrogen strategy records for a plant.
-- [ ] **UNIT-05**: User can create, view, and update financial assumptions for a scenario.
-- [ ] **UNIT-06**: User can create, view, update, and delete business scenarios.
+- [x] **UNIT-05**: User can create, view, and update financial assumptions for a scenario.
+- [x] **UNIT-06**: User can create, view, update, and delete business scenarios.
 - [ ] **UNIT-07**: User can view a unit profile that combines plant, emission, readiness, hydrogen, assumptions, simulation outputs, confidence, and data gaps.
 
 ### Calculation Engine
@@ -154,8 +154,8 @@ Each v1 requirement maps to exactly one roadmap phase.
 | DATA-02 | Phase 1 | Pending |
 | DATA-03 | Phase 1 | Pending |
 | DATA-04 | Phase 1 | Pending |
-| DATA-05 | Phase 2 | Pending |
-| DATA-06 | Phase 2 | Pending |
+| DATA-05 | Phase 2 | Complete |
+| DATA-06 | Phase 2 | Complete |
 | DATA-07 | Phase 5 | Pending |
 | DATA-08 | Phase 1 | Pending |
 | DATA-09 | Phase 3 | Pending |
@@ -163,8 +163,8 @@ Each v1 requirement maps to exactly one roadmap phase.
 | UNIT-02 | Phase 1 | Pending |
 | UNIT-03 | Phase 1 | Pending |
 | UNIT-04 | Phase 1 | Pending |
-| UNIT-05 | Phase 2 | Pending |
-| UNIT-06 | Phase 2 | Pending |
+| UNIT-05 | Phase 2 | Complete |
+| UNIT-06 | Phase 2 | Complete |
 | UNIT-07 | Phase 3 | Pending |
 | CALC-01 | Phase 2 | Pending |
 | CALC-02 | Phase 2 | Pending |
@@ -223,4 +223,4 @@ Each v1 requirement maps to exactly one roadmap phase.
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after heatmap map addendum import*
+*Last updated: 2026-05-16 after Phase 2 plan 02-01 completion*

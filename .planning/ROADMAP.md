@@ -50,7 +50,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 02-01: Scenario and financial assumption APIs with frontend scenario management.
+- [x] 02-01: Scenario and financial assumption APIs with frontend scenario management.
 - [ ] 02-02: CO2, methanol, H2, revenue, LCOM, NPV, IRR, and payback calculation services with tests.
 - [ ] 02-03: Simulation endpoint, scenario result persistence, and frontend simulation result view.
 
@@ -116,7 +116,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. MVP Spine & Unit Data | 3/3 | Complete | 2026-05-16 |
-| 2. Scenario Simulation Engine | 0/3 | Not started | - |
+| 2. Scenario Simulation Engine | 1/3 | In progress | - |
 | 3. Strategy Dashboard & Ranking | 0/3 | Not started | - |
 | 4. Investor Case & Data Quality | 0/3 | Not started | - |
 | 5. LLM & Document Intelligence | 0/3 | Not started | - |
