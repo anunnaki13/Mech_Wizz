@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const navItems = [
   { label: "Dashboard", href: "/dashboard" },
+  { label: "Map", href: "/dashboard/map" },
   { label: "Units", href: "/units" },
   { label: "Scenarios", href: "/scenarios" },
   { label: "Investor", href: "/investor" },
@@ -30,8 +31,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <main className="main">
         <header className="topbar">
           <div>
-            <h1>Carbon-to-Fuel Decision Support</h1>
-            <span>Phase 1 data spine</span>
+            <h1>MECH WIZ Decision Cockpit</h1>
+            <span>Strategy, simulation, and data quality</span>
           </div>
           <span>Pre-feasibility workspace</span>
         </header>

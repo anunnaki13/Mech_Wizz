@@ -4,6 +4,12 @@ import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/fi
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
+import type {
+  ScoringRecalculateResponse,
+  UnitOpportunityGeoJSON,
+  UnitProfile,
+  UnitRankingRow,
+} from "@/types/scoring";
 import type { SiteReadiness, SiteReadinessPayload } from "@/types/site-readiness";
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
@@ -140,4 +146,76 @@ export async function getScenarioResults(scenarioId: string): Promise<ScenarioRe
 
 export async function getScenarioResult(resultId: string): Promise<ScenarioResult> {
   return apiFetch<ScenarioResult>(`/scenario-results/${resultId}`);
+}
+
+function buildQuery(params: Record<string, string | undefined | null>): string {
+  const query = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => {
+    if (value && value !== "all") {
+      query.set(key, value);
+    }
+  });
+  const queryString = query.toString();
+  return queryString ? `?${queryString}` : "";
+}
+
+export async function recalculateScoring(params: {
+  scenarioId?: string;
+  scheme?: string;
+}): Promise<ScoringRecalculateResponse> {
+  return apiFetch<ScoringRecalculateResponse>("/scoring/recalculate", {
+    method: "POST",
+    body: JSON.stringify({
+      scenario_id: params.scenarioId || null,
+      scheme: params.scheme && params.scheme !== "all" ? params.scheme : null,
+    }),
+  });
+}
+
+export async function getUnitRanking(params: {
+  scenarioId?: string;
+  scheme?: string;
+  region?: string;
+  fuelType?: string;
+  confidence?: string;
+  opportunityLevel?: string;
+} = {}): Promise<UnitRankingRow[]> {
+  return apiFetch<UnitRankingRow[]>(
+    `/scoring/unit-ranking${buildQuery({
+      scenario_id: params.scenarioId,
+      scheme: params.scheme,
+      region: params.region,
+      fuel_type: params.fuelType,
+      confidence: params.confidence,
+      opportunity_level: params.opportunityLevel,
+    })}`,
+  );
+}
+
+export async function getUnitOpportunityGeoJSON(params: {
+  scenarioId?: string;
+  scheme?: string;
+  region?: string;
+  fuelType?: string;
+  confidence?: string;
+  opportunityLevel?: string;
+} = {}): Promise<UnitOpportunityGeoJSON> {
+  return apiFetch<UnitOpportunityGeoJSON>(
+    `/map/unit-opportunity${buildQuery({
+      scenario_id: params.scenarioId,
+      scheme: params.scheme,
+      region: params.region,
+      fuel_type: params.fuelType,
+      confidence: params.confidence,
+      opportunity_level: params.opportunityLevel,
+    })}`,
+  );
+}
+
+export async function getUnitProfile(plantId: string, scenarioId?: string): Promise<UnitProfile> {
+  return apiFetch<UnitProfile>(
+    `/units/${plantId}/profile${buildQuery({
+      scenario_id: scenarioId,
+    })}`,
+  );
 }
