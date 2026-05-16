@@ -18,6 +18,7 @@ from app.routers import (
     plants,
     prefeed,
     prefeed_costs,
+    prefeed_decision,
     prefeed_market,
     scenarios,
     scoring,
@@ -62,6 +63,7 @@ api_router.include_router(llm.router)
 api_router.include_router(documents.router)
 api_router.include_router(prefeed.router)
 api_router.include_router(prefeed_costs.router)
+api_router.include_router(prefeed_decision.router)
 api_router.include_router(prefeed_market.router)
 
 app.include_router(api_router)

@@ -137,7 +137,7 @@ Plans:
   3. User can manage decision gate checklist items across technical, commercial, legal, land, grid, offtake, MRV, and financing readiness.
   4. `/prefeed` dashboard shows package confidence, CAPEX/OPEX breakdown, vendor comparison, offtake/MRV readiness, top risks, blockers, and next actions.
   5. User can generate a Pre-FEED committee brief through the existing LLM insight layer using only stored and deterministic data.
-**Plans:** 3 plans
+**Plans:** 0/3 plans executed
 
 Plans:
 **Wave 1**
@@ -168,4 +168,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 6. Pre-FEED Package Foundation | v2.0 | 3/3 | Complete | 2026-05-16 |
 | 7. Cost & Vendor Proposal Engine | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 8. Offtake & MRV Readiness | v2.0 | 3/3 | Complete    | 2026-05-16 |
-| 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 0/3 | Not started | - |
+| 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 0/3 | Planned    |  |
