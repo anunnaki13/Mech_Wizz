@@ -39,7 +39,7 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
 - [x] **Phase 7: Cost & Vendor Proposal Engine** - Detailed CAPEX/OPEX line items, proposal comparison, selected active cost basis, and scenario-ready aggregates. (completed 2026-05-16)
-- [ ] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness.
+- [x] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness. (completed 2026-05-16)
 - [ ] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation.
 
 ## Phase Details
@@ -112,7 +112,7 @@ Plans:
   3. Backend calculates scenario revenue using selected price deck/offtake assumptions through deterministic code.
   4. User can store MRV assumptions and view indicative carbon intensity/abatement values.
   5. System surfaces offtake and MRV readiness scores, carbon credit assumptions, and gaps.
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 **Wave 1**
@@ -122,7 +122,7 @@ Plans:
 - [x] 08-02: MRV assumptions, carbon intensity service, carbon credit eligibility tracking, and gap service.
 
 **Wave 3** *(blocked on Wave 2 completion)*
-- [ ] 08-03: Offtake and MRV readiness UI integrated into the Pre-FEED workspace.
+- [x] 08-03: Offtake and MRV readiness UI integrated into the Pre-FEED workspace.
 
 ### Phase 9: Risk & Pre-FEED Decision Dashboard
 
@@ -158,5 +158,5 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 5. LLM & Document Intelligence | v1.0 | 3/3 | Complete | 2026-05-16 |
 | 6. Pre-FEED Package Foundation | v2.0 | 3/3 | Complete | 2026-05-16 |
 | 7. Cost & Vendor Proposal Engine | v2.0 | 3/3 | Complete    | 2026-05-16 |
-| 8. Offtake & MRV Readiness | v2.0 | 2/3 | In Progress|  |
+| 8. Offtake & MRV Readiness | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 0/3 | Not started | - |

@@ -4,6 +4,7 @@ import { AlertTriangle, Archive, FileText, Link2, Plus, RefreshCw, Save, Trash2 
 import { useEffect, useMemo, useState } from "react";
 
 import { CostVendorWorkspace } from "@/components/prefeed/CostVendorWorkspace";
+import { OfftakeMrvWorkspace } from "@/components/prefeed/OfftakeMrvWorkspace";
 import {
   archivePreFeedPackage,
   createPreFeedPackage,
@@ -625,6 +626,12 @@ export function PreFeedWorkspace() {
           </article>
 
           <CostVendorWorkspace
+            packageId={selectedPackage?.id ?? null}
+            scenarioId={selectedScenarioId || null}
+            documents={availableDocuments}
+          />
+
+          <OfftakeMrvWorkspace
             packageId={selectedPackage?.id ?? null}
             scenarioId={selectedScenarioId || null}
             documents={availableDocuments}

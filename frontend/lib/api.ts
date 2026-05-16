@@ -24,6 +24,17 @@ import type {
   PreFeedVendorProposal,
   PreFeedVendorProposalPayload,
 } from "@/types/prefeed-cost";
+import type {
+  PreFeedGap,
+  PreFeedMrvAssumption,
+  PreFeedMrvAssumptionPayload,
+  PreFeedMrvSummary,
+  PreFeedOfftakeProspect,
+  PreFeedOfftakeProspectPayload,
+  PreFeedOfftakeSummary,
+  PreFeedPriceDeck,
+  PreFeedPriceDeckPayload,
+} from "@/types/prefeed-market";
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
@@ -591,4 +602,116 @@ export async function selectPreFeedActiveCostBasis(
     method: "POST",
     body: JSON.stringify(payload),
   });
+}
+
+export async function listPreFeedPriceDecks(packageId: string): Promise<PreFeedPriceDeck[]> {
+  return apiFetch<PreFeedPriceDeck[]>(`/prefeed/packages/${packageId}/price-decks`);
+}
+
+export async function createPreFeedPriceDeck(
+  packageId: string,
+  payload: PreFeedPriceDeckPayload,
+): Promise<PreFeedPriceDeck> {
+  return apiFetch<PreFeedPriceDeck>(`/prefeed/packages/${packageId}/price-decks`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedPriceDeck(
+  deckId: string,
+  payload: Partial<PreFeedPriceDeckPayload>,
+): Promise<PreFeedPriceDeck> {
+  return apiFetch<PreFeedPriceDeck>(`/prefeed/price-decks/${deckId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function activatePreFeedPriceDeck(deckId: string): Promise<PreFeedPriceDeck> {
+  return apiFetch<PreFeedPriceDeck>(`/prefeed/price-decks/${deckId}/activate`, {
+    method: "POST",
+  });
+}
+
+export async function deletePreFeedPriceDeck(deckId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/price-decks/${deckId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function listPreFeedOfftakeProspects(packageId: string): Promise<PreFeedOfftakeProspect[]> {
+  return apiFetch<PreFeedOfftakeProspect[]>(`/prefeed/packages/${packageId}/offtake-prospects`);
+}
+
+export async function createPreFeedOfftakeProspect(
+  packageId: string,
+  payload: PreFeedOfftakeProspectPayload,
+): Promise<PreFeedOfftakeProspect> {
+  return apiFetch<PreFeedOfftakeProspect>(`/prefeed/packages/${packageId}/offtake-prospects`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedOfftakeProspect(
+  prospectId: string,
+  payload: Partial<PreFeedOfftakeProspectPayload>,
+): Promise<PreFeedOfftakeProspect> {
+  return apiFetch<PreFeedOfftakeProspect>(`/prefeed/offtake-prospects/${prospectId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deletePreFeedOfftakeProspect(prospectId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/offtake-prospects/${prospectId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedOfftakeSummary(packageId: string): Promise<PreFeedOfftakeSummary> {
+  return apiFetch<PreFeedOfftakeSummary>(`/prefeed/packages/${packageId}/offtake-summary`);
+}
+
+export async function getPreFeedOfftakeGaps(packageId: string): Promise<PreFeedGap[]> {
+  return apiFetch<PreFeedGap[]>(`/prefeed/packages/${packageId}/offtake-gaps`);
+}
+
+export async function listPreFeedMrvAssumptions(packageId: string): Promise<PreFeedMrvAssumption[]> {
+  return apiFetch<PreFeedMrvAssumption[]>(`/prefeed/packages/${packageId}/mrv-assumptions`);
+}
+
+export async function createPreFeedMrvAssumption(
+  packageId: string,
+  payload: PreFeedMrvAssumptionPayload,
+): Promise<PreFeedMrvAssumption> {
+  return apiFetch<PreFeedMrvAssumption>(`/prefeed/packages/${packageId}/mrv-assumptions`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updatePreFeedMrvAssumption(
+  assumptionId: string,
+  payload: Partial<PreFeedMrvAssumptionPayload>,
+): Promise<PreFeedMrvAssumption> {
+  return apiFetch<PreFeedMrvAssumption>(`/prefeed/mrv-assumptions/${assumptionId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function deletePreFeedMrvAssumption(assumptionId: string): Promise<void> {
+  return apiFetch<void>(`/prefeed/mrv-assumptions/${assumptionId}`, {
+    method: "DELETE",
+  });
+}
+
+export async function getPreFeedMrvSummary(packageId: string): Promise<PreFeedMrvSummary> {
+  return apiFetch<PreFeedMrvSummary>(`/prefeed/packages/${packageId}/mrv-summary`);
+}
+
+export async function getPreFeedMrvGaps(packageId: string): Promise<PreFeedGap[]> {
+  return apiFetch<PreFeedGap[]>(`/prefeed/packages/${packageId}/mrv-gaps`);
 }

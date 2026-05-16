@@ -158,6 +158,32 @@ GET /api/prefeed/vendor-proposals/{proposal_id}/gaps
 GET/POST /api/prefeed/scenarios/{scenario_id}/active-cost-basis
 ```
 
+## Phase 8 Offtake & MRV Readiness
+
+The offtake and MRV workflow is:
+
+1. Open `/prefeed` and select a plant, scenario, and Pre-FEED package.
+2. Add a market price deck for methanol, carbon credits, electricity, hydrogen, exchange rate, escalation, `data_status`, and `confidence_level`.
+3. Add offtake prospects with counterparty, product, target volume, term, pricing basis, status, supporting document, and confidence.
+4. Add MRV assumptions for baseline emissions, captured CO2 accounting, carbon intensity, electricity source, methodology, verification, and carbon credit eligibility.
+5. Review backend-generated revenue, offtake readiness, carbon intensity, abatement, MRV readiness, and gap lists. The workflow does not overwrite scenario simulation history.
+
+Core API endpoints:
+
+```text
+GET/POST /api/prefeed/packages/{package_id}/price-decks
+PUT/DELETE /api/prefeed/price-decks/{deck_id}
+POST /api/prefeed/price-decks/{deck_id}/activate
+GET/POST /api/prefeed/packages/{package_id}/offtake-prospects
+PUT/DELETE /api/prefeed/offtake-prospects/{prospect_id}
+GET /api/prefeed/packages/{package_id}/offtake-summary
+GET /api/prefeed/packages/{package_id}/offtake-gaps
+GET/POST /api/prefeed/packages/{package_id}/mrv-assumptions
+PUT/DELETE /api/prefeed/mrv-assumptions/{assumption_id}
+GET /api/prefeed/packages/{package_id}/mrv-summary
+GET /api/prefeed/packages/{package_id}/mrv-gaps
+```
+
 ## Verification
 
 ```bash
@@ -170,5 +196,5 @@ For a local migration smoke test outside Docker:
 
 ```bash
 cd backend
-DATABASE_URL=sqlite:////tmp/mechwiz_phase7_full.db .venv/bin/alembic upgrade head
+DATABASE_URL=sqlite:////tmp/mechwiz_phase8_full.db .venv/bin/alembic upgrade head
 ```

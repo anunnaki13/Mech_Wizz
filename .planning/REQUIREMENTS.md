@@ -28,17 +28,17 @@ Requirements for the Pre-FEED milestone. Each requirement maps to exactly one ro
 
 ### Offtake And Market Readiness
 
-- [ ] **OFFT-01**: User can store offtake prospects, counterparties, product, target volume, term, pricing basis, status, and confidence.
-- [ ] **OFFT-02**: User can manage market price decks for methanol, carbon credits, electricity, hydrogen, exchange rate, and escalation assumptions.
-- [ ] **OFFT-03**: Backend can calculate scenario revenue using a selected price deck and offtake assumptions without using LLM calculations.
-- [ ] **OFFT-04**: System calculates an offtake readiness score from counterparty status, volume coverage, term certainty, pricing clarity, and document confidence.
+- [x] **OFFT-01**: User can store offtake prospects, counterparties, product, target volume, term, pricing basis, status, and confidence.
+- [x] **OFFT-02**: User can manage market price decks for methanol, carbon credits, electricity, hydrogen, exchange rate, and escalation assumptions.
+- [x] **OFFT-03**: Backend can calculate scenario revenue using a selected price deck and offtake assumptions without using LLM calculations.
+- [x] **OFFT-04**: System calculates an offtake readiness score from counterparty status, volume coverage, term certainty, pricing clarity, and document confidence.
 
 ### MRV And Carbon Market Readiness
 
-- [ ] **MRV-01**: User can store MRV assumptions for baseline emissions, captured CO2 accounting, methanol pathway, electricity source, carbon credit methodology, and verification status.
-- [ ] **MRV-02**: Backend can calculate indicative carbon intensity and abatement values from stored MRV assumptions and deterministic scenario outputs.
-- [ ] **MRV-03**: System identifies MRV data gaps and labels them by impact, priority, owner, and recommended follow-up.
-- [ ] **MRV-04**: System tracks carbon credit eligibility assumptions and separates confirmed data from benchmark or user assumptions.
+- [x] **MRV-01**: User can store MRV assumptions for baseline emissions, captured CO2 accounting, methanol pathway, electricity source, carbon credit methodology, and verification status.
+- [x] **MRV-02**: Backend can calculate indicative carbon intensity and abatement values from stored MRV assumptions and deterministic scenario outputs.
+- [x] **MRV-03**: System identifies MRV data gaps and labels them by impact, priority, owner, and recommended follow-up.
+- [x] **MRV-04**: System tracks carbon credit eligibility assumptions and separates confirmed data from benchmark or user assumptions.
 
 ### Risk Register And Decision Gates
 
@@ -108,14 +108,14 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | VEND-02 | Phase 7 | Complete |
 | VEND-03 | Phase 7 | Complete |
 | VEND-04 | Phase 7 | Complete |
-| OFFT-01 | Phase 8 | Pending |
-| OFFT-02 | Phase 8 | Pending |
-| OFFT-03 | Phase 8 | Pending |
-| OFFT-04 | Phase 8 | Pending |
-| MRV-01 | Phase 8 | Pending |
-| MRV-02 | Phase 8 | Pending |
-| MRV-03 | Phase 8 | Pending |
-| MRV-04 | Phase 8 | Pending |
+| OFFT-01 | Phase 8 | Complete |
+| OFFT-02 | Phase 8 | Complete |
+| OFFT-03 | Phase 8 | Complete |
+| OFFT-04 | Phase 8 | Complete |
+| MRV-01 | Phase 8 | Complete |
+| MRV-02 | Phase 8 | Complete |
+| MRV-03 | Phase 8 | Complete |
+| MRV-04 | Phase 8 | Complete |
 | RISK-01 | Phase 9 | Pending |
 | RISK-02 | Phase 9 | Pending |
 | RISK-03 | Phase 9 | Pending |
