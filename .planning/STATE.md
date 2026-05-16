@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 plan 02-01 complete
-last_updated: "2026-05-16T11:43:21+07:00"
-last_activity: 2026-05-16 -- Phase 02 plan 01 complete; ready for calculation services
+stopped_at: Phase 2 plan 02-02 complete
+last_updated: "2026-05-16T11:49:03+07:00"
+last_activity: 2026-05-16 -- Phase 02 plan 02 complete; ready for simulation persistence
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 15
-  completed_plans: 4
-  percent: 27
+  completed_plans: 5
+  percent: 33
 ---
 
 # Project State
@@ -26,17 +26,17 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 ## Current Position
 
 Phase: 02 (Scenario Simulation Engine) — EXECUTING
-Plan: 1 of 3 complete
-Status: Executing Phase 02; ready for plan 02-02
-Last activity: 2026-05-16 -- Scenario and financial assumption management implemented
+Plan: 2 of 3 complete
+Status: Executing Phase 02; ready for plan 02-03
+Last activity: 2026-05-16 -- Deterministic calculation services implemented
 
-Progress: [###-------] 27%
+Progress: [###-------] 33%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: n/a
 - Total execution time: n/a
 
@@ -45,15 +45,15 @@ Progress: [###-------] 27%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. MVP Spine & Unit Data | 3/3 | n/a | n/a |
-| 2. Scenario Simulation Engine | 1/3 | n/a | n/a |
+| 2. Scenario Simulation Engine | 2/3 | n/a | n/a |
 | 3. Strategy Dashboard & Ranking | 0/3 | n/a | n/a |
 | 4. Investor Case & Data Quality | 0/3 | n/a | n/a |
 | 5. LLM & Document Intelligence | 0/3 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01, 01-02, 01-03, 02-01
-- Trend: Phase 2 execution started with scenario management slice complete
+- Last 5 plans: 01-01, 01-02, 01-03, 02-01, 02-02
+- Trend: Phase 2 calculation services complete; simulation persistence remains
 
 *Updated after each plan completion*
 
@@ -74,6 +74,8 @@ Recent decisions affecting current work:
 - Addendum import: Keep Phase 1 `plants` table for v1 and adapt addendum `plant_sites` / `plant_units` concepts during Phase 3 planning rather than rewriting shipped Phase 1 schema.
 - Phase 02-01: Business scenarios remain tied directly to Phase 1 `plants`; one financial assumption record is upserted per scenario.
 - Phase 02-01: CAPEX fields remain nullable and assumption records carry `data_status` plus `confidence_level`.
+- Phase 02-02: Calculation services are pure backend functions; missing calculability returns `None`, invalid physical inputs raise `ValueError`.
+- Phase 02-02: IRR uses a local deterministic bisection implementation rather than adding `numpy_financial`.
 
 ### Pending Todos
 
@@ -92,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T11:43:21+07:00
-Stopped at: Phase 2 plan 02-01 complete
-Resume file: .planning/phases/02-scenario-simulation-engine/02-01-SUMMARY.md
+Last session: 2026-05-16T11:49:03+07:00
+Stopped at: Phase 2 plan 02-02 complete
+Resume file: .planning/phases/02-scenario-simulation-engine/02-02-SUMMARY.md

@@ -38,15 +38,15 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 
 ### Calculation Engine
 
-- [ ] **CALC-01**: Backend calculates stack area from stack diameter.
-- [ ] **CALC-02**: Backend calculates normalized gas flow from velocity, stack area, and flue gas temperature.
-- [ ] **CALC-03**: Backend calculates wet-basis CO2 fraction from dry CO2 percentage and moisture.
-- [ ] **CALC-04**: Backend calculates CO2 kg/s, CO2 ton/day, and CO2 ton/year.
-- [ ] **CALC-05**: Backend calculates captured CO2 and vented CO2 from total CO2 and capture rate.
-- [ ] **CALC-06**: Backend calculates theoretical and actual e-methanol production from captured CO2 and process efficiency.
-- [ ] **CALC-07**: Backend calculates H2 requirement and indicative electrolyzer size.
-- [ ] **CALC-08**: Backend calculates gross revenue from methanol revenue, carbon credit revenue, and asset revenue.
-- [ ] **CALC-09**: Backend calculates indicative LCOM, NPV, IRR, and payback period.
+- [x] **CALC-01**: Backend calculates stack area from stack diameter.
+- [x] **CALC-02**: Backend calculates normalized gas flow from velocity, stack area, and flue gas temperature.
+- [x] **CALC-03**: Backend calculates wet-basis CO2 fraction from dry CO2 percentage and moisture.
+- [x] **CALC-04**: Backend calculates CO2 kg/s, CO2 ton/day, and CO2 ton/year.
+- [x] **CALC-05**: Backend calculates captured CO2 and vented CO2 from total CO2 and capture rate.
+- [x] **CALC-06**: Backend calculates theoretical and actual e-methanol production from captured CO2 and process efficiency.
+- [x] **CALC-07**: Backend calculates H2 requirement and indicative electrolyzer size.
+- [x] **CALC-08**: Backend calculates gross revenue from methanol revenue, carbon credit revenue, and asset revenue.
+- [x] **CALC-09**: Backend calculates indicative LCOM, NPV, IRR, and payback period.
 - [ ] **CALC-10**: Backend persists scenario results and can return them by scenario ID.
 
 ### Scoring And Ranking
@@ -166,15 +166,15 @@ Each v1 requirement maps to exactly one roadmap phase.
 | UNIT-05 | Phase 2 | Complete |
 | UNIT-06 | Phase 2 | Complete |
 | UNIT-07 | Phase 3 | Pending |
-| CALC-01 | Phase 2 | Pending |
-| CALC-02 | Phase 2 | Pending |
-| CALC-03 | Phase 2 | Pending |
-| CALC-04 | Phase 2 | Pending |
-| CALC-05 | Phase 2 | Pending |
-| CALC-06 | Phase 2 | Pending |
-| CALC-07 | Phase 2 | Pending |
-| CALC-08 | Phase 2 | Pending |
-| CALC-09 | Phase 2 | Pending |
+| CALC-01 | Phase 2 | Complete |
+| CALC-02 | Phase 2 | Complete |
+| CALC-03 | Phase 2 | Complete |
+| CALC-04 | Phase 2 | Complete |
+| CALC-05 | Phase 2 | Complete |
+| CALC-06 | Phase 2 | Complete |
+| CALC-07 | Phase 2 | Complete |
+| CALC-08 | Phase 2 | Complete |
+| CALC-09 | Phase 2 | Complete |
 | CALC-10 | Phase 2 | Pending |
 | SCORE-01 | Phase 3 | Pending |
 | SCORE-02 | Phase 3 | Pending |
@@ -223,4 +223,4 @@ Each v1 requirement maps to exactly one roadmap phase.
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after Phase 2 plan 02-01 completion*
+*Last updated: 2026-05-16 after Phase 2 plan 02-02 completion*
