@@ -4,13 +4,15 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models import BusinessScenario, FinancialAssumption, Plant
+from app.models import BusinessScenario, FinancialAssumption, Plant, ScenarioResult
 from app.schemas.business_scenario import BusinessScenarioCreate, BusinessScenarioRead, BusinessScenarioUpdate
 from app.schemas.financial_assumption import (
     FinancialAssumptionCreate,
     FinancialAssumptionRead,
     FinancialAssumptionUpdate,
 )
+from app.schemas.scenario_result import ScenarioResultRead
+from app.services.scenario_simulation import SimulationInputError, run_scenario_simulation
 
 
 router = APIRouter(tags=["scenarios"])
@@ -32,6 +34,13 @@ def get_scenario_or_404(scenario_id: str, db: Session) -> BusinessScenario:
 
 def get_financial_assumption(scenario_id: str, db: Session) -> FinancialAssumption | None:
     return db.scalar(select(FinancialAssumption).where(FinancialAssumption.scenario_id == scenario_id))
+
+
+def get_scenario_result_or_404(result_id: str, db: Session) -> ScenarioResult:
+    result = db.get(ScenarioResult, result_id)
+    if result is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Scenario result not found")
+    return result
 
 
 @router.get("/plants/{plant_id}/scenarios", response_model=list[BusinessScenarioRead])
@@ -147,3 +156,31 @@ def upsert_scenario_financial_assumption(
     db.commit()
     db.refresh(record)
     return record
+
+
+@router.post("/scenarios/{scenario_id}/simulate", response_model=ScenarioResultRead)
+def simulate_scenario(scenario_id: str, db: Session = Depends(get_db)) -> ScenarioResult:
+    get_scenario_or_404(scenario_id, db)
+    try:
+        return run_scenario_simulation(db, scenario_id)
+    except SimulationInputError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
+
+@router.get("/scenarios/{scenario_id}/results", response_model=list[ScenarioResultRead])
+def list_scenario_results(scenario_id: str, db: Session = Depends(get_db)) -> list[ScenarioResult]:
+    get_scenario_or_404(scenario_id, db)
+    return list(
+        db.scalars(
+            select(ScenarioResult)
+            .where(ScenarioResult.scenario_id == scenario_id)
+            .order_by(ScenarioResult.created_at.desc(), ScenarioResult.id.desc())
+        )
+    )
+
+
+@router.get("/scenario-results/{result_id}", response_model=ScenarioResultRead)
+def read_scenario_result(result_id: str, db: Session = Depends(get_db)) -> ScenarioResult:
+    return get_scenario_result_or_404(result_id, db)

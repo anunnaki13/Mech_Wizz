@@ -38,3 +38,9 @@ class BusinessScenario(Base):
         passive_deletes=True,
         uselist=False,
     )
+    results: Mapped[list["ScenarioResult"]] = relationship(
+        "ScenarioResult",
+        back_populates="scenario",
+        cascade="all, delete-orphan",
+        passive_deletes=True,
+    )

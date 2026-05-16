@@ -7,6 +7,7 @@ from app.schemas.financial_assumption import (
 )
 from app.schemas.hydrogen_strategy import HydrogenStrategyCreate, HydrogenStrategyRead, HydrogenStrategyUpdate
 from app.schemas.plant import PlantCreate, PlantRead, PlantUpdate
+from app.schemas.scenario_result import ScenarioResultRead
 from app.schemas.site_readiness import SiteReadinessCreate, SiteReadinessRead, SiteReadinessUpdate
 
 __all__ = [
@@ -25,6 +26,7 @@ __all__ = [
     "PlantCreate",
     "PlantRead",
     "PlantUpdate",
+    "ScenarioResultRead",
     "SiteReadinessCreate",
     "SiteReadinessRead",
     "SiteReadinessUpdate",
