@@ -11,7 +11,7 @@ The v1.0 MVP builds a usable pre-feasibility simulator in five vertical slices. 
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 1: MVP Spine & Unit Data** - Runnable app, database schema, seed data, and unit input workflows.
-- [ ] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
+- [x] **Phase 2: Scenario Simulation Engine** - Deterministic CO2, methanol, H2, revenue, and financial calculations.
 - [ ] **Phase 3: Strategy Dashboard & Ranking** - MapLibre opportunity heatmap, ranking, score breakdowns, KPI dashboard, and sensitivity visualization.
 - [ ] **Phase 4: Investor Case & Data Quality** - Investor dashboard, assumptions, confidence labels, and data gap engine.
 - [ ] **Phase 5: LLM & Document Intelligence** - OpenRouter insights, prompt persistence, document upload, extraction, and document Q&A.
@@ -52,7 +52,7 @@ Plans:
 Plans:
 - [x] 02-01: Scenario and financial assumption APIs with frontend scenario management.
 - [x] 02-02: CO2, methanol, H2, revenue, LCOM, NPV, IRR, and payback calculation services with tests.
-- [ ] 02-03: Simulation endpoint, scenario result persistence, and frontend simulation result view.
+- [x] 02-03: Simulation endpoint, scenario result persistence, and frontend simulation result view.
 
 ### Phase 3: Strategy Dashboard & Ranking
 **Goal:** Turn calculation results into a Map & Heatmap Intelligence Layer for site selection, ranking, score breakdowns, KPIs, and sensitivity outputs.
@@ -116,7 +116,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. MVP Spine & Unit Data | 3/3 | Complete | 2026-05-16 |
-| 2. Scenario Simulation Engine | 2/3 | In progress | - |
+| 2. Scenario Simulation Engine | 3/3 | Complete | 2026-05-16 |
 | 3. Strategy Dashboard & Ranking | 0/3 | Not started | - |
 | 4. Investor Case & Data Quality | 0/3 | Not started | - |
 | 5. LLM & Document Intelligence | 0/3 | Not started | - |

@@ -47,7 +47,7 @@ Requirements for the initial MVP. Each requirement maps to exactly one roadmap p
 - [x] **CALC-07**: Backend calculates H2 requirement and indicative electrolyzer size.
 - [x] **CALC-08**: Backend calculates gross revenue from methanol revenue, carbon credit revenue, and asset revenue.
 - [x] **CALC-09**: Backend calculates indicative LCOM, NPV, IRR, and payback period.
-- [ ] **CALC-10**: Backend persists scenario results and can return them by scenario ID.
+- [x] **CALC-10**: Backend persists scenario results and can return them by scenario ID.
 
 ### Scoring And Ranking
 
@@ -175,7 +175,7 @@ Each v1 requirement maps to exactly one roadmap phase.
 | CALC-07 | Phase 2 | Complete |
 | CALC-08 | Phase 2 | Complete |
 | CALC-09 | Phase 2 | Complete |
-| CALC-10 | Phase 2 | Pending |
+| CALC-10 | Phase 2 | Complete |
 | SCORE-01 | Phase 3 | Pending |
 | SCORE-02 | Phase 3 | Pending |
 | SCORE-03 | Phase 3 | Pending |
@@ -223,4 +223,4 @@ Each v1 requirement maps to exactly one roadmap phase.
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after Phase 2 plan 02-02 completion*
+*Last updated: 2026-05-16 after Phase 2 completion*
