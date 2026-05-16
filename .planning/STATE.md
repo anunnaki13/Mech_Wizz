@@ -143,6 +143,7 @@ None yet.
 | 2026-05-17 | PLN PLTU public screening import | Imported 96 PLN-related operating PLTU units from public GEM data, ran 96 simulations, created 97 scoring/map records, and defaulted map to all scenarios. |
 | 2026-05-17 | Port-aware map intelligence | Added NGA World Port Index ports, nearest-port scoring, economic zones, and Singapore export proxy corridors to the map; backend tests, frontend build, API checks, and state validation passed. |
 | 2026-05-17 | Sensitivity and OpenRouter settings | Replaced the placeholder sensitivity page with a runnable workspace and added masked OpenRouter API key management in Settings; backend tests, frontend build, API checks, and state validation passed. |
+| 2026-05-17 | README module guide | Expanded README into a detailed Indonesian guide explaining each module, required inputs, backend calculations, outputs, interpretation, data confidence, APIs, and limitations. |
 
 ## Session Continuity
 
