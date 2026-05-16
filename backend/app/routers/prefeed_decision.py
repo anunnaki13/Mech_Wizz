@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
+from app.schemas.llm import LlmGenerateRequest, LlmInsightRead
 from app.schemas.pre_feed_decision import (
     PreFeedDecisionBlockerRead,
     PreFeedDecisionDashboardRead,
@@ -15,6 +16,7 @@ from app.schemas.pre_feed_decision import (
     PreFeedRiskSummaryRead,
     PreFeedRiskUpdate,
 )
+from app.services.llm import LlmInputError, LlmProviderError, generate_insight
 from app.services.prefeed_decision import (
     PreFeedDecisionInputError,
     build_decision_blockers,
@@ -158,3 +160,24 @@ def read_decision_dashboard(package_id: str, db: Session = Depends(get_db)) -> d
         return build_prefeed_decision_dashboard(db, package_id)
     except PreFeedDecisionInputError as exc:
         raise _bad_request(exc) from exc
+
+
+@router.post("/packages/{package_id}/committee-brief", response_model=LlmInsightRead)
+def generate_prefeed_committee_brief(
+    package_id: str,
+    payload: LlmGenerateRequest | None = None,
+    db: Session = Depends(get_db),
+):
+    try:
+        return generate_insight(
+            db,
+            "prefeed_committee_brief",
+            package_id=package_id,
+            model_name=payload.model_name if payload else None,
+        )
+    except PreFeedDecisionInputError as exc:
+        raise _bad_request(exc) from exc
+    except LlmInputError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except LlmProviderError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc

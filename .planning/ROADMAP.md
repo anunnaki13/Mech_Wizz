@@ -40,7 +40,7 @@ The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED de
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
 - [x] **Phase 7: Cost & Vendor Proposal Engine** - Detailed CAPEX/OPEX line items, proposal comparison, selected active cost basis, and scenario-ready aggregates. (completed 2026-05-16)
 - [x] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness. (completed 2026-05-16)
-- [ ] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation.
+- [x] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation. (completed 2026-05-16)
 
 ## Phase Details
 
@@ -137,17 +137,17 @@ Plans:
   3. User can manage decision gate checklist items across technical, commercial, legal, land, grid, offtake, MRV, and financing readiness.
   4. `/prefeed` dashboard shows package confidence, CAPEX/OPEX breakdown, vendor comparison, offtake/MRV readiness, top risks, blockers, and next actions.
   5. User can generate a Pre-FEED committee brief through the existing LLM insight layer using only stored and deterministic data.
-**Plans:** 1/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 **Wave 1**
 - [x] 09-01: Risk register, decision gate models/APIs, blocker summary service, and tests.
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 09-02: Pre-FEED decision dashboard panels and integrated package/cost/vendor/offtake/MRV/risk view.
+- [x] 09-02: Pre-FEED decision dashboard panels and integrated package/cost/vendor/offtake/MRV/risk view.
 
 **Wave 3** *(blocked on Wave 2 completion)*
-- [ ] 09-03: Pre-FEED committee brief LLM workflow, final v2.0 verification, and review artifacts.
+- [x] 09-03: Pre-FEED committee brief LLM workflow, final v2.0 verification, and review artifacts.
 
 **Cross-cutting constraints:**
 - D-11: Blockers are generated deterministically from risks, gates, gaps, and missing active package assumptions.
@@ -168,4 +168,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 6. Pre-FEED Package Foundation | v2.0 | 3/3 | Complete | 2026-05-16 |
 | 7. Cost & Vendor Proposal Engine | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 8. Offtake & MRV Readiness | v2.0 | 3/3 | Complete    | 2026-05-16 |
-| 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 1/3 | In Progress|  |
+| 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 3/3 | Complete    | 2026-05-16 |

@@ -42,18 +42,18 @@ Requirements for the Pre-FEED milestone. Each requirement maps to exactly one ro
 
 ### Risk Register And Decision Gates
 
-- [ ] **RISK-01**: User can create and manage a detailed risk register with category, risk statement, likelihood, impact, severity, mitigation, owner, due date, and status.
-- [ ] **RISK-02**: Backend can summarize top risks and calculate risk severity distribution for the selected plant/scenario/package.
-- [ ] **RISK-03**: User can manage Pre-FEED decision gate checklist items for technical, commercial, legal, land, grid, offtake, MRV, and financing readiness.
-- [ ] **RISK-04**: System identifies decision blockers and required next actions before investment committee review.
+- [x] **RISK-01**: User can create and manage a detailed risk register with category, risk statement, likelihood, impact, severity, mitigation, owner, due date, and status.
+- [x] **RISK-02**: Backend can summarize top risks and calculate risk severity distribution for the selected plant/scenario/package.
+- [x] **RISK-03**: User can manage Pre-FEED decision gate checklist items for technical, commercial, legal, land, grid, offtake, MRV, and financing readiness.
+- [x] **RISK-04**: System identifies decision blockers and required next actions before investment committee review.
 
 ### Pre-FEED Decision Dashboard
 
-- [ ] **PFDASH-01**: User can open a Pre-FEED dashboard for a selected plant, scenario, and package.
-- [ ] **PFDASH-02**: Dashboard shows CAPEX/OPEX breakdown, package confidence, missing cost items, and comparison against the v1.0 benchmark assumptions.
-- [ ] **PFDASH-03**: Dashboard shows vendor comparison with proposal scope, cost, exclusions, confidence, and selected active package.
-- [ ] **PFDASH-04**: Dashboard shows offtake readiness, MRV readiness, carbon intensity indicators, top risks, decision blockers, and next actions.
-- [ ] **PFDASH-05**: User can generate a Pre-FEED committee brief through the existing LLM insight layer using only stored package, cost, offtake, MRV, risk, and deterministic scenario data.
+- [x] **PFDASH-01**: User can open a Pre-FEED dashboard for a selected plant, scenario, and package.
+- [x] **PFDASH-02**: Dashboard shows CAPEX/OPEX breakdown, package confidence, missing cost items, and comparison against the v1.0 benchmark assumptions.
+- [x] **PFDASH-03**: Dashboard shows vendor comparison with proposal scope, cost, exclusions, confidence, and selected active package.
+- [x] **PFDASH-04**: Dashboard shows offtake readiness, MRV readiness, carbon intensity indicators, top risks, decision blockers, and next actions.
+- [x] **PFDASH-05**: User can generate a Pre-FEED committee brief through the existing LLM insight layer using only stored package, cost, offtake, MRV, risk, and deterministic scenario data.
 
 ## Future Requirements
 
@@ -116,15 +116,15 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | MRV-02 | Phase 8 | Complete |
 | MRV-03 | Phase 8 | Complete |
 | MRV-04 | Phase 8 | Complete |
-| RISK-01 | Phase 9 | Pending |
-| RISK-02 | Phase 9 | Pending |
-| RISK-03 | Phase 9 | Pending |
-| RISK-04 | Phase 9 | Pending |
-| PFDASH-01 | Phase 9 | Pending |
-| PFDASH-02 | Phase 9 | Pending |
-| PFDASH-03 | Phase 9 | Pending |
-| PFDASH-04 | Phase 9 | Pending |
-| PFDASH-05 | Phase 9 | Pending |
+| RISK-01 | Phase 9 | Complete |
+| RISK-02 | Phase 9 | Complete |
+| RISK-03 | Phase 9 | Complete |
+| RISK-04 | Phase 9 | Complete |
+| PFDASH-01 | Phase 9 | Complete |
+| PFDASH-02 | Phase 9 | Complete |
+| PFDASH-03 | Phase 9 | Complete |
+| PFDASH-04 | Phase 9 | Complete |
+| PFDASH-05 | Phase 9 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 29 total

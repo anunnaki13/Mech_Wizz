@@ -806,3 +806,10 @@ export async function getPreFeedDecisionNextActions(packageId: string): Promise<
 export async function getPreFeedDecisionDashboard(packageId: string): Promise<PreFeedDecisionDashboard> {
   return apiFetch<PreFeedDecisionDashboard>(`/prefeed/packages/${packageId}/decision-dashboard`);
 }
+
+export async function generatePreFeedCommitteeBrief(
+  packageId: string,
+  payload: LlmGeneratePayload = {},
+): Promise<LlmInsight> {
+  return generateLlmInsight(`/prefeed/packages/${packageId}/committee-brief`, payload);
+}

@@ -13,7 +13,7 @@ os.environ.setdefault("DATABASE_URL", "sqlite://")
 from app import models  # noqa: E402,F401
 from app.database import Base, get_db
 from app.main import app
-from app.models import BusinessScenario, PreFeedPackage, ScenarioResult
+from app.models import BusinessScenario, LlmInsight, PreFeedPackage, ScenarioResult
 from app.seed import seed_tenayan
 
 
@@ -170,3 +170,25 @@ def test_risk_register_summary_blockers_and_dashboard_are_deterministic(
 
     delete_gate_response = client.delete(f"/api/prefeed/decision-gates/{gate['id']}")
     assert delete_gate_response.status_code == 204
+
+
+def test_committee_brief_endpoint_uses_llm_layer_and_records_missing_key_failure(
+    client: TestClient,
+    db_session: Session,
+) -> None:
+    package, scenario = _seed_package(db_session)
+
+    response = client.post(f"/api/prefeed/packages/{package.id}/committee-brief")
+
+    assert response.status_code == 503
+    assert "OpenRouter API key is not configured" in response.json()["detail"]
+    insights = list(db_session.scalars(select(LlmInsight)))
+    assert len(insights) == 1
+    insight = insights[0]
+    assert insight.status == "failed"
+    assert insight.insight_type == "prefeed_committee_brief"
+    assert insight.plant_id == package.plant_id
+    assert insight.scenario_id == scenario.id
+    assert "Pre-FEED investment committee brief" in insight.prompt
+    assert "decision_dashboard" in insight.prompt
+    assert "Do not invent numbers" in insight.prompt

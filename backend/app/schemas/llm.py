@@ -10,6 +10,7 @@ InsightType = Literal[
     "investor_memo",
     "sensitivity_explanation",
     "document_qa",
+    "prefeed_committee_brief",
 ]
 
 

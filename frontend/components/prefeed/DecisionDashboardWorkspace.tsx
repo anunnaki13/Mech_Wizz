@@ -1,6 +1,6 @@
 "use client";
 
-import { ClipboardCheck, Gauge, RefreshCw, Save, ShieldAlert, Trash2 } from "lucide-react";
+import { ClipboardCheck, FileText, Gauge, RefreshCw, Save, ShieldAlert, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import {
@@ -8,6 +8,7 @@ import {
   createPreFeedRisk,
   deletePreFeedDecisionGate,
   deletePreFeedRisk,
+  generatePreFeedCommitteeBrief,
   getPreFeedDecisionDashboard,
   listPreFeedDecisionGates,
   listPreFeedRisks,
@@ -15,6 +16,7 @@ import {
   updatePreFeedRisk,
 } from "@/lib/api";
 import type { ConfidenceLevel, DataStatus } from "@/types/plant";
+import type { LlmInsight } from "@/types/llm";
 import type {
   PreFeedDecisionDashboard,
   PreFeedDecisionGate,
@@ -167,6 +169,8 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
   const [gates, setGates] = useState<PreFeedDecisionGate[]>([]);
   const [riskDraft, setRiskDraft] = useState<RiskDraft>(EMPTY_RISK);
   const [gateDraft, setGateDraft] = useState<GateDraft>(EMPTY_GATE);
+  const [briefInsight, setBriefInsight] = useState<LlmInsight | null>(null);
+  const [briefError, setBriefError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [busy, setBusy] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -185,6 +189,8 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
       setDashboard(null);
       setRisks([]);
       setGates([]);
+      setBriefInsight(null);
+      setBriefError(null);
       return;
     }
     setLoading(true);
@@ -328,6 +334,28 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
     }
   }
 
+  async function handleGenerateBrief() {
+    if (!packageId) {
+      return;
+    }
+    setBusy(true);
+    setErrorMessage(null);
+    setBriefError(null);
+    setStatusMessage(null);
+    try {
+      const insight = await generatePreFeedCommitteeBrief(packageId);
+      setBriefInsight(insight);
+      await loadAll();
+      setStatusMessage("Committee brief generated.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Committee brief could not be generated.";
+      setBriefError(message);
+      setErrorMessage(message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   useEffect(() => {
     void loadAll();
   }, [packageId]);
@@ -436,6 +464,18 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
             ))}
             {dashboard && dashboard.next_actions.length === 0 ? <div className="muted">No next actions.</div> : null}
           </div>
+        </div>
+        <div className="committee-brief-panel">
+          <div>
+            <h4>Committee Brief</h4>
+            <span>{briefInsight ? labelFor(briefInsight.status) : briefError ? "Failed" : "Not generated"}</span>
+          </div>
+          <button className="button" type="button" onClick={() => void handleGenerateBrief()} disabled={busy}>
+            <FileText size={16} aria-hidden="true" />
+            Generate Committee Brief
+          </button>
+          {briefInsight?.response_text ? <p>{briefInsight.response_text}</p> : null}
+          {briefError ? <p>{briefError}</p> : null}
         </div>
       </article>
 

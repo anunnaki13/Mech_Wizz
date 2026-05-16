@@ -3,7 +3,8 @@ export type InsightType =
   | "data_gap_explanation"
   | "investor_memo"
   | "sensitivity_explanation"
-  | "document_qa";
+  | "document_qa"
+  | "prefeed_committee_brief";
 
 export type LlmInsight = {
   id: string;

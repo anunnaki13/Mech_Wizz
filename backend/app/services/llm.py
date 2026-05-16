@@ -2,6 +2,7 @@ import json
 from typing import Any, Protocol
 
 import httpx
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -9,6 +10,8 @@ from app.config import get_settings
 from app.models import BusinessScenario, Document, LlmInsight, Plant, ScenarioResult, SensitivityResult
 from app.services.data_quality import build_data_quality_summary
 from app.services.investor_case import build_investor_case
+from app.services.prefeed import get_package_or_raise
+from app.services.prefeed_decision import build_prefeed_decision_dashboard
 
 
 INSIGHT_TYPES = {
@@ -17,6 +20,7 @@ INSIGHT_TYPES = {
     "investor_memo",
     "sensitivity_explanation",
     "document_qa",
+    "prefeed_committee_brief",
 }
 
 CALCULATION_AUTHORITY_RULES = """Rules:
@@ -180,6 +184,7 @@ def build_prompt(
     *,
     scenario_id: str | None = None,
     plant_id: str | None = None,
+    package_id: str | None = None,
     document_id: str | None = None,
     question: str | None = None,
     max_context_chars: int | None = None,
@@ -219,6 +224,59 @@ def build_prompt(
         }
         resolved_plant_id = plant.id
         resolved_scenario_id = scenario_id
+    elif insight_type == "prefeed_committee_brief":
+        if package_id is None:
+            raise LlmInputError("package_id is required")
+        try:
+            package = get_package_or_raise(db, package_id)
+        except ValueError as exc:
+            raise LlmInputError(str(exc)) from exc
+        plant = db.get(Plant, package.plant_id)
+        if plant is None:
+            raise LlmInputError("Plant not found")
+        dashboard = jsonable_encoder(build_prefeed_decision_dashboard(db, package.id))
+        context = {
+            "plant": {
+                "id": plant.id,
+                "plant_name": plant.plant_name,
+                "unit_name": plant.unit_name,
+                "province": plant.province,
+                "data_status": plant.data_status,
+                "confidence_level": plant.confidence_level,
+            },
+            "pre_feed_package": {
+                "id": package.id,
+                "package_name": package.package_name,
+                "package_status": package.package_status,
+                "version_label": package.version_label,
+                "data_status": package.data_status,
+                "confidence_level": package.confidence_level,
+            },
+            "actual_data": {
+                "decision_dashboard": dashboard,
+            },
+            "assumptions": {
+                "scenario_ready_cost_assumptions": dashboard.get("cost_summary", {}).get("scenario_ready_assumptions"),
+                "scenario_ready_market_assumptions": dashboard.get("offtake_summary", {}).get(
+                    "scenario_ready_assumptions"
+                ),
+            },
+            "confidence": {
+                "package": package.confidence_level,
+                "risk_summary": dashboard.get("risk_summary", {}),
+                "decision_gate_summary": dashboard.get("decision_gate_summary", {}),
+            },
+            "data_gaps": {
+                "package_gaps": dashboard.get("package_gaps", []),
+                "offtake_gaps": dashboard.get("offtake_gaps", []),
+                "mrv_gaps": dashboard.get("mrv_gaps", []),
+                "blockers": dashboard.get("blockers", []),
+                "next_actions": dashboard.get("next_actions", []),
+                "warnings": dashboard.get("warnings", []),
+            },
+        }
+        resolved_plant_id = plant.id
+        resolved_scenario_id = package.scenario_id
     else:
         if document_id is None:
             raise LlmInputError("document_id is required")
@@ -250,6 +308,7 @@ def build_prompt(
         "investor_memo": "Write a structured investor memo with thesis, selected site rationale, economics, scheme, risk, confidence, and next actions.",
         "sensitivity_explanation": "Explain which variables most affect IRR, NPV, and LCOM using only the sensitivity result values.",
         "document_qa": "Answer the user's document question using only the extracted document text and supplied context.",
+        "prefeed_committee_brief": "Write a Pre-FEED investment committee brief in Indonesian with recommendation, readiness, economics, risks, blockers, and next actions.",
     }
     prompt = f"""{prompt_by_type[insight_type]}
 
@@ -319,6 +378,7 @@ def generate_insight(
     *,
     scenario_id: str | None = None,
     plant_id: str | None = None,
+    package_id: str | None = None,
     document_id: str | None = None,
     question: str | None = None,
     model_name: str | None = None,
@@ -332,6 +392,7 @@ def generate_insight(
         insight_type,
         scenario_id=scenario_id,
         plant_id=plant_id,
+        package_id=package_id,
         document_id=document_id,
         question=question,
         max_context_chars=settings.llm_max_context_chars,

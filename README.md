@@ -184,6 +184,31 @@ GET /api/prefeed/packages/{package_id}/mrv-summary
 GET /api/prefeed/packages/{package_id}/mrv-gaps
 ```
 
+## Phase 9 Risk & Pre-FEED Decision Dashboard
+
+The decision dashboard workflow is:
+
+1. Open `/prefeed` and select a plant, scenario, and Pre-FEED package.
+2. Review the backend-generated decision dashboard for package confidence, CAPEX/OPEX totals, active cost basis, vendor comparison, offtake/MRV readiness, blockers, and next actions.
+3. Add risk register entries with category, likelihood, impact, mitigation, owner, due date, status, `data_status`, and `confidence_level`.
+4. Add decision gate checklist items for technical, commercial, legal, land, grid, offtake, MRV, financing, and committee readiness.
+5. Generate a Pre-FEED committee brief from stored package, cost, offtake, MRV, risk, gate, blocker, and deterministic scenario context.
+
+Core API endpoints:
+
+```text
+GET/POST /api/prefeed/packages/{package_id}/risks
+PUT/DELETE /api/prefeed/risks/{risk_id}
+GET /api/prefeed/packages/{package_id}/risk-summary
+GET/POST /api/prefeed/packages/{package_id}/decision-gates
+PUT/DELETE /api/prefeed/decision-gates/{gate_id}
+GET /api/prefeed/packages/{package_id}/decision-gate-summary
+GET /api/prefeed/packages/{package_id}/decision-blockers
+GET /api/prefeed/packages/{package_id}/decision-next-actions
+GET /api/prefeed/packages/{package_id}/decision-dashboard
+POST /api/prefeed/packages/{package_id}/committee-brief
+```
+
 ## Verification
 
 ```bash
@@ -196,5 +221,5 @@ For a local migration smoke test outside Docker:
 
 ```bash
 cd backend
-DATABASE_URL=sqlite:////tmp/mechwiz_phase8_full.db .venv/bin/alembic upgrade head
+DATABASE_URL=sqlite:////tmp/mechwiz_phase9_full.db .venv/bin/alembic upgrade head
 ```
