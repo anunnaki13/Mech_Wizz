@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: phase_completed
-stopped_at: Phase 4 execution complete
-last_updated: "2026-05-16T13:17:55+07:00"
-last_activity: 2026-05-16 -- Phase 04 plan 03 data quality settings complete
+status: phase_in_progress
+stopped_at: Phase 5 planning complete
+last_updated: "2026-05-16T13:26:28+07:00"
+last_activity: 2026-05-16 -- Phase 05 LLM and document intelligence planned
 progress:
   total_phases: 5
   completed_phases: 4
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-16)
 
 ## Current Position
 
-Phase: 4 of 5 (Investor Case & Data Quality)
-Plan: 3 of 3 in current phase
-Status: Phase 4 complete; ready to plan Phase 5
-Last activity: 2026-05-16 -- /settings data quality workflow implemented and verified
+Phase: 5 of 5 (LLM & Document Intelligence)
+Plan: 0 of 3 in current phase
+Status: Phase 5 planning complete; ready to execute Phase 5 plan 01
+Last activity: 2026-05-16 -- AI-SPEC, UI-SPEC, research, context, and plans created for Phase 5
 
 Progress: [########--] 80%
 
@@ -53,7 +53,7 @@ Progress: [########--] 80%
 **Recent Trend:**
 
 - Last 5 plans: 03-02, 03-03, 04-01, 04-02, 04-03
-- Trend: Phase 4 investor API, UI, data quality persistence, and settings workflow completed
+- Trend: Phase 4 completed and Phase 5 planned for OpenRouter insights plus document intelligence
 
 *Updated after each plan completion*
 
@@ -90,6 +90,10 @@ Recent decisions affecting current work:
 - Phase 04-03: `DataGap` persists current gap recommendations synchronized from deterministic scoring gap derivation.
 - Phase 04-03: Scoring recalculation consumes persisted scoring weights and falls back to Phase 3 defaults when no setting is available.
 - Phase 04-03: `/settings` exposes editable default assumptions, scoring weights, input status, output confidence, and data gap recommendations.
+- Phase 05 planning: Use direct OpenRouter Chat Completions HTTP integration rather than a heavier AI framework for MVP single-call narrative workflows.
+- Phase 05 planning: Keep OpenRouter API keys backend-only and return clear unavailable errors when not configured.
+- Phase 05 planning: Prompts must separate actual data, assumptions, confidence, and gaps and must forbid invented numbers or LLM recalculation.
+- Phase 05 planning: Document Q&A uses extracted text as bounded context for MVP; vector retrieval is deferred.
 
 ### Pending Todos
 
@@ -108,6 +112,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-16T13:17:55+07:00
-Stopped at: Phase 4 execution complete
-Resume file: .planning/phases/04-investor-case-data-quality/04-VERIFICATION.md
+Last session: 2026-05-16T13:26:28+07:00
+Stopped at: Phase 5 planning complete
+Resume file: .planning/phases/05-llm-document-intelligence/05-01-PLAN.md
