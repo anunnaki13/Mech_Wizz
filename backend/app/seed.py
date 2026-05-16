@@ -7,13 +7,18 @@ from app.models import BusinessScenario, EmissionTest, FinancialAssumption, Plan
 from app.services.settings import seed_default_settings
 
 
+# Verified against GEM exact project coordinates and a geotagged coal-yard
+# photo; keep aligned with the imported Pekanbaru Tenayan units.
+TENAYAN_LATITUDE = 0.56437
+TENAYAN_LONGITUDE = 101.52345
+
 TENAYAN_PLANT = {
     "plant_name": "PLTU Tenayan",
     "unit_name": "Unit 1-2",
     "province": "Riau",
     "city": "Pekanbaru",
-    "latitude": 0.5123,
-    "longitude": 101.5567,
+    "latitude": TENAYAN_LATITUDE,
+    "longitude": TENAYAN_LONGITUDE,
     "capacity_mw": 220,
     "fuel_type": "coal",
     "status": "active",

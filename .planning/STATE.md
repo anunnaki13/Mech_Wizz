@@ -144,6 +144,7 @@ None yet.
 | 2026-05-17 | Port-aware map intelligence | Added NGA World Port Index ports, nearest-port scoring, economic zones, and Singapore export proxy corridors to the map; backend tests, frontend build, API checks, and state validation passed. |
 | 2026-05-17 | Sensitivity and OpenRouter settings | Replaced the placeholder sensitivity page with a runnable workspace and added masked OpenRouter API key management in Settings; backend tests, frontend build, API checks, and state validation passed. |
 | 2026-05-17 | README module guide | Expanded README into a detailed Indonesian guide explaining each module, required inputs, backend calculations, outputs, interpretation, data confidence, APIs, and limitations. |
+| 2026-05-17 | Coordinate corrections | Audited plant map coordinates against public web/GEM sources, corrected the local Tenayan seed coordinate, updated the runtime database, and added a regression test. |
 
 ## Session Continuity
 

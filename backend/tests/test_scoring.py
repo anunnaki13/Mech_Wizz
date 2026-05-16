@@ -69,11 +69,11 @@ def test_score_normalization_and_confidence_mapping() -> None:
     assert confidence_score_for_status("unknown") == 0.0
 
 
-def test_seed_tenayan_has_addendum_coordinates(db_session: Session) -> None:
+def test_seed_tenayan_uses_verified_map_coordinates(db_session: Session) -> None:
     plant = seed_tenayan(db_session)
 
-    assert plant.latitude == 0.5123
-    assert plant.longitude == 101.5567
+    assert plant.latitude == 0.56437
+    assert plant.longitude == 101.52345
 
 
 def test_recalculate_scoring_persists_scores_and_rank(client: TestClient, db_session: Session) -> None:
@@ -137,7 +137,7 @@ def test_ranking_geojson_and_profile_api(client: TestClient, db_session: Session
     assert geojson["type"] == "FeatureCollection"
     assert len(geojson["features"]) == 1
     feature = geojson["features"][0]
-    assert feature["geometry"]["coordinates"] == [101.5567, 0.5123]
+    assert feature["geometry"]["coordinates"] == [101.52345, 0.56437]
     assert feature["properties"]["site_id"] == plant.id
     assert feature["properties"]["heatmap_weight"] == ranking[0]["heatmap_weight"]
     assert feature["properties"]["key_bottleneck"] == "Hydrogen supply strategy"
