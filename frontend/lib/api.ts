@@ -50,6 +50,7 @@ import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdateP
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
 import type { ShortlistDecisionMatrix } from "@/types/shortlist";
+import type { Top3ValidationPack } from "@/types/validation-pack";
 import type {
   ApplicationSetting,
   ApplicationSettingPayload,
@@ -373,6 +374,18 @@ export async function getShortlistDecisionMatrix(params: {
     `/shortlist/decision-matrix${buildQuery({
       scheme: params.scheme,
       top_n: params.topN ? String(params.topN) : undefined,
+    })}`,
+  );
+}
+
+export async function getTop3ValidationPack(params: {
+  scheme?: string;
+  limit?: number;
+} = {}): Promise<Top3ValidationPack> {
+  return apiFetch<Top3ValidationPack>(
+    `/validation-pack/top3${buildQuery({
+      scheme: params.scheme,
+      limit: params.limit ? String(params.limit) : undefined,
     })}`,
   );
 }

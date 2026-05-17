@@ -14,7 +14,7 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 **Shipped version:** v2.0 Pre-FEED on 2026-05-17
 **Audit:** v1.0 PASS, v2.0 implementation verified through phase tests and dashboards
-**Current focus:** v2.1 Economic Calibration & Shortlist Validation
+**Current focus:** v2.2 Top 3 Validation Pack & Committee Memo
 
 The current app includes:
 
@@ -34,16 +34,16 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
-## Current Milestone: v2.1 Economic Calibration & Shortlist Validation
+## Current Milestone: v2.2 Top 3 Validation Pack & Committee Memo
 
-**Goal:** Convert the 26-site PLTU screening dataset into a decision-oriented Top 3/Top 5 shortlist using deterministic economics, logistics, confidence, and data-gap scoring.
+**Goal:** Convert the shortlist into a management-ready Top 3 validation pack with evidence checklist, side-by-side comparison, committee questions, no-go triggers, and deterministic PDF memo.
 
 **Target features:**
 
-- Shortlist decision matrix that combines existing ranking, simulation economics, port proximity/readiness, confidence, and data gaps.
-- Top 3/Top 5/watchlist recommendations with clear rationale and next validation actions.
-- Management-facing `/shortlist` page linked from the dashboard and navigation.
-- Explicit caveats that the shortlist is still screening/pre-validation, not final investment approval.
+- Top 3 candidate validation packs derived from deterministic shortlist results.
+- Evidence checklist across technical, economics, logistics, power/H2, commercial, and MRV categories.
+- Side-by-side comparison axes for scale, economics, logistics, and confidence.
+- Committee memo preview and PDF endpoint that does not use LLM calculations.
 
 ## Requirements
 
@@ -61,12 +61,12 @@ Known runtime caveats:
 - [x] Seed the MVP with the Tenayan sample data from the blueprint - v1.0.
 - [x] Add Pre-FEED package, cost/vendor, offtake/MRV, risk/decision, and committee-brief workflows - v2.0.
 - [x] Replace broad public screening with the 26 requested target PLTU dataset and dashboard report summary - v2.0 follow-up.
+- [x] Build deterministic Top 3/Top 5 shortlist decision matrix - v2.1.
+- [x] Produce Top 3 validation pack, evidence checklist, committee memo, and PDF endpoint - v2.2.
 
 ### Active
 
-- [ ] Build a shortlist decision matrix for Top 3/Top 5 validation.
-- [ ] Expose economics/logistics/confidence score breakdowns for every shortlisted site.
-- [ ] Show next validation actions per candidate before deeper PLN/vendor work.
+None currently. Next scope should be either real-world Top 3 evidence collection or production deployment hardening.
 
 ### Candidate Next Requirements
 
@@ -141,6 +141,7 @@ Current architecture:
 - **v1.0 MVP** - Shipped 2026-05-16. Archive: `.planning/milestones/v1.0-ROADMAP.md`, `.planning/milestones/v1.0-REQUIREMENTS.md`, `.planning/milestones/v1.0-MILESTONE-AUDIT.md`.
 - **v2.0 Pre-FEED** - Shipped 2026-05-17. Scope: cost packages, vendor comparison, offtake readiness, MRV assumptions, risk register, and Pre-FEED decision dashboard.
 - **v2.1 Economic Calibration & Shortlist Validation** - Started 2026-05-17. Scope: deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
+- **v2.2 Top 3 Validation Pack & Committee Memo** - Started 2026-05-17. Scope: Top 3 evidence checklist, comparison, committee memo, and PDF endpoint.
 
 ## Evolution
 
@@ -160,4 +161,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-17 after v2.1 Phase 10 start*
+*Last updated: 2026-05-17 after v2.2 Phase 11*

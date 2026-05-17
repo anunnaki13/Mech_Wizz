@@ -5,6 +5,7 @@
 - [x] **v1.0 MVP** - Shipped 2026-05-16. Five-phase pre-feasibility simulator with deterministic calculations, MapLibre strategy dashboard, investor case, OpenRouter insight workflows, and document intelligence.
 - [x] **v2.0 Pre-FEED** - Shipped 2026-05-17. Cost package validation, vendor comparison, offtake readiness, MRV assumptions, risk governance, and Pre-FEED decision dashboard.
 - [x] **v2.1 Economic Calibration & Shortlist Validation** - Shipped 2026-05-17. Deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
+- [x] **v2.2 Top 3 Validation Pack & Committee Memo** - Shipped 2026-05-17. Top 3 evidence checklist, comparison axes, committee memo, and PDF endpoint.
 
 ## Completed Milestones
 
@@ -27,15 +28,15 @@ Milestone result:
 
 </details>
 
-## Active Milestone: v2.1 Economic Calibration & Shortlist Validation
+## Active Milestone: v2.2 Top 3 Validation Pack & Committee Memo
 
-The v2.1 milestone converts the 26-site screening dataset into a decision-oriented Top 3/Top 5 shortlist. It keeps deterministic backend calculations as the source of truth and combines screening score, economics, logistics, confidence, and data gaps into a transparent validation matrix.
+The v2.2 milestone turns the shortlist into a management-ready Top 3 validation pack. It adds evidence checklists, comparison axes, committee questions, no-go triggers, and a deterministic PDF memo without letting LLMs or frontend code become the numeric authority.
 
 ## Phases
 
 **Phase Numbering:**
 - Phase numbering continues from the completed v1.0 milestone.
-- Phase 10 is the first v2.1 phase.
+- Phase 11 is the first v2.2 phase.
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
@@ -43,6 +44,7 @@ The v2.1 milestone converts the 26-site screening dataset into a decision-orient
 - [x] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness. (completed 2026-05-16)
 - [x] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation. (completed 2026-05-16)
 - [x] **Phase 10: Economic Calibration & Shortlist Validation** - Decision matrix, Top 3/Top 5 recommendations, score breakdowns, and shortlist page. (completed 2026-05-17)
+- [x] **Phase 11: Top 3 Validation Pack & Committee Memo** - Evidence checklist, comparison axes, committee memo, PDF endpoint, and validation pack page. (completed 2026-05-17)
 
 ## Phase Details
 
@@ -173,10 +175,28 @@ Plans:
 **Wave 1**
 - [x] 10-01: Shortlist decision matrix backend, tests, frontend page, navigation, and GSD verification.
 
+### Phase 11: Top 3 Validation Pack & Committee Memo
+
+**Goal:** Produce a management-ready validation pack for Top 3 candidates, including required evidence, side-by-side comparison, committee questions, no-go triggers, caveats, and PDF memo.
+**Mode:** mvp
+**Depends on:** Phase 10
+**Requirements:** VALP-01, VALP-02, VALP-03, VALP-04, VALP-05
+**UI hint:** yes
+**Success Criteria** (what must be TRUE):
+  1. Backend exposes Top 3 validation pack JSON derived from shortlist results.
+  2. Backend exposes deterministic committee memo PDF.
+  3. User can open `/validation-pack` and review candidate packs, evidence checklist, comparison axes, committee questions, no-go triggers, and caveats.
+  4. Dashboard and shortlist link to the validation pack.
+**Plans:** 1/1 plan complete
+
+Plans:
+**Wave 1**
+- [x] 11-01: Top 3 validation pack API, PDF memo endpoint, frontend page, tests, and verification.
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -190,3 +210,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 | 8. Offtake & MRV Readiness | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 10. Economic Calibration & Shortlist Validation | v2.1 | 1/1 | Complete | 2026-05-17 |
+| 11. Top 3 Validation Pack & Committee Memo | v2.2 | 1/1 | Complete | 2026-05-17 |

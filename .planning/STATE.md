@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.1
-milestone_name: Economic Calibration & Shortlist Validation
+milestone: v2.2
+milestone_name: Top 3 Validation Pack & Committee Memo
 status: completed
-last_updated: "2026-05-17T15:35:18+07:00"
+last_updated: "2026-05-17T15:56:33+07:00"
 last_activity: 2026-05-17
 progress:
   total_phases: 1
@@ -20,20 +20,20 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-17)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v2.1 Economic Calibration & Shortlist Validation complete
+**Current focus:** v2.2 Top 3 Validation Pack & Committee Memo complete
 
 ## Current Position
 
-Phase: 10
+Phase: 11
 Plan: 1 of 1 complete
 Status: Milestone complete
-Last activity: 2026-05-17 — Phase 10 shortlist validation shipped
+Last activity: 2026-05-17 — Phase 11 validation pack shipped
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 28
+- Total plans completed: 29
 - Average duration: ~20 min for Phase 9
 - Total execution time: 59 min for Phase 9
 
@@ -51,11 +51,12 @@ Last activity: 2026-05-17 — Phase 10 shortlist validation shipped
 | 8. Offtake & MRV Readiness | 3/3 | 37 min | ~12 min |
 | 9. Risk & Pre-FEED Decision Dashboard | 3/3 | 59 min | ~20 min |
 | 10. Economic Calibration & Shortlist Validation | 1/1 | n/a | n/a |
+| 11. Top 3 Validation Pack & Committee Memo | 1/1 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 completed plans: 08-03, 09-01, 09-02, 09-03, 10-01
-- Trend: v2.1 shortlist validation complete; Phase 10 executed and verified
+- Last 5 completed plans: 09-01, 09-02, 09-03, 10-01, 11-01
+- Trend: v2.2 validation pack complete; Phase 11 executed and verified
 
 *Updated after each plan completion*
 | Phase 6 P06-01 | 6min | 3 tasks | 4 files |
@@ -71,6 +72,7 @@ Last activity: 2026-05-17 — Phase 10 shortlist validation shipped
 | Phase 9 P09-02 | 22min | 3 tasks | 7 files |
 | Phase 9 P09-03 | 19min | 3 tasks | 10 files |
 | Phase 10 P10-01 | n/a | 3 tasks | 15 files |
+| Phase 11 P11-01 | n/a | 3 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -123,6 +125,8 @@ Recent decisions affecting current work:
 - Milestone v2.1: Scope is Economic Calibration & Shortlist Validation, focused on Top 3/Top 5 decision support from the curated 26-site PLTU dataset.
 - Phase 10: Shortlist score combines screening score, economics, logistics, and confidence with weights 35/25/20/20.
 - Phase 10: Port selection for shortlist filters toward commercial port/terminal entries to avoid offshore oil-field records being treated as export ports.
+- Milestone v2.2: Scope is Top 3 Validation Pack & Committee Memo, focused on management discussion and evidence collection before single-pilot selection.
+- Phase 11: Committee memo PDF is generated deterministically from backend validation pack data; no LLM calculation or frontend recalculation is used.
 
 ### Pending Todos
 
@@ -161,5 +165,4 @@ Resume file: None
 
 ## Operator Next Steps
 
-- Run `$gsd-complete-milestone` to archive v2.1, or start the next milestone with `$gsd-new-milestone`.
-- Validate the Top 3 shortlist with PLN/site/port/vendor data, or start a deployment/production-readiness milestone.
+- Run `$gsd-complete-milestone` to archive v2.2, validate Top 3 with PLN/site/port/vendor data, or start a deployment/production-readiness milestone.

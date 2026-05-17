@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AlertTriangle, ArrowRight, BadgeCheck, Gauge, Ship, TrendingUp } from "lucide-react";
+import { AlertTriangle, ArrowRight, BadgeCheck, FileText, Gauge, Ship, TrendingUp } from "lucide-react";
 
 import { AppShell } from "@/components/layout/AppShell";
 import { getShortlistDecisionMatrix } from "@/lib/api";
@@ -132,6 +132,10 @@ export default async function ShortlistPage() {
             <Link className="button secondary" href="/dashboard">
               <ArrowRight size={16} aria-hidden="true" />
               Summary
+            </Link>
+            <Link className="button secondary" href="/validation-pack">
+              <FileText size={16} aria-hidden="true" />
+              Validation Pack
             </Link>
           </div>
         </section>

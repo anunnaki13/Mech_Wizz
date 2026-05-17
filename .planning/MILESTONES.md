@@ -85,3 +85,21 @@
 **What's next:** Validate Top 3 with PLN/site/port/vendor data or start a deployment/production-readiness milestone.
 
 ---
+
+## v2.2 Top 3 Validation Pack & Committee Memo (Shipped: 2026-05-17)
+
+**Delivered:** A management-ready validation pack for the current Top 3 shortlist.
+
+**Phases completed:** 1 phase, 1 plan
+
+**Key accomplishments:**
+
+- Top 3 validation pack JSON API derived from deterministic shortlist outputs.
+- Evidence checklist across technical, economics, logistics, power/H2, commercial, and MRV categories.
+- Candidate comparison axes, decision questions, no-go triggers, caveats, and deterministic committee memo.
+- Committee memo PDF endpoint.
+- `/validation-pack` UI linked from navigation, dashboard, and shortlist.
+
+**What's next:** Use the pack to collect PLN/site/vendor/port/offtake/MRV evidence, or start production deployment hardening.
+
+---

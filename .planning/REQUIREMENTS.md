@@ -1,8 +1,20 @@
 # Requirements: MECH WIZ AI Digital Twin
 
 **Defined:** 2026-05-16
-**Milestone:** v2.1 Economic Calibration & Shortlist Validation
+**Milestone:** v2.2 Top 3 Validation Pack & Committee Memo
 **Core Value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
+
+## v2.2 Requirements
+
+Requirements for the Top 3 validation pack milestone. Each requirement maps to Phase 11.
+
+### Top 3 Validation Pack And Committee Memo
+
+- [x] **VALP-01**: Backend can generate a Top 3 validation pack from current shortlist results.
+- [x] **VALP-02**: System produces evidence checklist items across technical, economics, logistics, power/H2, commercial, and MRV categories.
+- [x] **VALP-03**: System produces comparison axes, decision questions, no-go triggers, caveats, and a deterministic committee memo.
+- [x] **VALP-04**: Backend exposes a PDF endpoint for the committee memo.
+- [x] **VALP-05**: Frontend exposes `/validation-pack` for management review and PDF access.
 
 ## v2.1 Requirements
 
@@ -142,13 +154,19 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | ECAL-03 | Phase 10 | Complete |
 | ECAL-04 | Phase 10 | Complete |
 | ECAL-05 | Phase 10 | Complete |
+| VALP-01 | Phase 11 | Complete |
+| VALP-02 | Phase 11 | Complete |
+| VALP-03 | Phase 11 | Complete |
+| VALP-04 | Phase 11 | Complete |
+| VALP-05 | Phase 11 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 29 total, complete
-- v2.1 requirements: 5 total
-- Mapped to phases: 34
+- v2.1 requirements: 5 total, complete
+- v2.2 requirements: 5 total
+- Mapped to phases: 39
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after v2.1 Phase 10*
+*Last updated: 2026-05-17 after v2.2 Phase 11*

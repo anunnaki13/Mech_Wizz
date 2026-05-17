@@ -282,17 +282,17 @@ export default async function DashboardPage() {
             </section>
 
             <section className="card next-phase-panel">
-              <span>Recommended next phase</span>
-              <h3>Phase 10</h3>
-              <p>Economic Calibration & Shortlist Validation.</p>
+              <span>Current validation work</span>
+              <h3>Phase 11</h3>
+              <p>Top 3 Validation Pack & Committee Memo.</p>
               <ul>
-                <li>Kalibrasi CAPEX/OPEX</li>
-                <li>Validasi pelabuhan Top 10</li>
-                <li>Shortlist Top 3/Top 5</li>
-                <li>Committee memo per kandidat</li>
+                <li>Evidence checklist Top 3</li>
+                <li>Perbandingan kandidat utama</li>
+                <li>Committee memo PDF</li>
+                <li>No-go trigger validasi</li>
               </ul>
-              <Link className="section-link" href="/shortlist">
-                Open shortlist <ArrowRight size={14} aria-hidden="true" />
+              <Link className="section-link" href="/validation-pack">
+                Open validation pack <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </section>
           </aside>
