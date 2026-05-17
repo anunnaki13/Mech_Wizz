@@ -7,6 +7,7 @@
 - [x] **v2.1 Economic Calibration & Shortlist Validation** - Shipped 2026-05-17. Deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
 - [x] **v2.2 Top 3 Validation Pack & Committee Memo** - Shipped 2026-05-17. Top 3 evidence checklist, comparison axes, committee memo, and PDF endpoint.
 - [x] **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Persisted Top 3 evidence records, readiness rollup, and `/evidence` management UI.
+- [x] **v2.4 Pilot Decision Dashboard** - Shipped 2026-05-17. Evidence-gated pilot recommendation, blockers, action plan, and `/pilot-decision` page.
 
 ## Completed Milestones
 
@@ -29,15 +30,15 @@ Milestone result:
 
 </details>
 
-## Latest Milestone: v2.3 Evidence Collection Workspace
+## Latest Milestone: v2.4 Pilot Decision Dashboard
 
-The v2.3 milestone turns the validation checklist into a usable evidence collection workspace. It persists evidence status and metadata, merges stored evidence with the deterministic Top 3 validation pack, and exposes readiness rollups without letting LLMs or frontend code become the numeric authority.
+The v2.4 milestone turns shortlist and evidence status into a management-facing pilot decision dashboard. It exposes a transparent evidence-adjusted score, gate status, blockers, and next actions without letting LLMs or frontend code become the numeric authority.
 
 ## Phases
 
 **Phase Numbering:**
 - Phase numbering continues from the completed v1.0 milestone.
-- Phase 12 is the first v2.3 phase.
+- Phase 13 is the first v2.4 phase.
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
@@ -47,6 +48,7 @@ The v2.3 milestone turns the validation checklist into a usable evidence collect
 - [x] **Phase 10: Economic Calibration & Shortlist Validation** - Decision matrix, Top 3/Top 5 recommendations, score breakdowns, and shortlist page. (completed 2026-05-17)
 - [x] **Phase 11: Top 3 Validation Pack & Committee Memo** - Evidence checklist, comparison axes, committee memo, PDF endpoint, and validation pack page. (completed 2026-05-17)
 - [x] **Phase 12: Evidence Collection Workspace** - Persisted evidence records, status lifecycle, readiness rollup, and evidence page. (completed 2026-05-17)
+- [x] **Phase 13: Pilot Decision Dashboard** - Evidence-adjusted decision score, gate labels, blockers, action plan, and pilot decision page. (completed 2026-05-17)
 
 ## Phase Details
 
@@ -213,10 +215,28 @@ Plans:
 **Wave 1**
 - [x] 12-01: Validation evidence model/API, evidence workspace UI, tests, build, runtime smoke, and verification.
 
+### Phase 13: Pilot Decision Dashboard
+
+**Goal:** Convert Top 3 shortlist and evidence readiness into a management-facing pilot decision recommendation with blockers and action plan.
+**Mode:** mvp
+**Depends on:** Phase 12
+**Requirements:** PDEC-01, PDEC-02, PDEC-03, PDEC-04, PDEC-05
+**UI hint:** yes
+**Success Criteria** (what must be TRUE):
+  1. Backend exposes a deterministic pilot decision API derived from shortlist and evidence status.
+  2. Candidates receive evidence-adjusted decision score, gate status, blockers, and next actions.
+  3. User can open `/pilot-decision` to review recommendation, ranking, blockers, methodology, and action plan.
+  4. Navigation and evidence workspace link to the pilot decision dashboard.
+**Plans:** 1/1 plan complete
+
+Plans:
+**Wave 1**
+- [x] 13-01: Pilot decision backend service/API, frontend page, tests, build, runtime smoke, and verification.
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -232,3 +252,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12
 | 10. Economic Calibration & Shortlist Validation | v2.1 | 1/1 | Complete | 2026-05-17 |
 | 11. Top 3 Validation Pack & Committee Memo | v2.2 | 1/1 | Complete | 2026-05-17 |
 | 12. Evidence Collection Workspace | v2.3 | 1/1 | Complete | 2026-05-17 |
+| 13. Pilot Decision Dashboard | v2.4 | 1/1 | Complete | 2026-05-17 |

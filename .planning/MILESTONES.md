@@ -121,3 +121,21 @@
 **What's next:** Production deployment hardening, OCR/retrieval expansion, or evidence-driven shortlist recalibration after real PLN/site/vendor data is entered.
 
 ---
+
+## v2.4 Pilot Decision Dashboard (Shipped: 2026-05-17)
+
+**Delivered:** A management-facing pilot recommendation dashboard derived from deterministic shortlist and evidence readiness data.
+
+**Phases completed:** 1 phase, 1 plan
+
+**Key accomplishments:**
+
+- Pilot decision API combining shortlist score and evidence readiness.
+- Evidence-adjusted score with transparent penalties for rejected evidence and high-priority open gaps.
+- Gate labels for `committee_ready`, `needs_evidence`, and `blocked`.
+- Candidate blockers, next actions, portfolio action plan, methodology, and warnings.
+- `/pilot-decision` UI linked from navigation and the evidence workspace.
+
+**What's next:** Export/report generation for pilot decision meetings, deployment hardening, or OCR/retrieval expansion.
+
+---

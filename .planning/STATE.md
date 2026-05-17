@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.3
-milestone_name: Evidence Collection Workspace
+milestone: v2.4
+milestone_name: Pilot Decision Dashboard
 status: completed
-last_updated: "2026-05-17T16:45:00+07:00"
+last_updated: "2026-05-17T17:10:00+07:00"
 last_activity: 2026-05-17
 progress:
   total_phases: 1
@@ -20,20 +20,20 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-17)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v2.3 Evidence Collection Workspace complete
+**Current focus:** v2.4 Pilot Decision Dashboard complete
 
 ## Current Position
 
-Phase: 12
+Phase: 13
 Plan: 1 of 1 complete
 Status: Milestone complete
-Last activity: 2026-05-17 — Phase 12 evidence collection workspace shipped
+Last activity: 2026-05-17 — Phase 13 pilot decision dashboard shipped
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 30
+- Total plans completed: 31
 - Average duration: ~20 min for Phase 9
 - Total execution time: 59 min for Phase 9
 
@@ -53,11 +53,12 @@ Last activity: 2026-05-17 — Phase 12 evidence collection workspace shipped
 | 10. Economic Calibration & Shortlist Validation | 1/1 | n/a | n/a |
 | 11. Top 3 Validation Pack & Committee Memo | 1/1 | n/a | n/a |
 | 12. Evidence Collection Workspace | 1/1 | n/a | n/a |
+| 13. Pilot Decision Dashboard | 1/1 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 completed plans: 09-02, 09-03, 10-01, 11-01, 12-01
-- Trend: v2.3 evidence workspace complete; Phase 12 executed and verified
+- Last 5 completed plans: 09-03, 10-01, 11-01, 12-01, 13-01
+- Trend: v2.4 pilot decision dashboard complete; Phase 13 executed and verified
 
 *Updated after each plan completion*
 | Phase 6 P06-01 | 6min | 3 tasks | 4 files |
@@ -75,6 +76,7 @@ Last activity: 2026-05-17 — Phase 12 evidence collection workspace shipped
 | Phase 10 P10-01 | n/a | 3 tasks | 15 files |
 | Phase 11 P11-01 | n/a | 3 tasks | 16 files |
 | Phase 12 P12-01 | n/a | 3 tasks | 18 files |
+| Phase 13 P13-01 | n/a | 3 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -132,6 +134,9 @@ Recent decisions affecting current work:
 - Milestone v2.3: Scope is Evidence Collection Workspace, focused on persisted validation evidence before single-pilot selection.
 - Phase 12: Evidence records are stored separately from shortlist ranking so validation readiness can improve without silently changing screening scores.
 - Phase 12: Evidence readiness is calculated deterministically from status lifecycle values, with verified evidence scoring highest and rejected/missing scoring zero.
+- Milestone v2.4: Scope is Pilot Decision Dashboard, focused on turning shortlist and evidence status into a management recommendation.
+- Phase 13: Pilot decision score is read-only and combines shortlist score plus evidence readiness with penalties for rejected evidence and high-priority open gaps.
+- Phase 13: Committee-ready gate requires evidence readiness >= 80%, zero rejected evidence, and zero high-priority open items.
 
 ### Pending Todos
 
@@ -162,6 +167,7 @@ None.
 | 2026-05-17 | PLTU screening PDF report | Generated the 26-site PLTU screening PDF report, fixed electrolyzer CAPEX unit basis, reran import/simulation/scoring, and pushed the report to GitHub main. |
 | 2026-05-17 | Dashboard summary report | Rebuilt `/dashboard` as a live executive summary with screening KPIs, calculation explanation, Top 10 candidates, confidence notes, next-phase guidance, and lightweight ranking aggregates. |
 | 2026-05-17 | Evidence collection workspace | Added persisted Top 3 evidence records, readiness rollup API, `/evidence` UI, tests, build, migration, and runtime smoke checks. |
+| 2026-05-17 | Pilot decision dashboard | Added evidence-gated pilot recommendation API, `/pilot-decision` UI, blockers, methodology, action plan, tests, build, and runtime smoke checks. |
 
 ## Session Continuity
 
@@ -171,4 +177,4 @@ Resume file: None
 
 ## Operator Next Steps
 
-- Validate real Top 3 evidence in `/evidence`, start evidence-driven shortlist recalibration, or begin deployment/production-readiness hardening.
+- Generate meeting/export artifacts from `/pilot-decision`, validate real Top 3 evidence in `/evidence`, or begin deployment/production-readiness hardening.

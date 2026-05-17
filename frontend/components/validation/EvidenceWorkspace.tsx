@@ -266,6 +266,10 @@ export function EvidenceWorkspace({
             <ClipboardList size={16} aria-hidden="true" />
             Validation Pack
           </Link>
+          <Link className="button secondary" href="/pilot-decision">
+            <CheckCircle2 size={16} aria-hidden="true" />
+            Pilot Decision
+          </Link>
         </div>
       </section>
 

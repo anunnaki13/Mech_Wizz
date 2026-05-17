@@ -15,6 +15,7 @@ from app.routers import (
     investor,
     llm,
     map,
+    pilot_decision,
     plants,
     prefeed,
     prefeed_costs,
@@ -67,6 +68,7 @@ api_router.include_router(scenarios.router)
 api_router.include_router(scoring.router)
 api_router.include_router(shortlist.router)
 api_router.include_router(map.router)
+api_router.include_router(pilot_decision.router)
 api_router.include_router(unit_profiles.router)
 api_router.include_router(validation_evidence.router)
 api_router.include_router(validation_pack.router)

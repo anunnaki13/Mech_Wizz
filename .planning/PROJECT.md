@@ -12,14 +12,14 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 ## Current State
 
-**Shipped version:** v2.3 Evidence Collection Workspace on 2026-05-17
+**Shipped version:** v2.4 Pilot Decision Dashboard on 2026-05-17
 **Audit:** v1.0 PASS, v2.0 implementation verified through phase tests and dashboards
-**Current focus:** v2.3 Evidence Collection Workspace complete
+**Current focus:** v2.4 Pilot Decision Dashboard complete
 
 The current app includes:
 
 - FastAPI backend, PostgreSQL/Docker Compose configuration, Alembic migrations, and Tenayan seed data.
-- Next.js dashboard shell with routes for `/dashboard`, `/dashboard/map`, `/units`, `/scenarios`, `/investor`, `/sensitivity`, `/documents`, `/validation-pack`, `/evidence`, and `/settings`.
+- Next.js dashboard shell with routes for `/dashboard`, `/dashboard/map`, `/units`, `/scenarios`, `/investor`, `/sensitivity`, `/documents`, `/validation-pack`, `/evidence`, `/pilot-decision`, and `/settings`.
 - Deterministic scenario simulation for CO2, captured CO2, e-methanol, H2, revenue, LCOM, NPV, IRR, payback, and stored scenario results.
 - MapLibre strategy dashboard with GeoJSON opportunity map, heatmap/marker layers, ranking table, score breakdowns, and sensitivity view.
 - Investor case dashboard backed by deterministic aggregate data, null-safe economics, CAPEX structure, revenue mix, risks, roadmap, and data gaps.
@@ -34,16 +34,16 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
-## Current Milestone: v2.3 Evidence Collection Workspace
+## Current Milestone: v2.4 Pilot Decision Dashboard
 
-**Goal:** Convert the Top 3 validation checklist into a persisted evidence workspace so PLN/site/vendor/port/offtake/MRV confirmations can be tracked before a single pilot decision.
+**Goal:** Convert deterministic shortlist results and evidence readiness into a management-facing pilot decision dashboard with recommendation, blockers, and next actions.
 
 **Target features:**
 
-- Evidence records persisted by plant, scenario, category, and evidence key.
-- Lifecycle status across `missing`, `requested`, `received`, `verified`, and `rejected`.
-- Evidence readiness score and high-priority open gap count derived from stored evidence status.
-- `/evidence` UI for selecting Top 3 candidates, editing evidence metadata, saving status, and reviewing warnings.
+- Evidence-adjusted decision score derived from shortlist score and evidence readiness.
+- Gate status labels for `committee_ready`, `needs_evidence`, and `blocked`.
+- Candidate-specific blockers and next actions.
+- `/pilot-decision` UI for management review before single-pilot selection.
 
 ## Requirements
 
@@ -64,10 +64,11 @@ Known runtime caveats:
 - [x] Build deterministic Top 3/Top 5 shortlist decision matrix - v2.1.
 - [x] Produce Top 3 validation pack, evidence checklist, committee memo, and PDF endpoint - v2.2.
 - [x] Persist and manage Top 3 validation evidence with readiness rollup and `/evidence` workspace - v2.3.
+- [x] Produce evidence-gated pilot recommendation dashboard with blockers and action plan - v2.4.
 
 ### Active
 
-None currently. Next scope should be either production deployment hardening, OCR/retrieval expansion, or evidence-driven shortlist recalibration after real PLN/site/vendor data is entered.
+None currently. Next scope should be either production deployment hardening, OCR/retrieval expansion, or automated report/export generation from the pilot decision dashboard.
 
 ### Candidate Next Requirements
 
@@ -138,6 +139,8 @@ Current architecture:
 | Adapt addendum schema to Phase 1 `plants` table for v1 | Phase 1 already shipped a compact `plants` model; splitting into `plant_sites` and `plant_units` was not required for v1 | Good for MVP; revisit only if multi-site/multi-unit scope expands |
 | Persist validation evidence separately from shortlist ranking | Human evidence collection should not silently rewrite deterministic screening scores | Good - `/evidence` tracks readiness while `/shortlist` remains the screening rank source |
 | Use deterministic evidence readiness scoring | Status lifecycle can be scored transparently without LLM or frontend recalculation | Good - verified evidence drives readiness score and high-priority gap count |
+| Keep pilot decision scoring read-only | Pilot decision guidance should not mutate stored shortlist rank or evidence records | Good - `/pilot-decision` computes decision score on read and exposes methodology |
+| Gate committee readiness on evidence status | A high screening score alone should not advance a site if high-priority evidence remains open | Good - candidates need 80% readiness, zero high-priority open gaps, and zero rejected evidence |
 
 ## Milestone History
 
@@ -146,6 +149,7 @@ Current architecture:
 - **v2.1 Economic Calibration & Shortlist Validation** - Started 2026-05-17. Scope: deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
 - **v2.2 Top 3 Validation Pack & Committee Memo** - Started 2026-05-17. Scope: Top 3 evidence checklist, comparison, committee memo, and PDF endpoint.
 - **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Scope: persisted evidence records, readiness rollup, and `/evidence` workspace.
+- **v2.4 Pilot Decision Dashboard** - Shipped 2026-05-17. Scope: evidence-gated pilot recommendation, blockers, and action plan.
 
 ## Evolution
 
@@ -165,4 +169,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-17 after v2.3 Phase 12*
+*Last updated: 2026-05-17 after v2.4 Phase 13*

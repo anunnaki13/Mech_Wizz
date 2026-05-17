@@ -1,8 +1,20 @@
 # Requirements: MECH WIZ AI Digital Twin
 
 **Defined:** 2026-05-16
-**Milestone:** v2.3 Evidence Collection Workspace
+**Milestone:** v2.4 Pilot Decision Dashboard
 **Core Value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
+
+## v2.4 Requirements
+
+Requirements for the pilot decision milestone. Each requirement maps to Phase 13.
+
+### Pilot Decision Dashboard
+
+- [x] **PDEC-01**: Backend can generate a pilot decision dashboard from Top 3 shortlist and evidence workspace data.
+- [x] **PDEC-02**: System calculates evidence-adjusted decision score without mutating stored shortlist rank.
+- [x] **PDEC-03**: System labels candidates as `committee_ready`, `needs_evidence`, or `blocked` using deterministic evidence gates.
+- [x] **PDEC-04**: System surfaces candidate blockers and next actions from high-priority open or rejected evidence.
+- [x] **PDEC-05**: Frontend exposes `/pilot-decision` with lead recommendation, comparison cards, blockers, methodology, and action plan.
 
 ## v2.3 Requirements
 
@@ -176,15 +188,21 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | EVID-03 | Phase 12 | Complete |
 | EVID-04 | Phase 12 | Complete |
 | EVID-05 | Phase 12 | Complete |
+| PDEC-01 | Phase 13 | Complete |
+| PDEC-02 | Phase 13 | Complete |
+| PDEC-03 | Phase 13 | Complete |
+| PDEC-04 | Phase 13 | Complete |
+| PDEC-05 | Phase 13 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 29 total, complete
 - v2.1 requirements: 5 total, complete
 - v2.2 requirements: 5 total, complete
 - v2.3 requirements: 5 total, complete
-- Mapped to phases: 44
+- v2.4 requirements: 5 total, complete
+- Mapped to phases: 49
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after v2.3 Phase 12*
+*Last updated: 2026-05-17 after v2.4 Phase 13*

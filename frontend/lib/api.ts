@@ -4,6 +4,7 @@ import type { FinancialAssumption, FinancialAssumptionPayload } from "@/types/fi
 import type { HydrogenStrategy, HydrogenStrategyPayload } from "@/types/hydrogen-strategy";
 import type { InvestorCase } from "@/types/investor";
 import type { LlmGeneratePayload, LlmInsight } from "@/types/llm";
+import type { PilotDecisionDashboard } from "@/types/pilot-decision";
 import type { DocumentAskPayload, ProjectDocument } from "@/types/document";
 import type {
   PreFeedPackage,
@@ -422,6 +423,18 @@ export async function updateValidationEvidence(
     method: "PUT",
     body: JSON.stringify(payload),
   });
+}
+
+export async function getPilotDecisionDashboard(params: {
+  scheme?: string;
+  limit?: number;
+} = {}): Promise<PilotDecisionDashboard> {
+  return apiFetch<PilotDecisionDashboard>(
+    `/pilot-decision${buildQuery({
+      scheme: params.scheme,
+      limit: params.limit ? String(params.limit) : undefined,
+    })}`,
+  );
 }
 
 export async function runSensitivity(params: {
