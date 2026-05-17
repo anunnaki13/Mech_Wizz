@@ -235,7 +235,7 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
       });
       setRiskDraft(EMPTY_RISK);
       await loadAll();
-      setStatusMessage("Risk saved.");
+      setStatusMessage("Risk saved. Next: review blockers and next actions in the Decision Dashboard.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Risk could not be saved.");
     } finally {
@@ -266,7 +266,7 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
       });
       setGateDraft(EMPTY_GATE);
       await loadAll();
-      setStatusMessage("Decision gate saved.");
+      setStatusMessage("Decision gate saved. Next: review gate readiness and committee blockers.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Decision gate could not be saved.");
     } finally {
@@ -305,6 +305,10 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
   }
 
   async function handleDeleteRisk(riskId: string) {
+    const confirmed = window.confirm("Delete this risk? This may change blockers and decision readiness.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);
@@ -320,6 +324,10 @@ export function DecisionDashboardWorkspace({ packageId }: { packageId: string | 
   }
 
   async function handleDeleteGate(gateId: string) {
+    const confirmed = window.confirm("Delete this decision gate? This may change gate readiness.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);

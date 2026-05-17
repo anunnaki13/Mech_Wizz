@@ -1,8 +1,21 @@
 # Requirements: MECH WIZ AI Digital Twin
 
 **Defined:** 2026-05-16
-**Milestone:** v2.5 Workflow UX Audit & Simplification Plan
+**Milestone:** v2.6 Guided Workflow & Simplified Navigation
 **Core Value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
+
+## v2.6 Requirements
+
+Requirements for the workflow simplification milestone. Each requirement maps to Phase 15.
+
+### Guided Workflow And Simplified Navigation
+
+- [x] **UXS-01**: Navigation is grouped by operator intent and highlights the active page.
+- [x] **UXS-02**: Dashboard surfaces a guided operator workflow centered on Pilot Decision, Evidence, and Validation Pack.
+- [x] **UXS-03**: Dashboard includes concise Indonesian explanations for core terms and outputs.
+- [x] **UXS-04**: Save actions in high-friction modules return next-step guidance.
+- [x] **UXS-05**: Destructive actions require confirmation before API calls.
+- [x] **UXS-06**: The confusing lower-left Next.js development indicator is disabled.
 
 ## v2.5 Requirements
 
@@ -210,6 +223,12 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | UXA-03 | Phase 14 | Complete |
 | UXA-04 | Phase 14 | Complete |
 | UXA-05 | Phase 14 | Complete |
+| UXS-01 | Phase 15 | Complete |
+| UXS-02 | Phase 15 | Complete |
+| UXS-03 | Phase 15 | Complete |
+| UXS-04 | Phase 15 | Complete |
+| UXS-05 | Phase 15 | Complete |
+| UXS-06 | Phase 15 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 29 total, complete
@@ -218,9 +237,10 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 - v2.3 requirements: 5 total, complete
 - v2.4 requirements: 5 total, complete
 - v2.5 requirements: 5 total, complete
-- Mapped to phases: 54
+- v2.6 requirements: 6 total, complete
+- Mapped to phases: 60
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after v2.5 Phase 14 audit*
+*Last updated: 2026-05-18 after v2.6 Phase 15 implementation*

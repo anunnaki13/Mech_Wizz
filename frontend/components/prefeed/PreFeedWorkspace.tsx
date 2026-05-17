@@ -299,7 +299,7 @@ export function PreFeedWorkspace() {
         ? await updatePreFeedPackage(selectedPackage.id, payload)
         : await createPreFeedPackage(payload);
       await loadPackagesFor(saved.plant_id, saved.scenario_id ?? "", saved.id);
-      setStatusMessage("Package saved.");
+      setStatusMessage("Package saved. Next: link documents, add cost/vendor and offtake/MRV data, then review Decision Dashboard.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Package could not be saved.");
     } finally {
@@ -309,6 +309,10 @@ export function PreFeedWorkspace() {
 
   async function handleArchivePackage() {
     if (!selectedPackage) {
+      return;
+    }
+    const confirmed = window.confirm(`Archive package "${selectedPackage.package_name}"? Archived packages stay in history but should not be used as active working data.`);
+    if (!confirmed) {
       return;
     }
     setBusy(true);
@@ -351,6 +355,10 @@ export function PreFeedWorkspace() {
 
   async function handleUnlinkDocument(linkId: string) {
     if (!selectedPackage) {
+      return;
+    }
+    const confirmed = window.confirm("Remove this document link from the package? The original document file will stay in Documents.");
+    if (!confirmed) {
       return;
     }
     setBusy(true);

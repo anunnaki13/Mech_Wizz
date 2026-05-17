@@ -159,3 +159,25 @@
 **What's next:** Phase 15 Guided Workflow & Simplified Navigation.
 
 ---
+
+## v2.6 Guided Workflow & Simplified Navigation (Shipped: 2026-05-18)
+
+**Delivered:** A simplified operator workflow that makes Pilot Decision the primary business answer and moves advanced modules into clearer secondary groups.
+
+**Phases completed:** 1 phase, 1 plan
+
+**Key accomplishments:**
+
+- Grouped sidebar navigation into Decision, Analysis, and Data/Admin sections.
+- Added active page state to navigation.
+- Added dashboard guided workflow panel: Pilot Decision -> Evidence -> Validation Pack -> Map drill-down.
+- Added Indonesian glossary for core operational terms and outputs.
+- Updated dashboard primary actions and stale next-step panel.
+- Added post-save next-step guidance in Evidence, Scenarios, and Pre-FEED workspaces.
+- Added confirmation dialogs before destructive delete/archive/unlink actions.
+- Disabled the Next.js development indicator that appeared as a lower-left "N".
+- Disabled sidebar prefetch for heavy modules.
+
+**What's next:** Deployment hardening, OCR/vector retrieval, or real evidence/data entry depending on operator priority.
+
+---

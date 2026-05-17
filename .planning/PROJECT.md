@@ -12,14 +12,14 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 ## Current State
 
-**Shipped version:** v2.4 Pilot Decision Dashboard on 2026-05-17
+**Shipped version:** v2.6 Guided Workflow & Simplified Navigation on 2026-05-18
 **Audit:** v1.0 PASS, v2.0 implementation verified through phase tests and dashboards
-**Current focus:** v2.5 Workflow UX Audit complete; next should simplify operator flow
+**Current focus:** v2.6 simplified operator flow complete; next should address deployment hardening, OCR/retrieval, or real evidence entry
 
 The current app includes:
 
 - FastAPI backend, PostgreSQL/Docker Compose configuration, Alembic migrations, and Tenayan seed data.
-- Next.js dashboard shell with routes for `/dashboard`, `/dashboard/map`, `/units`, `/scenarios`, `/investor`, `/sensitivity`, `/documents`, `/validation-pack`, `/evidence`, `/pilot-decision`, and `/settings`.
+- Next.js dashboard shell with grouped navigation and routes for `/dashboard`, `/pilot-decision`, `/evidence`, `/validation-pack`, `/dashboard/map`, `/shortlist`, `/units`, `/scenarios`, `/investor`, `/sensitivity`, `/documents`, `/prefeed`, and `/settings`.
 - Deterministic scenario simulation for CO2, captured CO2, e-methanol, H2, revenue, LCOM, NPV, IRR, payback, and stored scenario results.
 - MapLibre strategy dashboard with GeoJSON opportunity map, heatmap/marker layers, ranking table, score breakdowns, and sensitivity view.
 - Investor case dashboard backed by deterministic aggregate data, null-safe economics, CAPEX structure, revenue mix, risks, roadmap, and data gaps.
@@ -34,16 +34,18 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
-## Current Milestone: v2.5 Workflow UX Audit & Simplification Plan
+## Current Milestone: v2.6 Guided Workflow & Simplified Navigation
 
-**Goal:** Evaluate the full operator experience before adding more features, identify button/function/workflow friction, and define a simpler operating model.
+**Goal:** Make the app easier to operate by centering the workflow on Dashboard -> Pilot Decision -> Evidence -> Validation Pack.
 
-**Target features:**
+**Delivered features:**
 
-- Runtime route/API audit.
-- Button/link/field inventory.
-- Workflow clarity review.
-- Simplification plan for a guided operator flow.
+- Grouped sidebar navigation with active page state.
+- Dashboard guided workflow panel and Indonesian glossary.
+- Pilot Decision-first dashboard actions and next-step guidance.
+- Post-save next-step messages in evidence, scenarios, and Pre-FEED workspaces.
+- Confirmation dialogs before destructive archive/delete/unlink actions.
+- Next.js dev indicator disabled so the lower-left "N" no longer appears as an unexplained menu.
 
 ## Requirements
 
@@ -66,10 +68,11 @@ Known runtime caveats:
 - [x] Persist and manage Top 3 validation evidence with readiness rollup and `/evidence` workspace - v2.3.
 - [x] Produce evidence-gated pilot recommendation dashboard with blockers and action plan - v2.4.
 - [x] Audit workflow, buttons, functions, and operator complexity before adding more features - v2.5.
+- [x] Simplify operator workflow with grouped navigation, active state, guided dashboard, next-step prompts, and destructive-action confirmation - v2.6.
 
 ### Active
 
-None currently. Next scope should simplify the operator workflow: guided navigation, grouped sidebar, active page state, next-step prompts after save, destructive-action confirmation, and Indonesian glossary/tooltips.
+None currently.
 
 ### Candidate Next Requirements
 
@@ -143,7 +146,9 @@ Current architecture:
 | Keep pilot decision scoring read-only | Pilot decision guidance should not mutate stored shortlist rank or evidence records | Good - `/pilot-decision` computes decision score on read and exposes methodology |
 | Gate committee readiness on evidence status | A high screening score alone should not advance a site if high-priority evidence remains open | Good - candidates need 80% readiness, zero high-priority open gaps, and zero rejected evidence |
 | Pause feature expansion for UX audit | User reported the app is hard to operate and modules are unclear | Good - v2.5 audit found runtime availability is healthy but operator workflow needs simplification |
-| Treat Pilot Decision as the main business output | The user needs a simpler answer than many separate modules | Pending implementation - Phase 15 should center Dashboard -> Pilot Decision -> Evidence -> Validation Pack |
+| Treat Pilot Decision as the main business output | The user needs a simpler answer than many separate modules | Good - v2.6 centers Dashboard -> Pilot Decision -> Evidence -> Validation Pack |
+| Disable sidebar prefetch for heavy modules | A flat sidebar with many Next links can eagerly fetch heavy module payloads and make module opening feel heavier | Good - sidebar links now use explicit non-prefetch navigation |
+| Disable Next.js dev indicator | The lower-left development indicator appeared to the user like an unexplained app menu | Good - `devIndicators: false` removes it during local development |
 
 ## Milestone History
 
@@ -154,6 +159,7 @@ Current architecture:
 - **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Scope: persisted evidence records, readiness rollup, and `/evidence` workspace.
 - **v2.4 Pilot Decision Dashboard** - Shipped 2026-05-17. Scope: evidence-gated pilot recommendation, blockers, and action plan.
 - **v2.5 Workflow UX Audit & Simplification Plan** - Completed 2026-05-17. Scope: route/API smoke, button/function inventory, workflow audit, and Phase 15 simplification plan.
+- **v2.6 Guided Workflow & Simplified Navigation** - Shipped 2026-05-18. Scope: grouped navigation, guided dashboard, glossary, next-step prompts, and destructive action confirmation.
 
 ## Evolution
 
@@ -173,4 +179,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-17 after v2.5 Phase 14 audit*
+*Last updated: 2026-05-18 after v2.6 Phase 15 implementation*

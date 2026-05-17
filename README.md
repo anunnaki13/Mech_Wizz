@@ -11,13 +11,29 @@ Tujuan utama aplikasi:
 
 Catatan implementasi tambahan dalam bahasa Indonesia tersedia di [`docs/GSD_v2_PREFEED_DETAILED_EXPLANATION.md`](docs/GSD_v2_PREFEED_DETAILED_EXPLANATION.md).
 
+## Alur Operasional Saat Ini
+
+Untuk penggunaan harian, mulai dari alur sederhana ini:
+
+1. `/dashboard`: baca ringkasan, kandidat utama, caveat, dan glosarium.
+2. `/pilot-decision`: lihat jawaban bisnis utama, yaitu kandidat pilot yang direkomendasikan, blocker, dan action plan.
+3. `/evidence`: update bukti yang masih missing/requested/rejected.
+4. `/validation-pack`: buka checklist Top 3 dan memo komite saat bukti sudah cukup.
+
+Modul lain seperti Map, Shortlist, Sensitivity, Investor, Scenarios, Pre-FEED, Documents, dan Settings adalah drill-down atau input lanjutan. Gunakan modul tersebut ketika Pilot Decision atau Evidence meminta detail tambahan.
+
 ## Ringkasan Modul
 
 | Modul | Halaman | Fungsi Utama | Output Utama |
 |-------|---------|--------------|--------------|
+| Dashboard | `/dashboard` | Ringkasan screening, workflow guide, Top 10, dan glossary | Arahan kerja dan konteks keputusan |
+| Pilot Decision | `/pilot-decision` | Jawaban bisnis utama berbasis shortlist dan evidence readiness | Kandidat rekomendasi, gate status, blocker, action plan |
+| Evidence | `/evidence` | Update bukti validasi per kandidat Top 3 | Evidence readiness dan status bukti |
+| Validation Pack | `/validation-pack` | Paket diskusi komite dan memo PDF | Checklist Top 3, no-go trigger, committee memo |
 | Unit Data | `/units` | Input data PLTU, emisi stack, kesiapan site, dan strategi H2 | Profil unit dan status kelengkapan data |
 | Scenario Simulation | `/scenarios` | Hitung CO2, methanol, H2, electrolyzer, revenue, LCOM, NPV, IRR, payback | `ScenarioResult` |
 | Map & Scoring | `/dashboard/map` | Ranking unit, heatmap, economic zone, pelabuhan, koridor ekspor indikatif | Skor prioritas dan layer map |
+| Shortlist | `/shortlist` | Matrix Top 3/Top 5 dari scoring, ekonomi, logistik, dan confidence | Rekomendasi shortlist dan rationale |
 | Sensitivity | `/sensitivity` | Uji pengaruh perubahan variabel ekonomi/teknis | Tornado chart dan driver dominan |
 | Investor Case | `/investor` | Ringkas kasus investasi dari data yang sudah dihitung backend | KPI, thesis, risiko, roadmap, data gap |
 | Pre-FEED | `/prefeed` | Kelola paket Pre-FEED, biaya, vendor, offtake, MRV, risiko, gate keputusan | Dashboard kesiapan komite |
@@ -26,17 +42,20 @@ Catatan implementasi tambahan dalam bahasa Indonesia tersedia di [`docs/GSD_v2_P
 
 ## Cara Membaca Aplikasi
 
-Alur logisnya adalah:
+Alur teknis lengkapnya adalah:
 
-1. `Units`: definisikan unit pembangkit dan data teknis dasar.
-2. `Scenarios`: buat skenario bisnis dan financial assumptions.
-3. `Run Simulation`: backend menghitung hasil teknis dan ekonomi awal.
-4. `Map`: backend memberi ranking, heatmap, port-aware map, dan data gap.
-5. `Sensitivity`: backend menghitung variabel mana yang paling mempengaruhi ekonomi.
-6. `Investor`: aplikasi merangkum hasil menjadi kasus investasi.
-7. `Pre-FEED`: masukkan data biaya/vendor/offtake/MRV/risiko untuk menuju keputusan komite.
-8. `Documents`: upload dokumen pendukung dan gunakan LLM hanya untuk narasi berbasis data tersimpan.
-9. `Settings`: sesuaikan asumsi, scoring weights, dan API key OpenRouter.
+1. `Pilot Decision`: baca rekomendasi, blocker, dan action plan.
+2. `Evidence`: tutup bukti yang menghambat gate decision.
+3. `Validation Pack`: siapkan bahan komite dan memo PDF.
+4. `Map`/`Shortlist`: drill-down lokasi, score, pelabuhan, dan ekonomi.
+5. `Units`: definisikan atau koreksi unit pembangkit dan data teknis dasar.
+6. `Scenarios`: buat skenario bisnis dan financial assumptions.
+7. `Run Simulation`: backend menghitung hasil teknis dan ekonomi awal.
+8. `Sensitivity`: backend menghitung variabel mana yang paling mempengaruhi ekonomi.
+9. `Investor`: aplikasi merangkum hasil menjadi kasus investasi.
+10. `Pre-FEED`: masukkan data biaya/vendor/offtake/MRV/risiko untuk menuju keputusan komite.
+11. `Documents`: upload dokumen pendukung dan gunakan LLM hanya untuk narasi berbasis data tersimpan.
+12. `Settings`: sesuaikan asumsi, scoring weights, dan API key OpenRouter.
 
 Semua angka yang dihitung backend harus dibaca sebagai screening/pre-feasibility, bukan angka final EPC, bankable feasibility study, atau investment decision tanpa validasi lapangan.
 

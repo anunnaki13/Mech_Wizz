@@ -145,7 +145,7 @@ export function ScenarioWorkspace() {
       return;
     }
     const scenario = await createScenario(selectedPlantId, payload);
-    setStatusMessage("Scenario saved.");
+    setStatusMessage("Scenario saved. Next: save financial assumptions, then run simulation.");
     await loadScenarios(selectedPlantId, scenario.id);
   }
 
@@ -156,11 +156,17 @@ export function ScenarioWorkspace() {
     const scenario = await updateScenario(selectedScenario.id, payload);
     setScenarios((current) => current.map((item) => (item.id === scenario.id ? scenario : item)));
     setSelectedScenarioId(scenario.id);
-    setStatusMessage("Scenario updated.");
+    setStatusMessage("Scenario updated. Next: run simulation to refresh stored outputs.");
   }
 
   async function handleDeleteScenario() {
     if (!selectedScenario || !selectedPlantId) {
+      return;
+    }
+    const confirmed = window.confirm(
+      `Delete scenario "${selectedScenario.scenario_name}"? This cannot be undone and may remove related assumption/result context.`,
+    );
+    if (!confirmed) {
       return;
     }
     await deleteScenario(selectedScenario.id);
@@ -175,7 +181,7 @@ export function ScenarioWorkspace() {
     }
     const record = await saveFinancialAssumption(selectedScenario.id, payload);
     setFinancialAssumption(record);
-    setStatusMessage("Financial assumptions saved.");
+    setStatusMessage("Financial assumptions saved. Next: run simulation to update economics and ranking inputs.");
   }
 
   async function handleRunSimulation() {
@@ -187,7 +193,7 @@ export function ScenarioWorkspace() {
     try {
       const result = await runScenarioSimulation(selectedScenario.id);
       setScenarioResults((current) => [result, ...current]);
-      setStatusMessage("Simulation result saved.");
+      setStatusMessage("Simulation result saved. Next: open Map or Pilot Decision to review the impact.");
     } catch {
       setErrorMessage("Simulation failed. Check scenario inputs and financial assumptions.");
     } finally {

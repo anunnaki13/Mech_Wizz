@@ -1,10 +1,10 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.5
-milestone_name: Workflow UX Audit & Simplification Plan
+milestone: v2.6
+milestone_name: Guided Workflow & Simplified Navigation
 status: completed
-last_updated: "2026-05-17T17:35:00+07:00"
-last_activity: 2026-05-17
+last_updated: "2026-05-18T00:00:00+07:00"
+last_activity: 2026-05-18
 progress:
   total_phases: 1
   completed_phases: 1
@@ -17,23 +17,23 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-17)
+See: .planning/PROJECT.md (updated 2026-05-18)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v2.5 Workflow UX Audit complete; next should simplify operator flow
+**Current focus:** v2.6 Guided Workflow & Simplified Navigation complete; next should be deployment hardening, OCR/retrieval, or real evidence/data entry
 
 ## Current Position
 
-Phase: 14
+Phase: 15
 Plan: 1 of 1 complete
 Status: Milestone complete
-Last activity: 2026-05-17 — Phase 14 workflow UX audit completed
+Last activity: 2026-05-18 — Phase 15 guided workflow and simplified navigation completed
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 32
+- Total plans completed: 33
 - Average duration: ~20 min for Phase 9
 - Total execution time: 59 min for Phase 9
 
@@ -55,11 +55,12 @@ Last activity: 2026-05-17 — Phase 14 workflow UX audit completed
 | 12. Evidence Collection Workspace | 1/1 | n/a | n/a |
 | 13. Pilot Decision Dashboard | 1/1 | n/a | n/a |
 | 14. Workflow UX Audit & Simplification | 1/1 | n/a | n/a |
+| 15. Guided Workflow & Simplified Navigation | 1/1 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 completed plans: 10-01, 11-01, 12-01, 13-01, 14-01
-- Trend: v2.5 workflow UX audit complete; next phase should simplify operation rather than add domain scope
+- Last 5 completed plans: 11-01, 12-01, 13-01, 14-01, 15-01
+- Trend: v2.6 simplified the operator path; next phase can move to deployment/OCR or real data entry
 
 *Updated after each plan completion*
 | Phase 6 P06-01 | 6min | 3 tasks | 4 files |
@@ -79,6 +80,7 @@ Last activity: 2026-05-17 — Phase 14 workflow UX audit completed
 | Phase 12 P12-01 | n/a | 3 tasks | 18 files |
 | Phase 13 P13-01 | n/a | 3 tasks | 15 files |
 | Phase 14 P14-01 | n/a | audit | 6 files |
+| Phase 15 P15-01 | n/a | 5 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -142,6 +144,13 @@ Recent decisions affecting current work:
 - Milestone v2.5: Scope is Workflow UX Audit & Simplification Plan; runtime is healthy but operator workflow is too complex.
 - Phase 14: All 13 main frontend routes and 11 key backend APIs returned HTTP 200 during audit.
 - Phase 14: The next implementation should center Dashboard -> Pilot Decision -> Evidence -> Validation Pack and move advanced modules into secondary/admin groups.
+- Milestone v2.6: Scope is Guided Workflow & Simplified Navigation.
+- Phase 15: Navigation is grouped into Decision, Analysis, and Data/Admin with active route state.
+- Phase 15: Dashboard now starts with Pilot Decision/Evidence actions, a guided workflow panel, and Indonesian glossary.
+- Phase 15: Sidebar links disable prefetch to avoid eager-loading heavy module payloads.
+- Phase 15: Save messages in Evidence, Scenarios, and Pre-FEED workspaces now include the next operational step.
+- Phase 15: Destructive archive/delete/unlink actions require confirmation before API calls.
+- Phase 15: Next.js dev indicator is disabled because the lower-left "N" confused the operator.
 
 ### Pending Todos
 
@@ -174,6 +183,7 @@ None.
 | 2026-05-17 | Evidence collection workspace | Added persisted Top 3 evidence records, readiness rollup API, `/evidence` UI, tests, build, migration, and runtime smoke checks. |
 | 2026-05-17 | Pilot decision dashboard | Added evidence-gated pilot recommendation API, `/pilot-decision` UI, blockers, methodology, action plan, tests, build, and runtime smoke checks. |
 | 2026-05-17 | Workflow UX audit | Audited routes, APIs, buttons, forms, destructive actions, and operator flow; recommended Phase 15 Guided Workflow & Simplified Navigation. |
+| 2026-05-18 | Guided workflow simplification | Added grouped navigation, active state, dashboard workflow guide, glossary, next-step save prompts, destructive confirmations, and disabled the Next.js dev indicator. |
 
 ## Session Continuity
 
@@ -183,4 +193,4 @@ Resume file: None
 
 ## Operator Next Steps
 
-- Implement Phase 15 Guided Workflow & Simplified Navigation: grouped sidebar, active nav, next-step prompts, confirmation dialogs, and Indonesian glossary/tooltips.
+- Choose the next milestone: deployment hardening, OCR/vector retrieval, or real evidence/data entry for the Top 3 pilot decision.

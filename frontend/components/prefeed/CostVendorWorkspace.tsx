@@ -275,7 +275,7 @@ export function CostVendorWorkspace({
       });
       setCostDraft(EMPTY_COST_DRAFT);
       await loadAll();
-      setStatusMessage("Cost item saved.");
+      setStatusMessage("Cost item saved. Next: review cost summary and save active cost basis if this should feed scenarios.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Cost item could not be saved.");
     } finally {
@@ -284,6 +284,10 @@ export function CostVendorWorkspace({
   }
 
   async function handleDeleteCostItem(costItemId: string) {
+    const confirmed = window.confirm("Delete this cost item? This cannot be undone.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);
@@ -320,7 +324,7 @@ export function CostVendorWorkspace({
       });
       setProposalDraft(EMPTY_PROPOSAL_DRAFT);
       await loadAll(saved.id);
-      setStatusMessage("Vendor proposal saved.");
+      setStatusMessage("Vendor proposal saved. Next: check proposal gaps and select active cost basis when ready.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Vendor proposal could not be saved.");
     } finally {
@@ -329,6 +333,10 @@ export function CostVendorWorkspace({
   }
 
   async function handleDeleteProposal(proposalId: string) {
+    const confirmed = window.confirm("Delete this vendor proposal? Related comparison and cost basis context may change.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);
@@ -375,7 +383,7 @@ export function CostVendorWorkspace({
       });
       setActiveBasis(saved);
       await loadAll(selectedProposalId);
-      setStatusMessage("Active cost basis saved.");
+      setStatusMessage("Active cost basis saved. Next: run or review the scenario simulation that uses this basis.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Active cost basis could not be saved.");
     } finally {

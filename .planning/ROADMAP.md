@@ -9,6 +9,7 @@
 - [x] **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Persisted Top 3 evidence records, readiness rollup, and `/evidence` management UI.
 - [x] **v2.4 Pilot Decision Dashboard** - Shipped 2026-05-17. Evidence-gated pilot recommendation, blockers, action plan, and `/pilot-decision` page.
 - [x] **v2.5 Workflow UX Audit & Simplification Plan** - Completed 2026-05-17. Runtime route/API audit, button/function inventory, and simplification plan.
+- [x] **v2.6 Guided Workflow & Simplified Navigation** - Shipped 2026-05-18. Grouped navigation, active state, guided dashboard workflow, glossary, next-step prompts, and destructive-action confirmation.
 
 ## Completed Milestones
 
@@ -31,15 +32,16 @@ Milestone result:
 
 </details>
 
-## Latest Milestone: v2.5 Workflow UX Audit & Simplification Plan
+## Latest Milestone: v2.6 Guided Workflow & Simplified Navigation
 
-The v2.5 milestone pauses feature expansion and audits the operator workflow. It confirms route/API availability but finds the app needs a simpler guided flow before more domain modules are added.
+The v2.6 milestone implements the Phase 14 simplification plan. The operator workflow is now centered on Dashboard -> Pilot Decision -> Evidence -> Validation Pack, with advanced modules grouped as drill-down or admin work.
 
 ## Phases
 
 **Phase Numbering:**
 - Phase numbering continues from the completed v1.0 milestone.
 - Phase 14 is the v2.5 audit phase.
+- Phase 15 is the v2.6 simplification phase.
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
@@ -51,6 +53,7 @@ The v2.5 milestone pauses feature expansion and audits the operator workflow. It
 - [x] **Phase 12: Evidence Collection Workspace** - Persisted evidence records, status lifecycle, readiness rollup, and evidence page. (completed 2026-05-17)
 - [x] **Phase 13: Pilot Decision Dashboard** - Evidence-adjusted decision score, gate labels, blockers, action plan, and pilot decision page. (completed 2026-05-17)
 - [x] **Phase 14: Workflow UX Audit & Simplification** - Route/API smoke, button/function inventory, workflow audit, and simplification plan. (completed 2026-05-17)
+- [x] **Phase 15: Guided Workflow & Simplified Navigation** - Grouped navigation, active state, dashboard workflow guide, glossary, next-step prompts, and destructive-action confirmation. (completed 2026-05-18)
 
 ## Phase Details
 
@@ -253,10 +256,30 @@ Plans:
 **Wave 1**
 - [x] 14-01: Workflow UX audit, UAT audit, UI review, and simplification plan.
 
+### Phase 15: Guided Workflow & Simplified Navigation
+
+**Goal:** Make the app easier for a non-technical operator to run by centering the workflow on the business decision and evidence closure.
+**Mode:** mvp
+**Depends on:** Phase 14
+**Requirements:** UXS-01, UXS-02, UXS-03, UXS-04, UXS-05, UXS-06
+**UI hint:** yes
+**Success Criteria** (what must be TRUE):
+  1. User can see grouped sidebar navigation and the active current page.
+  2. Dashboard tells the user to start with Pilot Decision and explains the next steps.
+  3. Dashboard includes concise Indonesian explanations for key terms.
+  4. Save actions in high-friction modules give next-step guidance.
+  5. Destructive actions require confirmation before the API call runs.
+  6. The confusing lower-left Next.js development indicator is disabled.
+**Plans:** 1/1 plan complete
+
+Plans:
+**Wave 1**
+- [x] 15-01: Guided workflow dashboard, grouped navigation, next-step prompts, confirmation dialogs, dev indicator removal, and verification.
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -274,3 +297,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14
 | 12. Evidence Collection Workspace | v2.3 | 1/1 | Complete | 2026-05-17 |
 | 13. Pilot Decision Dashboard | v2.4 | 1/1 | Complete | 2026-05-17 |
 | 14. Workflow UX Audit & Simplification | v2.5 | 1/1 | Complete | 2026-05-17 |
+| 15. Guided Workflow & Simplified Navigation | v2.6 | 1/1 | Complete | 2026-05-18 |

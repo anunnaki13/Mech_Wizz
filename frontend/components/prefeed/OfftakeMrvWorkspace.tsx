@@ -287,7 +287,7 @@ export function OfftakeMrvWorkspace({
       });
       setPriceDraft(EMPTY_PRICE_DECK);
       await loadAll();
-      setStatusMessage("Price deck saved.");
+      setStatusMessage("Price deck saved. Next: keep it active if it should drive revenue assumptions.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Price deck could not be saved.");
     } finally {
@@ -311,6 +311,10 @@ export function OfftakeMrvWorkspace({
   }
 
   async function handleDeleteDeck(deckId: string) {
+    const confirmed = window.confirm("Delete this price deck? Revenue assumptions linked to this deck will no longer be available.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);
@@ -349,7 +353,7 @@ export function OfftakeMrvWorkspace({
       });
       setOfftakeDraft(EMPTY_OFFTAKE);
       await loadAll();
-      setStatusMessage("Offtake prospect saved.");
+      setStatusMessage("Offtake prospect saved. Next: review offtake readiness and gaps.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Offtake prospect could not be saved.");
     } finally {
@@ -358,6 +362,10 @@ export function OfftakeMrvWorkspace({
   }
 
   async function handleDeleteOfftake(prospectId: string) {
+    const confirmed = window.confirm("Delete this offtake prospect? This may reduce offtake readiness.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);
@@ -400,7 +408,7 @@ export function OfftakeMrvWorkspace({
       });
       setMrvDraft(EMPTY_MRV);
       await loadAll();
-      setStatusMessage("MRV assumptions saved.");
+      setStatusMessage("MRV assumptions saved. Next: review MRV readiness and carbon intensity.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "MRV assumptions could not be saved.");
     } finally {
@@ -409,6 +417,10 @@ export function OfftakeMrvWorkspace({
   }
 
   async function handleDeleteMrv(assumptionId: string) {
+    const confirmed = window.confirm("Delete this MRV assumption? This may change MRV readiness and carbon indicators.");
+    if (!confirmed) {
+      return;
+    }
     setBusy(true);
     setErrorMessage(null);
     setStatusMessage(null);

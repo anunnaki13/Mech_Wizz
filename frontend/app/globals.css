@@ -48,7 +48,11 @@ textarea {
 .sidebar {
   border-right: 1px solid var(--border);
   background: #091524;
+  height: 100vh;
+  overflow-y: auto;
   padding: 24px 18px;
+  position: sticky;
+  top: 0;
 }
 
 .brand {
@@ -80,19 +84,56 @@ textarea {
 
 .nav {
   display: grid;
+  gap: 16px;
+}
+
+.nav-group {
+  display: grid;
   gap: 6px;
 }
 
-.nav a {
+.nav-group-title {
+  display: grid;
+  gap: 2px;
+  padding: 0 4px;
+}
+
+.nav-group-title strong {
+  color: #d6e4ee;
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.nav-group-title span {
   color: var(--muted);
+  font-size: 11px;
+}
+
+.nav-group-links {
+  display: grid;
+  gap: 4px;
+}
+
+.nav a {
+  border: 1px solid transparent;
+  color: var(--muted);
+  display: block;
   border-radius: 8px;
   padding: 10px 12px;
   font-size: 14px;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
   color: var(--text);
   background: var(--panel);
+}
+
+.nav a.active {
+  border-color: rgba(24, 199, 200, 0.42);
+  box-shadow: inset 3px 0 0 var(--cyan);
+  color: #d8fffb;
 }
 
 .main {
@@ -117,6 +158,26 @@ textarea {
 .topbar span {
   color: var(--muted);
   font-size: 13px;
+}
+
+.topbar-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.topbar-flow a {
+  border: 1px solid rgba(147, 169, 187, 0.28);
+  border-radius: 999px;
+  color: #d6e4ee;
+  font-size: 12px;
+  padding: 6px 9px;
+}
+
+.topbar-flow a:hover {
+  border-color: rgba(24, 199, 200, 0.58);
+  color: #d8fffb;
 }
 
 .content {
@@ -398,6 +459,36 @@ textarea {
   padding: 12px 16px;
 }
 
+.operator-flow-strip {
+  align-items: center;
+  background: rgba(147, 169, 187, 0.07);
+  border: 1px solid rgba(147, 169, 187, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.operator-flow-strip span,
+.operator-flow-strip strong {
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 5px 8px;
+}
+
+.operator-flow-strip span {
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.operator-flow-strip strong {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  color: #d6e4ee;
+}
+
 .scenario-toolbar {
   display: flex;
   align-items: flex-start;
@@ -582,6 +673,79 @@ textarea {
   margin: 4px 0 0;
 }
 
+.workflow-guide {
+  background: rgba(24, 199, 200, 0.08);
+  border-color: rgba(24, 199, 200, 0.26);
+  display: grid;
+  gap: 14px;
+}
+
+.workflow-step-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.workflow-step-card {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  min-height: 210px;
+  padding: 13px;
+  position: relative;
+}
+
+.workflow-step-card svg {
+  color: var(--cyan);
+}
+
+.workflow-step-index {
+  align-items: center;
+  background: rgba(125, 223, 150, 0.14);
+  border: 1px solid rgba(125, 223, 150, 0.32);
+  border-radius: 999px;
+  color: #cff7d9;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  height: 28px;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 28px;
+}
+
+.workflow-step-card span {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.workflow-step-card strong {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.workflow-step-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.workflow-step-card a {
+  align-items: center;
+  color: #bdf6f2;
+  display: inline-flex;
+  font-size: 13px;
+  gap: 5px;
+  margin-top: auto;
+}
+
 .dashboard-layout {
   align-items: start;
   display: grid;
@@ -746,6 +910,34 @@ textarea {
 
 .next-phase-panel li {
   margin: 6px 0;
+}
+
+.glossary-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.glossary-card {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: 7px;
+  min-height: 128px;
+  padding: 12px;
+}
+
+.glossary-card strong {
+  color: #d8fffb;
+  font-size: 14px;
+}
+
+.glossary-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.38;
+  margin: 0;
 }
 
 .shortlist-page {
@@ -3118,6 +3310,7 @@ textarea {
 
   .sidebar {
     position: static;
+    height: auto;
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
@@ -3125,8 +3318,10 @@ textarea {
   .grid.kpis,
   .grid.two,
   .summary-grid,
+  .workflow-step-grid,
   .dashboard-layout,
   .calculation-grid,
+  .glossary-grid,
   .shortlist-method,
   .shortlist-layout,
   .shortlist-card-grid,
@@ -3211,6 +3406,10 @@ textarea {
   .evidence-side-stack,
   .pilot-side-stack {
     position: static;
+  }
+
+  .topbar-flow {
+    justify-content: flex-start;
   }
 
   .map-canvas {

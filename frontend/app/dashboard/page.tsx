@@ -1,7 +1,18 @@
 import Link from "next/link";
-import { AlertTriangle, ArrowRight, BarChart3, Factory, FileText, MapPinned, Ship, Zap } from "lucide-react";
+import {
+  AlertTriangle,
+  ArrowRight,
+  BarChart3,
+  Factory,
+  FileSearch,
+  MapPinned,
+  Ship,
+  Target,
+  Zap,
+} from "lucide-react";
 
 import { AppShell } from "@/components/layout/AppShell";
+import { WorkflowGuide } from "@/components/workflow/WorkflowGuide";
 import { getPlants, getUnitRanking } from "@/lib/api";
 import type { Plant } from "@/types/plant";
 import type { UnitRankingRow } from "@/types/scoring";
@@ -12,6 +23,41 @@ type DashboardData = {
   plants: Plant[];
   ranking: UnitRankingRow[];
 };
+
+const glossaryTerms = [
+  {
+    term: "Pilot Decision",
+    definition: "Halaman jawaban utama: kandidat mana yang paling siap maju, blocker apa yang tersisa, dan aksi berikutnya.",
+  },
+  {
+    term: "Evidence",
+    definition: "Bukti pendukung per kandidat, misalnya data emisi, port, offtake, H2, MRV, atau biaya.",
+  },
+  {
+    term: "LCOM",
+    definition: "Levelized Cost of Methanol. Biaya indikatif per ton methanol dari asumsi teknis dan finansial.",
+  },
+  {
+    term: "MRV",
+    definition: "Measurement, Reporting, Verification untuk klaim emisi, abatement, dan potensi carbon credit.",
+  },
+  {
+    term: "Pre-FEED",
+    definition: "Paket data awal sebelum FEED: proposal vendor, biaya, offtake, MRV, risiko, dan gate keputusan.",
+  },
+  {
+    term: "WIZ Align",
+    definition: "Skenario bisnis default yang dipakai ranking saat ini: PLN ikut pada nilai proyek dengan partner capex besar.",
+  },
+  {
+    term: "Confidence",
+    definition: "Tingkat keyakinan output. Low berarti angka masih perlu konfirmasi lapangan atau sumber resmi.",
+  },
+  {
+    term: "Data Status",
+    definition: "Asal data input: actual, estimated, benchmark, user assumption, partner supplied, atau unknown.",
+  },
+];
 
 function formatNumber(value: number | null | undefined, digits = 0) {
   if (value === null || value === undefined || Number.isNaN(value)) {
@@ -104,17 +150,17 @@ export default async function DashboardPage() {
             </p>
           </div>
           <div className="hero-actions">
+            <Link className="button" href="/pilot-decision">
+              <Target size={16} aria-hidden="true" />
+              Pilot Decision
+            </Link>
+            <Link className="button secondary" href="/evidence">
+              <FileSearch size={16} aria-hidden="true" />
+              Evidence
+            </Link>
             <Link className="button secondary" href="/dashboard/map">
               <MapPinned size={16} aria-hidden="true" />
-              Open Map
-            </Link>
-            <Link className="button secondary" href="/investor">
-              <FileText size={16} aria-hidden="true" />
-              Investor Case
-            </Link>
-            <Link className="button secondary" href="/shortlist">
-              <BarChart3 size={16} aria-hidden="true" />
-              Shortlist
+              Map Drill-down
             </Link>
           </div>
         </section>
@@ -170,6 +216,8 @@ export default async function DashboardPage() {
             </p>
           </div>
         </section>
+
+        <WorkflowGuide />
 
         <section className="dashboard-layout">
           <div className="dashboard-main-stack">
@@ -255,6 +303,23 @@ export default async function DashboardPage() {
                 </table>
               </div>
             </section>
+
+            <section className="card report-panel">
+              <div className="section-title-row">
+                <div>
+                  <h3>Glosarium Singkat</h3>
+                  <p>Istilah utama yang paling sering muncul di dashboard dan modul keputusan.</p>
+                </div>
+              </div>
+              <div className="glossary-grid">
+                {glossaryTerms.map((item) => (
+                  <div className="glossary-card" key={item.term}>
+                    <strong title={item.definition}>{item.term}</strong>
+                    <p>{item.definition}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
           </div>
 
           <aside className="dashboard-side-stack">
@@ -282,17 +347,17 @@ export default async function DashboardPage() {
             </section>
 
             <section className="card next-phase-panel">
-              <span>Current validation work</span>
-              <h3>Phase 11</h3>
-              <p>Top 3 Validation Pack & Committee Memo.</p>
+              <span>Operator next step</span>
+              <h3>Pilot Decision</h3>
+              <p>Mulai dari halaman ini untuk melihat jawaban bisnis terbaru sebelum masuk modul teknis.</p>
               <ul>
-                <li>Evidence checklist Top 3</li>
-                <li>Perbandingan kandidat utama</li>
-                <li>Committee memo PDF</li>
-                <li>No-go trigger validasi</li>
+                <li>Jika ada blocker, buka Evidence</li>
+                <li>Jika evidence siap, buka Validation Pack</li>
+                <li>Jika perlu detail lokasi, buka Map</li>
+                <li>Pre-FEED hanya untuk input lanjutan</li>
               </ul>
-              <Link className="section-link" href="/validation-pack">
-                Open validation pack <ArrowRight size={14} aria-hidden="true" />
+              <Link className="section-link" href="/pilot-decision">
+                Open pilot decision <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </section>
           </aside>

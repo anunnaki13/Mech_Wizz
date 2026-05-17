@@ -236,7 +236,7 @@ export function EvidenceWorkspace({
         });
       }
       await loadWorkspace(evidenceItemId(selectedItem));
-      setStatusMessage("Evidence saved.");
+      setStatusMessage("Evidence saved. Next: open Pilot Decision to see whether readiness, blockers, or gate status changed.");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Evidence could not be saved.");
     } finally {
@@ -275,6 +275,14 @@ export function EvidenceWorkspace({
 
       {errorMessage ? <div className="notice">{errorMessage}</div> : null}
       {statusMessage ? <div className="status-line">{statusMessage}</div> : null}
+
+      <section className="operator-flow-strip" aria-label="Evidence operating flow">
+        <span>Alur evidence</span>
+        <strong>1 Pilih item bukti</strong>
+        <strong>2 Ubah status dan confidence</strong>
+        <strong>3 Save Evidence</strong>
+        <strong>4 Review Pilot Decision</strong>
+      </section>
 
       <section className="summary-grid" aria-label="Evidence summary">
         <div className="summary-card primary">
