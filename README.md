@@ -62,7 +62,9 @@ Setiap data penting punya `data_status` dan `confidence_level`.
 
 Data publik yang saat ini dipakai:
 
+- Curated 26-site PLTU target dataset: [`docs/PLTU_CURATED_DATASET_SOURCES.md`](docs/PLTU_CURATED_DATASET_SOURCES.md)
 - Global Energy Monitor Global Coal Plant Tracker untuk data publik PLTU: `https://globalenergymonitor.org/projects/global-coal-plant-tracker/`
+- Permen LHK P.15/2019 untuk benchmark baku mutu emisi PLTU termal: `https://ppkl.menlhk.go.id/website/filebox/767/190930180734PERMENLHK%20NOMOR%2015%20TAHUN%202019.pdf`
 - NGA World Port Index untuk data pelabuhan: `https://msi.nga.mil/Publications/WPI`
 - Maritime and Port Authority of Singapore untuk konteks methanol bunkering: `https://www.mpa.gov.sg/media-centre/details/singapore-gears-up-to-meet-net-zero-needs-of-shipping`
 
@@ -767,23 +769,30 @@ Data gap dibuat dari logika backend, misalnya:
 - CAPEX belum tervalidasi.
 - missing input dari simulation.
 
-## Import Data PLN PLTU Publik
+## Import Curated 26 PLTU Target Dataset
 
 Script:
 
 ```bash
 cd backend
-.venv/bin/python -m app.import_pln_pltu
+.venv/bin/python -m app.import_target_pltu
 ```
 
-Script ini mengambil data publik GEM, memfilter PLTU Indonesia yang operating dan terkait PLN/PLN Indonesia Power/PLN Nusantara Power/PJB/PLN ownership, lalu membuat plant, scenario, benchmark emission/site/H2/financial assumptions, menjalankan simulation, dan membuat scoring.
+Script ini adalah importer utama untuk dataset kerja saat ini. Ia menghapus plant-linked dataset lama, lalu mengisi tepat 26 site PLTU target yang dipilih user: plant, benchmark emission, site readiness, H2 strategy, WIZ Align scenario, financial assumptions, simulation result, dan scoring/map ranking.
+
+Sumber kapasitas dan koordinat dicatat per site. Jika sumber publik kuat, `confidence_level` dibuat `high`; jika ada perbedaan kapasitas/status publik atau hanya ada alamat, dibuat `medium`/`low`. Untuk PLTU Ampana, sumber publik mengonfirmasi Desa Sabo/Ampana Tete tetapi belum ada koordinat fence-line publik, sehingga tetap ditandai `low`.
+
+Emission pollutant fields (`SO2`, `NOx`, `PM`, `Hg`) memakai benchmark baku mutu existing coal PLTU dari Permen LHK P.15/2019, bukan data stack test aktual. CO2 stack geometry juga benchmark deterministik dari kapasitas, capacity factor, dan faktor emisi batubara untuk kebutuhan screening.
 
 Dokumentasi detail:
 
+- [`docs/PLTU_CURATED_DATASET_SOURCES.md`](docs/PLTU_CURATED_DATASET_SOURCES.md)
 - [`docs/PLN_PLTU_PUBLIC_SCREENING_IMPORT.md`](docs/PLN_PLTU_PUBLIC_SCREENING_IMPORT.md)
 - [`docs/MAP_PORT_INTELLIGENCE_VALIDITY.md`](docs/MAP_PORT_INTELLIGENCE_VALIDITY.md)
 
-Data import ini adalah screening dataset. Nama unit, kapasitas, status, owner, dan koordinat berasal dari sumber publik. Emisi benchmark, CAPEX, site readiness, H2 strategy, dan asumsi ekonomi tetap harus divalidasi sebelum keputusan investasi.
+Data import ini adalah screening dataset. Nama unit, kapasitas, status, owner, dan koordinat berasal dari sumber publik atau daftar target user. Emisi benchmark, CAPEX, site readiness, H2 strategy, dan asumsi ekonomi tetap harus divalidasi sebelum keputusan investasi.
+
+Importer lama `python -m app.import_pln_pltu` masih tersedia sebagai broad public GEM screening import, tetapi bukan dataset default untuk project ini.
 
 ## Arti WIZ Access, WIZ Align, WIZ Augment
 

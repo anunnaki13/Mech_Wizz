@@ -145,6 +145,7 @@ None yet.
 | 2026-05-17 | Sensitivity and OpenRouter settings | Replaced the placeholder sensitivity page with a runnable workspace and added masked OpenRouter API key management in Settings; backend tests, frontend build, API checks, and state validation passed. |
 | 2026-05-17 | README module guide | Expanded README into a detailed Indonesian guide explaining each module, required inputs, backend calculations, outputs, interpretation, data confidence, APIs, and limitations. |
 | 2026-05-17 | Coordinate corrections | Audited plant map coordinates against public web/GEM sources, corrected the local Tenayan seed coordinate, updated the runtime database, and added a regression test. |
+| 2026-05-17 | Curated PLTU target dataset | Replaced the broad public PLTU dataset with the 26 requested target sites, documented public source confidence, seeded regulatory BME benchmarks, ran simulations/scoring, and updated runtime DB. |
 
 ## Session Continuity
 
