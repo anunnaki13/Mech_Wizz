@@ -15,6 +15,7 @@ from app.models.site_readiness import SiteReadiness
 from app.models.scenario_result import ScenarioResult
 from app.models.unit_scoring_result import UnitScoringResult
 from app.models.sensitivity_result import SensitivityResult
+from app.models.validation_evidence import ValidationEvidence
 
 __all__ = [
     "BusinessScenario",
@@ -40,4 +41,5 @@ __all__ = [
     "SensitivityResult",
     "SiteReadiness",
     "UnitScoringResult",
+    "ValidationEvidence",
 ]

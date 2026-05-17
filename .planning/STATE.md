@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.2
-milestone_name: Top 3 Validation Pack & Committee Memo
+milestone: v2.3
+milestone_name: Evidence Collection Workspace
 status: completed
-last_updated: "2026-05-17T15:56:33+07:00"
+last_updated: "2026-05-17T16:45:00+07:00"
 last_activity: 2026-05-17
 progress:
   total_phases: 1
@@ -20,20 +20,20 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-17)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v2.2 Top 3 Validation Pack & Committee Memo complete
+**Current focus:** v2.3 Evidence Collection Workspace complete
 
 ## Current Position
 
-Phase: 11
+Phase: 12
 Plan: 1 of 1 complete
 Status: Milestone complete
-Last activity: 2026-05-17 — Phase 11 validation pack shipped
+Last activity: 2026-05-17 — Phase 12 evidence collection workspace shipped
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 29
+- Total plans completed: 30
 - Average duration: ~20 min for Phase 9
 - Total execution time: 59 min for Phase 9
 
@@ -52,11 +52,12 @@ Last activity: 2026-05-17 — Phase 11 validation pack shipped
 | 9. Risk & Pre-FEED Decision Dashboard | 3/3 | 59 min | ~20 min |
 | 10. Economic Calibration & Shortlist Validation | 1/1 | n/a | n/a |
 | 11. Top 3 Validation Pack & Committee Memo | 1/1 | n/a | n/a |
+| 12. Evidence Collection Workspace | 1/1 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 completed plans: 09-01, 09-02, 09-03, 10-01, 11-01
-- Trend: v2.2 validation pack complete; Phase 11 executed and verified
+- Last 5 completed plans: 09-02, 09-03, 10-01, 11-01, 12-01
+- Trend: v2.3 evidence workspace complete; Phase 12 executed and verified
 
 *Updated after each plan completion*
 | Phase 6 P06-01 | 6min | 3 tasks | 4 files |
@@ -73,6 +74,7 @@ Last activity: 2026-05-17 — Phase 11 validation pack shipped
 | Phase 9 P09-03 | 19min | 3 tasks | 10 files |
 | Phase 10 P10-01 | n/a | 3 tasks | 15 files |
 | Phase 11 P11-01 | n/a | 3 tasks | 16 files |
+| Phase 12 P12-01 | n/a | 3 tasks | 18 files |
 
 ## Accumulated Context
 
@@ -127,6 +129,9 @@ Recent decisions affecting current work:
 - Phase 10: Port selection for shortlist filters toward commercial port/terminal entries to avoid offshore oil-field records being treated as export ports.
 - Milestone v2.2: Scope is Top 3 Validation Pack & Committee Memo, focused on management discussion and evidence collection before single-pilot selection.
 - Phase 11: Committee memo PDF is generated deterministically from backend validation pack data; no LLM calculation or frontend recalculation is used.
+- Milestone v2.3: Scope is Evidence Collection Workspace, focused on persisted validation evidence before single-pilot selection.
+- Phase 12: Evidence records are stored separately from shortlist ranking so validation readiness can improve without silently changing screening scores.
+- Phase 12: Evidence readiness is calculated deterministically from status lifecycle values, with verified evidence scoring highest and rejected/missing scoring zero.
 
 ### Pending Todos
 
@@ -156,6 +161,7 @@ None.
 | 2026-05-17 | Curated PLTU target dataset | Replaced the broad public PLTU dataset with the 26 requested target sites, documented public source confidence, seeded regulatory BME benchmarks, ran simulations/scoring, and updated runtime DB. |
 | 2026-05-17 | PLTU screening PDF report | Generated the 26-site PLTU screening PDF report, fixed electrolyzer CAPEX unit basis, reran import/simulation/scoring, and pushed the report to GitHub main. |
 | 2026-05-17 | Dashboard summary report | Rebuilt `/dashboard` as a live executive summary with screening KPIs, calculation explanation, Top 10 candidates, confidence notes, next-phase guidance, and lightweight ranking aggregates. |
+| 2026-05-17 | Evidence collection workspace | Added persisted Top 3 evidence records, readiness rollup API, `/evidence` UI, tests, build, migration, and runtime smoke checks. |
 
 ## Session Continuity
 
@@ -165,4 +171,4 @@ Resume file: None
 
 ## Operator Next Steps
 
-- Run `$gsd-complete-milestone` to archive v2.2, validate Top 3 with PLN/site/port/vendor data, or start a deployment/production-readiness milestone.
+- Validate real Top 3 evidence in `/evidence`, start evidence-driven shortlist recalibration, or begin deployment/production-readiness hardening.

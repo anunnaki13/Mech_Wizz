@@ -27,6 +27,7 @@ from app.routers import (
     settings,
     site_readiness,
     unit_profiles,
+    validation_evidence,
     validation_pack,
 )
 
@@ -67,6 +68,7 @@ api_router.include_router(scoring.router)
 api_router.include_router(shortlist.router)
 api_router.include_router(map.router)
 api_router.include_router(unit_profiles.router)
+api_router.include_router(validation_evidence.router)
 api_router.include_router(validation_pack.router)
 api_router.include_router(sensitivity.router)
 api_router.include_router(investor.router)

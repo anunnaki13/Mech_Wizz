@@ -6,6 +6,7 @@
 - [x] **v2.0 Pre-FEED** - Shipped 2026-05-17. Cost package validation, vendor comparison, offtake readiness, MRV assumptions, risk governance, and Pre-FEED decision dashboard.
 - [x] **v2.1 Economic Calibration & Shortlist Validation** - Shipped 2026-05-17. Deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
 - [x] **v2.2 Top 3 Validation Pack & Committee Memo** - Shipped 2026-05-17. Top 3 evidence checklist, comparison axes, committee memo, and PDF endpoint.
+- [x] **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Persisted Top 3 evidence records, readiness rollup, and `/evidence` management UI.
 
 ## Completed Milestones
 
@@ -28,15 +29,15 @@ Milestone result:
 
 </details>
 
-## Active Milestone: v2.2 Top 3 Validation Pack & Committee Memo
+## Latest Milestone: v2.3 Evidence Collection Workspace
 
-The v2.2 milestone turns the shortlist into a management-ready Top 3 validation pack. It adds evidence checklists, comparison axes, committee questions, no-go triggers, and a deterministic PDF memo without letting LLMs or frontend code become the numeric authority.
+The v2.3 milestone turns the validation checklist into a usable evidence collection workspace. It persists evidence status and metadata, merges stored evidence with the deterministic Top 3 validation pack, and exposes readiness rollups without letting LLMs or frontend code become the numeric authority.
 
 ## Phases
 
 **Phase Numbering:**
 - Phase numbering continues from the completed v1.0 milestone.
-- Phase 11 is the first v2.2 phase.
+- Phase 12 is the first v2.3 phase.
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
@@ -45,6 +46,7 @@ The v2.2 milestone turns the shortlist into a management-ready Top 3 validation 
 - [x] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation. (completed 2026-05-16)
 - [x] **Phase 10: Economic Calibration & Shortlist Validation** - Decision matrix, Top 3/Top 5 recommendations, score breakdowns, and shortlist page. (completed 2026-05-17)
 - [x] **Phase 11: Top 3 Validation Pack & Committee Memo** - Evidence checklist, comparison axes, committee memo, PDF endpoint, and validation pack page. (completed 2026-05-17)
+- [x] **Phase 12: Evidence Collection Workspace** - Persisted evidence records, status lifecycle, readiness rollup, and evidence page. (completed 2026-05-17)
 
 ## Phase Details
 
@@ -193,10 +195,28 @@ Plans:
 **Wave 1**
 - [x] 11-01: Top 3 validation pack API, PDF memo endpoint, frontend page, tests, and verification.
 
+### Phase 12: Evidence Collection Workspace
+
+**Goal:** Convert the Top 3 validation checklist into persisted evidence records with status lifecycle, readiness scoring, and a usable workspace.
+**Mode:** mvp
+**Depends on:** Phase 11
+**Requirements:** EVID-01, EVID-02, EVID-03, EVID-04, EVID-05
+**UI hint:** yes
+**Success Criteria** (what must be TRUE):
+  1. Backend stores evidence records by plant, scenario, category, and evidence key.
+  2. Evidence workspace API merges Phase 11 default checklist items with persisted evidence status.
+  3. User can open `/evidence`, edit evidence metadata, and save status lifecycle updates.
+  4. Workspace shows evidence readiness score, status mix, and high-priority open gaps.
+**Plans:** 1/1 plan complete
+
+Plans:
+**Wave 1**
+- [x] 12-01: Validation evidence model/API, evidence workspace UI, tests, build, runtime smoke, and verification.
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -211,3 +231,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 10. Economic Calibration & Shortlist Validation | v2.1 | 1/1 | Complete | 2026-05-17 |
 | 11. Top 3 Validation Pack & Committee Memo | v2.2 | 1/1 | Complete | 2026-05-17 |
+| 12. Evidence Collection Workspace | v2.3 | 1/1 | Complete | 2026-05-17 |

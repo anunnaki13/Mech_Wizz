@@ -5,6 +5,7 @@ const navItems = [
   { label: "Map", href: "/dashboard/map" },
   { label: "Shortlist", href: "/shortlist" },
   { label: "Validation", href: "/validation-pack" },
+  { label: "Evidence", href: "/evidence" },
   { label: "Units", href: "/units" },
   { label: "Scenarios", href: "/scenarios" },
   { label: "Investor", href: "/investor" },

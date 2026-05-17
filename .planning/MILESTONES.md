@@ -103,3 +103,21 @@
 **What's next:** Use the pack to collect PLN/site/vendor/port/offtake/MRV evidence, or start production deployment hardening.
 
 ---
+
+## v2.3 Evidence Collection Workspace (Shipped: 2026-05-17)
+
+**Delivered:** A persisted evidence tracking workspace for the Top 3 validation pack.
+
+**Phases completed:** 1 phase, 1 plan
+
+**Key accomplishments:**
+
+- Validation evidence records persisted by plant, scenario, category, and evidence key.
+- Status lifecycle for `missing`, `requested`, `received`, `verified`, and `rejected`.
+- Evidence workspace API that merges Phase 11 checklist defaults with saved records.
+- Evidence readiness score, status mix, verified item count, and high-priority open gap rollups.
+- `/evidence` UI linked from navigation and validation pack.
+
+**What's next:** Production deployment hardening, OCR/retrieval expansion, or evidence-driven shortlist recalibration after real PLN/site/vendor data is entered.
+
+---

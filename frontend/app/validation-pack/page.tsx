@@ -107,6 +107,10 @@ export default async function ValidationPackPage() {
               <ArrowRight size={16} aria-hidden="true" />
               Shortlist
             </Link>
+            <Link className="button secondary" href="/evidence">
+              <ClipboardCheck size={16} aria-hidden="true" />
+              Evidence
+            </Link>
           </div>
         </section>
 

@@ -50,6 +50,11 @@ import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdateP
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
 import type { ShortlistDecisionMatrix } from "@/types/shortlist";
+import type {
+  ValidationEvidencePayload,
+  ValidationEvidenceRecord,
+  ValidationEvidenceWorkspace,
+} from "@/types/validation-evidence";
 import type { Top3ValidationPack } from "@/types/validation-pack";
 import type {
   ApplicationSetting,
@@ -388,6 +393,35 @@ export async function getTop3ValidationPack(params: {
       limit: params.limit ? String(params.limit) : undefined,
     })}`,
   );
+}
+
+export async function getEvidenceWorkspace(params: {
+  scheme?: string;
+  limit?: number;
+} = {}): Promise<ValidationEvidenceWorkspace> {
+  return apiFetch<ValidationEvidenceWorkspace>(
+    `/evidence/workspace${buildQuery({
+      scheme: params.scheme,
+      limit: params.limit ? String(params.limit) : undefined,
+    })}`,
+  );
+}
+
+export async function createValidationEvidence(payload: ValidationEvidencePayload): Promise<ValidationEvidenceRecord> {
+  return apiFetch<ValidationEvidenceRecord>("/evidence/records", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function updateValidationEvidence(
+  recordId: string,
+  payload: ValidationEvidencePayload,
+): Promise<ValidationEvidenceRecord> {
+  return apiFetch<ValidationEvidenceRecord>(`/evidence/records/${recordId}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
 }
 
 export async function runSensitivity(params: {

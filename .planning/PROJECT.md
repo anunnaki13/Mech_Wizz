@@ -12,14 +12,14 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 ## Current State
 
-**Shipped version:** v2.0 Pre-FEED on 2026-05-17
+**Shipped version:** v2.3 Evidence Collection Workspace on 2026-05-17
 **Audit:** v1.0 PASS, v2.0 implementation verified through phase tests and dashboards
-**Current focus:** v2.2 Top 3 Validation Pack & Committee Memo
+**Current focus:** v2.3 Evidence Collection Workspace complete
 
 The current app includes:
 
 - FastAPI backend, PostgreSQL/Docker Compose configuration, Alembic migrations, and Tenayan seed data.
-- Next.js dashboard shell with routes for `/dashboard`, `/dashboard/map`, `/units`, `/scenarios`, `/investor`, `/sensitivity`, `/documents`, and `/settings`.
+- Next.js dashboard shell with routes for `/dashboard`, `/dashboard/map`, `/units`, `/scenarios`, `/investor`, `/sensitivity`, `/documents`, `/validation-pack`, `/evidence`, and `/settings`.
 - Deterministic scenario simulation for CO2, captured CO2, e-methanol, H2, revenue, LCOM, NPV, IRR, payback, and stored scenario results.
 - MapLibre strategy dashboard with GeoJSON opportunity map, heatmap/marker layers, ranking table, score breakdowns, and sensitivity view.
 - Investor case dashboard backed by deterministic aggregate data, null-safe economics, CAPEX structure, revenue mix, risks, roadmap, and data gaps.
@@ -34,16 +34,16 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
-## Current Milestone: v2.2 Top 3 Validation Pack & Committee Memo
+## Current Milestone: v2.3 Evidence Collection Workspace
 
-**Goal:** Convert the shortlist into a management-ready Top 3 validation pack with evidence checklist, side-by-side comparison, committee questions, no-go triggers, and deterministic PDF memo.
+**Goal:** Convert the Top 3 validation checklist into a persisted evidence workspace so PLN/site/vendor/port/offtake/MRV confirmations can be tracked before a single pilot decision.
 
 **Target features:**
 
-- Top 3 candidate validation packs derived from deterministic shortlist results.
-- Evidence checklist across technical, economics, logistics, power/H2, commercial, and MRV categories.
-- Side-by-side comparison axes for scale, economics, logistics, and confidence.
-- Committee memo preview and PDF endpoint that does not use LLM calculations.
+- Evidence records persisted by plant, scenario, category, and evidence key.
+- Lifecycle status across `missing`, `requested`, `received`, `verified`, and `rejected`.
+- Evidence readiness score and high-priority open gap count derived from stored evidence status.
+- `/evidence` UI for selecting Top 3 candidates, editing evidence metadata, saving status, and reviewing warnings.
 
 ## Requirements
 
@@ -63,10 +63,11 @@ Known runtime caveats:
 - [x] Replace broad public screening with the 26 requested target PLTU dataset and dashboard report summary - v2.0 follow-up.
 - [x] Build deterministic Top 3/Top 5 shortlist decision matrix - v2.1.
 - [x] Produce Top 3 validation pack, evidence checklist, committee memo, and PDF endpoint - v2.2.
+- [x] Persist and manage Top 3 validation evidence with readiness rollup and `/evidence` workspace - v2.3.
 
 ### Active
 
-None currently. Next scope should be either real-world Top 3 evidence collection or production deployment hardening.
+None currently. Next scope should be either production deployment hardening, OCR/retrieval expansion, or evidence-driven shortlist recalibration after real PLN/site/vendor data is entered.
 
 ### Candidate Next Requirements
 
@@ -135,6 +136,8 @@ Current architecture:
 | Adopt MapLibre for map heatmap implementation | Heatmap addendum explicitly recommends MapLibre GL JS for WebGL, GeoJSON, heatmap layers, and premium dashboard visuals | Good - `/dashboard/map` ships with MapLibre layers |
 | Use three-part scoring for map ranking | Heatmap addendum requires opportunity, readiness, and confidence scores to remain visible and uses composite score = 45% opportunity + 35% readiness + 20% confidence | Good - scores are persisted and shown separately |
 | Adapt addendum schema to Phase 1 `plants` table for v1 | Phase 1 already shipped a compact `plants` model; splitting into `plant_sites` and `plant_units` was not required for v1 | Good for MVP; revisit only if multi-site/multi-unit scope expands |
+| Persist validation evidence separately from shortlist ranking | Human evidence collection should not silently rewrite deterministic screening scores | Good - `/evidence` tracks readiness while `/shortlist` remains the screening rank source |
+| Use deterministic evidence readiness scoring | Status lifecycle can be scored transparently without LLM or frontend recalculation | Good - verified evidence drives readiness score and high-priority gap count |
 
 ## Milestone History
 
@@ -142,6 +145,7 @@ Current architecture:
 - **v2.0 Pre-FEED** - Shipped 2026-05-17. Scope: cost packages, vendor comparison, offtake readiness, MRV assumptions, risk register, and Pre-FEED decision dashboard.
 - **v2.1 Economic Calibration & Shortlist Validation** - Started 2026-05-17. Scope: deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
 - **v2.2 Top 3 Validation Pack & Committee Memo** - Started 2026-05-17. Scope: Top 3 evidence checklist, comparison, committee memo, and PDF endpoint.
+- **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Scope: persisted evidence records, readiness rollup, and `/evidence` workspace.
 
 ## Evolution
 
@@ -161,4 +165,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-17 after v2.2 Phase 11*
+*Last updated: 2026-05-17 after v2.3 Phase 12*

@@ -1,8 +1,20 @@
 # Requirements: MECH WIZ AI Digital Twin
 
 **Defined:** 2026-05-16
-**Milestone:** v2.2 Top 3 Validation Pack & Committee Memo
+**Milestone:** v2.3 Evidence Collection Workspace
 **Core Value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
+
+## v2.3 Requirements
+
+Requirements for the evidence collection milestone. Each requirement maps to Phase 12.
+
+### Evidence Collection Workspace
+
+- [x] **EVID-01**: Backend persists validation evidence records by plant, scenario, category, and evidence key.
+- [x] **EVID-02**: Evidence records support status lifecycle values `missing`, `requested`, `received`, `verified`, and `rejected`.
+- [x] **EVID-03**: Backend can generate a Top 3 evidence workspace by merging Phase 11 checklist defaults with persisted records.
+- [x] **EVID-04**: System calculates evidence readiness score, status mix, verified item count, and high-priority unresolved gaps from stored statuses.
+- [x] **EVID-05**: Frontend exposes `/evidence` for editing and saving evidence status and metadata.
 
 ## v2.2 Requirements
 
@@ -159,14 +171,20 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | VALP-03 | Phase 11 | Complete |
 | VALP-04 | Phase 11 | Complete |
 | VALP-05 | Phase 11 | Complete |
+| EVID-01 | Phase 12 | Complete |
+| EVID-02 | Phase 12 | Complete |
+| EVID-03 | Phase 12 | Complete |
+| EVID-04 | Phase 12 | Complete |
+| EVID-05 | Phase 12 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 29 total, complete
 - v2.1 requirements: 5 total, complete
-- v2.2 requirements: 5 total
-- Mapped to phases: 39
+- v2.2 requirements: 5 total, complete
+- v2.3 requirements: 5 total, complete
+- Mapped to phases: 44
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after v2.2 Phase 11*
+*Last updated: 2026-05-17 after v2.3 Phase 12*

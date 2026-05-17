@@ -1244,6 +1244,307 @@ textarea {
   flex: 0 0 auto;
 }
 
+.evidence-page {
+  display: grid;
+  gap: 18px;
+}
+
+.evidence-hero {
+  align-items: flex-end;
+  background: linear-gradient(135deg, rgba(24, 199, 200, 0.13), rgba(125, 223, 150, 0.09));
+  border: 1px solid rgba(24, 199, 200, 0.25);
+  border-radius: 8px;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.evidence-hero h2 {
+  font-size: 28px;
+  line-height: 1.12;
+  margin: 6px 0 8px;
+}
+
+.evidence-hero p {
+  color: #b7c8d8;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 880px;
+}
+
+.evidence-layout {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
+}
+
+.evidence-main-stack,
+.evidence-side-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.evidence-side-stack {
+  position: sticky;
+  top: 16px;
+}
+
+.evidence-candidate-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evidence-candidate-card {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 13px;
+  padding: 14px;
+}
+
+.evidence-candidate-head {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.evidence-candidate-head span {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.evidence-candidate-head h3 {
+  font-size: 18px;
+  margin: 4px 0;
+}
+
+.evidence-candidate-head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.evidence-candidate-head > strong {
+  color: #bdf6f2;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.readiness-meter {
+  background: #112238;
+  border-radius: 999px;
+  height: 9px;
+  overflow: hidden;
+}
+
+.readiness-meter i {
+  display: block;
+  height: 100%;
+}
+
+.readiness-meter.good i {
+  background: linear-gradient(90deg, var(--green), #bdf6f2);
+}
+
+.readiness-meter.watch i {
+  background: linear-gradient(90deg, var(--amber), var(--cyan));
+}
+
+.readiness-meter.weak i {
+  background: linear-gradient(90deg, #ef4444, var(--amber));
+}
+
+.evidence-mini-metrics {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.evidence-mini-metrics div {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(147, 169, 187, 0.12);
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 9px;
+}
+
+.evidence-mini-metrics span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.evidence-mini-metrics strong {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.evidence-item-list {
+  display: grid;
+  gap: 8px;
+}
+
+.evidence-item-button {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+  min-height: 118px;
+  padding: 11px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.evidence-item-button:hover,
+.evidence-item-button.active {
+  border-color: rgba(24, 199, 200, 0.62);
+  background: rgba(24, 199, 200, 0.08);
+}
+
+.evidence-item-button.verified {
+  border-color: rgba(125, 223, 150, 0.42);
+}
+
+.evidence-item-button.received,
+.evidence-item-button.requested {
+  border-color: rgba(246, 200, 95, 0.34);
+}
+
+.evidence-item-button.rejected {
+  border-color: rgba(239, 68, 68, 0.42);
+}
+
+.evidence-item-button span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.evidence-item-button strong {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.evidence-item-button small {
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.evidence-item-button em {
+  color: #bdf6f2;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.evidence-status-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.evidence-status-cell {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  min-height: 88px;
+  padding: 12px;
+}
+
+.evidence-status-cell span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.evidence-status-cell strong {
+  font-size: 26px;
+}
+
+.evidence-status-cell.verified {
+  border-color: rgba(125, 223, 150, 0.32);
+}
+
+.evidence-status-cell.rejected {
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.evidence-editor-card > svg {
+  color: var(--cyan);
+}
+
+.evidence-form-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0;
+}
+
+.field.wide {
+  grid-column: 1 / -1;
+}
+
+.evidence-selected {
+  display: grid;
+  gap: 9px;
+}
+
+.evidence-selected > span {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.evidence-selected p {
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.evidence-status-chip {
+  align-items: center;
+  border: 1px solid rgba(147, 169, 187, 0.28);
+  border-radius: 999px;
+  color: var(--text);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  justify-self: start;
+  padding: 5px 9px;
+  text-transform: uppercase;
+}
+
+.evidence-status-chip.verified {
+  border-color: rgba(125, 223, 150, 0.5);
+  color: #cff7d9;
+}
+
+.evidence-status-chip.received,
+.evidence-status-chip.requested {
+  border-color: rgba(246, 200, 95, 0.46);
+  color: #f8df9b;
+}
+
+.evidence-status-chip.rejected {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fecaca;
+}
+
 .map-dashboard {
   display: grid;
   gap: 16px;
@@ -2587,6 +2888,11 @@ textarea {
   .validation-candidate-grid,
   .validation-metric-grid,
   .validation-axis-grid,
+  .evidence-layout,
+  .evidence-candidate-grid,
+  .evidence-mini-metrics,
+  .evidence-status-grid,
+  .evidence-form-grid,
   .form-grid,
   .unit-form,
   .map-filterbar,
@@ -2638,6 +2944,7 @@ textarea {
   .dashboard-hero,
   .shortlist-hero,
   .validation-hero,
+  .evidence-hero,
   .section-title-row,
   .topbar {
     align-items: flex-start;
@@ -2647,7 +2954,8 @@ textarea {
   .map-side-stack,
   .dashboard-side-stack,
   .shortlist-side-stack,
-  .validation-side-stack {
+  .validation-side-stack,
+  .evidence-side-stack {
     position: static;
   }
 
