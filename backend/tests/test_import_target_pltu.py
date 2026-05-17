@@ -15,6 +15,7 @@ from app.import_target_pltu import TARGET_PLTU_SITES, import_curated_pltu_datase
 from app.models import (
     BusinessScenario,
     EmissionTest,
+    FinancialAssumption,
     Plant,
     ScenarioResult,
     SiteReadiness,
@@ -88,6 +89,18 @@ def test_curated_import_creates_simulation_and_scoring_inputs(db_session: Sessio
     assert paiton.capacity_mw == 1460
     assert paiton.latitude == pytest.approx(-7.713041)
     assert paiton.longitude == pytest.approx(113.578536)
+
+    paiton_scenario = db_session.scalar(select(BusinessScenario).where(BusinessScenario.plant_id == paiton.id))
+    assert paiton_scenario is not None
+    paiton_financial = db_session.scalar(
+        select(FinancialAssumption).where(FinancialAssumption.scenario_id == paiton_scenario.id)
+    )
+    paiton_result = db_session.scalar(select(ScenarioResult).where(ScenarioResult.scenario_id == paiton_scenario.id))
+    assert paiton_financial is not None
+    assert paiton_result is not None
+    assert paiton_financial.capex_electrolyzer_usd == pytest.approx(3_319_306_115, rel=0.01)
+    assert paiton_result.lcom_usd_per_ton is not None
+    assert paiton_result.lcom_usd_per_ton < 3_000
 
     suge = _plant_by_name(db_session, "PLTU Belitung / Suge")
     assert suge.latitude == pytest.approx(-2.8932592)

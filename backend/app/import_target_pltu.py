@@ -487,8 +487,8 @@ def _capex_assumptions(capacity_mw: float) -> dict[str, float]:
     target_co2 = _target_co2_tpy(capacity_mw)
     captured_co2 = target_co2 * CAPTURE_RATE
     methanol_tpy = captured_co2 * (32.04 / 44.01) * PROCESS_EFFICIENCY
-    h2_tpy = methanol_tpy * (6.048 / 32.04)
-    electrolyzer_mw = h2_tpy * 1000 * 50 / (OPERATING_DAYS_PER_YEAR * 24)
+    h2_tpy = methanol_tpy * (6.048 / 32.04) / 0.90
+    electrolyzer_mw = (h2_tpy * 1000 / OPERATING_DAYS_PER_YEAR) / 480
     return {
         "capex_capture_usd": round(captured_co2 * 450),
         "capex_electrolyzer_usd": round(electrolyzer_mw * 700_000),
