@@ -8,6 +8,7 @@
 - [x] **v2.2 Top 3 Validation Pack & Committee Memo** - Shipped 2026-05-17. Top 3 evidence checklist, comparison axes, committee memo, and PDF endpoint.
 - [x] **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Persisted Top 3 evidence records, readiness rollup, and `/evidence` management UI.
 - [x] **v2.4 Pilot Decision Dashboard** - Shipped 2026-05-17. Evidence-gated pilot recommendation, blockers, action plan, and `/pilot-decision` page.
+- [x] **v2.5 Workflow UX Audit & Simplification Plan** - Completed 2026-05-17. Runtime route/API audit, button/function inventory, and simplification plan.
 
 ## Completed Milestones
 
@@ -30,15 +31,15 @@ Milestone result:
 
 </details>
 
-## Latest Milestone: v2.4 Pilot Decision Dashboard
+## Latest Milestone: v2.5 Workflow UX Audit & Simplification Plan
 
-The v2.4 milestone turns shortlist and evidence status into a management-facing pilot decision dashboard. It exposes a transparent evidence-adjusted score, gate status, blockers, and next actions without letting LLMs or frontend code become the numeric authority.
+The v2.5 milestone pauses feature expansion and audits the operator workflow. It confirms route/API availability but finds the app needs a simpler guided flow before more domain modules are added.
 
 ## Phases
 
 **Phase Numbering:**
 - Phase numbering continues from the completed v1.0 milestone.
-- Phase 13 is the first v2.4 phase.
+- Phase 14 is the v2.5 audit phase.
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
@@ -49,6 +50,7 @@ The v2.4 milestone turns shortlist and evidence status into a management-facing 
 - [x] **Phase 11: Top 3 Validation Pack & Committee Memo** - Evidence checklist, comparison axes, committee memo, PDF endpoint, and validation pack page. (completed 2026-05-17)
 - [x] **Phase 12: Evidence Collection Workspace** - Persisted evidence records, status lifecycle, readiness rollup, and evidence page. (completed 2026-05-17)
 - [x] **Phase 13: Pilot Decision Dashboard** - Evidence-adjusted decision score, gate labels, blockers, action plan, and pilot decision page. (completed 2026-05-17)
+- [x] **Phase 14: Workflow UX Audit & Simplification** - Route/API smoke, button/function inventory, workflow audit, and simplification plan. (completed 2026-05-17)
 
 ## Phase Details
 
@@ -233,10 +235,28 @@ Plans:
 **Wave 1**
 - [x] 13-01: Pilot decision backend service/API, frontend page, tests, build, runtime smoke, and verification.
 
+### Phase 14: Workflow UX Audit & Simplification
+
+**Goal:** Evaluate the app's operator workflow, buttons, module clarity, and complexity before implementing more features.
+**Mode:** audit
+**Depends on:** Phase 13
+**Requirements:** UXA-01, UXA-02, UXA-03, UXA-04, UXA-05
+**UI hint:** yes
+**Success Criteria** (what must be TRUE):
+  1. Primary routes and key APIs are smoke checked.
+  2. Button/link/field complexity is inventoried.
+  3. Operator workflow friction is documented.
+  4. A simpler Phase 15 implementation plan is recommended.
+**Plans:** 1/1 plan complete
+
+Plans:
+**Wave 1**
+- [x] 14-01: Workflow UX audit, UAT audit, UI review, and simplification plan.
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -253,3 +273,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13
 | 11. Top 3 Validation Pack & Committee Memo | v2.2 | 1/1 | Complete | 2026-05-17 |
 | 12. Evidence Collection Workspace | v2.3 | 1/1 | Complete | 2026-05-17 |
 | 13. Pilot Decision Dashboard | v2.4 | 1/1 | Complete | 2026-05-17 |
+| 14. Workflow UX Audit & Simplification | v2.5 | 1/1 | Complete | 2026-05-17 |

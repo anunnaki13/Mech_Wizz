@@ -1,8 +1,20 @@
 # Requirements: MECH WIZ AI Digital Twin
 
 **Defined:** 2026-05-16
-**Milestone:** v2.4 Pilot Decision Dashboard
+**Milestone:** v2.5 Workflow UX Audit & Simplification Plan
 **Core Value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
+
+## v2.5 Requirements
+
+Requirements for the workflow audit milestone. Each requirement maps to Phase 14.
+
+### Workflow UX Audit
+
+- [x] **UXA-01**: Audit all primary frontend routes for runtime reachability.
+- [x] **UXA-02**: Audit key backend APIs for runtime reachability.
+- [x] **UXA-03**: Inventory button, link, and form complexity by main route.
+- [x] **UXA-04**: Identify workflow friction for non-technical operators.
+- [x] **UXA-05**: Produce a prioritized simplification plan for the next phase.
 
 ## v2.4 Requirements
 
@@ -193,6 +205,11 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | PDEC-03 | Phase 13 | Complete |
 | PDEC-04 | Phase 13 | Complete |
 | PDEC-05 | Phase 13 | Complete |
+| UXA-01 | Phase 14 | Complete |
+| UXA-02 | Phase 14 | Complete |
+| UXA-03 | Phase 14 | Complete |
+| UXA-04 | Phase 14 | Complete |
+| UXA-05 | Phase 14 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 29 total, complete
@@ -200,9 +217,10 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 - v2.2 requirements: 5 total, complete
 - v2.3 requirements: 5 total, complete
 - v2.4 requirements: 5 total, complete
-- Mapped to phases: 49
+- v2.5 requirements: 5 total, complete
+- Mapped to phases: 54
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-17 after v2.4 Phase 13*
+*Last updated: 2026-05-17 after v2.5 Phase 14 audit*

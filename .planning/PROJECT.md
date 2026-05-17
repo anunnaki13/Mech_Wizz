@@ -14,7 +14,7 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 **Shipped version:** v2.4 Pilot Decision Dashboard on 2026-05-17
 **Audit:** v1.0 PASS, v2.0 implementation verified through phase tests and dashboards
-**Current focus:** v2.4 Pilot Decision Dashboard complete
+**Current focus:** v2.5 Workflow UX Audit complete; next should simplify operator flow
 
 The current app includes:
 
@@ -34,16 +34,16 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
-## Current Milestone: v2.4 Pilot Decision Dashboard
+## Current Milestone: v2.5 Workflow UX Audit & Simplification Plan
 
-**Goal:** Convert deterministic shortlist results and evidence readiness into a management-facing pilot decision dashboard with recommendation, blockers, and next actions.
+**Goal:** Evaluate the full operator experience before adding more features, identify button/function/workflow friction, and define a simpler operating model.
 
 **Target features:**
 
-- Evidence-adjusted decision score derived from shortlist score and evidence readiness.
-- Gate status labels for `committee_ready`, `needs_evidence`, and `blocked`.
-- Candidate-specific blockers and next actions.
-- `/pilot-decision` UI for management review before single-pilot selection.
+- Runtime route/API audit.
+- Button/link/field inventory.
+- Workflow clarity review.
+- Simplification plan for a guided operator flow.
 
 ## Requirements
 
@@ -65,10 +65,11 @@ Known runtime caveats:
 - [x] Produce Top 3 validation pack, evidence checklist, committee memo, and PDF endpoint - v2.2.
 - [x] Persist and manage Top 3 validation evidence with readiness rollup and `/evidence` workspace - v2.3.
 - [x] Produce evidence-gated pilot recommendation dashboard with blockers and action plan - v2.4.
+- [x] Audit workflow, buttons, functions, and operator complexity before adding more features - v2.5.
 
 ### Active
 
-None currently. Next scope should be either production deployment hardening, OCR/retrieval expansion, or automated report/export generation from the pilot decision dashboard.
+None currently. Next scope should simplify the operator workflow: guided navigation, grouped sidebar, active page state, next-step prompts after save, destructive-action confirmation, and Indonesian glossary/tooltips.
 
 ### Candidate Next Requirements
 
@@ -141,6 +142,8 @@ Current architecture:
 | Use deterministic evidence readiness scoring | Status lifecycle can be scored transparently without LLM or frontend recalculation | Good - verified evidence drives readiness score and high-priority gap count |
 | Keep pilot decision scoring read-only | Pilot decision guidance should not mutate stored shortlist rank or evidence records | Good - `/pilot-decision` computes decision score on read and exposes methodology |
 | Gate committee readiness on evidence status | A high screening score alone should not advance a site if high-priority evidence remains open | Good - candidates need 80% readiness, zero high-priority open gaps, and zero rejected evidence |
+| Pause feature expansion for UX audit | User reported the app is hard to operate and modules are unclear | Good - v2.5 audit found runtime availability is healthy but operator workflow needs simplification |
+| Treat Pilot Decision as the main business output | The user needs a simpler answer than many separate modules | Pending implementation - Phase 15 should center Dashboard -> Pilot Decision -> Evidence -> Validation Pack |
 
 ## Milestone History
 
@@ -150,6 +153,7 @@ Current architecture:
 - **v2.2 Top 3 Validation Pack & Committee Memo** - Started 2026-05-17. Scope: Top 3 evidence checklist, comparison, committee memo, and PDF endpoint.
 - **v2.3 Evidence Collection Workspace** - Shipped 2026-05-17. Scope: persisted evidence records, readiness rollup, and `/evidence` workspace.
 - **v2.4 Pilot Decision Dashboard** - Shipped 2026-05-17. Scope: evidence-gated pilot recommendation, blockers, and action plan.
+- **v2.5 Workflow UX Audit & Simplification Plan** - Completed 2026-05-17. Scope: route/API smoke, button/function inventory, workflow audit, and Phase 15 simplification plan.
 
 ## Evolution
 
@@ -169,4 +173,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-17 after v2.4 Phase 13*
+*Last updated: 2026-05-17 after v2.5 Phase 14 audit*

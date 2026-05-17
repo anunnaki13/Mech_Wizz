@@ -139,3 +139,23 @@
 **What's next:** Export/report generation for pilot decision meetings, deployment hardening, or OCR/retrieval expansion.
 
 ---
+
+## v2.5 Workflow UX Audit & Simplification Plan (Completed: 2026-05-17)
+
+**Delivered:** A GSD audit of route health, API health, button/function complexity, operator workflow friction, and simplification priorities.
+
+**Phases completed:** 1 phase, 1 audit plan
+
+**Key findings:**
+
+- All 13 primary frontend pages returned HTTP 200.
+- 11 key backend APIs returned HTTP 200.
+- Runtime is healthy, but operator simplicity is not.
+- Sidebar is too flat with 13 equal-weight modules.
+- `/scenarios`, `/evidence`, `/prefeed`, `/dashboard/map`, and `/sensitivity` carry the most interaction burden.
+- Destructive actions lack consistent confirmation.
+- The business workflow should be centered around Dashboard -> Pilot Decision -> Evidence -> Validation Pack.
+
+**What's next:** Phase 15 Guided Workflow & Simplified Navigation.
+
+---

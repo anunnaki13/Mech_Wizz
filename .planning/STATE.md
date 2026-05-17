@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.4
-milestone_name: Pilot Decision Dashboard
+milestone: v2.5
+milestone_name: Workflow UX Audit & Simplification Plan
 status: completed
-last_updated: "2026-05-17T17:10:00+07:00"
+last_updated: "2026-05-17T17:35:00+07:00"
 last_activity: 2026-05-17
 progress:
   total_phases: 1
@@ -20,20 +20,20 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-17)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v2.4 Pilot Decision Dashboard complete
+**Current focus:** v2.5 Workflow UX Audit complete; next should simplify operator flow
 
 ## Current Position
 
-Phase: 13
+Phase: 14
 Plan: 1 of 1 complete
 Status: Milestone complete
-Last activity: 2026-05-17 — Phase 13 pilot decision dashboard shipped
+Last activity: 2026-05-17 — Phase 14 workflow UX audit completed
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 31
+- Total plans completed: 32
 - Average duration: ~20 min for Phase 9
 - Total execution time: 59 min for Phase 9
 
@@ -54,11 +54,12 @@ Last activity: 2026-05-17 — Phase 13 pilot decision dashboard shipped
 | 11. Top 3 Validation Pack & Committee Memo | 1/1 | n/a | n/a |
 | 12. Evidence Collection Workspace | 1/1 | n/a | n/a |
 | 13. Pilot Decision Dashboard | 1/1 | n/a | n/a |
+| 14. Workflow UX Audit & Simplification | 1/1 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 completed plans: 09-03, 10-01, 11-01, 12-01, 13-01
-- Trend: v2.4 pilot decision dashboard complete; Phase 13 executed and verified
+- Last 5 completed plans: 10-01, 11-01, 12-01, 13-01, 14-01
+- Trend: v2.5 workflow UX audit complete; next phase should simplify operation rather than add domain scope
 
 *Updated after each plan completion*
 | Phase 6 P06-01 | 6min | 3 tasks | 4 files |
@@ -77,6 +78,7 @@ Last activity: 2026-05-17 — Phase 13 pilot decision dashboard shipped
 | Phase 11 P11-01 | n/a | 3 tasks | 16 files |
 | Phase 12 P12-01 | n/a | 3 tasks | 18 files |
 | Phase 13 P13-01 | n/a | 3 tasks | 15 files |
+| Phase 14 P14-01 | n/a | audit | 6 files |
 
 ## Accumulated Context
 
@@ -137,6 +139,9 @@ Recent decisions affecting current work:
 - Milestone v2.4: Scope is Pilot Decision Dashboard, focused on turning shortlist and evidence status into a management recommendation.
 - Phase 13: Pilot decision score is read-only and combines shortlist score plus evidence readiness with penalties for rejected evidence and high-priority open gaps.
 - Phase 13: Committee-ready gate requires evidence readiness >= 80%, zero rejected evidence, and zero high-priority open items.
+- Milestone v2.5: Scope is Workflow UX Audit & Simplification Plan; runtime is healthy but operator workflow is too complex.
+- Phase 14: All 13 main frontend routes and 11 key backend APIs returned HTTP 200 during audit.
+- Phase 14: The next implementation should center Dashboard -> Pilot Decision -> Evidence -> Validation Pack and move advanced modules into secondary/admin groups.
 
 ### Pending Todos
 
@@ -168,6 +173,7 @@ None.
 | 2026-05-17 | Dashboard summary report | Rebuilt `/dashboard` as a live executive summary with screening KPIs, calculation explanation, Top 10 candidates, confidence notes, next-phase guidance, and lightweight ranking aggregates. |
 | 2026-05-17 | Evidence collection workspace | Added persisted Top 3 evidence records, readiness rollup API, `/evidence` UI, tests, build, migration, and runtime smoke checks. |
 | 2026-05-17 | Pilot decision dashboard | Added evidence-gated pilot recommendation API, `/pilot-decision` UI, blockers, methodology, action plan, tests, build, and runtime smoke checks. |
+| 2026-05-17 | Workflow UX audit | Audited routes, APIs, buttons, forms, destructive actions, and operator flow; recommended Phase 15 Guided Workflow & Simplified Navigation. |
 
 ## Session Continuity
 
@@ -177,4 +183,4 @@ Resume file: None
 
 ## Operator Next Steps
 
-- Generate meeting/export artifacts from `/pilot-decision`, validate real Top 3 evidence in `/evidence`, or begin deployment/production-readiness hardening.
+- Implement Phase 15 Guided Workflow & Simplified Navigation: grouped sidebar, active nav, next-step prompts, confirmation dialogs, and Indonesian glossary/tooltips.
