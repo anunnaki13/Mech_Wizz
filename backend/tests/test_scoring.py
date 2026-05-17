@@ -128,6 +128,8 @@ def test_ranking_geojson_and_profile_api(client: TestClient, db_session: Session
     assert ranking[0]["co2_tpy"] is not None
     assert ranking[0]["captured_co2_tpy"] is not None
     assert ranking[0]["methanol_tpy"] is not None
+    assert ranking[0]["electrolyzer_required_mw"] is not None
+    assert ranking[0]["gross_revenue_usd_per_year"] is not None
     assert ranking[0]["estimated_irr"] is None
     assert ranking[0]["data_confidence_label"] in {"Low", "Medium", "High", "Unknown"}
 

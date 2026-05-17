@@ -22,6 +22,7 @@ from app.routers import (
     prefeed_market,
     scenarios,
     scoring,
+    shortlist,
     sensitivity,
     settings,
     site_readiness,
@@ -62,6 +63,7 @@ api_router.include_router(site_readiness.router)
 api_router.include_router(hydrogen_strategy.router)
 api_router.include_router(scenarios.router)
 api_router.include_router(scoring.router)
+api_router.include_router(shortlist.router)
 api_router.include_router(map.router)
 api_router.include_router(unit_profiles.router)
 api_router.include_router(sensitivity.router)

@@ -1,16 +1,15 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.0
-milestone_name: Pre-FEED
+milestone: v2.1
+milestone_name: Economic Calibration & Shortlist Validation
 status: completed
-stopped_at: Completed Phase 9 Risk & Pre-FEED Decision Dashboard
-last_updated: "2026-05-17T15:13:12+07:00"
+last_updated: "2026-05-17T15:35:18+07:00"
 last_activity: 2026-05-17
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 12
-  completed_plans: 12
+  total_phases: 1
+  completed_phases: 1
+  total_plans: 1
+  completed_plans: 1
   percent: 100
 ---
 
@@ -18,23 +17,23 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-16)
+See: .planning/PROJECT.md (updated 2026-05-17)
 
 **Core value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
-**Current focus:** v2.0 Pre-FEED milestone complete
+**Current focus:** v2.1 Economic Calibration & Shortlist Validation complete
 
 ## Current Position
 
-Phase: 9
-Plan: 3 of 3 complete
+Phase: 10
+Plan: 1 of 1 complete
 Status: Milestone complete
-Last activity: 2026-05-16
+Last activity: 2026-05-17 — Phase 10 shortlist validation shipped
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 27
+- Total plans completed: 28
 - Average duration: ~20 min for Phase 9
 - Total execution time: 59 min for Phase 9
 
@@ -51,11 +50,12 @@ Last activity: 2026-05-16
 | 7. Cost & Vendor Proposal Engine | 3/3 | 28 min | ~9 min |
 | 8. Offtake & MRV Readiness | 3/3 | 37 min | ~12 min |
 | 9. Risk & Pre-FEED Decision Dashboard | 3/3 | 59 min | ~20 min |
+| 10. Economic Calibration & Shortlist Validation | 1/1 | n/a | n/a |
 
 **Recent Trend:**
 
-- Last 5 completed plans: 08-02, 08-03, 09-01, 09-02, 09-03
-- Trend: v2.0 Pre-FEED milestone complete; all Phase 6-9 plans executed and verified
+- Last 5 completed plans: 08-03, 09-01, 09-02, 09-03, 10-01
+- Trend: v2.1 shortlist validation complete; Phase 10 executed and verified
 
 *Updated after each plan completion*
 | Phase 6 P06-01 | 6min | 3 tasks | 4 files |
@@ -70,6 +70,7 @@ Last activity: 2026-05-16
 | Phase 9 P09-01 | 18min | 3 tasks | 9 files |
 | Phase 9 P09-02 | 22min | 3 tasks | 7 files |
 | Phase 9 P09-03 | 19min | 3 tasks | 10 files |
+| Phase 10 P10-01 | n/a | 3 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -119,10 +120,13 @@ Recent decisions affecting current work:
 - Milestone v2.0: Scope is Pre-FEED Digital Twin rather than operational DCS/SCADA integration.
 - Milestone v2.0: Phase numbering continues from v1.0, so the first new phase is Phase 6.
 - Milestone v2.0: Requirements focus on Pre-FEED packages, detailed CAPEX/OPEX, vendor proposals, offtake readiness, MRV assumptions, risk register, decision gates, and a Pre-FEED dashboard.
+- Milestone v2.1: Scope is Economic Calibration & Shortlist Validation, focused on Top 3/Top 5 decision support from the curated 26-site PLTU dataset.
+- Phase 10: Shortlist score combines screening score, economics, logistics, and confidence with weights 35/25/20/20.
+- Phase 10: Port selection for shortlist filters toward commercial port/terminal entries to avoid offshore oil-field records being treated as export ports.
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
@@ -157,4 +161,5 @@ Resume file: None
 
 ## Operator Next Steps
 
-- Run `$gsd-complete-milestone` to archive v2.0, or start the next milestone with `$gsd-new-milestone`.
+- Run `$gsd-complete-milestone` to archive v2.1, or start the next milestone with `$gsd-new-milestone`.
+- Validate the Top 3 shortlist with PLN/site/port/vendor data, or start a deployment/production-readiness milestone.

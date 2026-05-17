@@ -3,7 +3,8 @@
 ## Milestones
 
 - [x] **v1.0 MVP** - Shipped 2026-05-16. Five-phase pre-feasibility simulator with deterministic calculations, MapLibre strategy dashboard, investor case, OpenRouter insight workflows, and document intelligence.
-- [ ] **v2.0 Pre-FEED** - In planning. Cost package validation, vendor comparison, offtake readiness, MRV assumptions, risk governance, and Pre-FEED decision dashboard.
+- [x] **v2.0 Pre-FEED** - Shipped 2026-05-17. Cost package validation, vendor comparison, offtake readiness, MRV assumptions, risk governance, and Pre-FEED decision dashboard.
+- [x] **v2.1 Economic Calibration & Shortlist Validation** - Shipped 2026-05-17. Deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
 
 ## Completed Milestones
 
@@ -26,21 +27,22 @@ Milestone result:
 
 </details>
 
-## Active Milestone: v2.0 Pre-FEED
+## Active Milestone: v2.1 Economic Calibration & Shortlist Validation
 
-The v2.0 milestone extends the v1.0 pre-feasibility simulator into a Pre-FEED decision workspace. It adds auditable cost packages, vendor proposal comparison, offtake and MRV readiness, detailed risk governance, and a management-facing Pre-FEED dashboard without allowing LLMs to become the numeric source of truth.
+The v2.1 milestone converts the 26-site screening dataset into a decision-oriented Top 3/Top 5 shortlist. It keeps deterministic backend calculations as the source of truth and combines screening score, economics, logistics, confidence, and data gaps into a transparent validation matrix.
 
 ## Phases
 
 **Phase Numbering:**
 - Phase numbering continues from the completed v1.0 milestone.
-- Phase 6 is the first v2.0 phase.
+- Phase 10 is the first v2.1 phase.
 - Decimal phases may be inserted later for urgent fixes.
 
 - [x] **Phase 6: Pre-FEED Package Foundation** - Package records, document links, source/version metadata, confidence, and package-level gaps. (completed 2026-05-16)
 - [x] **Phase 7: Cost & Vendor Proposal Engine** - Detailed CAPEX/OPEX line items, proposal comparison, selected active cost basis, and scenario-ready aggregates. (completed 2026-05-16)
 - [x] **Phase 8: Offtake & MRV Readiness** - Offtake prospects, price decks, revenue impact, MRV assumptions, carbon intensity, and carbon credit readiness. (completed 2026-05-16)
 - [x] **Phase 9: Risk & Pre-FEED Decision Dashboard** - Risk register, decision gates, blockers, dashboard panels, and committee brief generation. (completed 2026-05-16)
+- [x] **Phase 10: Economic Calibration & Shortlist Validation** - Decision matrix, Top 3/Top 5 recommendations, score breakdowns, and shortlist page. (completed 2026-05-17)
 
 ## Phase Details
 
@@ -153,10 +155,28 @@ Plans:
 - D-11: Blockers are generated deterministically from risks, gates, gaps, and missing active package assumptions.
 - D-12: Next actions are rule-based and ordered by urgency.
 
+### Phase 10: Economic Calibration & Shortlist Validation
+
+**Goal:** Convert current PLTU screening outputs into a Top 3/Top 5 validation shortlist with transparent economics, logistics, confidence, and data-gap rationale.
+**Mode:** mvp
+**Depends on:** Phase 9 plus curated 26-site PLTU dataset
+**Requirements:** ECAL-01, ECAL-02, ECAL-03, ECAL-04, ECAL-05
+**UI hint:** yes
+**Success Criteria** (what must be TRUE):
+  1. Backend exposes a shortlist decision matrix using deterministic scoring, scenario economics, port readiness/proximity, confidence, and data gaps.
+  2. User can see Top 3, Top 5, and watchlist recommendations with score components and rationale.
+  3. User can open `/shortlist` from the app navigation and dashboard.
+  4. Caveats make clear that results are screening/pre-validation, not final investment approval.
+**Plans:** 1/1 plan complete
+
+Plans:
+**Wave 1**
+- [x] 10-01: Shortlist decision matrix backend, tests, frontend page, navigation, and GSD verification.
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 6 -> 7 -> 8 -> 9
+Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -169,3 +189,4 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9
 | 7. Cost & Vendor Proposal Engine | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 8. Offtake & MRV Readiness | v2.0 | 3/3 | Complete    | 2026-05-16 |
 | 9. Risk & Pre-FEED Decision Dashboard | v2.0 | 3/3 | Complete    | 2026-05-16 |
+| 10. Economic Calibration & Shortlist Validation | v2.1 | 1/1 | Complete | 2026-05-17 |

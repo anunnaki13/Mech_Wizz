@@ -49,6 +49,7 @@ import type {
 import type { BusinessScenario, BusinessScenarioPayload, BusinessScenarioUpdatePayload } from "@/types/scenario";
 import type { ScenarioResult } from "@/types/scenario-result";
 import type { SensitivityResult, SensitivityRunResponse, SensitivityVariable } from "@/types/sensitivity";
+import type { ShortlistDecisionMatrix } from "@/types/shortlist";
 import type {
   ApplicationSetting,
   ApplicationSettingPayload,
@@ -360,6 +361,18 @@ export async function getUnitProfile(plantId: string, scenarioId?: string): Prom
   return apiFetch<UnitProfile>(
     `/units/${plantId}/profile${buildQuery({
       scenario_id: scenarioId,
+    })}`,
+  );
+}
+
+export async function getShortlistDecisionMatrix(params: {
+  scheme?: string;
+  topN?: number;
+} = {}): Promise<ShortlistDecisionMatrix> {
+  return apiFetch<ShortlistDecisionMatrix>(
+    `/shortlist/decision-matrix${buildQuery({
+      scheme: params.scheme,
+      top_n: params.topN ? String(params.topN) : undefined,
     })}`,
   );
 }

@@ -1,8 +1,20 @@
 # Requirements: MECH WIZ AI Digital Twin
 
 **Defined:** 2026-05-16
-**Milestone:** v2.0 Pre-FEED
+**Milestone:** v2.1 Economic Calibration & Shortlist Validation
 **Core Value:** Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasibility case visually, quantitatively, and in an investor-friendly way without inventing unsupported numbers.
+
+## v2.1 Requirements
+
+Requirements for the shortlist validation milestone. Each requirement maps to Phase 10.
+
+### Economic Calibration And Shortlist Validation
+
+- [x] **ECAL-01**: Backend can generate a shortlist decision matrix from current scoring, simulation economics, port/logistics intelligence, confidence, and data gaps.
+- [x] **ECAL-02**: System separates score components for screening, economics, logistics, confidence, and final shortlist score.
+- [x] **ECAL-03**: System labels candidates as Top 3, Top 5, or watchlist with decision rationale and next validation actions.
+- [x] **ECAL-04**: Frontend exposes a `/shortlist` page for management review of Top 3/Top 5 candidates.
+- [x] **ECAL-05**: System states caveats that shortlist results are screening outputs and require PLN/site/vendor/port confirmation.
 
 ## v2.0 Requirements
 
@@ -125,12 +137,18 @@ Each v2.0 requirement maps to exactly one roadmap phase.
 | PFDASH-03 | Phase 9 | Complete |
 | PFDASH-04 | Phase 9 | Complete |
 | PFDASH-05 | Phase 9 | Complete |
+| ECAL-01 | Phase 10 | Complete |
+| ECAL-02 | Phase 10 | Complete |
+| ECAL-03 | Phase 10 | Complete |
+| ECAL-04 | Phase 10 | Complete |
+| ECAL-05 | Phase 10 | Complete |
 
 **Coverage:**
-- v2.0 requirements: 29 total
-- Mapped to phases: 29
+- v2.0 requirements: 29 total, complete
+- v2.1 requirements: 5 total
+- Mapped to phases: 34
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after v2.0 milestone initialization*
+*Last updated: 2026-05-17 after v2.1 Phase 10*

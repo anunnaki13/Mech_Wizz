@@ -12,9 +12,9 @@ Help PLN NP select the best pilot unit for MECH WIZ and explain the early feasib
 
 ## Current State
 
-**Shipped version:** v1.0 MVP on 2026-05-16
-**Audit:** PASS, 69/69 v1 requirements satisfied
-**Current focus:** v2.0 Pre-FEED milestone planning
+**Shipped version:** v2.0 Pre-FEED on 2026-05-17
+**Audit:** v1.0 PASS, v2.0 implementation verified through phase tests and dashboards
+**Current focus:** v2.1 Economic Calibration & Shortlist Validation
 
 The current app includes:
 
@@ -34,19 +34,16 @@ Known runtime caveats:
 - PDF extraction is text-layer only; scanned PDFs need OCR in a later milestone.
 - Public OSM raster tiles are acceptable for MVP but production should use a controlled tile provider.
 
-## Current Milestone: v2.0 Pre-FEED
+## Current Milestone: v2.1 Economic Calibration & Shortlist Validation
 
-**Goal:** Extend the v1.0 pre-feasibility simulator into a Pre-FEED decision workspace for cost package validation, vendor comparison, offtake readiness, MRV assumptions, and investment risk governance.
+**Goal:** Convert the 26-site PLTU screening dataset into a decision-oriented Top 3/Top 5 shortlist using deterministic economics, logistics, confidence, and data-gap scoring.
 
 **Target features:**
 
-- Pre-FEED package records linked to plants, scenarios, documents, cost line items, owners, source status, and confidence.
-- Detailed CAPEX/OPEX line item management with source, version, currency, escalation, contingency, and data gap visibility.
-- EPC/vendor proposal comparison and conversion of selected proposal values into scenario assumptions without overwriting historical runs.
-- Offtake and market readiness tracking with price decks, offtake prospects/contracts, commercial terms, and revenue model impact.
-- MRV and carbon intensity assumption tracking for carbon market readiness.
-- Detailed risk register, mitigation ownership, decision gates, and investment committee blockers.
-- Pre-FEED dashboard and committee brief that reuse deterministic calculations and LLM narrative guardrails.
+- Shortlist decision matrix that combines existing ranking, simulation economics, port proximity/readiness, confidence, and data gaps.
+- Top 3/Top 5/watchlist recommendations with clear rationale and next validation actions.
+- Management-facing `/shortlist` page linked from the dashboard and navigation.
+- Explicit caveats that the shortlist is still screening/pre-validation, not final investment approval.
 
 ## Requirements
 
@@ -62,14 +59,14 @@ Known runtime caveats:
 - [x] Use OpenRouter-backed LLM features only for explanation, summaries, investor memos, risk narratives, data gap explanation, sensitivity explanation, document Q&A, and document extraction support - v1.0.
 - [x] Prevent the LLM from being the source of record for technical or financial calculations - v1.0.
 - [x] Seed the MVP with the Tenayan sample data from the blueprint - v1.0.
+- [x] Add Pre-FEED package, cost/vendor, offtake/MRV, risk/decision, and committee-brief workflows - v2.0.
+- [x] Replace broad public screening with the 26 requested target PLTU dataset and dashboard report summary - v2.0 follow-up.
 
 ### Active
 
-- [ ] Add Pre-FEED-grade CAPEX/OPEX workflows from partner proposals and pre-FEED studies.
-- [ ] Compare EPC/vendor proposals and offtake readiness.
-- [ ] Add MRV and carbon intensity inputs for carbon market readiness.
-- [ ] Track detailed risks, mitigation owners, and decision gate readiness.
-- [ ] Present a Pre-FEED decision dashboard for PLN NP management, partners, and investment committee review.
+- [ ] Build a shortlist decision matrix for Top 3/Top 5 validation.
+- [ ] Expose economics/logistics/confidence score breakdowns for every shortlisted site.
+- [ ] Show next validation actions per candidate before deeper PLN/vendor work.
 
 ### Candidate Next Requirements
 
@@ -142,7 +139,8 @@ Current architecture:
 ## Milestone History
 
 - **v1.0 MVP** - Shipped 2026-05-16. Archive: `.planning/milestones/v1.0-ROADMAP.md`, `.planning/milestones/v1.0-REQUIREMENTS.md`, `.planning/milestones/v1.0-MILESTONE-AUDIT.md`.
-- **v2.0 Pre-FEED** - Started 2026-05-16. Scope: cost packages, vendor comparison, offtake readiness, MRV assumptions, risk register, and Pre-FEED decision dashboard.
+- **v2.0 Pre-FEED** - Shipped 2026-05-17. Scope: cost packages, vendor comparison, offtake readiness, MRV assumptions, risk register, and Pre-FEED decision dashboard.
+- **v2.1 Economic Calibration & Shortlist Validation** - Started 2026-05-17. Scope: deterministic shortlist decision matrix and Top 3/Top 5 validation workspace.
 
 ## Evolution
 
@@ -162,4 +160,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state.
 
 ---
-*Last updated: 2026-05-16 after v2.0 milestone start*
+*Last updated: 2026-05-17 after v2.1 Phase 10 start*

@@ -112,6 +112,10 @@ export default async function DashboardPage() {
               <FileText size={16} aria-hidden="true" />
               Investor Case
             </Link>
+            <Link className="button secondary" href="/shortlist">
+              <BarChart3 size={16} aria-hidden="true" />
+              Shortlist
+            </Link>
           </div>
         </section>
 
@@ -287,6 +291,9 @@ export default async function DashboardPage() {
                 <li>Shortlist Top 3/Top 5</li>
                 <li>Committee memo per kandidat</li>
               </ul>
+              <Link className="section-link" href="/shortlist">
+                Open shortlist <ArrowRight size={14} aria-hidden="true" />
+              </Link>
             </section>
           </aside>
         </section>

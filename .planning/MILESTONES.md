@@ -45,3 +45,43 @@
 **What's next:** Start the next milestone with `$gsd-new-milestone`.
 
 ---
+
+## v2.0 Pre-FEED (Shipped: 2026-05-17)
+
+**Delivered:** A Pre-FEED decision workspace for package management, cost/vendor comparison, offtake/MRV readiness, risk governance, and committee brief generation.
+
+**Phases completed:** 4 phases, 12 plans
+
+**Key accomplishments:**
+
+- Pre-FEED package records linked to plants, scenarios, source metadata, confidence, and documents.
+- CAPEX/OPEX line items, vendor proposal comparison, and active cost-basis selection.
+- Offtake prospects, price decks, MRV assumptions, carbon-intensity indicators, and readiness gaps.
+- Risk register, decision gates, blockers, next actions, and LLM committee brief workflow.
+- Follow-up curated 26-site PLTU dataset, PDF report, and executive dashboard summary.
+
+**Known deferred items at close:**
+
+- Final PLN/site/vendor-confirmed economics and port handling costs.
+- Production hardening and controlled map tiles.
+- OCR/vector retrieval for scanned or long documents.
+
+**What's next:** v2.1 Economic Calibration & Shortlist Validation.
+
+---
+
+## v2.1 Economic Calibration & Shortlist Validation (Shipped: 2026-05-17)
+
+**Delivered:** A deterministic shortlist decision matrix and `/shortlist` page for Top 3/Top 5 validation.
+
+**Phases completed:** 1 phase, 1 plan
+
+**Key accomplishments:**
+
+- Combines existing screening score, scenario economics, port readiness/proximity, confidence, and data gaps.
+- Labels candidates as Top 3, Top 5, or watchlist.
+- Shows rationale, next actions, method weights, warnings, and full decision matrix.
+
+**What's next:** Validate Top 3 with PLN/site/port/vendor data or start a deployment/production-readiness milestone.
+
+---

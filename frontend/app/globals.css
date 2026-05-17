@@ -748,6 +748,243 @@ textarea {
   margin: 6px 0;
 }
 
+.shortlist-page {
+  display: grid;
+  gap: 18px;
+}
+
+.shortlist-hero {
+  align-items: flex-end;
+  background: linear-gradient(135deg, rgba(125, 223, 150, 0.14), rgba(24, 199, 200, 0.09));
+  border: 1px solid rgba(125, 223, 150, 0.24);
+  border-radius: 8px;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.shortlist-hero h2 {
+  font-size: 28px;
+  line-height: 1.12;
+  margin: 6px 0 8px;
+}
+
+.shortlist-hero p {
+  color: #b7c8d8;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 860px;
+}
+
+.shortlist-method {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.shortlist-method div {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: grid;
+  gap: 7px;
+  min-height: 118px;
+  padding: 14px;
+}
+
+.shortlist-method svg {
+  color: var(--green);
+}
+
+.shortlist-method span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.shortlist-layout {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+}
+
+.shortlist-main-stack,
+.shortlist-side-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.shortlist-side-stack {
+  position: sticky;
+  top: 16px;
+}
+
+.shortlist-card-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.shortlist-candidate-card {
+  background: #0a1726;
+  border: 1px solid rgba(147, 169, 187, 0.18);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+}
+
+.shortlist-candidate-head {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.shortlist-candidate-head span {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.shortlist-candidate-head h3 {
+  font-size: 18px;
+  margin: 4px 0;
+}
+
+.shortlist-candidate-head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.shortlist-candidate-head > strong {
+  color: #bdf6f2;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.shortlist-score-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.shortlist-score-row {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 82px minmax(0, 1fr) 48px;
+}
+
+.shortlist-score-row span,
+.shortlist-score-row strong {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.shortlist-score-row div {
+  background: #112238;
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.shortlist-score-row i {
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  display: block;
+  height: 100%;
+}
+
+.shortlist-card-metrics {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.shortlist-card-metrics div {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(147, 169, 187, 0.12);
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 9px;
+}
+
+.shortlist-card-metrics span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.shortlist-card-metrics strong {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.shortlist-rationale {
+  display: grid;
+  gap: 7px;
+}
+
+.shortlist-rationale > strong {
+  color: #f8df9b;
+}
+
+.shortlist-rationale p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.shortlist-table {
+  min-width: 1080px;
+}
+
+.shortlist-table td:nth-child(3),
+.shortlist-table td:nth-child(4),
+.shortlist-table td:nth-child(5),
+.shortlist-table td:nth-child(8),
+.shortlist-table td:nth-child(9) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.shortlist-table td strong,
+.shortlist-table td span {
+  display: block;
+}
+
+.shortlist-table td span {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.shortlist-warning-list {
+  display: grid;
+  gap: 10px;
+}
+
+.shortlist-warning-list div {
+  align-items: flex-start;
+  background: rgba(246, 200, 95, 0.08);
+  border: 1px solid rgba(246, 200, 95, 0.22);
+  border-radius: 8px;
+  color: #f8df9b;
+  display: flex;
+  gap: 8px;
+  line-height: 1.4;
+  padding: 10px;
+}
+
+.shortlist-warning-list svg {
+  flex: 0 0 auto;
+}
+
 .map-dashboard {
   display: grid;
   gap: 16px;
@@ -2083,6 +2320,10 @@ textarea {
   .summary-grid,
   .dashboard-layout,
   .calculation-grid,
+  .shortlist-method,
+  .shortlist-layout,
+  .shortlist-card-grid,
+  .shortlist-card-metrics,
   .form-grid,
   .unit-form,
   .map-filterbar,
@@ -2132,6 +2373,7 @@ textarea {
   .page-header,
   .scenario-toolbar,
   .dashboard-hero,
+  .shortlist-hero,
   .section-title-row,
   .topbar {
     align-items: flex-start;
@@ -2139,7 +2381,8 @@ textarea {
   }
 
   .map-side-stack,
-  .dashboard-side-stack {
+  .dashboard-side-stack,
+  .shortlist-side-stack {
     position: static;
   }
 
