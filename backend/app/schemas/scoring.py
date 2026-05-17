@@ -82,6 +82,8 @@ class UnitRankingRow(BaseModel):
     captured_co2_tpy: float | None
     methanol_tpy: float | None
     h2_required_tpy: float | None
+    electrolyzer_required_mw: float | None
+    gross_revenue_usd_per_year: float | None
     estimated_irr: float | None
     estimated_lcom_usd_ton: float | None
     recommended_scheme: str

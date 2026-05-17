@@ -4,7 +4,7 @@ milestone: v2.0
 milestone_name: Pre-FEED
 status: completed
 stopped_at: Completed Phase 9 Risk & Pre-FEED Decision Dashboard
-last_updated: "2026-05-17T00:00:00.000+07:00"
+last_updated: "2026-05-17T15:13:12+07:00"
 last_activity: 2026-05-17
 progress:
   total_phases: 4
@@ -147,6 +147,7 @@ None yet.
 | 2026-05-17 | Coordinate corrections | Audited plant map coordinates against public web/GEM sources, corrected the local Tenayan seed coordinate, updated the runtime database, and added a regression test. |
 | 2026-05-17 | Curated PLTU target dataset | Replaced the broad public PLTU dataset with the 26 requested target sites, documented public source confidence, seeded regulatory BME benchmarks, ran simulations/scoring, and updated runtime DB. |
 | 2026-05-17 | PLTU screening PDF report | Generated the 26-site PLTU screening PDF report, fixed electrolyzer CAPEX unit basis, reran import/simulation/scoring, and pushed the report to GitHub main. |
+| 2026-05-17 | Dashboard summary report | Rebuilt `/dashboard` as a live executive summary with screening KPIs, calculation explanation, Top 10 candidates, confidence notes, next-phase guidance, and lightweight ranking aggregates. |
 
 ## Session Continuity
 

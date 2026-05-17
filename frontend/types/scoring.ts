@@ -70,6 +70,8 @@ export type UnitRankingRow = {
   captured_co2_tpy: number | null;
   methanol_tpy: number | null;
   h2_required_tpy: number | null;
+  electrolyzer_required_mw: number | null;
+  gross_revenue_usd_per_year: number | null;
   estimated_irr: number | null;
   estimated_lcom_usd_ton: number | null;
   recommended_scheme: string;

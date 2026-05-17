@@ -670,6 +670,8 @@ def ranking_row_from_record(record: UnitScoringResult) -> dict[str, Any]:
         "captured_co2_tpy": result.captured_co2_ton_per_year,
         "methanol_tpy": result.methanol_ton_per_year,
         "h2_required_tpy": result.h2_required_ton_per_year,
+        "electrolyzer_required_mw": result.electrolyzer_required_mw,
+        "gross_revenue_usd_per_year": result.gross_revenue_usd_per_year,
         "estimated_irr": result.irr,
         "estimated_lcom_usd_ton": result.lcom_usd_per_ton,
         "recommended_scheme": record.recommended_scheme,
